@@ -5,7 +5,14 @@
 conf/*
 !conf/*.dist
 modules/*
-!modules/dep/
+
+#
+# Allow modules to control git ignoring
+#
+!modules/*
+modules/*/*
+!modules/*/.gitignore
+
 build*/
 
 #
