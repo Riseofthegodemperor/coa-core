@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.10, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.42, for osx10.6 (i386)
 --
--- Host: localhost    Database: clean_auth
+-- Host: localhost    Database: auth
 -- ------------------------------------------------------
--- Server version	5.6.10
+-- Server version	5.5.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -111,6 +111,52 @@ LOCK TABLES `account_banned` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `auth_db_version`
+--
+
+DROP TABLE IF EXISTS `auth_db_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_db_version` (
+  `2016_07_10_00` bit(1) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Last applied sql update to DB';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_db_version`
+--
+
+LOCK TABLES `auth_db_version` WRITE;
+/*!40000 ALTER TABLE `auth_db_version` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_db_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `autobroadcast`
+--
+
+DROP TABLE IF EXISTS `autobroadcast`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `autobroadcast` (
+  `realmid` int(11) NOT NULL DEFAULT '-1',
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `weight` tinyint(3) unsigned DEFAULT '1',
+  `text` longtext NOT NULL,
+  PRIMARY KEY (`id`,`realmid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `autobroadcast`
+--
+
+LOCK TABLES `autobroadcast` WRITE;
+/*!40000 ALTER TABLE `autobroadcast` DISABLE KEYS */;
+/*!40000 ALTER TABLE `autobroadcast` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ip_banned`
 --
 
@@ -192,7 +238,7 @@ CREATE TABLE `realmlist` (
 
 LOCK TABLES `realmlist` WRITE;
 /*!40000 ALTER TABLE `realmlist` DISABLE KEYS */;
-INSERT INTO `realmlist` VALUES (1,'MyRealm','127.0.0.1','127.0.0.1','255.255.255.0',8085,1,0,5,0,0,12340);
+INSERT INTO `realmlist` VALUES (1,'AzerothCore','127.0.0.1','127.0.0.1','255.255.255.0',8085,0,2,1,0,0,12340);
 /*!40000 ALTER TABLE `realmlist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -205,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-16  6:03:39
+-- Dump completed on 2016-08-08 19:00:58
