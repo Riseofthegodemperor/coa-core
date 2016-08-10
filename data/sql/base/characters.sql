@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.10, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.42, for osx10.6 (i386)
 --
--- Host: localhost    Database: clean_characters
+-- Host: localhost    Database: characters
 -- ------------------------------------------------------
--- Server version	5.6.10
+-- Server version	5.5.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -213,6 +213,29 @@ CREATE TABLE `auctionhouse` (
 LOCK TABLES `auctionhouse` WRITE;
 /*!40000 ALTER TABLE `auctionhouse` DISABLE KEYS */;
 /*!40000 ALTER TABLE `auctionhouse` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `battleground_deserters`
+--
+
+DROP TABLE IF EXISTS `battleground_deserters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `battleground_deserters` (
+  `guid` int(10) unsigned NOT NULL COMMENT 'characters.guid',
+  `type` tinyint(3) unsigned NOT NULL COMMENT 'type of the desertion',
+  `datetime` datetime NOT NULL COMMENT 'datetime of the desertion'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `battleground_deserters`
+--
+
+LOCK TABLES `battleground_deserters` WRITE;
+/*!40000 ALTER TABLE `battleground_deserters` DISABLE KEYS */;
+/*!40000 ALTER TABLE `battleground_deserters` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1373,6 +1396,27 @@ LOCK TABLES `characters` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `characters_db_version`
+--
+
+DROP TABLE IF EXISTS `characters_db_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `characters_db_version` (
+  `2016_07_10_00` bit(1) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Last applied sql update to DB';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `characters_db_version`
+--
+
+LOCK TABLES `characters_db_version` WRITE;
+/*!40000 ALTER TABLE `characters_db_version` DISABLE KEYS */;
+/*!40000 ALTER TABLE `characters_db_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cheaters`
 --
 
@@ -1475,7 +1519,7 @@ CREATE TABLE `creature_respawn` (
 
 LOCK TABLES `creature_respawn` WRITE;
 /*!40000 ALTER TABLE `creature_respawn` DISABLE KEYS */;
-INSERT INTO `creature_respawn` VALUES (40270,1454189252,571,0);
+INSERT INTO `creature_respawn` VALUES (40270,1470675514,571,0);
 /*!40000 ALTER TABLE `creature_respawn` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1606,42 +1650,44 @@ LOCK TABLES `gm_surveys` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gm_tickets`
+-- Table structure for table `gm_ticket`
 --
 
-DROP TABLE IF EXISTS `gm_tickets`;
+DROP TABLE IF EXISTS `gm_ticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gm_tickets` (
-  `ticketId` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `guid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier of ticket creator',
+CREATE TABLE `gm_ticket` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0 open, 1 closed, 2 character deleted',
+  `playerGuid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier of ticket creator',
   `name` varchar(12) NOT NULL COMMENT 'Name of ticket creator',
-  `message` text NOT NULL,
+  `description` text NOT NULL,
   `createTime` int(10) unsigned NOT NULL DEFAULT '0',
   `mapId` smallint(5) unsigned NOT NULL DEFAULT '0',
   `posX` float NOT NULL DEFAULT '0',
   `posY` float NOT NULL DEFAULT '0',
   `posZ` float NOT NULL DEFAULT '0',
   `lastModifiedTime` int(10) unsigned NOT NULL DEFAULT '0',
-  `closedBy` int(10) NOT NULL DEFAULT '0',
+  `closedBy` int(10) unsigned NOT NULL DEFAULT '0',
   `assignedTo` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'GUID of admin to whom ticket is assigned',
   `comment` text NOT NULL,
   `response` text NOT NULL,
   `completed` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `escalated` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `viewed` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `haveTicket` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ticketId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Player System';
+  `needMoreHelp` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `resolvedBy` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'GUID of GM who resolved the ticket',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10572 DEFAULT CHARSET=utf8 COMMENT='Player System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gm_tickets`
+-- Dumping data for table `gm_ticket`
 --
 
-LOCK TABLES `gm_tickets` WRITE;
-/*!40000 ALTER TABLE `gm_tickets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gm_tickets` ENABLE KEYS */;
+LOCK TABLES `gm_ticket` WRITE;
+/*!40000 ALTER TABLE `gm_ticket` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gm_ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2023,7 +2069,7 @@ CREATE TABLE `instance_reset` (
 
 LOCK TABLES `instance_reset` WRITE;
 /*!40000 ALTER TABLE `instance_reset` DISABLE KEYS */;
-INSERT INTO `instance_reset` VALUES (249,0,1454731200),(249,1,1454731200),(269,1,1454212800),(309,0,1454385600),(409,0,1454731200),(469,0,1454731200),(509,0,1454385600),(531,0,1454731200),(532,0,1454731200),(533,0,1454731200),(533,1,1454731200),(534,0,1454731200),(540,1,1454212800),(542,1,1454212800),(543,1,1454212800),(544,0,1454731200),(545,1,1454212800),(546,1,1454212800),(547,1,1454212800),(548,0,1454731200),(550,0,1454731200),(552,1,1454212800),(553,1,1454212800),(554,1,1454212800),(555,1,1454212800),(556,1,1454212800),(557,1,1454212800),(558,1,1454212800),(560,1,1454212800),(564,0,1454731200),(565,0,1454731200),(568,0,1454385600),(574,1,1454212800),(575,1,1454212800),(576,1,1454212800),(578,1,1454212800),(580,0,1454731200),(585,1,1454212800),(595,1,1454212800),(598,1,1454212800),(599,1,1454212800),(600,1,1454212800),(601,1,1454212800),(602,1,1454212800),(603,0,1454731200),(603,1,1454731200),(604,1,1454212800),(608,1,1454212800),(615,0,1454731200),(615,1,1454731200),(616,0,1454731200),(616,1,1454731200),(619,1,1454212800),(624,0,1454731200),(624,1,1454731200),(631,0,1454731200),(631,1,1454731200),(631,2,1454731200),(631,3,1454731200),(632,1,1454212800),(649,0,1454731200),(649,1,1454731200),(649,2,1454731200),(649,3,1454731200),(650,1,1454212800),(658,1,1454212800),(668,1,1454212800),(724,0,1454731200),(724,1,1454731200),(724,2,1454731200),(724,3,1454731200);
+INSERT INTO `instance_reset` VALUES (249,0,1471060800),(249,1,1471060800),(269,1,1470715200),(309,0,1470715200),(409,0,1471060800),(469,0,1471060800),(509,0,1470715200),(531,0,1471060800),(532,0,1471060800),(533,0,1471060800),(533,1,1471060800),(534,0,1471060800),(540,1,1470715200),(542,1,1470715200),(543,1,1470715200),(544,0,1471060800),(545,1,1470715200),(546,1,1470715200),(547,1,1470715200),(548,0,1471060800),(550,0,1471060800),(552,1,1470715200),(553,1,1470715200),(554,1,1470715200),(555,1,1470715200),(556,1,1470715200),(557,1,1470715200),(558,1,1470715200),(560,1,1470715200),(564,0,1471060800),(565,0,1471060800),(568,0,1470715200),(574,1,1470715200),(575,1,1470715200),(576,1,1470715200),(578,1,1470715200),(580,0,1471060800),(585,1,1470715200),(595,1,1470715200),(598,1,1470715200),(599,1,1470715200),(600,1,1470715200),(601,1,1470715200),(602,1,1470715200),(603,0,1471060800),(603,1,1471060800),(604,1,1470715200),(608,1,1470715200),(615,0,1471060800),(615,1,1471060800),(616,0,1471060800),(616,1,1471060800),(619,1,1470715200),(624,0,1471060800),(624,1,1471060800),(631,0,1471060800),(631,1,1471060800),(631,2,1471060800),(631,3,1471060800),(632,1,1470715200),(649,0,1471060800),(649,1,1471060800),(649,2,1471060800),(649,3,1471060800),(650,1,1470715200),(658,1,1470715200),(668,1,1470715200),(724,0,1471060800),(724,1,1471060800),(724,2,1471060800),(724,3,1471060800);
 /*!40000 ALTER TABLE `instance_reset` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2530,7 +2576,69 @@ CREATE TABLE `pool_quest_save` (
 
 LOCK TABLES `pool_quest_save` WRITE;
 /*!40000 ALTER TABLE `pool_quest_save` DISABLE KEYS */;
+INSERT INTO `pool_quest_save` VALUES (348,24635),(349,14102),(350,13889),(351,13914),(352,11379),(353,11666),(354,13425),(356,11370),(357,11500),(358,14074),(359,14112),(360,14144),(361,14141),(362,12760),(363,14108),(380,12737),(381,12734),(382,12761),(384,13191),(385,13153),(386,12563),(5662,13673),(5663,13764),(5664,13770),(5665,13774),(5666,13780),(5667,13783),(5668,13669),(5669,13616),(5670,13743),(5671,13748),(5672,13757),(5673,13753),(5674,13103),(5675,13116),(5676,13836),(5677,12962),(5678,24586);
 /*!40000 ALTER TABLE `pool_quest_save` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pvpstats_battlegrounds`
+--
+
+DROP TABLE IF EXISTS `pvpstats_battlegrounds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pvpstats_battlegrounds` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `winner_faction` tinyint(4) NOT NULL,
+  `bracket_id` tinyint(3) unsigned NOT NULL,
+  `type` tinyint(3) unsigned NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pvpstats_battlegrounds`
+--
+
+LOCK TABLES `pvpstats_battlegrounds` WRITE;
+/*!40000 ALTER TABLE `pvpstats_battlegrounds` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pvpstats_battlegrounds` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pvpstats_players`
+--
+
+DROP TABLE IF EXISTS `pvpstats_players`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pvpstats_players` (
+  `battleground_id` bigint(20) unsigned NOT NULL,
+  `character_guid` int(10) unsigned NOT NULL,
+  `winner` bit(1) NOT NULL,
+  `score_killing_blows` mediumint(8) unsigned NOT NULL,
+  `score_deaths` mediumint(8) unsigned NOT NULL,
+  `score_honorable_kills` mediumint(8) unsigned NOT NULL,
+  `score_bonus_honor` mediumint(8) unsigned NOT NULL,
+  `score_damage_done` mediumint(8) unsigned NOT NULL,
+  `score_healing_done` mediumint(8) unsigned NOT NULL,
+  `attr_1` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attr_2` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attr_3` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attr_4` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attr_5` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`battleground_id`,`character_guid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pvpstats_players`
+--
+
+LOCK TABLES `pvpstats_players` WRITE;
+/*!40000 ALTER TABLE `pvpstats_players` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pvpstats_players` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2625,7 +2733,7 @@ CREATE TABLE `worldstates` (
 
 LOCK TABLES `worldstates` WRITE;
 /*!40000 ALTER TABLE `worldstates` DISABLE KEYS */;
-INSERT INTO `worldstates` VALUES (3781,9000000,NULL),(3801,0,NULL),(3802,1,NULL),(20001,1454691600,NULL),(20002,1454562000,NULL),(20003,1454216400,NULL),(20005,1454216400,NULL),(20006,1454216400,NULL),(20007,1454302800,NULL);
+INSERT INTO `worldstates` VALUES (3781,9000000,NULL),(3801,0,NULL),(3802,1,NULL),(20001,1454691600,NULL),(20002,1470888000,NULL),(20003,1470715200,NULL),(20005,1470715200,NULL),(20006,1470715200,NULL),(20007,1472702400,NULL);
 /*!40000 ALTER TABLE `worldstates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2638,4 +2746,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-16  6:03:29
+-- Dump completed on 2016-08-08 19:00:21
