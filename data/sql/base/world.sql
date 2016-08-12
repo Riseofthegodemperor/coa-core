@@ -5026,7 +5026,7 @@ CREATE TABLE `version` (
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('AzerothCore rev. f2dfe2b8e362+ 2016-08-10 19:17:26 +0200 (Unix, Release)','f2dfe2b8e362+','TDB 335.52',52);
+INSERT INTO `version` VALUES ('AzerothCore rev. e95659b2c374+ 2016-08-12 11:21:02 +0200 (Unix, Release)','e95659b2c374+','TDB 335.52',52);
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5167,7 +5167,7 @@ DROP TABLE IF EXISTS `world_db_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `world_db_version` (
-  `2016_07_14_00` bit(1) DEFAULT NULL
+  `2016_08_10_01` bit(1) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Last applied sql update to DB';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -5189,4 +5189,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-10 19:53:30
+-- Dump completed on 2016-08-12 11:51:47
