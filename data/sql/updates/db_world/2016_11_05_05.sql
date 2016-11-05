@@ -1,3 +1,14 @@
+-- DB update 2016_11_05_04 -> 2016_11_05_05
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2016_11_05_04 2016_11_05_05 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1478364861156705000'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world(`sql_rev`) VALUES ('1478364861156705000');
 
 DROP TABLE IF EXISTS `locales_gameobject`;
@@ -157378,3 +157389,12 @@ INSERT INTO `gameobject_template_locale` VALUES ('2035', 'koKR', '죽음의 종�
 INSERT INTO `gameobject_template_locale` VALUES ('2035', 'ruRU', 'Похоронный Звон', '', '0');
 INSERT INTO `gameobject_template_locale` VALUES ('2035', 'zhCN', '丧钟镇', '', '0');
 INSERT INTO `gameobject_template_locale` VALUES ('2035', 'zhTW', '喪鐘鎮', '', '0');
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
