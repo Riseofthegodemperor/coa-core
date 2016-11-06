@@ -1,3 +1,14 @@
+-- DB update 2016_11_05_05 -> 2016_11_06_00
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2016_11_05_05 2016_11_06_00 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1478377821535626700'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world(`sql_rev`) VALUES ('1478377821535626700');
 
 -- ----------------------------
@@ -73064,3 +73075,12 @@ INSERT INTO `broadcast_text` VALUES ('77366', '0', 'Vol\'jin\'s one tough nut. S
 INSERT INTO `broadcast_text` VALUES ('77369', '0', '|TInterface\\Icons\\inv_misc_bomb_05:20|tYou have |cFFFF0000|Hspell:145996|h[Set to Blow]|h|r! Use |cFFFF0000|Hspell:146364|h[Throw Bomb]|h|r to throw them!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '18019');
 INSERT INTO `broadcast_text` VALUES ('77371', '0', 'Dat\'s de end of Hellscream.$b$b<Vol\'jin eyes you warily.>$b$bWhat next, $r?', '', '274', '0', '0', '0', '0', '0', '0', '0', '0', '18019');
 INSERT INTO `broadcast_text` VALUES ('77865', '0', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n has agreed to begin the encounter. Additional players required to begin: $8589w.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '18019');
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;

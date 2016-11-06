@@ -1,3 +1,14 @@
+-- DB update 2016_11_06_00 -> 2016_11_06_01
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2016_11_06_00 2016_11_06_01 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1478377844582051200'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world(`sql_rev`) VALUES ('1478377844582051200');
 
 -- ----------------------------
@@ -73068,3 +73079,12 @@ INSERT INTO `locales_broadcast_text` VALUES ('77366', '볼진은 정말 보통�
 INSERT INTO `locales_broadcast_text` VALUES ('77369', '|TInterface\\Icons\\inv_misc_bomb_05:20|t |cFFFF0000|Hspell:145996|h[폭파 준비 완료]|h|r! |cFFFF0000|Hspell:146364|h[폭탄 투척]|h|r으로 폭탄을 던지십시오!', '|TInterface\\Icons\\inv_misc_bomb_05:20|tVous êtes |cFFFF0000|Hspell:145996|h[Prêt à exploser]|h|r ! Utilisez |cFFFF0000|Hspell:146364|h[Larguer la bombe]|h|r pour les larguer !', '|TInterface\\Icons\\inv_misc_bomb_05:20|t Ihr wurdet |cFFFF0000|Hspell:145996|h[scharfgemacht]|h|r! Benutzt |cFFFF0000|Hspell:146364|h[Bombe werfen]|h|r, um sie loszuwerden!', '|TInterface\\Icons\\inv_misc_bomb_05:20|t你身后被|cFFFF0000|Hspell:145996|h[设置炸弹]|h|r了！快使用|cFFFF0000|Hspell:146364|h[投掷炸弹]|h|r扔掉它们！', '|TInterface\\Icons\\inv_misc_bomb_05:20|t你獲得|cFFFF0000|Hspell:145996|h[引爆]|h|r!使用|cFFFF0000|Hspell:146364|h[投擲炸彈]|h|r來投擲炸彈!', '|TInterface\\Icons\\inv_misc_bomb_05:20|tTienes |cFFFF0000|Hspell:145996|h[Listo para explotar]|h|r! Utiliza |cFFFF0000|Hspell:146364|h[Lanzar bomba]|h|r para lanzarlas!', '|TInterfaceIconsinv_misc_bomb_05:20|tTienes |cFFFF0000|Hspell:145996|h[Listo para explotar]|h|r! Utiliza |cFFFF0000|Hspell:146364|h[Lanzar bomba]|h|r para lanzarlas!', '|TInterface\\Icons\\inv_misc_bomb_05:20|tВы использовали способность|cFFFF0000|Hspell:145996|h[Готовность к взрыву]|h|r! Используйте |cFFFF0000|Hspell:146364|h[Бросок бомбы]|h|r, чтобы метнуть заряд в цель.', '', '', '', '', '', '', '', '', '18019');
 INSERT INTO `locales_broadcast_text` VALUES ('77371', '헬스크림의 최후로군.$b$b<경계하는 눈길로 당신을 바라보는 볼진>$b$b$r|1이여;여;, 앞으로는 어쩔 셈인가?', 'Pour Hurlenfer, c’est la fin.$b$b<Vol’jin vous regarde avec méfiance.>$b$bQue voulez-vous d’autre, $r ?', 'Das ist das Ende von Höllschrei.$b$b<Vol\'jin beäugt Euch misstrauisch.>$b$bWas jetzt, $R?', '地狱咆哮已经完蛋了。$b$b<沃金警惕地看着你。>$b$b接下来呢，$r？', '這就是地獄吼最終的下場。$b$b<沃金小心翼翼地看著你。>$b$b下一步是什麼，$r?', 'Eh\'te es el final de Grito Infernal.$b$b<Vol\'jin te mira con cautela.>$b$b¿Y ahora qué, $r?', 'Eh\'te es el final de Grito Infernal.$b$b<Vol\'jin te mira con cautela.>$b$b¿Y ahora qué, $r?', 'С Адским Криком покончено.$b$b<Вол\'джин тревожно смотрит на вас.>$b$bЧто будет дальше, $r?', '', '', '', '', '', '', '', '', '18019');
 INSERT INTO `locales_broadcast_text` VALUES ('77865', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n|1이;가; 전투를 시작하려고 합니다. 전투 시작에 필요한 추가 인원: $8589w', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n a accepté de commencer le combat. Joueurs supplémentaires requis pour commencer : $8589w.', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n hat zugestimmt, die Begegnung zu starten. Zusätzliche Spieler benötigt, um zu beginnen: $8589w.', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n已同意开始战斗。另外还需要$8589w名玩家才可开始。', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n同意進行戰鬥。另外還需要$8589w名玩家才可開始。', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n ha aceptado el encuentro. Jugadores adicionales necesarios para comenzar: $8589w.', '|TInterfaceIconsachievement_arena_2v2_5:20|t$n ha aceptado el encuentro. Jugadores adicionales necesarios para comenzar: $8589w.', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n $gсогласился:согласилась; начать бой. Число недостающих игроков:  $8589w.', '', '', '', '', '', '', '', '', '18019');
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
