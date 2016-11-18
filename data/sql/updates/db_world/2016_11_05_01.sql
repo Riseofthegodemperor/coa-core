@@ -1,11 +1,4 @@
--- DB update 2016_11_05_00 -> 2016_11_05_01
-DROP PROCEDURE IF EXISTS `updateDb`;
-DELIMITER //
-CREATE PROCEDURE updateDb ()
-proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
-START TRANSACTION;
 ALTER TABLE version_db_world CHANGE COLUMN 2016_11_05_00 2016_11_05_01 bit;
-SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1478287154825052800'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
 --
 -- START UPDATING QUERIES
 --
@@ -38152,12 +38145,3 @@ INSERT INTO `locales_item` VALUES ('54857', '머키무스의 작은 창', 'Petit
 INSERT INTO `locales_item` VALUES ('54860', 'X-53 관광 로켓', 'Fusée de tourisme X-53', 'X-53 Reiserakete', 'X-53型观光火箭', 'X-53型觀光火箭', 'Cohete de paseo X-53', 'Cohete de paseo X-53', 'Прогулочная ракета X-53', '탈것 소환하는 법을 배웁니다. 타기 숙련도와 위치에 따라 달라지는 탈것입니다.', 'Vous apprend à invoquer cette monture. Elle change selon l\'endroit où vous vous trouvez et votre compétence de monte.', 'Lehrt Euch, wie man dieses Reittier beschwört. Dieses Reittier passt sich Eurer Reitfertigkeit und Eurem Aufenthaltsort an.', '教你学会召唤这种坐骑。这种坐骑的速度会根据你的骑术等级和所在区域改变。', '教你學會如何召喚這個坐騎。此坐騎將隨著你的騎術技能和地點而改變。', 'Te enseña a invocar esta montura. Cambia según tu habilidad en equitación y la zona en la que estés.', 'Te enseña a invocar esta montura. Cambia según tu habilidad en equitación y la zona en la que estés.', 'Обучает управлению этим средством передвижения. Свойства этого транспортного средства могут меняться в зависимости от вашего навыка верховой езды и местонахождения.', '15050');
 INSERT INTO `locales_item` VALUES ('56806', '꼬마 토르', 'Mini Thor', 'Mini-Thor', '迷你雷神', '迷你雷神', 'Mini thor', 'Mini thor', 'Игрушечный Тор', '꼬마 토르 소환하는 법을 배웁니다.', 'Vous apprend à invoquer le mini Thor.', 'Lehrt Euch, wie man einen winzigen Thor beschwört.', '教会你如何召唤迷你雷神。', '教你學會如何召喚迷你雷神。', 'Te enseña a invocar un mini thor.', 'Te enseña a invocar un mini thor.', 'Учит призывать игрушечного Тора.', '15050');
 INSERT INTO `locales_item` VALUES ('12301', '', 'Clé de la cage en bambou', 'Bambuskäfigschlüssel', '', '', 'Llave de jaula de bambú', 'Llave de jaula de bambú', 'Ключ от бамбуковой клетки', null, null, null, null, null, null, null, null, '0');
---
--- END UPDATING QUERIES
---
-COMMIT;
-END;
-//
-DELIMITER ;
-CALL updateDb();
-DROP PROCEDURE IF EXISTS `updateDb`;

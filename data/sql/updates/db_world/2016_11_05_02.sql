@@ -1,11 +1,4 @@
--- DB update 2016_11_05_01 -> 2016_11_05_02
-DROP PROCEDURE IF EXISTS `updateDb`;
-DELIMITER //
-CREATE PROCEDURE updateDb ()
-proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
-START TRANSACTION;
 ALTER TABLE version_db_world CHANGE COLUMN 2016_11_05_01 2016_11_05_02 bit;
-SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1478293306653271000'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
 --
 -- START UPDATING QUERIES
 --
@@ -217997,12 +217990,3 @@ INSERT INTO `creature_template_locale` VALUES ('40842', 'ruRU', 'Рубинов�
 INSERT INTO `creature_template_locale` VALUES ('40870', 'ruRU', 'Рубиновый дракон', '', '18019');
 INSERT INTO `creature_template_locale` VALUES ('41839', 'ruRU', '[DND] Controller', '', '18019');
 INSERT INTO `creature_template_locale` VALUES ('42078', 'ruRU', 'Игрушечный Тор', 'Разрушитель', '18019');
---
--- END UPDATING QUERIES
---
-COMMIT;
-END;
-//
-DELIMITER ;
-CALL updateDb();
-DROP PROCEDURE IF EXISTS `updateDb`;
