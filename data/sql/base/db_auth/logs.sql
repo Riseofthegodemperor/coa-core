@@ -4,18 +4,22 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP TABLE IF EXISTS `world_db_version`;
+DROP TABLE IF EXISTS `logs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `world_db_version` 
+CREATE TABLE `logs` 
 (
-  `2016_08_10_01` bit(1) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Last applied sql update to DB';
+  `time` int(10) unsigned NOT NULL,
+  `realm` int(10) unsigned NOT NULL,
+  `type` varchar(250) NOT NULL,
+  `level` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `string` text CHARACTER SET latin1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `world_db_version` WRITE;
-/*!40000 ALTER TABLE `world_db_version` DISABLE KEYS */;
-/*!40000 ALTER TABLE `world_db_version` ENABLE KEYS */;
+LOCK TABLES `logs` WRITE;
+/*!40000 ALTER TABLE `logs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
