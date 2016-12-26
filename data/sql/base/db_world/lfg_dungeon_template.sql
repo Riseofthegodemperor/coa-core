@@ -4,10 +4,10 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP TABLE IF EXISTS `lfg_entrances`;
+DROP TABLE IF EXISTS `lfg_dungeon_template`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lfg_entrances` 
+CREATE TABLE `lfg_dungeon_template` 
 (
   `dungeonId` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Unique id from LFGDungeons.dbc',
   `name` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
@@ -19,9 +19,9 @@ CREATE TABLE `lfg_entrances`
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `lfg_entrances` WRITE;
-/*!40000 ALTER TABLE `lfg_entrances` DISABLE KEYS */;
-INSERT INTO `lfg_entrances` VALUES 
+LOCK TABLES `lfg_dungeon_template` WRITE;
+/*!40000 ALTER TABLE `lfg_dungeon_template` DISABLE KEYS */;
+INSERT INTO `lfg_dungeon_template` VALUES 
 (14,'Gnomeregan',-332.22,-2.28,-150.86,2.77),
 (18,'Scarlet Monastery - Graveyard',1688.99,1053.48,18.6775,0.00117),
 (22,'Uldaman',-226.8,49.09,-46.03,1.39),
@@ -43,7 +43,7 @@ INSERT INTO `lfg_entrances` VALUES
 (286,'The Frost Lord Ahune',-100.396,-95.9996,-4.28423,4.71239),
 (287,'Coren Direbrew',897.495,-141.976,-49.7563,2.1255),
 (288,'The Crown Chemical Co.',-238.075,2166.43,88.853,1.13446);
-/*!40000 ALTER TABLE `lfg_entrances` ENABLE KEYS */;
+/*!40000 ALTER TABLE `lfg_dungeon_template` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
