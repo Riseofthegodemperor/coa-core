@@ -1,3 +1,14 @@
+-- DB update 2017_03_04_07 -> 2017_03_04_08
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_07 2017_03_04_08 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1486300771173840500'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1486300771173840500');
 -- [NPC][WotlK] Library Guardian and Databank, missing spell, wrong movement 
 UPDATE `creature_template` SET `InhabitType`=4 WHERE  `entry`=29746;
@@ -40,4 +51,12 @@ INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language
 (29724, 0, 2, 'Attempting to restore lost data ...', 12, 0, 100, 1, 0, 0, 30377, 'Library Guardian'),
 (29724, 0, 3, 'Implementing new security protocols ...', 12, 0, 100, 1, 0, 0, 30378, 'Library Guardian'),
 (29724, 0, 4, 'Verifying encryption key ...', 12, 0, 100, 1, 0, 0, 30376, 'Library Guardian'),
-(29724, 0, 5, 'Assessing database integrity ...', 12, 0, 100, 1, 0, 0, 30373, 'Library Guardian');
+(29724, 0, 5, 'Assessing database integrity ...', 12, 0, 100, 1, 0, 0, 30373, 'Library Guardian');--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;

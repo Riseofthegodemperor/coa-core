@@ -1,3 +1,14 @@
+-- DB update 2017_03_04_10 -> 2017_03_04_11
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_10 2017_03_04_11 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1487528855635607300'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1487528855635607300');
 UPDATE `creature_template` SET `AIName`='SmartAI' WHERE `entry` IN (32682, 27932);
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (32682, 27932) AND `source_type`=0;
@@ -35,3 +46,12 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 (15,10218,0,0,0,23,0,495,0,0,0,0 ,'' , 'Harry''s Bomber - Show gossip option if the npc is in the area 495'),
 (15,10218,0,0,0,9,0,11567,0,0,0,0 ,'' , 'Harry''s Bomber - Show gossip option if player has taken quest 11567'),
 (15,10218,0,0,1,28,0,11567,0,0,0,0 ,'' , 'Harry''s Bomber - Show gossip option if player has quest 11567 completed');
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;

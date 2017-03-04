@@ -1,4 +1,15 @@
-INSERT INTO version_db_world (`sql_rev`) VALUES ('1487539097855457000');
+-- DB update 2017_03_04_13 -> 2017_03_04_14
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_13 2017_03_04_14 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1487538779796122000'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1487538779796122000');
 
 UPDATE `creature_template` SET `ainame`='SmartAI', `scriptname`='' WHERE `entry`=7774;
 DELETE FROM `smart_scripts` WHERE `entryorguid`=7774 AND `source_type`=0;
@@ -47,3 +58,12 @@ INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language
 (7774, 3, 3, 'Are you sure this is the right way? Maybe we should go this way instead...', 12, 0, 100, 0, 0, 0, 3909, 0, 'Shay Leafrunner'),
 (7774, 4, 0, 'Oh, here you are, Rockbiter! I''m sorry, I know I''m not supposed to wander off.', 12, 0, 100, 0, 0, 0, 3917, 0, 'Shay Leafrunner'),
 (7765, 0, 0, 'I''m glad yer back, Shay. Please, don''t ever run off like that again! What would i tell yer parents if I lost ya?"', 12, 0, 100, 0, 0, 0, 3922, 0, 'Shay Leafrunner');
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;

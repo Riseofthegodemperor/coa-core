@@ -1,3 +1,14 @@
+-- DB update 2017_03_04_12 -> 2017_03_04_13
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_12 2017_03_04_13 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1487538045539239700'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1487538045539239700');
 -- Quest Elven Legends (7481, 7482)
 -- Skeletal Remains of Kariel Winthalus SAI
@@ -44,3 +55,12 @@ DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId`=15 AND `SourceGroup`=5
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 (15,5743,0,0,9,7482,0,0,0,'',"Display gossip option when on Elven Legends A quest"),
 (15,5743,1,0,9,7481,0,0,0,'',"Display gossip option when on Elven Legends H quest");
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;

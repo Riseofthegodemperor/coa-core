@@ -1,3 +1,14 @@
+-- DB update 2017_03_04_16 -> 2017_03_04_17
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_16 2017_03_04_17 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1487710286800876400'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1487710286800876400');
 -- 
 DELETE FROM `game_event_creature` WHERE `guid`=54395;
@@ -38,3 +49,12 @@ INSERT INTO `waypoint_data`(`id`,`point`,`position_x`,`position_y`,`position_z`,
 
 
 
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;

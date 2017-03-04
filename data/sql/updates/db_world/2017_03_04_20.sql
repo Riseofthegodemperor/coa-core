@@ -1,3 +1,14 @@
+-- DB update 2017_03_04_19 -> 2017_03_04_20
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_19 2017_03_04_20 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1488633880780960000'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1488633880780960000');
 
 /*Table structure for table `locales_quest` */
@@ -107,3 +118,12 @@ insert  into `locales_quest`(`Id`,`Title_loc1`,`Title_loc2`,`Title_loc3`,`Title_
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
