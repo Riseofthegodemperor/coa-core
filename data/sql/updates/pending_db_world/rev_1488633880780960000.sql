@@ -1,3 +1,5 @@
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1488633880780960000');
+
 /*Table structure for table `locales_quest` */
 DROP TABLE IF EXISTS `locales_quest`;
 CREATE TABLE `locales_quest` (
@@ -104,3 +106,4 @@ insert  into `locales_quest`(`Id`,`Title_loc1`,`Title_loc2`,`Title_loc3`,`Title_
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
