@@ -1,11 +1,7 @@
 -- DB update 2017_03_04_19 -> 2017_03_04_20
-DROP PROCEDURE IF EXISTS `updateDb`;
-DELIMITER //
-CREATE PROCEDURE updateDb ()
-proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
-START TRANSACTION;
+
+
 ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_19 2017_03_04_20 bit;
-SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1488633880780960000'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
 --
 -- START UPDATING QUERIES
 --
@@ -9641,9 +9637,3 @@ INSERT INTO `locales_quest` (`Id`, `Title_loc1`, `Title_loc2`, `Title_loc3`, `Ti
 --
 -- END UPDATING QUERIES
 --
-COMMIT;
-END;
-//
-DELIMITER ;
-CALL updateDb();
-DROP PROCEDURE IF EXISTS `updateDb`;
