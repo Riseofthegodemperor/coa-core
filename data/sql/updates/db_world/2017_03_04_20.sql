@@ -1,11 +1,39 @@
 -- DB update 2017_03_04_19 -> 2017_03_04_20
 
+-- Workaround for this file since including in a stored procedure
+-- can cause connection timeout because of max_connection_packet limit
+
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+
+SELECT COUNT(*) INTO @COLEXISTS 
+FROM information_schema.COLUMNS 
+WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'version_db_world' AND COLUMN_NAME = '2017_03_04_19';
+IF @COLEXISTS = 0 THEN LEAVE proc; END IF;
+
+
 ALTER TABLE version_db_world CHANGE COLUMN 2017_03_04_19 2017_03_04_20 bit;
+
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1488633880780960000'; 
+IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1488633880780960000');
+
+COMMIT;
+END;
+//
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
+
+
+START TRANSACTION;
 
 --
 -- START UPDATING QUERIES
 --
-INSERT INTO version_db_world (`sql_rev`) VALUES ('1488633880780960000');
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
@@ -9616,3 +9644,6 @@ INSERT INTO `locales_quest` (`Id`, `Title_loc1`, `Title_loc2`, `Title_loc3`, `Ti
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+COMMIT;
+
