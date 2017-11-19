@@ -22,8 +22,7 @@ IF OK <> 'FALSE' THEN LEAVE proc; END IF;
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1488633880780960000');
 
 COMMIT;
-END;
-//
+END //
 DELIMITER ;
 CALL updateDb();
 DROP PROCEDURE IF EXISTS `updateDb`;
