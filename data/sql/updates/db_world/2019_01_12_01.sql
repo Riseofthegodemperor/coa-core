@@ -1,3 +1,19 @@
+-- DB update 2019_01_12_00 -> 2019_01_12_01
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+SELECT COUNT(*) INTO @COLEXISTS
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'version_db_world' AND COLUMN_NAME = '2019_01_12_00';
+IF @COLEXISTS = 0 THEN LEAVE proc; END IF;
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2019_01_12_00 2019_01_12_01 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1546089286503990300'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
+
 INSERT INTO version_db_world (`sql_rev`) VALUES ('1546089286503990300');
 
 -- ----------------------------
@@ -58793,3 +58809,12 @@ UPDATE command SET name = 'reload npc_text_locale', help = 'Syntax: .reload npc_
 UPDATE command SET name = 'reload page_text_locale', help = 'Syntax: .reload page_text_locale\nReload page_tex_locale table.'  WHERE name = 'reload locales_page_text';
 UPDATE command SET name = 'reload points_of_interest_locale', help = 'Syntax: .reload points_of_interest_locale\nReload points_of_interest_locale table.'  WHERE name = 'reload locales_points_of_interest';
 UPDATE command SET name = 'reload quest_template_locale', help = 'Syntax: .reload quest_template_locale\nReload quest_template_locale table.'  WHERE name = 'reload locales_quest';
+
+--
+-- END UPDATING QUERIES
+--
+COMMIT;
+END //
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
