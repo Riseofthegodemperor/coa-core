@@ -4,27 +4,31 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP TABLE IF EXISTS `locales_item_set_names`;
+DROP TABLE IF EXISTS `quest_mail_sender`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `locales_item_set_names` 
+CREATE TABLE `quest_mail_sender` 
 (
-  `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `name_loc1` varchar(100) NOT NULL DEFAULT '',
-  `name_loc2` varchar(100) NOT NULL DEFAULT '',
-  `name_loc3` varchar(100) NOT NULL DEFAULT '',
-  `name_loc4` varchar(100) NOT NULL DEFAULT '',
-  `name_loc5` varchar(100) NOT NULL DEFAULT '',
-  `name_loc6` varchar(100) NOT NULL DEFAULT '',
-  `name_loc7` varchar(100) NOT NULL DEFAULT '',
-  `name_loc8` varchar(100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `QuestId` int(5) unsigned NOT NULL DEFAULT '0',
+  `RewardMailSenderEntry` int(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`QuestId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `locales_item_set_names` WRITE;
-/*!40000 ALTER TABLE `locales_item_set_names` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locales_item_set_names` ENABLE KEYS */;
+LOCK TABLES `quest_mail_sender` WRITE;
+/*!40000 ALTER TABLE `quest_mail_sender` DISABLE KEYS */;
+INSERT INTO `quest_mail_sender` VALUES 
+(8729,11811),
+(10588,18166),
+(10966,22818),
+(10967,22817),
+(12067,2708),
+(12085,5885),
+(12422,27102),
+(12711,28930),
+(13959,33533),
+(13960,33532);
+/*!40000 ALTER TABLE `quest_mail_sender` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
