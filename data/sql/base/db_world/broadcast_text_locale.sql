@@ -9,11 +9,11 @@ DROP TABLE IF EXISTS `broadcast_text_locale`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `broadcast_text_locale` 
 (
-  `ID` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `locale` varchar(4) NOT NULL,
-  `MaleText` text,
-  `FemaleText` text,
-  `VerifiedBuild` smallint(5) DEFAULT '0',
+  `MaleText` text DEFAULT NULL,
+  `FemaleText` text DEFAULT NULL,
+  `VerifiedBuild` smallint(5) DEFAULT 0,
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -184991,14 +184991,14 @@ INSERT INTO `broadcast_text_locale` VALUES
 (24992,'ruRU','','Какой ужас! Тебя тошнило? Была слабость, жар?',18019),
 (24992,'zhCN','','真是厉害！你有没有觉得四肢无力？很虚弱吗？体内一阵潮热？',18019),
 (24992,'zhTW','','這實在是太糟糕了!對你一點用也沒有嗎?虛弱?潮紅?',18019),
-(24993,'deDE','Verschwenden wir keine Zeit!','',18019),
-(24993,'esES','¡No hay tiempo que perder!','',18019),
-(24993,'esMX','¡No hay tiempo que perder!','',18019),
-(24993,'frFR','Il n\'y a pas de temps à perdre !','',18019),
-(24993,'koKR','시간이 없습니다!','',18019),
-(24993,'ruRU','У нас мало времени!','',18019),
-(24993,'zhCN','没时间可以浪费了！','',18019),
-(24993,'zhTW','沒有時間了!','',18019),
+(24993,'deDE','Madrigosa hat ein besseres Schicksal verdient. Ihr habt getan, was getan werden musste - doch diese Schlacht ist noch lange nicht vorbei!','',18019),
+(24993,'esES','Madrigosa merecía un destino mejor. Hicisteis lo que teníais que hacer, pero esta batalla aún no ha acabado.','',18019),
+(24993,'esMX','Madrigosa merecía un destino mejor. Hicisteis lo que teníais que hacer, pero esta batalla aún no ha acabado.','',18019),
+(24993,'frFR','Madrigosa méritait un sort plus clément. Vous avez fait ce qu\'il fallait, mais cette bataille est loin d\'être terminée !','',18019),
+(24993,'koKR','운명은 마드리고사에게 너무 가혹했습니다. 해야 할 일을 하셨지만, 이 전투가 끝나려면 멀었습니다!','',18019),
+(24993,'ruRU','Мадригоса не заслужила такой участи... Вы сделали то, что должны были сделать... но эта битва еще не окончена!','',18019),
+(24993,'zhCN','虽然玛蒂苟萨的命运不该如此悲惨，你们的所作所为仍然是必须和必要的，不过，这场战争远未结束！','',18019),
+(24993,'zhTW','瑪卓苟莎的命運不該如此悲慘。但你們只盡了自己的本分，而這場戰爭尚未結束!','',18019),
 (24994,'deDE','Und denkt daran, $n, der Blutsporenpuder kann dazu benutzt werden, alle Magnatauren in Gammut zu schwächen.','',18019),
 (24994,'esES','Y recuerda, $n, el polvo de sanguiespora se puede usar para debilitar a todos los magnatauros de Gammoth.','',18019),
 (24994,'esMX','Y recuerda, $n, el polvo de sanguiespora se puede usar para debilitar a todos los magnatauros de Gammoth.','',18019),
@@ -187119,14 +187119,14 @@ INSERT INTO `broadcast_text_locale` VALUES
 (25260,'ruRU','Верность питомца','Верность питомца',18019),
 (25260,'zhCN','宠物忠诚度','宠物忠诚度',18019),
 (25260,'zhTW','寵物忠誠度','寵物忠誠度',18019),
-(25261,'deDE','Madrigosa hat ein besseres Schicksal verdient. Ihr habt getan, was getan werden musste - doch diese Schlacht ist noch lange nicht vorbei!','',18019),
-(25261,'esES','Madrigosa merecía un destino mejor. Hicisteis lo que teníais que hacer, pero esta batalla aún no ha acabado.','',18019),
-(25261,'esMX','Madrigosa merecía un destino mejor. Hicisteis lo que teníais que hacer, pero esta batalla aún no ha acabado.','',18019),
-(25261,'frFR','Madrigosa méritait un sort plus clément. Vous avez fait ce qu\'il fallait, mais cette bataille est loin d\'être finie !','',18019),
-(25261,'koKR','운명은 마드리고사에게 너무 가혹했습니다. 해야 할 일을 하셨지만, 이 전투가 끝나려면 멀었습니다!','',18019),
-(25261,'ruRU','Мадригоса не заслужила такой участи... Вы сделали то, что должны были сделать... но эта битва еще не окончена!','',18019),
-(25261,'zhCN','虽然玛蒂苟萨的命运不该如此悲惨，你们的所作所为仍然是必须和必要的，不过，这场战争远未结束！','',18019),
-(25261,'zhTW','瑪卓苟莎的命運不該如此悲慘。但你們只盡了自己的本分，而這場戰爭尚未結束!','',18019),
+(25261,'deDE','%s holt tief Luft...','',18019),
+(25261,'esES','%s toma aliento...','',18019),
+(25261,'esMX','%s toma aliento...','',18019),
+(25261,'frFR','%s inspire profondément...','',18019),
+(25261,'koKR','%s|1이;가; 숨을 깊게 들이쉽니다','',18019),
+(25261,'ruRU','%s делает глубокий вдох...','',18019),
+(25261,'zhCN','%s深深地吸了一口气','',18019),
+(25261,'zhTW','%s深深地吸了一口氣','',18019),
 (25262,'deDE','Stall','Stall',18019),
 (25262,'esES','Establo','Establo',18019),
 (25262,'esMX','Establo','Establo',18019),
@@ -238878,14 +238878,14 @@ INSERT INTO `broadcast_text_locale` VALUES
 (31842,'ruRU','Это... нет, оставь при себе свои грязные деньги! Моей семье это не поможет!','Это... нет, оставь при себе свои грязные деньги! Моей семье это не поможет!',18019),
 (31842,'zhCN','呸……省省吧！不收你的钱，这也救不了我的家人！','呸……省省吧！不收你的钱，这也救不了我的家人！',18019),
 (31842,'zhTW','什麼...不，留著你那些髒錢吧!它幫不了我的家人!','什麼...不，留著你那些髒錢吧!它幫不了我的家人!',18019),
-(31843,'deDE','%s bereitet ein großes Festmahl zu!','%s bereitet ein großes Festmahl zu!',18019),
-(31843,'esES','¡%s prepara un gran festín!','¡%s prepara un gran festín!',18019),
-(31843,'esMX','¡%s prepara un gran festín!','¡%s prepara un gran festín!',18019),
-(31843,'frFR','%s prépare un grand festin !','%s prépare un grand festin !',18019),
-(31843,'koKR','%s|1이;가; 연회용 통구이를 준비합니다!','%s|1이;가; 연회용 통구이를 준비합니다!',18019),
-(31843,'ruRU','%s готовит угощение \"Пир на весь мир\"!','%s готовит угощение \"Пир на весь мир\"!',18019),
-(31843,'zhCN','%s烹制了大型筵席！','%s烹制了大型筵席！',18019),
-(31843,'zhTW','%s準備了一餐盛宴!','%s準備了一餐盛宴!',18019),
+(31843,'deDE','$n bereitet ein großes Festmahl zu!','$n bereitet ein großes Festmahl zu!',18019),
+(31843,'esES','¡$n prepara un gran festín!','¡$n prepara un gran festín!',18019),
+(31843,'esMX','¡$n prepara un gran festín!','¡$n prepara un gran festín!',18019),
+(31843,'frFR','$n prépare un grand festin !','$n prépare un grand festin !',18019),
+(31843,'koKR','$n|1이;가; 연회용 통구이를 준비합니다!','$n|1이;가; 연회용 통구이를 준비합니다!',18019),
+(31843,'ruRU','$n готовит угощение \"Пир на весь мир\"!','$n готовит угощение \"Пир на весь мир\"!',18019),
+(31843,'zhCN','$n烹制了大型筵席！','$n烹制了大型筵席！',18019),
+(31843,'zhTW','$n準備了一餐盛宴!','$n準備了一餐盛宴!',18019),
 (31844,'deDE','$n bereitet ein Fischmahl zu!','$n bereitet ein Fischmahl zu!',18019),
 (31844,'esES','¡$n prepara un festín de pescado!','¡$n prepara un festín de pescado!',18019),
 (31844,'esMX','¡$n prepara un festín de pescado!','¡$n prepara un festín de pescado!',18019),
@@ -257952,14 +257952,14 @@ INSERT INTO `broadcast_text_locale` VALUES
 (34267,'ruRU','Я знаю – тебе по душе прямой и очевидный путь, но на Турнире ты станешь еще сильнее и сможешь принести больше пользы в дальнейшем.','Я знаю – тебе по душе прямой и очевидный путь, но на Турнире ты станешь еще сильнее и сможешь принести больше пользы в дальнейшем.',18019),
 (34267,'zhCN','我知道你对此尚有疑惑，但是这会让你更加接近圣光。战斗吧，我的兄弟。','我知道你对此尚有疑惑，但是这会让你更加接近圣光。战斗吧，我的兄弟。',18019),
 (34267,'zhTW','我知道這由你看來並不是一條明顯的道路，但這會引你更加靠近聖光。好好戰鬥吧，兄弟。','我知道這由你看來並不是一條明顯的道路，但這會引你更加靠近聖光。好好戰鬥吧，兄弟。',18019),
-(34268,'deDE','','Selbstzerstörungssequenz eingeleitet.',18019),
-(34268,'esES','','Secuencia de autodestrucción iniciada.',18019),
-(34268,'esMX','','Fase de autodestrucción iniciada.',18019),
-(34268,'frFR','','Initialisation de la séquence d\'autodestruction.',18019),
-(34268,'koKR','','자폭 절차를 시작합니다.',18019),
-(34268,'ruRU','','Отсчет времени до самоуничтожения начат.',18019),
-(34268,'zhCN','','自毁程序已经启动。',18019),
-(34268,'zhTW','','自毀程序已展開。',18019),
+(34268,'deDE','Selbstzerstörungssequenz eingeleitet.','Selbstzerstörungssequenz eingeleitet.',18019),
+(34268,'esES','Secuencia de autodestrucción iniciada.','Secuencia de autodestrucción iniciada.',18019),
+(34268,'esMX','Fase de autodestrucción iniciada.','Fase de autodestrucción iniciada.',18019),
+(34268,'frFR','Initialisation de la séquence d\'autodestruction.','Initialisation de la séquence d\'autodestruction.',18019),
+(34268,'koKR','자폭 절차를 시작합니다.','자폭 절차를 시작합니다.',18019),
+(34268,'ruRU','Отсчет времени до самоуничтожения начат.','Отсчет времени до самоуничтожения начат.',18019),
+(34268,'zhCN','自毁程序已经启动。','自毁程序已经启动。',18019),
+(34268,'zhTW','自毀程序已展開。','自毀程序已展開。',18019),
 (34269,'deDE','Dies ist kein ehrenhafter Kampf. Ich sehne mich danach, meinen Gegnern mit der Axt in der Hand gegenüberzustehen!','Dies ist kein ehrenhafter Kampf. Ich sehne mich danach, meinen Gegnern mit der Axt in der Hand gegenüberzustehen!',18019),
 (34269,'esES','Esto no es combate honorable. ¡Ansío enfrentarme a mis oponentes en la batalla con un hacha en la mano!','Esto no es combate honorable. ¡Ansío enfrentarme a mis oponentes en la batalla con un hacha en la mano!',18019),
 (34269,'esMX','Esto no es combate honorable. ¡Ansío enfrentarme a mis oponentes en la batalla con un hacha en la mano!','Esto no es combate honorable. ¡Ansío enfrentarme a mis oponentes en la batalla con un hacha en la mano!',18019),
@@ -257992,102 +257992,102 @@ INSERT INTO `broadcast_text_locale` VALUES
 (34272,'ruRU','Орки так не дерутся, потому что у них есть долг перед Вождем и чувство собственного достоинства. Я не верю в этот ваш Свет, но мне интересно послушать, что ты на это скажешь.','Орки так не дерутся, потому что у них есть долг перед Вождем и чувство собственного достоинства. Я не верю в этот ваш Свет, но мне интересно послушать, что ты на это скажешь.',18019),
 (34272,'zhCN','这就不是兽人的作战方式！酋长的命令与个人的荣耀令我左右为难。我不信仰圣光，但是你看起来像是个不错的顾问，我想听听你的建议。','这就不是兽人的作战方式！酋长的命令与个人的荣耀令我左右为难。我不信仰圣光，但是你看起来像是个不错的顾问，我想听听你的建议。',18019),
 (34272,'zhTW','這不是獸人的戰鬥!我以個人的榮譽服侍大酋長。我一點也不相信你們的聖光，但你看來像是個顧問，我想聽聽你的話。','這不是獸人的戰鬥!我以個人的榮譽服侍大酋長。我一點也不相信你們的聖光，但你看來像是個顧問，我想聽聽你的話。',18019),
-(34273,'deDE','','Diese Zone wird sich in SECHS Minuten selbst zerstören.',18019),
-(34273,'esES','','Esta zona se autodestruirá en seis minutos.',18019),
-(34273,'esMX','','Autodestrucción en SEIS minutos.',18019),
-(34273,'frFR','','Cette section va s\'autodétruire dans six minutes.',18019),
-(34273,'koKR','','자폭 실행까지 남은 시간은 06분입니다.',18019),
-(34273,'ruRU','','Самоуничтожение области через шесть минут.',18019),
-(34273,'zhCN','','本区域将在六分钟后自毁。',18019),
-(34273,'zhTW','','此區域將在六分鐘內自我毀滅。',18019),
-(34274,'deDE','','Diese Zone wird sich in FÜNF Minuten selbst zerstören.',18019),
-(34274,'esES','','Esta zona se autodestruirá en cinco minutos.',18019),
-(34274,'esMX','','Autodestrucción en CINCO minutos.',18019),
-(34274,'frFR','','Cette section va s\'autodétruire dans cinq minutes.',18019),
-(34274,'koKR','','자폭 실행까지 남은 시간은 05분입니다.',18019),
-(34274,'ruRU','','Самоуничтожение области через пять минут.',18019),
-(34274,'zhCN','','本区域将在五分钟后自毁。',18019),
-(34274,'zhTW','','此區域將在五分鐘內自我毀滅。',18019),
-(34275,'deDE','','Diese Zone wird sich in VIER Minuten selbst zerstören.',18019),
-(34275,'esES','','Esta zona se autodestruirá en cuatro minutos.',18019),
-(34275,'esMX','','Autodestrucción en CUATRO minutos.',18019),
-(34275,'frFR','','Cette section va s\'autodétruire dans quatre minutes.',18019),
-(34275,'koKR','','자폭 실행까지 남은 시간은 04분입니다.',18019),
-(34275,'ruRU','','Самоуничтожение области через четыре минуты.',18019),
-(34275,'zhCN','','本区域将在四分钟后自毁。',18019),
-(34275,'zhTW','','此區域將在四分鐘內自我毀滅。',18019),
-(34276,'deDE','','Diese Zone wird sich in DREI Minuten selbst zerstören.',18019),
-(34276,'esES','','Esta zona se autodestruirá en tres minutos.',18019),
-(34276,'esMX','','Autodestrucción en TRES minutos.',18019),
-(34276,'frFR','','Cette section va s\'autodétruire dans trois minutes.',18019),
-(34276,'koKR','','자폭 실행까지 남은 시간은 03분입니다.',18019),
-(34276,'ruRU','','Самоуничтожение области через три минуты.',18019),
-(34276,'zhCN','','本区域将在三分钟后自毁。',18019),
-(34276,'zhTW','','此區域將在三分鐘內自我毀滅。',18019),
-(34277,'deDE','','Diese Zone wird sich in ZWEI Minuten selbst zerstören.',18019),
-(34277,'esES','','Esta zona se autodestruirá en dos minutos.',18019),
-(34277,'esMX','','Autodestrucción en DOS minutos.',18019),
-(34277,'frFR','','Cette section va s\'autodétruire dans deux minutes.',18019),
-(34277,'koKR','','자폭 실행까지 남은 시간은 02분입니다.',18019),
-(34277,'ruRU','','Самоуничтожение области через две минуты.',18019),
-(34277,'zhCN','','本区域将在二分钟后自毁。',18019),
-(34277,'zhTW','','此區域將在二分鐘內自我毀滅。',18019),
-(34278,'deDE','','Diese Zone wird sich in EINER Minute selbst zerstören.',18019),
-(34278,'esES','','Esta zona se autodestruirá en un minuto',18019),
-(34278,'esMX','','Autodestrucción en UN minuto.',18019),
-(34278,'frFR','','Cette section va s\'autodétruire dans une minute.',18019),
-(34278,'koKR','','자폭 실행까지 남은 시간은 01분입니다.',18019),
-(34278,'ruRU','','Самоуничтожение области через одну минуту.',18019),
-(34278,'zhCN','','本区域将在一分钟后自毁。',18019),
-(34278,'zhTW','','此區域將在一分鐘內自我毀滅。',18019),
-(34279,'deDE','','Ende der Selbstzerstörungssequenz. Schönen Tag noch!',18019),
-(34279,'esES','','Secuencia de autodestrucción finalizada. ¡Que tenga un buen día!',18019),
-(34279,'esMX','','Fase de autodestrucción terminada. ¡Buen día!',18019),
-(34279,'frFR','','Séquence d\'autodestruction terminée. Bonne journée.',18019),
-(34279,'koKR','','자폭 절차를 완료합니다. 이용해 주셔서 감사합니다!',18019),
-(34279,'ruRU','','Отсчет времени до самоуничтожения завершен. Всего хорошего!',18019),
-(34279,'zhCN','','自毁程序确认启动。祝你愉快！',18019),
-(34279,'zhTW','','自毀程序完成。祝您有個美好的一天!',18019),
-(34280,'deDE','','Diese Zone wird sich in SIEBEN Minuten selbst zerstören.',18019),
-(34280,'esES','','Esta zona se autodestruirá en siete minutos.',18019),
-(34280,'esMX','','Autodestrucción en SIETE minutos.',18019),
-(34280,'frFR','','Cette section va s\'autodétruire dans sept minutes.',18019),
-(34280,'koKR','','자폭 실행까지 남은 시간은 07분입니다.',18019),
-(34280,'ruRU','','Самоуничтожение области через семь минут.',18019),
-(34280,'zhCN','','本区域将在七分钟后自毁。',18019),
-(34280,'zhTW','','此區域將在七分鐘內自我毀滅。',18019),
-(34281,'deDE','','Diese Zone wird sich in ACHT Minuten selbst zerstören.',18019),
-(34281,'esES','','Esta zona se autodestruirá en ocho minutos',18019),
-(34281,'esMX','','Autodestrucción en OCHO minutos.',18019),
-(34281,'frFR','','Cette section va s\'autodétruire dans huit minutes.',18019),
-(34281,'koKR','','자폭 실행까지 남은 시간은 08분입니다.',18019),
-(34281,'ruRU','','Самоуничтожение области через восемь минут.',18019),
-(34281,'zhCN','','本区域将在八分钟后自毁。',18019),
-(34281,'zhTW','','此區域將在八分鐘內自我毀滅。',18019),
-(34282,'deDE','','Diese Zone wird sich in NEUN Minuten selbst zerstören.',18019),
-(34282,'esES','','Esta zona se autodestruirá en nueve minutos',18019),
-(34282,'esMX','','Autodestrucción en NUEVE minutos.',18019),
-(34282,'frFR','','Cette section va s\'autodétruire dans neuf minutes.',18019),
-(34282,'koKR','','자폭 실행까지 남은 시간은 09분입니다.',18019),
-(34282,'ruRU','','Самоуничтожение области через девять минут.',18019),
-(34282,'zhCN','','本区域将在九分钟后自毁。',18019),
-(34282,'zhTW','','此區域將在九分鐘內自我毀滅。',18019),
-(34283,'deDE','','Diese Zone wird sich in ZEHN Minuten selbst zerstören.',18019),
-(34283,'esES','','Esta zona se autodestruirá en diez minutos.',18019),
-(34283,'esMX','','Autodestrucción en DIEZ minutos.',18019),
-(34283,'frFR','','Cette section va s\'autodétruire dans 10 minutes.',18019),
-(34283,'koKR','','자폭 실행까지 남은 시간은 10분입니다.',18019),
-(34283,'ruRU','','Самоуничтожение области через десять минут.',18019),
-(34283,'zhCN','','本区域将在十分钟后自毁。',18019),
-(34283,'zhTW','','此區域將在十分鐘內自我毀滅。',18019),
-(34284,'deDE','','Selbstzerstörungssequenz abgebrochen. Überbrückungscode A-9-0-5.',18019),
-(34284,'esES','','Secuencia de autodestrucción terminada. Anular código A-9-0-5.',18019),
-(34284,'esMX','','Fase de autodestrucción terminada. Código usado A-9-0-5. ',18019),
-(34284,'frFR','','Annulation de la séquence d\'autodestruction. Code prioritaire A-9-0-5.',18019),
-(34284,'koKR','','자폭 절차를 종료합니다. 재정의 코드 A-9-0-5.',18019),
-(34284,'ruRU','','Отсчет времени до самоуничтожения прерван. Код отмены: A-9-0-5.',18019),
-(34284,'zhCN','','自毁程序已中断。过载代码A-9-0-5。',18019),
-(34284,'zhTW','','自毀程序已終止。手控密碼A-9-0-5。',18019),
+(34273,'deDE','Diese Zone wird sich in SECHS Minuten selbst zerstören.','Diese Zone wird sich in SECHS Minuten selbst zerstören.',18019),
+(34273,'esES','Esta zona se autodestruirá en seis minutos.','Esta zona se autodestruirá en seis minutos.',18019),
+(34273,'esMX','Autodestrucción en SEIS minutos.','Autodestrucción en SEIS minutos.',18019),
+(34273,'frFR','Cette section va s\'autodétruire dans six minutes.','Cette section va s\'autodétruire dans six minutes.',18019),
+(34273,'koKR','자폭 실행까지 남은 시간은 06분입니다.','자폭 실행까지 남은 시간은 06분입니다.',18019),
+(34273,'ruRU','Самоуничтожение области через шесть минут.','Самоуничтожение области через шесть минут.',18019),
+(34273,'zhCN','本区域将在六分钟后自毁。','本区域将在六分钟后自毁。',18019),
+(34273,'zhTW','此區域將在六分鐘內自我毀滅。','此區域將在六分鐘內自我毀滅。',18019),
+(34274,'deDE','Diese Zone wird sich in FÜNF Minuten selbst zerstören.','Diese Zone wird sich in FÜNF Minuten selbst zerstören.',18019),
+(34274,'esES','Esta zona se autodestruirá en cinco minutos.','Esta zona se autodestruirá en cinco minutos.',18019),
+(34274,'esMX','Autodestrucción en CINCO minutos.','Autodestrucción en CINCO minutos.',18019),
+(34274,'frFR','Cette section va s\'autodétruire dans cinq minutes.','Cette section va s\'autodétruire dans cinq minutes.',18019),
+(34274,'koKR','자폭 실행까지 남은 시간은 05분입니다.','자폭 실행까지 남은 시간은 05분입니다.',18019),
+(34274,'ruRU','Самоуничтожение области через пять минут.','Самоуничтожение области через пять минут.',18019),
+(34274,'zhCN','本区域将在五分钟后自毁。','本区域将在五分钟后自毁。',18019),
+(34274,'zhTW','此區域將在五分鐘內自我毀滅。','此區域將在五分鐘內自我毀滅。',18019),
+(34275,'deDE','Diese Zone wird sich in VIER Minuten selbst zerstören.','Diese Zone wird sich in VIER Minuten selbst zerstören.',18019),
+(34275,'esES','Esta zona se autodestruirá en cuatro minutos.','Esta zona se autodestruirá en cuatro minutos.',18019),
+(34275,'esMX','Autodestrucción en CUATRO minutos.','Autodestrucción en CUATRO minutos.',18019),
+(34275,'frFR','Cette section va s\'autodétruire dans quatre minutes.','Cette section va s\'autodétruire dans quatre minutes.',18019),
+(34275,'koKR','자폭 실행까지 남은 시간은 04분입니다.','자폭 실행까지 남은 시간은 04분입니다.',18019),
+(34275,'ruRU','Самоуничтожение области через четыре минуты.','Самоуничтожение области через четыре минуты.',18019),
+(34275,'zhCN','本区域将在四分钟后自毁。','本区域将在四分钟后自毁。',18019),
+(34275,'zhTW','此區域將在四分鐘內自我毀滅。','此區域將在四分鐘內自我毀滅。',18019),
+(34276,'deDE','Diese Zone wird sich in DREI Minuten selbst zerstören.','Diese Zone wird sich in DREI Minuten selbst zerstören.',18019),
+(34276,'esES','Esta zona se autodestruirá en tres minutos.','Esta zona se autodestruirá en tres minutos.',18019),
+(34276,'esMX','Autodestrucción en TRES minutos.','Autodestrucción en TRES minutos.',18019),
+(34276,'frFR','Cette section va s\'autodétruire dans trois minutes.','Cette section va s\'autodétruire dans trois minutes.',18019),
+(34276,'koKR','자폭 실행까지 남은 시간은 03분입니다.','자폭 실행까지 남은 시간은 03분입니다.',18019),
+(34276,'ruRU','Самоуничтожение области через три минуты.','Самоуничтожение области через три минуты.',18019),
+(34276,'zhCN','本区域将在三分钟后自毁。','本区域将在三分钟后自毁。',18019),
+(34276,'zhTW','此區域將在三分鐘內自我毀滅。','此區域將在三分鐘內自我毀滅。',18019),
+(34277,'deDE','Diese Zone wird sich in ZWEI Minuten selbst zerstören.','Diese Zone wird sich in ZWEI Minuten selbst zerstören.',18019),
+(34277,'esES','Esta zona se autodestruirá en dos minutos.','Esta zona se autodestruirá en dos minutos.',18019),
+(34277,'esMX','Autodestrucción en DOS minutos.','Autodestrucción en DOS minutos.',18019),
+(34277,'frFR','Cette section va s\'autodétruire dans deux minutes.','Cette section va s\'autodétruire dans deux minutes.',18019),
+(34277,'koKR','자폭 실행까지 남은 시간은 02분입니다.','자폭 실행까지 남은 시간은 02분입니다.',18019),
+(34277,'ruRU','Самоуничтожение области через две минуты.','Самоуничтожение области через две минуты.',18019),
+(34277,'zhCN','本区域将在二分钟后自毁。','本区域将在二分钟后自毁。',18019),
+(34277,'zhTW','此區域將在二分鐘內自我毀滅。','此區域將在二分鐘內自我毀滅。',18019),
+(34278,'deDE','Diese Zone wird sich in EINER Minute selbst zerstören.','Diese Zone wird sich in EINER Minute selbst zerstören.',18019),
+(34278,'esES','Esta zona se autodestruirá en un minuto','Esta zona se autodestruirá en un minuto',18019),
+(34278,'esMX','Autodestrucción en UN minuto.','Autodestrucción en UN minuto.',18019),
+(34278,'frFR','Cette section va s\'autodétruire dans une minute.','Cette section va s\'autodétruire dans une minute.',18019),
+(34278,'koKR','자폭 실행까지 남은 시간은 01분입니다.','자폭 실행까지 남은 시간은 01분입니다.',18019),
+(34278,'ruRU','Самоуничтожение области через одну минуту.','Самоуничтожение области через одну минуту.',18019),
+(34278,'zhCN','本区域将在一分钟后自毁。','本区域将在一分钟后自毁。',18019),
+(34278,'zhTW','此區域將在一分鐘內自我毀滅。','此區域將在一分鐘內自我毀滅。',18019),
+(34279,'deDE','Ende der Selbstzerstörungssequenz. Schönen Tag noch!','Ende der Selbstzerstörungssequenz. Schönen Tag noch!',18019),
+(34279,'esES','Secuencia de autodestrucción finalizada. ¡Que tenga un buen día!','Secuencia de autodestrucción finalizada. ¡Que tenga un buen día!',18019),
+(34279,'esMX','Fase de autodestrucción terminada. ¡Buen día!','Fase de autodestrucción terminada. ¡Buen día!',18019),
+(34279,'frFR','Séquence d\'autodestruction terminée. Bonne journée.','Séquence d\'autodestruction terminée. Bonne journée.',18019),
+(34279,'koKR','자폭 절차를 완료합니다. 이용해 주셔서 감사합니다!','자폭 절차를 완료합니다. 이용해 주셔서 감사합니다!',18019),
+(34279,'ruRU','Отсчет времени до самоуничтожения завершен. Всего хорошего!','Отсчет времени до самоуничтожения завершен. Всего хорошего!',18019),
+(34279,'zhCN','自毁程序确认启动。祝你愉快！','自毁程序确认启动。祝你愉快！',18019),
+(34279,'zhTW','自毀程序完成。祝您有個美好的一天!','自毀程序完成。祝您有個美好的一天!',18019),
+(34280,'deDE','Diese Zone wird sich in SIEBEN Minuten selbst zerstören.','Diese Zone wird sich in SIEBEN Minuten selbst zerstören.',18019),
+(34280,'esES','Esta zona se autodestruirá en siete minutos.','Esta zona se autodestruirá en siete minutos.',18019),
+(34280,'esMX','Autodestrucción en SIETE minutos.','Autodestrucción en SIETE minutos.',18019),
+(34280,'frFR','Cette section va s\'autodétruire dans sept minutes.','Cette section va s\'autodétruire dans sept minutes.',18019),
+(34280,'koKR','자폭 실행까지 남은 시간은 07분입니다.','자폭 실행까지 남은 시간은 07분입니다.',18019),
+(34280,'ruRU','Самоуничтожение области через семь минут.','Самоуничтожение области через семь минут.',18019),
+(34280,'zhCN','本区域将在七分钟后自毁。','本区域将在七分钟后自毁。',18019),
+(34280,'zhTW','此區域將在七分鐘內自我毀滅。','此區域將在七分鐘內自我毀滅。',18019),
+(34281,'deDE','Diese Zone wird sich in ACHT Minuten selbst zerstören.','Diese Zone wird sich in ACHT Minuten selbst zerstören.',18019),
+(34281,'esES','Esta zona se autodestruirá en ocho minutos','Esta zona se autodestruirá en ocho minutos',18019),
+(34281,'esMX','Autodestrucción en OCHO minutos.','Autodestrucción en OCHO minutos.',18019),
+(34281,'frFR','Cette section va s\'autodétruire dans huit minutes.','Cette section va s\'autodétruire dans huit minutes.',18019),
+(34281,'koKR','자폭 실행까지 남은 시간은 08분입니다.','자폭 실행까지 남은 시간은 08분입니다.',18019),
+(34281,'ruRU','Самоуничтожение области через восемь минут.','Самоуничтожение области через восемь минут.',18019),
+(34281,'zhCN','本区域将在八分钟后自毁。','本区域将在八分钟后自毁。',18019),
+(34281,'zhTW','此區域將在八分鐘內自我毀滅。','此區域將在八分鐘內自我毀滅。',18019),
+(34282,'deDE','Diese Zone wird sich in NEUN Minuten selbst zerstören.','Diese Zone wird sich in NEUN Minuten selbst zerstören.',18019),
+(34282,'esES','Esta zona se autodestruirá en nueve minutos','Esta zona se autodestruirá en nueve minutos',18019),
+(34282,'esMX','Autodestrucción en NUEVE minutos.','Autodestrucción en NUEVE minutos.',18019),
+(34282,'frFR','Cette section va s\'autodétruire dans neuf minutes.','Cette section va s\'autodétruire dans neuf minutes.',18019),
+(34282,'koKR','자폭 실행까지 남은 시간은 09분입니다.','자폭 실행까지 남은 시간은 09분입니다.',18019),
+(34282,'ruRU','Самоуничтожение области через девять минут.','Самоуничтожение области через девять минут.',18019),
+(34282,'zhCN','本区域将在九分钟后自毁。','本区域将在九分钟后自毁。',18019),
+(34282,'zhTW','此區域將在九分鐘內自我毀滅。','此區域將在九分鐘內自我毀滅。',18019),
+(34283,'deDE','Diese Zone wird sich in ZEHN Minuten selbst zerstören.','Diese Zone wird sich in ZEHN Minuten selbst zerstören.',18019),
+(34283,'esES','Esta zona se autodestruirá en diez minutos.','Esta zona se autodestruirá en diez minutos.',18019),
+(34283,'esMX','Autodestrucción en DIEZ minutos.','Autodestrucción en DIEZ minutos.',18019),
+(34283,'frFR','Cette section va s\'autodétruire dans 10 minutes.','Cette section va s\'autodétruire dans 10 minutes.',18019),
+(34283,'koKR','자폭 실행까지 남은 시간은 10분입니다.','자폭 실행까지 남은 시간은 10분입니다.',18019),
+(34283,'ruRU','Самоуничтожение области через десять минут.','Самоуничтожение области через десять минут.',18019),
+(34283,'zhCN','本区域将在十分钟后自毁。','本区域将在十分钟后自毁。',18019),
+(34283,'zhTW','此區域將在十分鐘內自我毀滅。','此區域將在十分鐘內自我毀滅。',18019),
+(34284,'deDE','Selbstzerstörungssequenz abgebrochen. Überbrückungscode A-9-0-5.','Selbstzerstörungssequenz abgebrochen. Überbrückungscode A-9-0-5.',18019),
+(34284,'esES','Secuencia de autodestrucción terminada. Anular código A-9-0-5.','Secuencia de autodestrucción terminada. Anular código A-9-0-5.',18019),
+(34284,'esMX','Fase de autodestrucción terminada. Código usado A-9-0-5. ','Fase de autodestrucción terminada. Código usado A-9-0-5. ',18019),
+(34284,'frFR','Annulation de la séquence d\'autodestruction. Code prioritaire A-9-0-5.','Annulation de la séquence d\'autodestruction. Code prioritaire A-9-0-5.',18019),
+(34284,'koKR','자폭 절차를 종료합니다. 재정의 코드 A-9-0-5.','자폭 절차를 종료합니다. 재정의 코드 A-9-0-5.',18019),
+(34284,'ruRU','Отсчет времени до самоуничтожения прерван. Код отмены: A-9-0-5.','Отсчет времени до самоуничтожения прерван. Код отмены: A-9-0-5.',18019),
+(34284,'zhCN','自毁程序已中断。过载代码A-9-0-5。','自毁程序已中断。过载代码A-9-0-5。',18019),
+(34284,'zhTW','自毀程序已終止。手控密碼A-9-0-5。','自毀程序已終止。手控密碼A-9-0-5。',18019),
 (34285,'deDE','Ich verstehe, warum Ihr verdrossen seid. Im Kampf agiert Euer Volk heißblütig und dies ist nicht das, woran Ihr gewöhnt seid.','Ich verstehe, warum Ihr verdrossen seid. Im Kampf agiert Euer Volk heißblütig und dies ist nicht das, woran Ihr gewöhnt seid.',18019),
 (34285,'esES','Entiendo tu frustración. Tu gente es feroz en el combate, y esto no es a lo que estás acostumbrad$go:a;.','Entiendo tu frustración. Tu gente es feroz en el combate, y esto no es a lo que estás acostumbrad$go:a;.',18019),
 (34285,'esMX','Entiendo tu frustración. Tu gente es feroz en el combate, y esto no es a lo que estás acostumbrad$go:a;.','Entiendo tu frustración. Tu gente es feroz en el combate, y esto no es a lo que estás acostumbrad$go:a;.',18019),
@@ -260611,7 +260611,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (34614,'deDE','','Ehe Ihr Euch auf den Weg in den Teufelsfels begebt, sprecht mit Tallonkai Flinkwurzel. Er möchte Euch eine Aufgabe anvertrauen.',18019),
 (34614,'esES','','Antes de dirigirte hacia Roca Mácula, acuérdate de hablar con Tallonkai Cruzarraíz en lo alto del árbol. También tiene una tarea que encomendarte.',18019),
 (34614,'esMX','','Antes de dirigirte hacia Roca Mácula, acuérdate de hablar con Tallonkai Cruzarraíz en lo alto del árbol. También tiene una tarea que encomendarte.',18019),
-(34614,'frFR','','Avant de vous diriger vers Gangreroche, n\'oubliez pas d\'aller voir Tallonkai Viveracine en haut de l\'arbre. Lui aussi a une tâche à vous confier.',18019),
+(34614,'frFR','','Avant de vous diriger vers Gangreroche, n\'oubliez pas d\'aller voir Tallonkai Viveracine en haut de l\'arbre. Lui aussi a une tâche à vous confier.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (34614,'koKR','','악마 바위굴로 가기 전에 나무 꼭대기에 있는 탈론카이 스위프트루트와 대화해 보십시오. 탈론카이도 그대에게 부탁할 임무가 있는 것 같더군요.',18019),
 (34614,'ruRU','','Прежде чем ты отправишься в Пещеру Бесов, непременно поговори с Таллонкаем Гибким Корнем на вершине дерева. У него есть дело, выполнить которое он мог бы попросить тебя.',18019),
 (34614,'zhCN','','在你进入地狱石之前，一定要同这棵树顶上的塔隆凯·捷根谈一谈。他也有一个任务要交给你。',18019),
@@ -260703,8 +260704,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (34625,'koKR','짐마차 코도를 방어하십시오!','',18019),
 (34625,'ruRU','Защити кодо из каравана!','',18019),
 (34625,'zhCN','守卫科多兽商队！','',18019),
-(34625,'zhTW','保護好商隊科多獸!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(34625,'zhTW','保護好商隊科多獸!','',18019),
 (34626,'deDE','','Führt sie an! Fahrt ab!',18019),
 (34626,'esES','','¡Adelante! ¡En marcha!',18019),
 (34626,'esMX','','¡Adelante! ¡En marcha!',18019),
@@ -269164,7 +269164,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (35784,'deDE','','Ich mag die Art und Weise, wie Ihr denkt, $R!$B$BBis vor Kurzem haben die schlummernden magischen Energien des Akademiegeländes die Aufmerksamkeit des blauen Drachenschwarms auf sich gezogen, so dass ich die Energien nicht untersuchen konnte. Die Aufmerksamkeit der Drachen richtet sich nun woanders hin, doch eine größere Bedrohung naht - diese kleinen grünen Rohlinge wollen die Ruinen dem Erdboden gleichmachen, um Platz für ein Tanklager zu gewinnen! Wissen, welches für zehntausend Jahre verschollen war, könnte in nur wenigen Tagen für immer verloren gehen. Wir müssen schnell handeln.',18019),
 (35784,'esES','','¡Me gusta tu forma de pensar, $r!$B$BHasta hace poco, las energías mágicas latentes de la tierra donde se alzaba la academia atraían la atención del Vuelo Azul y me resultaba imposible estudiarlas. Ahora la atención de los dragones está en otra parte, pero una amenaza mayor se cierne sobre el lugar... ¡Esas pequeñas bestias verdes quieren arrasar las ruinas para abrir el camino para construir un depósito de combustible! El conocimiento perdido hace diez mil años está a unos pocos días de perderse para siempre. Tenemos que actuar rápido.',18019),
 (35784,'esMX','','¡Me gusta tu forma de pensar, $r!$B$BHasta hace poco, las energías mágicas latentes de la tierra donde se alzaba la academia atraían la atención del Vuelo Azul y me resultaba imposible estudiarlas. Ahora la atención de los dragones está en otra parte, pero una amenaza mayor se cierne sobre el lugar... ¡Esas pequeñas bestias verdes quieren arrasar las ruinas para abrir el camino para construir un depósito de combustible! El conocimiento perdido hace diez mil años está a unos pocos días de perderse para siempre. Tenemos que actuar rápido.',18019),
-(35784,'frFR','','J\'aime votre façon de penser, $r !$B$BJusqu\'à récemment, les énergies magiques latentes du site de l\'académie ont attiré l\'attention du Vol draconique bleu, et je n\'ai pas pu les étudier. L\'attention des dragons est maintenant dirigée ailleurs, mais une menace pire encore se prépare : ces petites brutes vertes veulent raser les ruines pour y construire un dépôt de carburant ! Des connaissances perdues pendant dix mille ans ne sont qu\'à quelques jours d\'être perdues à jamais. Nous devons agir vite.',18019),
+(35784,'frFR','','J\'aime votre façon de penser, $r !$B$BJusqu\'à récemment, les énergies magiques latentes du site de l\'académie ont attiré l\'attention du Vol draconique bleu, et je n\'ai pas pu les étudier. L\'attention des dragons est maintenant dirigée ailleurs, mais une menace pire encore se prépare : ces petites brutes vertes veulent raser les ruines pour y construire un dépôt de carburant ! Des connaissances perdues pendant dix mille ans ne sont qu\'à quelques jours d\'être perdues à jamais. Nous devons agir vite.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (35784,'koKR','','당신 사고방식이 정말 마음에 드는군요, $r|1이여;여;!$B$B얼마 전까지만 해도 학회가 있던 곳에 잠재된 마력이 푸른용군단을 끌어들이는 바람에 연구를 진행할 수가 없었습니다. 이제 용군단의 관심은 다른 곳을 향해 있지만, 더 큰 위협이 나타났어요. 작은 녹색 야만인들이 연료 보급소로 통하는 길을 내려고 폐허를 파괴한다지 뭡니까! 만 년 동안 되찾지 못한 지식이 단 며칠 안에 영원히 사라질 위기에 처했습니다. 빠르게 행동해야 합니다.',18019),
 (35784,'ruRU','','Мне нравится ход твоих мыслей, |3-6($r)!$b$bДо недавних пор магическая энергия земли Академии привлекала синих драконов, и у меня не было возможности изучить это. Теперь драконы повсюду, но хуже всего то, что эти маленькие зеленокожие дикари хотят разрыть руины и сделать здесь хранилище ракетного топлива! Знания, утраченные десять тысяч лет назад, в одном шаге от того, чтобы быть потерянными безвозвратно. Мы должны действовать быстро.',18019),
 (35784,'zhCN','','我喜欢你的想法，$r！$B$B就在不久以前，埋藏在这片废墟中的魔法能量还一直吸引着蓝龙军团的注意。所以我无法对这里进行研究。而现在，那些巨龙的注意力已经转移到别的地方去了，但一个更加可怕的威胁正在形成——那些绿色的小畜生想要把这片废墟推平，为一座燃料补给站开辟道路！用不了多久，埋藏上万年的神秘知识就将永远遗失了。我们必须尽快采取行动。',18019),
@@ -269201,8 +269202,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (35788,'ruRU','Следуйте за мной.','',18019),
 (35788,'zhCN','那就请跟我来。','',18019),
 (35788,'zhTW','那麼，請跟我來吧。','',18019),
-(35789,'deDE','Dem Licht sei Dank! So etwas Dummes tue ich nie wieder!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(35789,'deDE','Dem Licht sei Dank! So etwas Dummes tue ich nie wieder!','',18019),
 (35789,'esES','¡Gracias a la Luz! ¡Jamás volveré a hacer algo tan insensato!','',18019),
 (35789,'esMX','¡Gracias a la Luz! ¡Jamás volveré a hacer algo tan insensato!','',18019),
 (35789,'frFR','Louée soit la Lumière ! Je ne referai jamais quelque chose d\'aussi idiot !','',18019),
@@ -276539,7 +276539,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (36722,'zhCN','','圣光与你同在……只需要掏一两个银币！',18019),
 (36722,'zhTW','','聖光與你同在...只要付一點點錢和什一稅就可以了。',18019),
 (36723,'deDE','','An etwas Seelenstärke im Vorbeigehen gibt\'s nix auszusetzen!',18019),
-(36723,'esES','','¡No hay nada malo en un poco de entereza portátil!',18019),
+(36723,'esES','','¡No hay nada malo en un poco de entereza portátil!',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (36723,'esMX','','¡No hay nada malo en un poco de entereza portátil!',18019),
 (36723,'frFR','','Y a rien de mal à un petit peu de robustesse collatérale !',18019),
 (36723,'koKR','','인내 받고 가세요!',18019),
@@ -276592,8 +276593,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (36729,'frFR','<L\'orc qui se tient devant vous a l\'air plus vert que d\'habitude.>$B$B$C, les gobelins ont apporté des « fruits de mer à volonté » sur nos rivages. C\'est... *urp* ... comme un cataclysme dans mon estomac.','',18019),
 (36729,'koKR','<앞에 있는 오크의 얼굴은 진한 녹색을 띄고 있습니다.>$B$B$C 양반, 고블린들이 해안에 \"해산물 무한 제공 식당\"을 열었소. 마치... *우욱* 내 뱃속에 대격변이 일어난 것 같구려.','',18019),
 (36729,'ruRU','<Стоящий перед вами орк выглядит зеленее обычного.>$b$b$c, гоблины устроили на наших берегах шведский стол с морепродуктами. Похоже... что у меня в желудке катаклизм.','',18019),
-(36729,'zhCN','<你面前的兽人看上去比以往更绿了。>$B$B$C，那些地精已经把“所有人都能吃的海产”带了过来。但这些东西……*呃*，也在我的胃里引起了一场大灾变。','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(36729,'zhCN','<你面前的兽人看上去比以往更绿了。>$B$B$C，那些地精已经把“所有人都能吃的海产”带了过来。但这些东西……*呃*，也在我的胃里引起了一场大灾变。','',18019),
 (36729,'zhTW','<你眼前的獸人看起來比平常更綠。>$B$B$C，哥布林帶了「你能吃多少就吃多少的海鮮大餐」到我們的海岸。這真是...<嘔>...我肚子裡的大災變。','',18019),
 (36730,'deDE','*Ürps!*','',18019),
 (36730,'esES','*¡Urp!*','',18019),
@@ -284381,7 +284381,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (37721,'zhTW','殺人。','',18019),
 (37722,'deDE','Zum Oratorium der Verdammten teleportieren.','Zum Oratorium der Verdammten teleportieren.',18019),
 (37722,'esES','Teletransporte al Oratorio de los Malditos.','Teletransporte al Oratorio de los Malditos.',18019),
-(37722,'esMX','Teletransporte al Oratorio de los Malditos.','Teletransporte al Oratorio de los Malditos.',18019),
+(37722,'esMX','Teletransporte al Oratorio de los Malditos.','Teletransporte al Oratorio de los Malditos.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (37722,'frFR','Se téléporter vers l\'oratoire des Damnés.','Se téléporter vers l\'oratoire des Damnés.',18019),
 (37722,'koKR','저주받은 자들의 기도실로 순간이동','저주받은 자들의 기도실로 순간이동',18019),
 (37722,'ruRU','Перенестись в молельню Проклятых.','Перенестись в молельню Проклятых.',18019),
@@ -284430,8 +284431,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (37728,'deDE','Zu Sindragosas Hort teleportieren.','Zu Sindragosas Hort teleportieren.',18019),
 (37728,'esES','Teletransporte a la Guarida de Sindragosa.','Teletransporte a la Guarida de Sindragosa.',18019),
 (37728,'esMX','Teletransporte a la Guarida de Sindragosa.','Teletransporte a la Guarida de Sindragosa.',18019),
-(37728,'frFR','Se téléporter vers le repaire de Sindragosa.','Se téléporter vers le repaire de Sindragosa.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(37728,'frFR','Se téléporter vers le repaire de Sindragosa.','Se téléporter vers le repaire de Sindragosa.',18019),
 (37728,'koKR','신드라고사의 둥지로 이동','신드라고사의 둥지로 이동',18019),
 (37728,'ruRU','Перенестись в логово Синдрагосы.','Перенестись в логово Синдрагосы.',18019),
 (37728,'zhCN','传送到辛达苟萨的巢穴。','传送到辛达苟萨的巢穴。',18019),
@@ -292910,7 +292910,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (38804,'zhTW','','異種?那些東西噁心到爆了，而且完全不能吃...噢，隨便啦。',18019),
 (38806,'deDE','Grüße! Ich stelle Teile von Freyas peitschergewirkter Rüstung für Druiden her und verkaufe sie auch gerne.','Grüße! Ich stelle Teile von Freyas peitschergewirkter Rüstung für Druiden her und verkaufe sie auch gerne.',18019),
 (38806,'esES','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura tejeazote de Freya para druidas.','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura tejeazote de Freya para druidas.',18019),
-(38806,'esMX','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura tejeazote de Freya para druidas.','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura tejeazote de Freya para druidas.',18019),
+(38806,'esMX','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura tejeazote de Freya para druidas.','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura tejeazote de Freya para druidas.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (38806,'frFR','Salutations, $ghéros:héroïne;. Je fabrique et vends l\'armure en tisse-flagellant de Freya pour les druides.','Salutations, $ghéros:héroïne;. Je fabrique et vends l\'armure en tisse-flagellant de Freya pour les druides.',18019),
 (38806,'koKR','반갑소, 영웅이여. 나는 드루이드가 입는 프레이야의 덩굴손매듭 방어구를 제작하고 판매하오.','반가워요, 영웅이여. 저는 드루이드가 입는 프레이야의 덩굴손매듭 방어구를 제작하고 판매합니다.',18019),
 (38806,'ruRU','Приветствую тебя, герой. Я продаю изготовленные мной для друидов плеточные доспехи Фрейи.','Приветствую тебя, герой. Я продаю изготовленные мной для друидов плеточные доспехи Фрейи.',18019),
@@ -292944,8 +292945,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (38810,'esES','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura Hoja de las Sombras para pícaros.','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura Hoja de las Sombras para pícaros.',18019),
 (38810,'esMX','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura Hoja de las Sombras para pícaros.','Saludos, $ghéroe:heroína;. Yo fabrico y vendo la armadura Hoja de las Sombras para pícaros.',18019),
 (38810,'frFR','Salutations, $ghéros:héroïne;. Je fabrique et vends l\'armure de lame de l\'ombre pour les voleurs.','Salutations, $ghéros:héroïne;. Je fabrique et vends l\'armure de lame de l\'ombre pour les voleurs.',18019),
-(38810,'koKR','반갑네, 영웅이여. 나는 도적이 입는 그림자칼날 방어구를 제작하고 판매한다네.','반가워요, 영웅이여. 저는 도적이 입는 그림자칼날 방어구를 제작하고 판매합니다.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(38810,'koKR','반갑네, 영웅이여. 나는 도적이 입는 그림자칼날 방어구를 제작하고 판매한다네.','반가워요, 영웅이여. 저는 도적이 입는 그림자칼날 방어구를 제작하고 판매합니다.',18019),
 (38810,'ruRU','Приветствую тебя, герой. Я продаю изготовленные мной для разбойников доспехи теневого клинка.','Приветствую тебя, герой. Я продаю изготовленные мной для разбойников доспехи теневого клинка.',18019),
 (38810,'zhCN','你好，英雄。我制造和出售潜行者需要的影刃套装。','你好，英雄。我制造和出售潜行者需要的影刃套装。',18019),
 (38810,'zhTW','歡迎，英雄。我替盜賊製造並販賣影刃護甲。','歡迎，英雄。我替盜賊製造並販賣影刃護甲。',18019),
@@ -300488,7 +300488,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (39777,'zhCN','你的妻子很想你。她想让你回奥格瑞玛去。','你的妻子很想你。她想让你回奥格瑞玛去。',18019),
 (39777,'zhTW','你的妻子很擔心你。她希望你回去奧格瑪。','你的妻子很擔心你。她希望你回去奧格瑪。',18019),
 (39778,'deDE','Begreift sie denn nicht, dass ich sie an meiner Seite wollte? Ich bin jung; ich will nicht sterben. Wir sollten noch viele gute Jahre vor uns haben und dies ist der einzige Weg. Sagt ihr diese Dinge. Bringt sie dazu, zu verstehen.','',18019),
-(39778,'esES','¿Acaso no se da cuenta de que yo quería que ella viniera conmigo? Soy joven, no quiero morir. Aún deberíamos tener por delante muchos años felices juntos y esta es la única manera de tenerlos. Díselo. Haz que lo comprenda.','',18019),
+(39778,'esES','¿Acaso no se da cuenta de que yo quería que ella viniera conmigo? Soy joven, no quiero morir. Aún deberíamos tener por delante muchos años felices juntos y esta es la única manera de tenerlos. Díselo. Haz que lo comprenda.','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (39778,'esMX','¿Acaso no se da cuenta de que yo quería que ella viniera conmigo? Soy joven, no quiero morir. Aún deberíamos tener por delante muchos años felices juntos y esta es la única manera de tenerlos. Díselo. Haz que lo comprenda.','',18019),
 (39778,'frFR','Elle ne voit donc pas que je voulais qu\'elle vienne avec moi ? Je suis jeune, je ne veux pas mourir. Nous avons encore de longues années devant nous, et ceci est le seul moyen de s\'en sortir. Dites-lui tout ça. Faites-lui comprendre.','',18019),
 (39778,'koKR','그녀는 내가 같이 가고 싶어했다는 걸 모르는 겁니까? 난 아직 젊습니다. 죽기 싫단 말입니다. 앞으로도 계속 행복하려면 이 방법밖에 없습니다. 그녀에게 이 말을 전해 주십시오. 그리고 알아듣도록 해 주십시오.','',18019),
@@ -300526,8 +300527,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (39782,'koKR','기회가 있으리라 생각했나?','',18019),
 (39782,'ruRU','Глупо было и надеяться!','',18019),
 (39782,'zhCN','不要心存侥幸！','',18019),
-(39782,'zhTW','你以為你有機會贏?','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(39782,'zhTW','你以為你有機會贏?','',18019),
 (39783,'deDE','Es ist zu Eurem Besten.','',18019),
 (39783,'esES','Es por tu bien.','',18019),
 (39783,'esMX','Mejor así.','',18019),
@@ -308377,7 +308377,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (40775,'zhCN','只要我一出去，我就立刻把你掐死，维兹！','',18019),
 (40775,'zhTW','我一出去一定要掐死你，維茲爾!','',18019),
 (40776,'deDE','Es lief alles nach Plan. Ich wollte diesen Piraten ein paar Gewehre verhökern und ein Vermögen damit machen. Aber nein! Wizzel musste Trittbrettfahrer spielen und ihnen seine billigen Maschinenteile andrehen. Dabei hat er ein paar ihrer Kanonen und meine Gewehre in die Luft gejagt! Wir sind verloren!','',18019),
-(40776,'esES','¡Tenía un buen trato entre manos. Iba a venderles a los piratas unos cuantos rifles a cambio de una fortuna! ¡Pero no! Wizzle tenía que venir conmigo para intentar venderles sus burdas piezas de ingeniería. ¡Y de paso, para volar unos cuantos de los cañones de los piratas y de mis rifles! ¡Estamos condenados!','',18019),
+(40776,'esES','¡Tenía un buen trato entre manos. Iba a venderles a los piratas unos cuantos rifles a cambio de una fortuna! ¡Pero no! Wizzle tenía que venir conmigo para intentar venderles sus burdas piezas de ingeniería. ¡Y de paso, para volar unos cuantos de los cañones de los piratas y de mis rifles! ¡Estamos condenados!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (40776,'esMX','¡Tenía un buen trato entre manos. Iba a venderles a los piratas unos cuantos rifles a cambio de una fortuna! ¡Pero no! Wizzle tenía que venir conmigo para intentar venderles sus burdas piezas de ingeniería. ¡Y de paso, para volar unos cuantos de los cañones de los piratas y de mis rifles! ¡Estamos condenados!','',18019),
 (40776,'frFR','J\'avais une belle affaire. J\'allais vendre à ces pirates un paquet de fusils et me faire une fortune ! Mais non ! Il a fallu que Lachnouf m\'accompagne pour essayer de fourguer ses pièces détachées à moitié bousillées. Elles ont fait exploser quelques-uns de leurs canons et mes fusils avec ! On est fichus !','',18019),
 (40776,'koKR','여기서 내 계획은 잘 풀리고 있었어. 이 해적들에게 소총을 한꺼번에 팔아서 떼돈을 벌 생각이었지! 하지만, 실패했어! 날 몰래 따라와 싸구려 기계공학 부품을 팔려던 위즐이 해적들의 대포와 내 소총을 폭파해버렸거든! 우린 이제 끝장이야!','',18019),
@@ -308404,8 +308405,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (40779,'esES','En nombre del Cártel Pantoque, ¡permíteme que ofrezca una generosa recompensa al primero que me saque de esta jaula! Por supuesto, se aplicarán las cláusulas contractuales habituales, pero no te preocupes por la letra pequeña. ¡Simplemente sácame de aquí!','',18019),
 (40779,'esMX','En nombre del Cártel Pantoque, ¡permíteme que ofrezca una generosa recompensa al primero que me saque de esta jaula! Por supuesto, se aplicarán las cláusulas contractuales habituales, pero no te preocupes por la letra pequeña. ¡Simplemente sácame de aquí!','',18019),
 (40779,'frFR','Au nom du cartel Baille-Fonds, permettez-moi d\'offrir une généreuse récompense à la première personne qui saura me libérer de cette cage ! Bien sûr, les clauses contractuelles habituelles sont de rigueur, mais ne vous occupez pas des petits caractères. Sortez-moi de là !','',18019),
-(40779,'koKR','빌지워터 무역회사를 대표하여, 나를 이 우리에서 나가게 해주는 첫 번째 사람에게 매우 후한 상을 내리겠다! 당연히 계약상의 조건이 적용되겠지만, 작은 글자 부분은 내가 책임질 테니 그저 여기서 나가게만 해줘!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(40779,'koKR','빌지워터 무역회사를 대표하여, 나를 이 우리에서 나가게 해주는 첫 번째 사람에게 매우 후한 상을 내리겠다! 당연히 계약상의 조건이 적용되겠지만, 작은 글자 부분은 내가 책임질 테니 그저 여기서 나가게만 해줘!','',18019),
 (40779,'ruRU','От имени картеля Трюмных Вод предлагаю большую награду первому, кто выпустит меня из этой клетки! Разумеется, действуют стандартные контрактные ограничения, но об этом можно и потом. Просто выпустите меня отсюда!','',18019),
 (40779,'zhCN','请允许我代表锈水财阀，向第一个把我从这笼子里放出去的人赠予慷慨奖励！当然，还是要遵守标准合同条款的规定，但不用在意那些细枝末节。只要你能快点儿放我出去！','',18019),
 (40779,'zhTW','我代表污水企業，將給予第一位讓我脫離這個籠子的人豐厚的獎勵!當然，一般的合約規定還是通用的，但先不用考慮細則上的問題。把我弄出去就對了!','',18019),
@@ -317105,7 +317105,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (41868,'ruRU','За Орду!','За Орду!',18019),
 (41868,'zhCN','为了部落！','为了部落！',18019),
 (41868,'zhTW','為了部落!','為了部落!',18019),
-(41869,'deDE','ALLE WERDEN STERBEN!','ALLE WERDEN STERBEN!',18019),
+(41869,'deDE','ALLE WERDEN STERBEN!','ALLE WERDEN STERBEN!',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (41869,'esES','¡TODOS MORIREMOS!','¡TODOS MORIREMOS!',18019),
 (41869,'esMX','¡TODOS MORIREMOS!','¡TODOS MORIREMOS!',18019),
 (41869,'frFR','QU\'ILS PÉRISSENT TOUS !','QU\'ILS PÉRISSENT TOUS !',18019),
@@ -317167,8 +317168,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (41876,'frFR','Vos ordres, $gmonsieur:madame; ?','Vos ordres, $gmonsieur:madame; ?',18019),
 (41876,'koKR','$n 님, 명령이십니까?','$n 님, 명령이십니까?',18019),
 (41876,'ruRU','Какие приказы, $gсэр:мэм;?','Какие приказы, $gсэр:мэм;?',18019),
-(41876,'zhCN','有何吩咐，$g 阁下:女士;？','有何吩咐，$g 阁下:女士;？',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(41876,'zhCN','有何吩咐，$g 阁下:女士;？','有何吩咐，$g 阁下:女士;？',18019),
 (41876,'zhTW','你的命令，$g先生:女士;?','你的命令，$g先生:女士;?',18019),
 (41877,'deDE','Champion $n kämpft an unserer Seite! Wir können gar nicht verlieren!','Champion $n kämpft an unserer Seite! Wir können gar nicht verlieren!',18019),
 (41877,'esES','¡El campeón $n lucha con nosotros! ¡No podemos perder!','¡El campeón $n lucha con nosotros! ¡No podemos perder!',18019),
@@ -325302,7 +325302,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (42925,'esES','¡Espera, vuelve! ¡Debo hacer mediciones!','',18019),
 (42925,'esMX','¡Espera, vuelve! ¡Debo hacer mediciones!','',18019),
 (42925,'frFR','Attendez, revenez ! Je dois faire des mesures !','',18019),
-(42925,'koKR','잠깐만, 이리 돌아오세요! 검사 결과를 봐야 해요!','',18019),
+(42925,'koKR','잠깐만, 이리 돌아오세요! 검사 결과를 봐야 해요!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (42925,'ruRU','Подожди, вернись! Мне надо снять показания!','',18019),
 (42925,'zhCN','等等，快回来！我还要读取信息！','',18019),
 (42925,'zhTW','等一下，回來!我還有數據要讀取!','',18019),
@@ -325362,8 +325363,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (42932,'ruRU','Бросай все свои занятия, ты $gдолжен:должна; помочь освободить моего отца, нашего предводителя, Отца-Скалу.','',18019),
 (42932,'zhCN','你必须放下手头所有事情，全力帮我救出我的父亲——土灵之王。','',18019),
 (42932,'zhTW','你必須放下手邊所有的事情，幫助我救出我父親，也就是我們的首領石父。','',18019),
-(42933,'deDE','Wir müssen uns beeilen und mit Eurem Freund beim Irdenen Ring reden.','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(42933,'deDE','Wir müssen uns beeilen und mit Eurem Freund beim Irdenen Ring reden.','',18019),
 (42933,'esES','Debemos darnos prisa y hablar con esa amiga tuya del Anillo de la Tierra.','',18019),
 (42933,'esMX','Debemos darnos prisa y hablar con esa amiga tuya del Anillo de la Tierra.','',18019),
 (42933,'frFR','Nous devons nous dépêcher et parler avec votre ami du Cercle terrestre.','',18019),
@@ -335084,7 +335084,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (44246,'zhCN','世界之柱碎裂之后，有三块碎片遗失了。我们必须找到这些碎片，否则，我们的世界将迎来末日。','',18019),
 (44246,'zhTW','世界之柱崩塌後有三塊碎片遺失，我們務必將它們尋回，否則我們的世界就完了。','',18019),
 (44247,'deDE','Wir müssen das Vordringen der Fungusschrecken zur Front verhindern. Sie sind zu mächtig!','',18019),
-(44247,'esES','Debemos mantener a esos terrores fúngicos lejos del frente de batalla. ¡Son demasiado poderosos!','',18019),
+(44247,'esES','Debemos mantener a esos terrores fúngicos lejos del frente de batalla. ¡Son demasiado poderosos!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (44247,'esMX','Debemos mantener a esos terrores fúngicos lejos del frente de batalla. ¡Son demasiado poderosos!','',18019),
 (44247,'frFR','Il faut empêcher les terreurs fongiques d\'arriver au front. Elles sont trop dangereuses !','',18019),
 (44247,'koKR','저 곰팡이 괴물들을 전초지에서 몰아내야 하네. 놈들은 너무 강력해!','',18019),
@@ -335145,8 +335146,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (44254,'frFR','Si vous voulez louer un griffon, vous êtes au bon endroit.','',18019),
 (44254,'koKR','그리핀을 고용하실 것이라면 제대로 찾아오신 겁니다.','',18019),
 (44254,'ruRU','Если ты хочешь нанять грифона, ты $gпришел:пришла; в правильное место.','',18019),
-(44254,'zhCN','如果你想要骑乘狮鹫，那你就来对地方了。','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(44254,'zhCN','如果你想要骑乘狮鹫，那你就来对地方了。','',18019),
 (44254,'zhTW','想雇個獅鷲獸?你來對地方了。','',18019),
 (44255,'deDE','','Eure Herrschaft hat ein Ende, Herr der Wellen!',18019),
 (44255,'esES','','¡Tu reino ha llegado a sssu fin, oh, Señor de las Olasss!',18019),
@@ -343698,7 +343698,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (45375,'frFR','Je comptais examiner ce site.$B$BLe présent, il n\'y a que ça de vrai !','',18019),
 (45375,'koKR','언젠가 이 현장을 조사해 볼 생각을 하고 있었소.$b$b지금이 바로 그 기회일 거요!','',18019),
 (45375,'ruRU','Как я хотел исследовать это место!$B$BСейчас самое подходящее время!','',18019),
-(45375,'zhCN','我一直都在打算调查这个地方。$b$b而现在这种情形还从没有发生过！','',18019),
+(45375,'zhCN','我一直都在打算调查这个地方。$b$b而现在这种情形还从没有发生过！','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (45375,'zhTW','我一直想來調查這個地方。$b$b沒有比現在更合適的了!','',18019),
 (45376,'deDE','Barbier','Barbier',18019),
 (45376,'esES','Peluquero','Peluquero',18019),
@@ -343779,8 +343780,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (45386,'koKR','준비됐나? 어서 움직여! 날 잘 따라오라고, $n.','',18019),
 (45386,'ruRU','Готовы? Тогда вперед! Постарайся не отставать, $n.','',18019),
 (45386,'zhCN','准备好了？我们行动吧！努力跟上，$n。','',18019),
-(45386,'zhTW','準備好了?那就出發吧!盡量跟上，$n。','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(45386,'zhTW','準備好了?那就出發吧!盡量跟上，$n。','',18019),
 (45387,'deDE','Vorwärts, meine Brüder und Schwestern!','',18019),
 (45387,'esES','¡Adelante, hermanos y hermanas!','',18019),
 (45387,'esMX','¡Adelante, hermanos y hermanas!','',18019),
@@ -351442,7 +351442,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (46375,'esMX','Hey.$B$B¿Buscas a un compañero perdido?','Hey.$B$B¿Buscas a un compañero perdido?',18019),
 (46375,'frFR','Yo.$B$BVous cherchez un compagnon perdu ?','Yo.$B$BVous cherchez un compagnon perdu ?',18019),
 (46375,'koKR','어서 와.$B$B잃어버린 동료를 찾으러 온 거야?','어서 와.$B$B잃어버린 동료를 찾으러 온 거야?',18019),
-(46375,'ruRU','Привет.$B$BИщешь пропавшего спутника?','Привет.$B$BИщешь пропавшего спутника?',18019),
+(46375,'ruRU','Привет.$B$BИщешь пропавшего спутника?','Привет.$B$BИщешь пропавшего спутника?',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (46375,'zhCN','你好啊。$B$B你是在寻找失踪的同伴？','你好啊。$B$B你是在寻找失踪的同伴？',18019),
 (46375,'zhTW','呦。$B$B你是要尋找失蹤的夥伴?','呦。$B$B你是要尋找失蹤的夥伴?',18019),
 (46376,'deDE','Wir werden mehr Zeit zum Reden haben, wenn wir wieder sicher an der Oberfläche sind.','',18019),
@@ -351488,8 +351489,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (46381,'deDE','','DAS nenne ich Wertschöpfung. HEY! Ihr habt dort ein wenig übersehen.',18019),
 (46381,'esES','','¡A ESO le llamo recoger hasta el último beneficio! ¡EH! Te has dejado un poco por ahí.',18019),
 (46381,'esMX','','¡A ESO le llamo recoger hasta el último beneficio! ¡EH! Te has dejado un poco por ahí.',18019),
-(46381,'frFR','','Voilà, ÇA c\'est ce que j\'appelle récolter des profits. HÉ ! Vous en avez raté un peu, là.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(46381,'frFR','','Voilà, ÇA c\'est ce que j\'appelle récolter des profits. HÉ ! Vous en avez raté un peu, là.',18019),
 (46381,'koKR','','이게 바로 짭짤하다고 하는 일이지. 이봐! 거기 흘렸잖아.',18019),
 (46381,'ruRU','','Вот это я называю \"снять сливки\". Эй ты! Вон там еще немного осталось!',18019),
 (46381,'zhCN','','这就是我所说的利润精华。嗨！你漏掉了一些，就在那里。',18019),
@@ -359254,7 +359254,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (47358,'ruRU','Сбор','Сбор',18019),
 (47358,'zhCN','小心收集','小心收集',18019),
 (47358,'zhTW','小心收集','小心收集',18019),
-(47359,'deDE','Verdaaaammt... Der Verlust von möglichen Betriebseinnahmen ist niederschmetternd.','',18019),
+(47359,'deDE','Verdaaaammt... Der Verlust von möglichen Betriebseinnahmen ist niederschmetternd.','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (47359,'esES','Joooo... La pérdida de los ingresos potenciales es devastadora.','',18019),
 (47359,'esMX','Joooo... La pérdida de los ingresos potenciales es devastadora.','',18019),
 (47359,'frFR','Raaaahhh… Une perte de bénéfices potentiels, c\'est vraiment déprimant.','',18019),
@@ -359311,8 +359312,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (47365,'zhCN','就这把烂锁？真可笑！想要打败我们，高弗雷可得再争气点才行啊。','',18019),
 (47365,'zhTW','多麼可憐的鎖啊!高佛雷要是想擊敗我們，他還得更努力一些才行。','',18019),
 (47366,'deDE','Eure Zeit ist endlich gekommen, Godfrey!','',18019),
-(47366,'esES','¡Tu hora ha llegado al fin, Godfrey!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(47366,'esES','¡Tu hora ha llegado al fin, Godfrey!','',18019),
 (47366,'esMX','¡Tu hora ha llegado al fin, Godfrey!','',18019),
 (47366,'frFR','Ton heure est enfin venue, Godfrey !','',18019),
 (47366,'koKR','드디어 너의 종말이 다가왔다, 고드프리!','',18019),
@@ -367682,7 +367682,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (48418,'deDE','Es brennt! ES BRENNT!','',18019),
 (48418,'esES','¡Quema! ¡QUEMA!','',18019),
 (48418,'esMX','¡Quema! ¡QUEMA!','',18019),
-(48418,'frFR','Ça brûle ! ÇA BRÛLE !','',18019),
+(48418,'frFR','Ça brûle ! ÇA BRÛLE !','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (48418,'koKR','앗 뜨거워! 너무 뜨거워!','',18019),
 (48418,'ruRU','Мне больно! Больно!','',18019),
 (48418,'zhCN','真疼啊！真疼啊！！','',18019),
@@ -367760,8 +367761,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (48427,'zhCN','你不是我们当中的一员，对吧……？','你不是我们当中的一员，对吧……？',18019),
 (48427,'zhTW','你不是我們的一員，對吧...?','你不是我們的一員，對吧...?',18019),
 (48428,'deDE','Autsch! Was habe ich denn gemacht?','Autsch! Was habe ich denn gemacht?',18019),
-(48428,'esES','¡Ay! ¿Qué he hecho?','¡Ay! ¿Qué he hecho?',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(48428,'esES','¡Ay! ¿Qué he hecho?','¡Ay! ¿Qué he hecho?',18019),
 (48428,'esMX','¡Ay! ¿Qué he hecho?','¡Ay! ¿Qué he hecho?',18019),
 (48428,'frFR','Aïe ! Mais qu\'est-ce que j\'ai fait ?','Aïe ! Mais qu\'est-ce que j\'ai fait ?',18019),
 (48428,'koKR','아야! 뭐 한 거야?','아야! 뭐 한 거야?',18019),
@@ -375929,7 +375929,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (49452,'zhCN','死亡之翼——他还活着！','',18019),
 (49452,'zhTW','死亡之翼─他還活著!','',18019),
 (49453,'deDE','Sterblicher, nehmt Euch der Drachenkönigin an. Tragt sie in Sicherheit. Jetzt. LAUFT! Bringt sie hier weg!','',18019),
-(49453,'esES','Mortal, toma a la reina de dragones. Ponla a salvo. ¡Ahora! ¡CORRE! ¡Sácala de aquí!','',18019),
+(49453,'esES','Mortal, toma a la reina de dragones. Ponla a salvo. ¡Ahora! ¡CORRE! ¡Sácala de aquí!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (49453,'esMX','Mortal, lleva a la reina dragón a un lugar seguro. ¡Ya! ¡CORRE! ¡Sácala de aquí!','',18019),
 (49453,'frFR','$gMortel:Mortelle;, prenez la reine dragon. Emportez-la en lieu sûr. Maintenant ! FONCEZ ! Éloignez-la d\'ici !','',18019),
 (49453,'koKR','필멸자여, 용의 여왕님을 안전한 곳으로 모시고 가세요. 당장! 뛰세요! 어머니를 다른 곳으로 데려가세요!','',18019),
@@ -375988,8 +375989,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (49460,'esES','Creo que veo algunos cadáveres allí delante. ¡Venga, $n! Tú buscas y luchas. Yo me encargo de cargar.','',18019),
 (49460,'esMX','Creo que veo algunos cadáveres allí delante. ¡Venga, $n! Tú buscas y luchas. Yo me encargo de cargar.','',18019),
 (49460,'frFR','Je crois que j\'aperçois des cadavres devant nous. Allons-y, $n ! Vous vous occupez de la recherche et du combat, et moi de la manutention.','',18019),
-(49460,'koKR','저 앞에 시체가 좀 보이는 것 같군. 어서 가세, $n! 자네가 수색과 전투를 하게나. 내가 시체들을 옮기겠네.','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(49460,'koKR','저 앞에 시체가 좀 보이는 것 같군. 어서 가세, $n! 자네가 수색과 전투를 하게나. 내가 시체들을 옮기겠네.','',18019),
 (49460,'ruRU','Кажется, я вижу впереди тела. Давай, $n! Ты будешь искать и отбиваться. Я – нести.','',18019),
 (49460,'zhCN','我想我在前方看见了一些尸体。走吧，$n！你负责搜寻和战斗。体力活儿交给我。','',18019),
 (49460,'zhTW','我想我看到前面有些屍體。走吧，$n!你負責搜索和戰鬥，我負責搬運。','',18019),
@@ -384414,7 +384414,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (50521,'esMX','Buscas a un Caminasol. El Caminasol Iopi vive junto con muchos de nuestros otros instructores.','Buscas a un Caminasol. El Caminasol Iopi vive junto con muchos de nuestros otros instructores.',18019),
 (50521,'frFR','Vous cherchez un marche-soleil. Le marche-soleil Iopi s\'est installé avec beaucoup de nos autres maîtres.','Vous cherchez un marche-soleil. Le marche-soleil Iopi s\'est installé avec beaucoup de nos autres maîtres.',18019),
 (50521,'koKR','태양길잡이를 찾으시는군요. 태양길잡이 아이오피는 우리의 다른 직업 상급자들과 함께 있습니다.','태양길잡이를 찾으시는군요. 태양길잡이 아이오피는 우리의 다른 직업 상급자들과 함께 있습니다.',18019),
-(50521,'ruRU','Ты ищешь служителя солнца... Служитель солнца Лопи живет там же, где и многие другие наши учителя.','Ты ищешь служителя солнца... Служитель солнца Лопи живет там же, где и многие другие наши учителя.',18019),
+(50521,'ruRU','Ты ищешь служителя солнца... Служитель солнца Лопи живет там же, где и многие другие наши учителя.','Ты ищешь служителя солнца... Служитель солнца Лопи живет там же, где и многие другие наши учителя.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (50521,'zhCN','你在寻找烈日行者？烈日行者艾乌比就和我们的许多训练师居住在一起。','你在寻找烈日行者？烈日行者艾乌比就和我们的许多训练师居住在一起。',18019),
 (50521,'zhTW','你在找日行者。日行者伊歐畢和我們其他的訓練師在一起。','你在找日行者。日行者伊歐畢和我們其他的訓練師在一起。',18019),
 (50522,'deDE','Iilth vwah, uhn\'agth fhssh za.','',18019),
@@ -384465,8 +384466,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (50527,'ruRU','Они не погибнут...','',18019),
 (50527,'zhCN','他们不会死。','',18019),
 (50527,'zhTW','他們不滅不死。','',18019),
-(50528,'deDE','Die Dämonen im Block D machen uns schon Ärger, seit wir hier angekommen sind. Könnt Ihr uns aushelfen?','Die Dämonen im Block D machen uns schon Ärger, seit wir hier angekommen sind. Könnt Ihr uns aushelfen?',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(50528,'deDE','Die Dämonen im Block D machen uns schon Ärger, seit wir hier angekommen sind. Könnt Ihr uns aushelfen?','Die Dämonen im Block D machen uns schon Ärger, seit wir hier angekommen sind. Könnt Ihr uns aushelfen?',18019),
 (50528,'esES','Los demonios del Bloque D llevan poniéndonos las cosas difíciles desde que llegaron aquí. ¿Puedes ayudarnos?','Los demonios del Bloque D llevan poniéndonos las cosas difíciles desde que llegaron aquí. ¿Puedes ayudarnos?',18019),
 (50528,'esMX','Los demonios del Bloque D llevan poniéndonos las cosas difíciles desde que llegaron aquí. ¿Puedes ayudarnos?','Los demonios del Bloque D llevan poniéndonos las cosas difíciles desde que llegaron aquí. ¿Puedes ayudarnos?',18019),
 (50528,'frFR','Les démons du bloc D nous font des ennuis depuis qu\'on est arrivés. Vous pourriez nous aider ?','Les démons du bloc D nous font des ennuis depuis qu\'on est arrivés. Vous pourriez nous aider ?',18019),
@@ -384611,8 +384611,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (50545,'zhCN','力量谷的银行就在格罗玛什要塞入口处的南边。主大门的西北方。','力量谷的银行就在格罗玛什要塞入口处的南边。主大门的西北方。',18019),
 (50545,'zhTW','力量谷的銀行就在葛羅瑪許堡入口的南邊，城門的西北方。','力量谷的銀行就在葛羅瑪許堡入口的南邊，城門的西北方。',18019),
 (50546,'deDE','Jäger','Jäger',18019),
-(50546,'esES','$gCazador:Cazadora;','$gCazador:Cazadora;',18019),
-(50546,'esMX','$gCazador:Cazadora;','$gCazador:Cazadora;',18019),
+(50546,'esES','Cazador','Cazadora',18019),
+(50546,'esMX','Cazador','Cazadora',18019),
 (50546,'frFR','Chasseur','Chasseur',18019),
 (50546,'koKR','사냥꾼','사냥꾼',18019),
 (50546,'ruRU','Охотник','Охотница',18019),
@@ -393014,7 +393014,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (51647,'esES','','¡Mira ante ti! Uno de los \"druidas\" más poderosos de Azeroth reducido a un cascarón chamuscado. Tal es la voluntad de Fandral Corzocelada. ¡Tal es la voluntad de la llama!',18019),
 (51647,'esMX','','¡Mira ante ti! Uno de los \"druidas\" más poderosos de Azeroth reducido a un cascarón chamuscado. Tal es la voluntad de Fandral Corzocelada. ¡Tal es la voluntad de la llama!',18019),
 (51647,'frFR','','Regardez bien ! L’un des « druides » les plus puissants d’Azeroth n’est plus qu’une carcasse calcinée. Telle est la volonté de Fandral Forteramure ! Telle est la volonté de la flamme !',18019),
-(51647,'koKR','','자, 한번 봐라! 아제로스 최고의 \"드루이드\"가 활활 타 재만 남은 모습을 보란 말이다. 이것이 바로 판드랄 스태그헬름 님의 뜻이자 화염의 뜻이다!',18019),
+(51647,'koKR','','자, 한번 봐라! 아제로스 최고의 \"드루이드\"가 활활 타 재만 남은 모습을 보란 말이다. 이것이 바로 판드랄 스태그헬름 님의 뜻이자 화염의 뜻이다!',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (51647,'ruRU','','Смотри же! Один из самых великих друидов Азерота превратился в горстку пепла. Такова была воля Фэндрала Оленьего Шлема. Такова была воля огня!',18019),
 (51647,'zhCN','','好好看着！这曾是艾泽拉斯最强大的“德鲁伊”，如今却空剩一具烧焦的残骸。这是范达尔·鹿盔的意志。这是烈焰的意志！',18019),
 (51647,'zhTW','','看清楚吧!艾澤拉斯最強大的德魯伊之一只剩下燒焦的軀殼。這就是范達爾·鹿盔的意志，這就是火焰的意志!',18019),
@@ -393058,8 +393059,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (51652,'ruRU','','В той точно что-нибудь будет. Пошли посмотрим.',18019),
 (51652,'zhCN','','那里面有东西，快去看看。',18019),
 (51652,'zhTW','','那個裡面一定有東西。去看一下。',18019),
-(51653,'deDE','','Du hast meinen Dank, dass du mich da rausgeholt hast. Ich komm\' langsam wieder zur Besinnung und ich kann Vol\'jin erzähl\'n, was ich in Erfahrung gebracht hab\'.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(51653,'deDE','','Du hast meinen Dank, dass du mich da rausgeholt hast. Ich komm\' langsam wieder zur Besinnung und ich kann Vol\'jin erzähl\'n, was ich in Erfahrung gebracht hab\'.',18019),
 (51653,'esES','','Tienes mi agradecimiento por haberme sacado de esa jaula. Eh\'toy recuperando las fuerzas y pronto seré capaz de contah\'le a Vol\'jin todo lo que he descubieh\'to.',18019),
 (51653,'esMX','','Tienes mi agradecimiento por haberme sacado de esa jaula. Eh\'toy recuperando las fuerzas y pronto seré capaz de contah\'le a Vol\'jin todo lo que he descubieh\'to.',18019),
 (51653,'frFR','','Ma gratitude, vous l’avez tout entière, pour m’avoir aidée à m’échapper. J’ai repris mes esprits et, tout ce que j’ai appris, je vais pouvoir le raconter à Vol’jin.',18019),
@@ -401926,7 +401926,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (52824,'deDE','Zeigt mir, was neu ist im Katalog.','Zeigt mir, was neu ist im Katalog.',18019),
 (52824,'esES','A ver qué hay en el menú.','A ver qué hay en el menú.',18019),
 (52824,'esMX','A ver qué hay en el menú.','A ver qué hay en el menú.',18019),
-(52824,'frFR','Montrez-moi ce qu’il y a au menu.','Montrez-moi ce qu’il y a au menu.',18019),
+(52824,'frFR','Montrez-moi ce qu’il y a au menu.','Montrez-moi ce qu’il y a au menu.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (52824,'koKR','뭘 파는지 보여주십시오.','뭘 파는지 보여주세요.',18019),
 (52824,'ruRU','Покажи мне, что у тебя есть.','Покажи мне, что у тебя есть.',18019),
 (52824,'zhCN','请让我看看菜单上都有些什么。','请让我看看菜单上都有些什么。',18019),
@@ -401988,8 +401989,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (52831,'zhCN','我的熔岩之怒会烧尽你们。','',18019),
 (52831,'zhTW','在我的熔岩怒火下燒吧。','',18019),
 (52832,'deDE','Niemand betritt das Reich des Meisters!','',18019),
-(52832,'esES','¡Nadie entrará en los dominios del maestro!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(52832,'esES','¡Nadie entrará en los dominios del maestro!','',18019),
 (52832,'esMX','¡Nadie entrará en los dominios del maestro!','',18019),
 (52832,'frFR','Nul ne pénètre dans le domaine du maître !','',18019),
 (52832,'koKR','누구도 주인님의 영역에 들어갈 수 없다!','',18019),
@@ -409355,7 +409355,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (53862,'koKR','죽여! 죽여! 죽여!','',18019),
 (53862,'ruRU','Убивай! Убивай!','',18019),
 (53862,'zhCN','杀！杀！杀！','',18019),
-(53862,'zhTW','殺!殺!殺!','',18019),
+(53862,'zhTW','殺!殺!殺!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (53863,'deDE','Affen!','',18019),
 (53863,'esES','¡Monos!','',18019),
 (53863,'esMX','¡Monos!','',18019),
@@ -409468,8 +409469,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (53876,'ruRU','Ни за что!','',18019),
 (53876,'zhCN','休想！','',18019),
 (53876,'zhTW','絕不!','',18019),
-(53877,'deDE','|TInterface\\Icons\\ability_vehicle_sonicshockwave.blp:20|t %s beschwört eine |cFFFF0000|Hspell:103678|h[Welle der Tugend]|h|r!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(53877,'deDE','|TInterface\\Icons\\ability_vehicle_sonicshockwave.blp:20|t %s beschwört eine |cFFFF0000|Hspell:103678|h[Welle der Tugend]|h|r!','',18019),
 (53877,'esES','|TInterface\\Icons\\ability_vehicle_sonicshockwave.blp:20|t%s invoca una |cFFFF0000|Hspell:103678|h[Ola de virtud]|h|r.','',18019),
 (53877,'esMX','|TInterfaceIconsability_vehicle_sonicshockwave.blp:20|t%s invoca una |cFFFF0000|Hspell:103678|h[Ola de virtud]|h|r.','',18019),
 (53877,'frFR','|TInterface\\Icons\\ability_vehicle_sonicshockwave.blp:20|t%s invoque une |cFFFF0000|Hspell:103678|h[Vague de vertu]|h|r !','',18019),
@@ -418685,7 +418685,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (55058,'ruRU','|TInterface\\Icons\\INV_MISC_FOOD_VENDOR_STRIPEDMELON.BLP:64:64:100:0|t$b$b<Что Мисс Фанни нужно сделать с арбузом?>','',18019),
 (55058,'zhCN','|TInterface\\Icons\\INV_MISC_FOOD_VENDOR_STRIPEDMELON.BLP:64:64:100:0|t$b$b<你想让范妮小姐怎么处理西瓜？>','',18019),
 (55058,'zhTW','|TInterface\\Icons\\INV_MISC_FOOD_VENDOR_STRIPEDMELON.BLP:64:64:100:0|t$b$b<你想要范妮小姐對西瓜做什麼?>','',18019),
-(55059,'deDE','|TInterface\\Icons\\inv_guild_cauldron_b.blp:64:64:100:0|t$b$b<Was soll Fräulein Fanny mit dem extra scharfen Tofu machen?>','',18019),
+(55059,'deDE','|TInterface\\Icons\\inv_guild_cauldron_b.blp:64:64:100:0|t$b$b<Was soll Fräulein Fanny mit dem extra scharfen Tofu machen?>','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (55059,'esES','|TInterface\\Icons\\inv_guild_cauldron_b.blp:64:64:100:0|t$b$b<¿Qué te gustaría que la señorita Fanny le hiciera al tofu hiperpicante?>','',18019),
 (55059,'esMX','|TInterfaceIconsinv_guild_cauldron_b.blp:64:64:100:0|t$b$b<¿Qué te gustaría que la señorita Fanny le hiciera al tofu hiperpicante?>','',18019),
 (55059,'frFR','|TInterface\\Icons\\inv_guild_cauldron_b.blp:64:64:100:0|t$b$b<Que doit faire mam’zelle Fanny du tofu extra épicé ?>','',18019),
@@ -418741,8 +418742,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (55065,'ruRU','Отлично, Мисс Фанни! Прекрасно двигаешься!','',18019),
 (55065,'zhCN','打得好，范妮小姐！你控制得很好！','',18019),
 (55065,'zhTW','好一記重擊呀，范妮小姐!妳控制得很好!','',18019),
-(55066,'deDE','Schön gemacht, Fräulein Fanny! Da saß Kraft dahinter!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(55066,'deDE','Schön gemacht, Fräulein Fanny! Da saß Kraft dahinter!','',18019),
 (55066,'esES','¡Genial, señorita Fanny! ¡Tú ha golpeado fuerte!','',18019),
 (55066,'esMX','¡Genial, señorita Fanny! ¡Tú ha golpeado fuerte!','',18019),
 (55066,'frFR','Bien, mam’zelle Fanny ! Vous frappez ça fort !','',18019),
@@ -428892,7 +428892,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (56385,'frFR','','Ah, pardon.',18019),
 (56385,'koKR','','아, 맞네.',18019),
 (56385,'ruRU','','Ну да. Прости.',18019),
-(56385,'zhCN','','哦，真遗憾。',18019),
+(56385,'zhCN','','哦，真遗憾。',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (56385,'zhTW','','喔。抱歉。',18019),
 (56386,'deDE','','Also, wo sollen wir zuerst suchen?',18019),
 (56386,'esES','','Bueno, ¿dónde buscamos primero?',18019),
@@ -428955,8 +428956,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (56393,'esMX','','Eh... entonces yo iré al oeste, supongo.',18019),
 (56393,'frFR','','Je… je suppose qu’il ne reste plus que l’ouest, alors.',18019),
 (56393,'koKR','','그럼... 내가 서쪽으로 가야겠네.',18019),
-(56393,'ruRU','','Ну... а я тогда пойду на запад.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(56393,'ruRU','','Ну... а я тогда пойду на запад.',18019),
 (56393,'zhCN','','我……我想我就去西面吧。',18019),
 (56393,'zhTW','','那...那我往西走。',18019),
 (56394,'deDE','Nun gut. Als ältester und beleibtester von uns werde ich hier auf Eure Rückkehr warten.','',18019),
@@ -437770,7 +437770,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (57524,'deDE','Aber... Das ist mein Familienhof. Den kann ich nicht einfach verkaufen.','',18019),
 (57524,'esES','Pe... pero es la granja de mi familia. No puedo venderla sin más.','',18019),
 (57524,'esMX','Pe... pero es la granja de mi familia. No puedo venderla sin más.','',18019),
-(57524,'frFR','Mais… Mais c’est la ferme de famille ! Je ne peux quand même pas la vendre !','',18019),
+(57524,'frFR','Mais… Mais c’est la ferme de famille ! Je ne peux quand même pas la vendre !','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (57524,'koKR','하, 하지만 이곳은 제 가족 농장입니다. 그냥 그렇게 팔아버릴 수는 없습니다.','',18019),
 (57524,'ruRU','Н-но это же наша семейная ферма. Я не могу ее продать.','',18019),
 (57524,'zhCN','但……但这是我们家传的农场，我不能卖。','',18019),
@@ -437833,8 +437834,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (57531,'zhTW','沒錯!我們一起努力，直到我們可以加入耕者工會的那一天!','',18019),
 (57532,'deDE','Ah, verdammt! Wenn das so weitergeht, werde ich niemals in den Bund der Ackerbauern aufgenommen. Aber lasst mich bitte wissen, wenn Ihr Eure Meinung ändert.','',18019),
 (57532,'esES','Oh, vaya. A este ritmo nunca entraré en el gremio de labradores. Bueno, avísame si cambias de opinión.','',18019),
-(57532,'esMX','Oh, vaya. A este ritmo nunca entraré en el gremio de labradores. Bueno, avísame si cambias de opinión.','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(57532,'esMX','Oh, vaya. A este ritmo nunca entraré en el gremio de labradores. Bueno, avísame si cambias de opinión.','',18019),
 (57532,'frFR','Oh, mer… credi ! À ce rythme, je ne réussirai jamais à être accepté au syndicat des Laboureurs. Bon, eh bien, faites-moi signe si jamais vous changez d’avis.','',18019),
 (57532,'koKR','아우, 이런. 이런 식으로 해서는 농사꾼 연합에 절대 가입할 수 없을 겁니다. 뭐, 마음이 바뀌면 언제든 제게 알려주십시오.','',18019),
 (57532,'ruRU','Ой, жалость-то какая. В таком случае не видать мне Союза земледельцев. Ну, если передумаешь, дай мне знать.','',18019),
@@ -446726,7 +446726,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (58723,'frFR','Je dois être au meilleur de ma condition physique quand nous affronterons les hozen au combat.','',18019),
 (58723,'koKR','호젠과의 전투를 대비해서 최고의 몸 상태를 유지겠습니다.','',18019),
 (58723,'ruRU','Когда мы пойдем в бой, я должен быть в лучшей форме.','',18019),
-(58723,'zhCN','在我们与猢狲开战时，我必须达到最好的战斗状态。','',18019),
+(58723,'zhCN','在我们与猢狲开战时，我必须达到最好的战斗状态。','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (58723,'zhTW','和猴人交戰時，我必須處於最顛峰的戰鬥狀態。','',18019),
 (58724,'deDE','Ausbildung ist ein fortwährender Prozess. Es gibt immer etwas zu lernen.','',18019),
 (58724,'esES','El entrenamiento es un proceso continuo. Siempre hay algo que aprender.','',18019),
@@ -446784,8 +446785,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (58730,'ruRU','Что это? Сладкий джу-джу?','',18019),
 (58730,'zhCN','那是什么？美味的魂能？','',18019),
 (58730,'zhTW','這是啥?一個甜美的魂能?','',18019),
-(58731,'deDE','Hübschjuju? Will ich fressen!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(58731,'deDE','Hübschjuju? Will ich fressen!','',18019),
 (58731,'esES','¿Juju bonito? ¡Yo kiere comer!','',18019),
 (58731,'esMX','¿Juju bonito? ¡Yo kiere comer!','',18019),
 (58731,'frFR','Joli juju ? Moi veut goûter !','',18019),
@@ -455803,7 +455803,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (59888,'zhTW','用這種方式攻擊我，$p?好弱的計畫!','',18019),
 (59889,'deDE','Zeit für großes KA-WUMM!!!','',18019),
 (59889,'esES','¡¡Es hora del gran BA BAM!!','',18019),
-(59889,'esMX','¡¡Es hora del gran BA BAM!!','',18019),
+(59889,'esMX','¡¡Es hora del gran BA BAM!!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (59889,'frFR','C’est l’heure du grand BOUM !','',18019),
 (59889,'koKR','크게 한 방 먹여주지!','',18019),
 (59889,'ruRU','Время бах-бабах!','',18019),
@@ -455880,8 +455881,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (59901,'koKR','아아아아아!','',18019),
 (59901,'ruRU','Аргх!','',18019),
 (59901,'zhCN','啊啊啊！！！！','',18019),
-(59901,'zhTW','啊啊啊啊啊啊啊 !','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(59901,'zhTW','啊啊啊啊啊啊啊 !','',18019),
 (59902,'deDE','Lauf, Nappel!','',18019),
 (59902,'esES','¡Corre, makaku!','',18019),
 (59902,'esMX','¡Corre, makaku!','',18019),
@@ -465486,7 +465486,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (61116,'esES','Está demostrado. Este yak es muy malo. No pienso irme de este templo del yak hasta que lo reparéis o me lo cambiéis.','',18019),
 (61116,'esMX','Está demostrado. Este yak es muy malo. No pienso irme de este templo del yak hasta que lo reparen o me lo cambien.','',18019),
 (61116,'frFR','Je n’en démordrais pas. Ce yack est défectueux. Je ne partirai pas d’ici avant qu’on l’ait réparé ou remplacé.','',18019),
-(61116,'koKR','전 할 말 다 했어요. 이 야크는 정말 나쁘다고요. 녀석을 고쳐 주거나 교환해 줄 때까지 이 야크 사원에서 나가지 않겠어요.','',18019),
+(61116,'koKR','전 할 말 다 했어요. 이 야크는 정말 나쁘다고요. 녀석을 고쳐 주거나 교환해 줄 때까지 이 야크 사원에서 나가지 않겠어요.','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (61116,'ruRU','Я сказал. Этот як ужасен. Мы не уйдем из этого храма яков, пока он не исправится или пока нам его не заменят.','',18019),
 (61116,'zhCN','我搞定了，这头牦牛很差劲。除非你搞定或更换这头牦牛，否则我们不会离开这座牦牛寺。','',18019),
 (61116,'zhTW','我的情況是這樣。這隻犛牛很糟糕。在你教好牠或把牠換掉之前，我們不會離開這間犛牛寺。','',18019),
@@ -465552,8 +465553,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (61124,'frFR','Soigniss, soigne-moi, face de basilic !','',18019),
 (61124,'koKR','힐리스, 힐 좀 넣으라고! 이 바실리스크 아들아!','',18019),
 (61124,'ruRU','Лечи же меня, Хилисс, кусок василиска!','',18019),
-(61124,'zhCN','希利斯，快治疗我，你这该死的蜥蜴！','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(61124,'zhCN','希利斯，快治疗我，你这该死的蜥蜴！','',18019),
 (61124,'zhTW','補里思，快幫我治療，你這蜥蜴養的!','',18019),
 (61125,'deDE','Fangt an zu heilen, Ihr dreckiger Schlangenkopf!','',18019),
 (61125,'esES','¡Empieza a curar, maldita serpiente inmunda!','',18019),
@@ -475950,7 +475950,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (62457,'deDE','Ohne zu zögern geben wir unser Leben für die Kaiserin. Sie ist das Licht und ohne Sie sind unsere Leben in der Dunkelheit verloren.','',18019),
 (62457,'esES','Daremos nuestras vidas por la Emperatriz sin dudarlo. Ella es la luz, y sin Ella nuestras vidas se perderían en la oscuridad.','',18019),
 (62457,'esMX','Daremos nuestras vidas por la Emperatriz sin dudarlo. Ella es la luz, y sin Ella nuestras vidas se perderían en la oscuridad.','',18019),
-(62457,'frFR','Nous offrons nos vies pour l’impératrice sans hésiter. Elle est la lumière, et sans elle nos vies seraient perdues dans les ténèbres.','',18019),
+(62457,'frFR','Nous offrons nos vies pour l’impératrice sans hésiter. Elle est la lumière, et sans elle nos vies seraient perdues dans les ténèbres.','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (62457,'koKR','우리는 여제 폐하를 위해 망설임 없이 목숨을 바칠 것이다. 폐하의 빛이 없다면 우리의 목숨은 암흑에 묻혀 사라질 것이다.','',18019),
 (62457,'ruRU','Мы без колебаний пожертвуем своими жизнями во имя императрицы. Она – свет. Без нее наши жизни будут затеряны во тьме.','',18019),
 (62457,'zhCN','我们会毫不犹豫的为女皇献出生命。她就是明灯，没有她，我们的生命都将陷入无边黑暗。','',18019),
@@ -476003,8 +476004,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (62463,'ruRU','Мы слышим ее божественный глас.','',18019),
 (62463,'zhCN','就让我们——女皇钦点的声音，来执行使命。','',18019),
 (62463,'zhTW','所以我們才受選，成為她的聲音。','',18019),
-(62464,'deDE','Stellt Euch näher an das Fass, um an das Bräu zu gelangen!','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(62464,'deDE','Stellt Euch näher an das Fass, um an das Bräu zu gelangen!','',18019),
 (62464,'esES','¡Acércate al barril para atrapar el brebaje!','',18019),
 (62464,'esMX','¡Acércate al barril para atrapar el brebaje!','',18019),
 (62464,'frFR','Tenez-vous près du tonneau pour récupérer la bière !','',18019),
@@ -486388,7 +486388,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (63764,'ruRU','Ты тихо страдаешь ради тех, кто скупится даже на благодарность.','',18019),
 (63764,'zhCN','你默默地为一群不知感激的人承受着痛苦。','',18019),
 (63764,'zhTW','為了這群不知感激的東西，你任勞任怨、默默受苦。','',18019),
-(63765,'deDE','Ich habe die Bräuwurfmeisterschaften sechs Jahre in Folge gewonnen! Wenn Ihr wollt, kann ich dieses Bräu über das ganze Dorf hinweg werfen und einen Bräuschlag verursachen! Man muss einfach nur zielen. Würde Euch das gefallen?','Ich habe die Bräuwurfmeisterschaften sechs Jahre in Folge gewonnen! Wenn Ihr wollt, kann ich dieses Bräu über das ganze Dorf hinweg werfen und einen Bräuschlag verursachen! Man muss einfach nur zielen. Würde Euch das gefallen?',18019),
+(63765,'deDE','Ich habe die Bräuwurfmeisterschaften sechs Jahre in Folge gewonnen! Wenn Ihr wollt, kann ich dieses Bräu über das ganze Dorf hinweg werfen und einen Bräuschlag verursachen! Man muss einfach nur zielen. Würde Euch das gefallen?','Ich habe die Bräuwurfmeisterschaften sechs Jahre in Folge gewonnen! Wenn Ihr wollt, kann ich dieses Bräu über das ganze Dorf hinweg werfen und einen Bräuschlag verursachen! Man muss einfach nur zielen. Würde Euch das gefallen?',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (63765,'esES','He ganado la competición de lanzamiento de cerveza seis años. Si quieres puedo lanzar este brebaje para que atraviese toda la villa y provoque un golpe de brebaje. Solo tienes que apuntar. ¿Te gustaría?','He ganado la competición de lanzamiento de brebaje seis años. Si quieres puedo lanzar este brebaje para que atraviese toda la villa y provoque un golpe de brebaje. Solo tienes que apuntar. ¿Te gustaría?',18019),
 (63765,'esMX','He ganado la competición de lanzamiento de cerveza seis años. Si quieres puedo lanzar este brebaje para que atraviese toda la villa y provoque un golpe de brebaje. Solo tienes que apuntar. ¿Te gustaría?','He ganado la competición de lanzamiento de brebaje seis años. Si quieres puedo lanzar este brebaje para que atraviese toda la villa y provoque un golpe de brebaje. Solo tienes que apuntar. ¿Te gustaría?',18019),
 (63765,'frFR','Ça fait six ans d’affilée que je remporte le concours de lancer de bière ! Si vous voulez, je peux lancer ce breuvage à l’autre bout du village et provoquer une Frappe de bière ! Il suffit de m’indiquer où. Ça vous dit ?','Ça fait six ans d’affilée que je remporte le concours de lancer de bière ! Si vous voulez, je peux lancer ce breuvage à l’autre bout du village et provoquer une Frappe de bière ! Il suffit de m’indiquer où. Ça vous dit ?',18019),
@@ -486424,8 +486425,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (63769,'esES','La matriarca Muerdefrío empieza a invocar proles Muerdefrío.','La matriarca Muerdefrío empieza a invocar proles Muerdefrío.',18019),
 (63769,'esMX','La matriarca Muerdefrío empieza a invocar proles Muerdefrío.','La matriarca Muerdefrío empieza a invocar proles Muerdefrío.',18019),
 (63769,'frFR','La matriarche morsubise commence à invoquer de jeunes morsubises.','La matriarche morsubise commence à invoquer de jeunes morsubises.',18019),
-(63769,'koKR','우두머리 시린이빨 악어가 갓 부화한 시린이빨 악어를 소환합니다.','우두머리 시린이빨 악어가 갓 부화한 시린이빨 악어를 소환합니다.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(63769,'koKR','우두머리 시린이빨 악어가 갓 부화한 시린이빨 악어를 소환합니다.','우두머리 시린이빨 악어가 갓 부화한 시린이빨 악어를 소환합니다.',18019),
 (63769,'ruRU','Матриарх хладогрызов начинает призывать детенышей.','Матриарх хладогрызов начинает призывать детенышей.',18019),
 (63769,'zhCN','寒噬主母开始召唤寒噬幼雏。','寒噬主母开始召唤寒噬幼雏。',18019),
 (63769,'zhTW','冰蝕族母開始召喚冰蝕幼鱷。','冰蝕族母開始召喚冰蝕幼鱷。',18019),
@@ -494281,7 +494281,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (64755,'esES','El viaje es una recompensa en sí mismo, joven. Busca el placer de contar una historia y volverás con una riqueza inimaginable.$b$bAh, sí, una cosa más. Aquellos que ascienden de rango entre los eremitas reciben un don muy especial: la capacidad de cabalgar sobre las nubes.','El viaje es una recompensa en sí mismo, joven. Busca el placer de contar una historia y volverás con una riqueza inimaginable.$b$bAh, sí, una cosa más. Aquellos que ascienden de rango entre los eremitas reciben un don muy especial: la capacidad de cabalgar sobre las nubes.',18019),
 (64755,'esMX','El viaje es una recompensa en sí mismo, joven. Busca el placer de contar una historia y volverás con una riqueza inimaginable.$b$bAh, sí, una cosa más. Aquellos que ascienden de rango entre los eremitas reciben un don muy especial: la capacidad de cabalgar sobre las nubes.','El viaje es una recompensa en sí mismo, joven. Busca el placer de contar una historia y volverás con una riqueza inimaginable.$b$bAh, sí, una cosa más. Aquellos que ascienden de rango entre los eremitas reciben un don muy especial: la capacidad de cabalgar sobre las nubes.',18019),
 (64755,'frFR','Le voyage est sa propre récompense, mon enfant. Trouvez du plaisir au récit d\'une histoire, et vous en tirerez des richesses sans pareille.$b$bAh, et autre chose. Ceux qui s\'élèvent au sein des chroniqueurs reçoivent un don très particulier : la capacité de chevaucher les nuages.','Le voyage est sa propre récompense, mon enfant. Trouvez du plaisir au récit d\'une histoire, et vous en tirerez des richesses sans pareille.$b$bAh, et autre chose. Ceux qui s\'élèvent au sein des chroniqueurs reçoivent un don très particulier : la capacité de chevaucher les nuages.',18019),
-(64755,'koKR','여정 자체가 보상이지요, 젊은이. 이야기의 내용에서 즐거움을 찾는 거야말로 비길 데 없는 보물이니까요.$B$B참, 한 가지 더 있어요. 지체 높은 전승지기는 아주 특별한 선물을 받지요. 바로 구름을 탈 수 있는 능력입니다.','여정 자체가 보상이지요, 젊은이. 이야기의 내용에서 즐거움을 찾는 거야말로 비길 데 없는 보물이니까요.$B$B참, 한 가지 더 있어요. 지체 높은 전승지기는 아주 특별한 선물을 받지요. 바로 구름을 탈 수 있는 능력입니다.',18019),
+(64755,'koKR','여정 자체가 보상이지요, 젊은이. 이야기의 내용에서 즐거움을 찾는 거야말로 비길 데 없는 보물이니까요.$B$B참, 한 가지 더 있어요. 지체 높은 전승지기는 아주 특별한 선물을 받지요. 바로 구름을 탈 수 있는 능력입니다.','여정 자체가 보상이지요, 젊은이. 이야기의 내용에서 즐거움을 찾는 거야말로 비길 데 없는 보물이니까요.$B$B참, 한 가지 더 있어요. 지체 높은 전승지기는 아주 특별한 선물을 받지요. 바로 구름을 탈 수 있는 능력입니다.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (64755,'ruRU','Отправиться в путешествие – это само по себе уже награда, мой юный друг. Найди себе отраду в пересказе историй о своих былых похождениях и станешь несметно $gбогат:богата;.$B$BИ еще кое-что... самые почитаемые хранители истории могут научиться особенному умению – катанию на облаках.','Отправиться в путешествие – это само по себе уже награда, мой юный друг. Найди себе отраду в пересказе историй о своих былых похождениях и станешь несметно $gбогат:богата;.$B$BИ еще кое-что... самые почитаемые хранители истории могут научиться особенному умению – катанию на облаках.',18019),
 (64755,'zhCN','旅途本身就是馈赠，年轻人。在故事中寻找快乐，你就会得到无与伦比的财富。$B$B对了，还有件事。在游学者中地位升高的人还能获得特殊的礼物——驾云而行的能力。','旅途本身就是馈赠，年轻人。在故事中寻找快乐，你就会得到无与伦比的财富。$B$B对了，还有件事。在游学者中地位升高的人还能获得特殊的礼物——驾云而行的能力。',18019),
 (64755,'zhTW','旅途本身就是我們的報酬，年輕人。從故事中找尋樂趣，你將獲得無與倫比的財富。$B$B啊對了，還有一件事。凡是能在博學行者中晉升位階的人都能獲得一項十分特殊的禮物，那就是乘雲的能力。','旅途本身就是我們的報酬，年輕人。從故事中找尋樂趣，你將獲得無與倫比的財富。$B$B啊對了，還有一件事。凡是能在博學行者中晉升位階的人都能獲得一項十分特殊的禮物，那就是乘雲的能力。',18019),
@@ -494304,8 +494305,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (64758,'deDE','','Ich komme gerade von der Mauer.$B$BIch hörte dort Gerüchte von einer Gruppe namens Klaxxi von jenseits des Schlangenrückens. Angeblich ist es ein Rat von Mantisältesten, die sich vom Mantisreich loslösten und nun direkt gegen die Mantiskönigin arbeiten.$B$BIch habe mit meinen eigenen Augen gesehen, welche Kraft diese Mantis haben.$B$BWenn an diesen Gerüchten etwas Wahres dran ist, könnte man sich vielleicht mit diesen... Klaxxi... verbünden, um den Mantisschwarm aufzuhalten.',18019),
 (64758,'esES','','Acabo de regresar de la muralla.$B$BAllí he oído hablar de una facción a la que llaman los Klaxxi del otro lado del Espinazo del Dragón. Supuestamente, son un consejo de ancianos mántides que se han escindido del imperio mántide, y ahora desafían directamente a la reina de los mántides.$B$BHe visto con mis propios ojos el poder que ostentan esos mántides.$B$BSi los rumores son ciertos, quizás podamos aliarnos con esos... Klaxxi... y colaborar con ellos para detener el enjambre mántide.',18019),
 (64758,'esMX','','Acabo de regresar de la muralla.$B$BAllí he oído hablar de una facción a la que llaman los Klaxxi del otro lado del Espinazo del Dragón. Supuestamente, son un consejo de ancianos mántides que se han escindido del imperio mántide, y ahora desafían directamente a la reina de los mántides.$B$BHe visto con mis propios ojos el poder que ostentan esos mántides.$B$BSi los rumores son ciertos, quizás podamos aliarnos con esos... Klaxxi... y colaborar con ellos para detener el enjambre mántide.',18019),
-(64758,'frFR','','Je rentre tout juste de la muraille.$B$BJ’y ai entendu parler d’une faction appelée les Klaxxi qui vivrait au-delà de l’échine du Serpent. Il s’agirait d’un conseil d’anciens mantides dissidents de l’empire mantide, qui œuvre à présent en rébellion ouverte contre la reine mantide.$B$BJ’ai vu de mes propres yeux le pouvoir de ces mantides.$B$BSi ces rumeurs sont vraies, il y a peut-être un moyen de s’allier avec ces… Klaxxi… et de travailler avec eux pour endiguer l’invasion mantide.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(64758,'frFR','','Je rentre tout juste de la muraille.$B$BJ’y ai entendu parler d’une faction appelée les Klaxxi qui vivrait au-delà de l’échine du Serpent. Il s’agirait d’un conseil d’anciens mantides dissidents de l’empire mantide, qui œuvre à présent en rébellion ouverte contre la reine mantide.$B$BJ’ai vu de mes propres yeux le pouvoir de ces mantides.$B$BSi ces rumeurs sont vraies, il y a peut-être un moyen de s’allier avec ces… Klaxxi… et de travailler avec eux pour endiguer l’invasion mantide.',18019),
 (64758,'koKR','','장벽에서 막 돌아온 참입니다.$B$B그곳에 있을 때, 용의 척추 너머에서 온 클락시라는 세력에 대한 소문을 들었습니다. 아마도, 사마귀 제국에 등을 돌린 사마귀 장로의 의회인 듯합니다. 지금은 사마귀 여제에 정면으로 맞서고 있지요.$B$B이 사마귀들이 지닌 힘은 제 눈으로 똑똑히 보았습니다.$B$B소문이 사실이라면 이... 클락시... 라는 자들과 동맹을 맺고 힘을 합쳐서 사마귀 무리를 막을 방법이 있을지도 모릅니다.',18019),
 (64758,'ruRU','','Я только что был на стене.$B$BТам ходят слухи о каких-то клакси, живущих за Змеиным хребтом. По всей видимости, это совет старейшин богомолов, отколовшийся от их империи, и теперь они открыто выступают против королевы богомолов.$B$BМне своими глазами довелось увидеть их мощь.$B$BЕсли слухи правдивы, возможно, у нас есть возможность привлечь этих... клакси... в качестве союзников, чтобы вместе попытаться остановить рой.',18019),
 (64758,'zhCN','','我刚刚从城墙那边回来。$B$B我在那边听说了一些关于卡拉克西螳螂妖的谣言。据说他们来自蟠龙脊之外，可能是从螳螂妖帝国分裂出来的螳螂妖长老议会。如今他们正公然违抗螳螂妖女皇的命令。$B$B我亲眼见识了这些螳螂妖的法力。$B$B如果这些谣言可信，我们就有可能找到一条途径联合这些……卡拉克西……并和他们共同阻止螳螂妖虫群。',18019),
@@ -501604,7 +501604,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (65683,'frFR','C\'est Zhi qui m\'envoie.','C\'est Zhi qui m\'envoie.',18019),
 (65683,'koKR','즈가 보내서 왔습니다.','즈가 보내서 왔어요.',18019),
 (65683,'ruRU','Я от Чжи.','Я от Чжи.',18019),
-(65683,'zhCN','是智派我来的。','是智派我来的。',18019),
+(65683,'zhCN','是智派我来的。','是智派我来的。',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (65683,'zhTW','值叫我來的。','值叫我來的。',18019),
 (65684,'deDE','NAPPEL!','',18019),
 (65684,'esES','¡¡¡MAKAKUS!!!','',18019),
@@ -501686,8 +501687,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (65693,'ruRU','Опять?!','Опять?!',18019),
 (65693,'zhCN','又来？','又来？',18019),
 (65693,'zhTW','又來了?!','又來了?!',18019),
-(65694,'deDE','Ist uns nicht ein einziger friedlicher Abend vergönnt?','Ist uns nicht ein einziger friedlicher Abend vergönnt?',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(65694,'deDE','Ist uns nicht ein einziger friedlicher Abend vergönnt?','Ist uns nicht ein einziger friedlicher Abend vergönnt?',18019),
 (65694,'esES','¿No podemos tener una noche de paz?','¿No podemos tener una noche de paz?',18019),
 (65694,'esMX','¿No podemos tener una noche de paz?','¿No podemos tener una noche de paz?',18019),
 (65694,'frFR','On ne peut pas avoir une soirée tranquille ?','On ne peut pas avoir une soirée tranquille ?',18019),
@@ -510598,7 +510598,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (66827,'koKR','','자네에게 두 배의 행운이 깃들기를, $r.$B$B행운의 부적을 찾고 있다면 내가 도와줄 수 있네.',18019),
 (66827,'ruRU','','Удача улыбнулась тебе дважды, |3-6($r).$B$BЕсли тебе нужен талисман на удачу, то я могу с этим помочь.',18019),
 (66827,'zhCN','','祝你好运连连，$r。$B$B如果你在找好运符，我马上就能让你如愿以偿。',18019),
-(66827,'zhTW','','祝你加倍好運，$r。$B$B如果你在找幸運物，我正好可以幫助你。',18019),
+(66827,'zhTW','','祝你加倍好運，$r。$B$B如果你在找幸運物，我正好可以幫助你。',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (66828,'deDE','Doppeltes Glück für Euch, $R.$B$BWenn Ihr einen Glücksbringer sucht, bin ich auch die richtige Ansprechperson.','',18019),
 (66828,'esES','Doble fortuna, $r.$b$bSi buscas un talismán de la suerte, puedo conseguirte uno en un periquete.','',18019),
 (66828,'esMX','Doble fortuna, $r.$b$bSi buscas un talismán de la suerte, puedo conseguirte uno en un periquete.','',18019),
@@ -510633,8 +510634,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (66831,'zhTW','蜘蛛抓到我時，我正在海岸邊釣魚!謝謝你救了我。','蜘蛛抓到我時，我正在海岸邊釣魚!謝謝你救了我。',18019),
 (66832,'deDE','Hat Euch der Orden der Wolkenschlange gesandt? Mögen sie gesegnet sein. Bitte helft den anderen!','Hat Euch der Orden der Wolkenschlange gesandt? Mögen sie gesegnet sein. Bitte helft den anderen!',18019),
 (66832,'esES','¿Te ha enviado la Orden del Dragón Nimbo? Benditos sean. ¡Ayuda a los demás!','¿Te ha enviado la Orden del Dragón Nimbo? Benditos sean. ¡Ayuda a los demás!',18019),
-(66832,'esMX','¿Te ha enviado la Orden del Dragón Nimbo? Benditos sean. ¡Ayuda a los demás!','¿Te ha enviado la Orden del Dragón Nimbo? Benditos sean. ¡Ayuda a los demás!',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(66832,'esMX','¿Te ha enviado la Orden del Dragón Nimbo? Benditos sean. ¡Ayuda a los demás!','¿Te ha enviado la Orden del Dragón Nimbo? Benditos sean. ¡Ayuda a los demás!',18019),
 (66832,'frFR','Est-ce l’ordre du Serpent-nuage qui vous envoie? Qu’il soit béni. S’il vous plaît, aidez les autres !','Est-ce l’ordre du Serpent-nuage qui vous envoie? Qu’il soit béni. S’il vous plaît, aidez les autres !',18019),
 (66832,'koKR','운룡단이 당신을 보냈습니까? 축복해야 할 일이군요. 다른 이들도 도와주십시오!','운룡단이 당신을 보냈나요? 축복해야 할 일이네요. 다른 이들도 도와주세요!',18019),
 (66832,'ruRU','Тебя прислал Орден Облачного Змея? Да сопутствует ему во всем удача! А теперь, пожалуйста, помоги остальным!','Тебя прислал Орден Облачного Змея? Да сопутствует ему во всем удача! А теперь, пожалуйста, помоги остальным!',18019),
@@ -518655,7 +518655,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (67854,'koKR','우리 신은 수가 많고 강력했어. 우린 이샤라즈의 일곱 머리를 섬겼지.','',18019),
 (67854,'ruRU','У нас было много могущественных богов. Мы поклонялись семи головам И\'Шараджа.','',18019),
 (67854,'zhCN','我们的神祗众多而强大。我们螳螂妖崇拜的是七首亚煞极。','',18019),
-(67854,'zhTW','我們有許多神，個個力量強大。我們螳螂人侍奉的是七頭的亞煞拉懼。','',18019),
+(67854,'zhTW','我們有許多神，個個力量強大。我們螳螂人侍奉的是七頭的亞煞拉懼。','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (67855,'deDE','Der Alte Gott war gewaltig, und furchtbar war sein Zorn. Er verschlang Hoffnung und zeugte Verzweiflung; Wut nährte ihn und er erschuf Angst.','',18019),
 (67855,'esES','El Antiguo era magnífico, y su ira, terrible. Consumía la esperanza y sembraba el desaliento. Respiraba valor y exhalaba miedo.','',18019),
 (67855,'esMX','El Antiguo era magnífico, y su ira, terrible. Consumía la esperanza y sembraba el desaliento. Respiraba valor y exhalaba miedo.','',18019),
@@ -518703,8 +518704,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (67860,'koKR','고대 신들이 돌아오면, 우리 사마귀족은 다시 한 번 그 옆에 설 것이다.','',18019),
 (67860,'ruRU','И если Древние вернутся, мы, богомолы, снова встанем на их сторону.','',18019),
 (67860,'zhCN','一旦上古尊者归来，螳螂妖将再一次追随他们。','',18019),
-(67860,'zhTW','若上古之神回來，我們螳螂人會再次侍奉祂們。','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(67860,'zhTW','若上古之神回來，我們螳螂人會再次侍奉祂們。','',18019),
 (67861,'deDE','Die Weisesten von Euch werden das Gleiche tun.','',18019),
 (67861,'esES','Los más sabios de entre vosotros harán lo mismo.','',18019),
 (67861,'esMX','Los más sabios de entre ustedes harán lo mismo.','',18019),
@@ -528971,7 +528971,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (69189,'zhTW','','我之前認為這個任務不會發生什麼大事，不過血精靈的出現讓我們全體都進入了警戒狀態。',18019),
 (69190,'deDE','','Antike Artefakte haben mich noch nie fasziniert, diese Mission erweist sich aber als gefährlicher als erwartet.',18019),
 (69190,'esES','','Los artefactos antiguos nunca me han fascinado, pero esta misión ha demostrado ser más peligrosa de lo que pensaba.',18019),
-(69190,'esMX','','Los artefactos antiguos nunca me han fascinado, pero esta misión ha demostrado ser más peligrosa de lo que pensaba.',18019),
+(69190,'esMX','','Los artefactos antiguos nunca me han fascinado, pero esta misión ha demostrado ser más peligrosa de lo que pensaba.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (69190,'frFR','','Les artéfacts anciens ne m’ont jamais fascinée, mais cette mission s’annonce plus dangereuse que je ne le pensais.',18019),
 (69190,'koKR','','전 고대 유물에 매력을 느껴본 적이 없습니다. 어쨌든 이번 임무는 생각했던 것보다 위험하군요.',18019),
 (69190,'ruRU','','Древние артефакты никогда не прельщали меня. Но эта миссия оказалась гораздо опаснее, чем я думала.',18019),
@@ -528997,8 +528998,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (69193,'esES','De momento todo está tranquilo. No queremos que los elfos de sangre nos descubran.','',18019),
 (69193,'esMX','De momento todo está tranquilo. No queremos que los elfos de sangre nos descubran.','',18019),
 (69193,'frFR','Jusqu’ici, tout va bien. Nous restons cachés près de ces elfes de sang.','',18019),
-(69193,'koKR','아직까진 잠잠하군요. 우리는 블러드 엘프의 주의를 끌지 않으려고 노력하고 있습니다.','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(69193,'koKR','아직까진 잠잠하군요. 우리는 블러드 엘프의 주의를 끌지 않으려고 노력하고 있습니다.','',18019),
 (69193,'ruRU','Пока что все тихо. Мы не суемся к эльфам крови.','',18019),
 (69193,'zhCN','目前为止，一切平静。我们一直躲着那些血精灵。','',18019),
 (69193,'zhTW','目前沒什麼動靜。我們埋伏在那些血精靈附近。','',18019),
@@ -537615,7 +537615,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (70313,'esMX','Que vengan los brutos. ¡Ataquen!','',18019),
 (70313,'frFR','Envoyez les grunts. À l’attaque !','',18019),
 (70313,'koKR','전군, 진격하라!','',18019),
-(70313,'ruRU','Рубаки, вперед! В атаку!','',18019),
+(70313,'ruRU','Рубаки, вперед! В атаку!','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (70313,'zhCN','让步兵上。进攻！','',18019),
 (70313,'zhTW','把蠻兵們都帶上來。攻擊!','',18019),
 (70314,'deDE','Für den Kriegshäuptling!','',18019),
@@ -537711,8 +537712,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (70325,'esMX','Mi espíritu abandona este lugar maldito al fin...','',18019),
 (70325,'frFR','Mon esprit quitte enfin cet endroit maudit…','',18019),
 (70325,'koKR','드디어 제 영혼이 이 저주받은 곳을 떠나는군요...','',18019),
-(70325,'ruRU','Наконец, мой дух покидает это проклятое место...','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(70325,'ruRU','Наконец, мой дух покидает это проклятое место...','',18019),
 (70325,'zhCN','终于我的灵魂可以离开这被诅咒的地方……','',18019),
 (70325,'zhTW','我的靈魂終於可以離開這塊被詛咒的地方...','',18019),
 (70326,'deDE','Endlich nimmt der Schrecken ein Ende...','',18019),
@@ -546255,7 +546255,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (71460,'esES','Sé fuerte.$b$bSé cruel.$b$bMata más de lo que puedas comer.$b$bNo hagas amigos y no tengas mascotas.$b$bMuere luchando.$b$bEstas y otras lecciones las podemos aprender de Kroshik.','',18019),
 (71460,'esMX','Sé fuerte.$b$bSé cruel.$b$bMata más de lo que puedas comer.$b$bNo hagas amigos y no tengas mascotas.$b$bMuere luchando.$b$bEstas y otras lecciones las podemos aprender de Kroshik.','',18019),
 (71460,'frFR','Soyez $gfort:forte;.$b$bSoyez $gsournois:sournoise;.$b$bTuez plus que ce que vous pouvez manger.$b$bNe vous faites pas d’amis et n’acceptez aucun familier.$b$bMourez l’arme à la main.$b$bCes leçons, et beaucoup d’autres, nous pouvons les apprendre de Kroshik.','',18019),
-(71460,'koKR','강해져야 하네.$b$b악해져야 하고.$b$b먹을 수 있는 것보다 더 많이 죽이게.$b$b친구도 사귀지 말고, 애완동물도 기르지 말게.$b$b싸우다 죽게.$b$b우리는 크로쉬크로부터 이를 비롯해 많은 교훈을 배울 수 있지.','',18019),
+(71460,'koKR','강해져야 하네.$b$b악해져야 하고.$b$b먹을 수 있는 것보다 더 많이 죽이게.$b$b친구도 사귀지 말고, 애완동물도 기르지 말게.$b$b싸우다 죽게.$b$b우리는 크로쉬크로부터 이를 비롯해 많은 교훈을 배울 수 있지.','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (71460,'ruRU','Будь $gсильным:сильной;.$b$bБудь $gзлобным:злобной;.$b$bУбивай больше, чем сможешь съесть.$b$bНе заводи друзей, не приручай животных.$b$bУмирай в сражении.$b$bЭто лишь некоторые из уроков, данных нам Крошиком.','',18019),
 (71460,'zhCN','保持强壮。$b$b保持邪恶。$b$b屠杀吃不完的猎物。$b$b不要交朋友，不要养宠物。$b$b战斗到死。$b$b这些，以及其他许多真理，都是考什克的教诲。','',18019),
 (71460,'zhTW','要強壯，$b$b要兇狠，$b$b要殺得比你能吃的還多。$b$b不交友、不養寵。$b$b要死就得戰死。$b$b這些，還有很多很多，都是我們能從克羅西克學到的教訓。','',18019),
@@ -546285,8 +546286,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (71463,'zhTW','克羅西克就是造物主克羅斯的血。我們是克羅斯的選民。$b$b有他的力量在，我們絕不會死。','',18019),
 (71464,'deDE','Lebe ein Leben, das Kros\' Idealen gewidmet ist. Höre niemals auf, zu kämpfen, zu wachsen. Jeden Tag stärker als zuvor.$b$bBesiege den Schmerz. Erdulde den Dreck. Jeder ist dein Feind.$b$bStirb mit deiner Waffe in deiner Hand. Übergib deinen Körper dem Ihgaluk.','',18019),
 (71464,'esES','Entrega tu vida a los ideales de Kros. Nunca dejes de luchar, no dejes de crecer. Cada día más fuerte que el anterior.$b$bLucha contra el dolor. Sufre en la basura. Todos son tus enemigos.$b$bMuere con el arma en la mano. Entrega tu cuerpo a Ihgaluk.','',18019),
-(71464,'esMX','Entrega tu vida a los ideales de Kros. Nunca dejes de luchar, no dejes de crecer. Cada día más fuerte que el anterior.$b$bLucha contra el dolor. Sufre en la basura. Todos son tus enemigos.$b$bMuere con el arma en la mano. Entrega tu cuerpo a Ihgaluk.','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(71464,'esMX','Entrega tu vida a los ideales de Kros. Nunca dejes de luchar, no dejes de crecer. Cada día más fuerte que el anterior.$b$bLucha contra el dolor. Sufre en la basura. Todos son tus enemigos.$b$bMuere con el arma en la mano. Entrega tu cuerpo a Ihgaluk.','',18019),
 (71464,'frFR','Consacrez votre existence aux idéaux de Kros. Ne cessez jamais de lutter, ou de grandir. Chaque jour, devenez plus fort que le précédent.$b$bCombattez malgré la douleur. Souffrez à travers la crasse. Tout le monde est votre ennemi.$b$bMourez l’arme à la main. Offrez votre corps à Ihgaluk.','',18019),
 (71464,'koKR','크로스의 이상에 몸 바치는 삶을 살게. 끊임없이 싸우고, 끊임없이 성장하게. 매일 조금씩 강해지게.$b$b고통을 참고 싸우게. 오물을 뒤집어 써도 참게. 모두가 적일세.$b$b죽더라도 손에 무기를 들고 죽게. 그리고 육신을 이갈룩에 내어 주게.','',18019),
 (71464,'ruRU','Живи во имя идеалов Кроса. Никогда не прекращай сражаться, никогда не переставай расти. Каждый день становись сильнее, чем раньше.$b$bСражайся, невзирая на боль. Превозмогай отвращение от гнили. Все вокруг – твои враги.$b$bСражайся с оружием в руках. Пожертвуй свое тело Ихгалуку.','',18019),
@@ -555593,7 +555593,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (72642,'esMX','¿Por qué tengo aspecto de trol?','¿Por qué tengo aspecto de trol?',18019),
 (72642,'frFR','Pourquoi ai-je l’apparence d’un troll ?','Pourquoi ai-je l’apparence d’une trollesse ?',18019),
 (72642,'koKR','왜 제가 트롤 모습을 하고 있지요?','왜 제가 트롤 모습을 하고 있죠?',18019),
-(72642,'ruRU','Почему я выгляжу, как тролль?','Почему я выгляжу, как тролль?',18019),
+(72642,'ruRU','Почему я выгляжу, как тролль?','Почему я выгляжу, как тролль?',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (72642,'zhCN','我为什么是巨魔的样子？','我为什么是巨魔的样子？',18019),
 (72642,'zhTW','我為什麼看起來像個食人妖?','我為什麼看起來像個食人妖?',18019),
 (72643,'deDE','Ah, weil Ihr doch ein Teil dieser Geschichte sein sollt!$B$BIst das nicht viel besser, als sie einfach von ein paar staubigen Schriftrollen abzulesen?$B$BNun denn, geht – und lernt!','',18019),
@@ -555610,8 +555611,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (72644,'frFR','Voici une histoire nommée Un peu de patience !$B$BElle raconte comment Varian Wrynn, roi des humains, conseilla la patience à Tyrande Murmevent, chef des elfes de la nuit et grande prêtresse de leur déesse de la lune.$B$BGrâce au plan du roi Varian… et au courage de trois aventuriers… l’Alliance remporta la victoire au temple de la Grue rouge, malgré la supériorité numérique des forces de la Horde menées par le commandant Coupentaille.','',18019),
 (72644,'koKR','아, \"약간의 참을성\"이라는 이야기로군!$B$B나이트 엘프 달의 여사제이자 종족의 지도자인 티란데 위스퍼윈드에게 인간의 국왕인 바리안 린이 참을성을 가르쳐줬다고 하네.$B$B린 국왕은 세 명의 용감한 모험가들과 함께 스카가쉬 사령관의 호드 병력에 맞서, 수적 열세를 극복하고 주학사에서 대승을 거뒀다고 하지.','',18019),
 (72644,'ruRU','Это сценарий \"Немного терпения\"!$b$bИменно в нем король людей, Вариан Ринн, посоветовал Тиранде Шелест Ветра, верховной жрице и предводительнице ночных эльфов, проявить немного терпения.$b$bПлан короля Вариана – и это должны были сделать три мужественных искателя приключений – состоял в том, чтобы добиться победы Альянса в Храме Красного Журавля вместо того, чтобы дать одержать над собой верх войскам Орды под командованием командира Глубокого Шрама.','',18019),
-(72644,'zhCN','这个故事叫做“王者的耐心”！$B$B正是在这里，人类国王瓦里安·乌瑞恩建议暗夜精灵的首领、月亮女神的高阶女祭司泰兰德·语风保持耐心。$B$B凭借瓦里安国王的运筹帷幄，以及三位勇敢冒险者的努力，寡不敌众的联盟军队竟在朱鹤寺击败了由指挥官斯卡戈什统领的部落大军，取得了大捷。','',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(72644,'zhCN','这个故事叫做“王者的耐心”！$B$B正是在这里，人类国王瓦里安·乌瑞恩建议暗夜精灵的首领、月亮女神的高阶女祭司泰兰德·语风保持耐心。$B$B凭借瓦里安国王的运筹帷幄，以及三位勇敢冒险者的努力，寡不敌众的联盟军队竟在朱鹤寺击败了由指挥官斯卡戈什统领的部落大军，取得了大捷。','',18019),
 (72644,'zhTW','這是「耐心試煉」的故事!$B$B人王瓦里安·烏瑞恩當時在這裡請夜精靈月女神的祭司，同時也是她們族人領袖的泰蘭妲·語風保持耐心。$B$B雖然部落指揮官疤口的兵力遠勝於聯盟，但瓦里安的計畫以及三名英勇冒險者的努力，仍讓聯盟在紅鶴寺取得了勝利。','',18019),
 (72645,'deDE','Wieso sehe ich wie ein Mensch aus?','Wieso sehe ich wie ein Mensch aus?',18019),
 (72645,'esES','¿Por qué tengo aspecto de humano?','¿Por qué tengo aspecto de humana?',18019),
@@ -563990,7 +563990,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (73760,'zhCN','小心地摇动陈旧的海盗骰子。骰子滚出了八点，使其获得了|cFF3366FF|Hspell:141968|h[海盗之赐]|h|r。','小心地摇动陈旧的海盗骰子。骰子滚出了八点，使其获得了|cFF3366FF|Hspell:141968|h[海盗之赐]|h|r。',18019),
 (73760,'zhTW','謹慎地擲出老舊的海盜骰子，滾動的骰子最後擲出了8點，使他獲得|cFF3366FF|Hspell:141968|h[海盜的恩賜]|h|r效果。','謹慎地擲出老舊的海盜骰子，滾動的骰子最後擲出了8點，使他獲得|cFF3366FF|Hspell:141968|h[海盜的恩賜]|h|r效果。',18019),
 (73761,'deDE','wirft vorsichtig das Paar alte Piratenwürfel. Der Wurf ergibt eine 9 und beschert ihm |cFF3366FF|Hspell:142107|h[Dicke Haut]|h|r.','wirft vorsichtig das Paar alte Piratenwürfel. Der Wurf ergibt eine 9 und beschert ihr |cFF3366FF|Hspell:142107|h[Dicke Haut]|h|r.',18019),
-(73761,'esES','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 9, lo que le otorga |cFF3366FF|Hspell:142107|h[Piel gruesa]|h|r.','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 9, lo que le otorga |cFF3366FF|Hspell:142107|h[Piel gruesa]|h|r.',18019),
+(73761,'esES','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 9, lo que le otorga |cFF3366FF|Hspell:142107|h[Piel gruesa]|h|r.','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 9, lo que le otorga |cFF3366FF|Hspell:142107|h[Piel gruesa]|h|r.',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (73761,'esMX','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 9, lo que le otorga |cFF3366FF|Hspell:142107|h[Piel gruesa]|h|r.','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 9, lo que le otorga |cFF3366FF|Hspell:142107|h[Piel gruesa]|h|r.',18019),
 (73761,'frFR','lance ses vieux dés de pirate avec prudence. Les dés s’arrêtent sur un 9, lui octroyant |cFF3366FF|Hspell:142107|h[Peau dure]|h|r.','lance ses vieux dés de pirate avec prudence. Les dés s’arrêtent sur un 9, lui octroyant |cFF3366FF|Hspell:142107|h[Peau dure]|h|r.',18019),
 (73761,'koKR','낡은 해적 주사위를 조심스럽게 굴립니다. 데굴데굴 굴러간 주사위의 결과는 9입니다. |cFF3366FF|Hspell:142107|h[두꺼운 가죽]|h|r 효과가 발동됩니다.','낡은 해적 주사위를 조심스럽게 굴립니다. 데굴데굴 굴러간 주사위의 결과는 9입니다. |cFF3366FF|Hspell:142107|h[두꺼운 가죽]|h|r 효과가 발동됩니다.',18019),
@@ -564007,8 +564008,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (73762,'zhTW','謹慎地擲出老舊的海盜骰子，滾動的骰子最後擲出了10點，突然出現一群骷髏海盜為他作戰。','謹慎地擲出老舊的海盜骰子，滾動的骰子最後擲出了10點，突然出現一群骷髏海盜為他作戰。',18019),
 (73763,'deDE','wirft vorsichtig das Paar alte Piratenwürfel. Der Wurf ergibt eine 11 und verleiht ihm |cFF3366FF|Hspell:142061|h[Verfluchte Piratenwürfel]|h|r.','wirft vorsichtig das Paar alte Piratenwürfel. Der Wurf ergibt eine 11 und verleiht ihr |cFF3366FF|Hspell:142061|h[Verfluchte Piratenwürfel]|h|r.',18019),
 (73763,'esES','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 11, lo que le otorga |cFF3366FF|Hspell:142061|h[Dados piratas malditos]|h|r.','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 11, lo que le otorga |cFF3366FF|Hspell:142061|h[Dados piratas malditos]|h|r.',18019),
-(73763,'esMX','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 11, lo que le otorga |cFF3366FF|Hspell:142061|h[Dados piratas malditos]|h|r.','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 11, lo que le otorga |cFF3366FF|Hspell:142061|h[Dados piratas malditos]|h|r.',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(73763,'esMX','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 11, lo que le otorga |cFF3366FF|Hspell:142061|h[Dados piratas malditos]|h|r.','lanza con cuidado los dados de pirata. Los dados rebotan y finalmente muestran un 11, lo que le otorga |cFF3366FF|Hspell:142061|h[Dados piratas malditos]|h|r.',18019),
 (73763,'frFR','lance ses vieux dés de pirate avec prudence. Les dés s’arrêtent sur un 11, lui octroyant des |cFF3366FF|Hspell:142061|h[Dés de pirate maudit]|h|r.','lance ses vieux dés de pirate avec prudence. Les dés s’arrêtent sur un 11, lui octroyant des|cFF3366FF|Hspell:142061|h[Dés de pirate maudit]|h|r.',18019),
 (73763,'koKR','낡은 해적 주사위를 조심스럽게 굴립니다. 데굴데굴 굴러간 주사위의 결과는 11입니다. |cFF3366FF|Hspell:142061|h[저주받은 해적 주사위]|h|r 효과가 발동됩니다.','낡은 해적 주사위를 조심스럽게 굴립니다. 데굴데굴 굴러간 주사위의 결과는 11입니다. |cFF3366FF|Hspell:142061|h[저주받은 해적 주사위]|h|r 효과가 발동됩니다.',18019),
 (73763,'ruRU','осторожно бросает старые игральные кубики пирата. Выпадает 11 очков, и он получает |cFF3366FF|Hspell:142061|h[проклятые игральные кости пирата]|h|r.','осторожно бросает старые игральные кубики пирата. Выпадает 11 очков, и она получает |cFF3366FF|Hspell:142061|h[проклятые игральные кости пирата]|h|r.',18019),
@@ -573597,7 +573597,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (75353,'koKR','잘 오셨습니다, $n 님. 이리 와서 앉으십시오.','잘 오셨어요, $n 님. 이리 와서 앉으세요.',18019),
 (75353,'ruRU','Добро пожаловать, $n. Проходи, присаживайся.','Добро пожаловать, $n. Проходи, присаживайся.',18019),
 (75353,'zhCN','欢迎，$n。快请坐。','欢迎，$n。快请坐。',18019),
-(75353,'zhTW','歡迎，$n。來，坐下吧。 ','歡迎，$n。來，坐下吧。 ',18019),
+(75353,'zhTW','歡迎，$n。來，坐下吧。 ','歡迎，$n。來，坐下吧。 ',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (75354,'deDE','Ich habe gehört, dass es hier köstliche Nudelsuppe gibt.','Ich habe gehört, dass es hier köstliche Nudelsuppe gibt.',18019),
 (75354,'esES','He oído que aquí sirven una sopa de fideos deliciosa.','He oído que aquí sirven una sopa de fideos deliciosa.',18019),
 (75354,'esMX','He oído que aquí sirven una sopa de fideos deliciosa.','He oído que aquí sirven una sopa de fideos deliciosa.',18019),
@@ -573638,8 +573639,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (75358,'ruRU','Какой бы суп с лапшой выбрать?','Какой бы суп с лапшой выбрать?',18019),
 (75358,'zhCN','我要点哪种面呢？','我要点哪种面呢？',18019),
 (75358,'zhTW','我該吃哪種湯麵?','我該吃哪種湯麵?',18019),
-(75359,'deDE','Es gibt so viel Auswahl, ich kann mich einfach nicht entscheiden!','Es gibt so viel Auswahl, ich kann mich einfach nicht entscheiden!',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(75359,'deDE','Es gibt so viel Auswahl, ich kann mich einfach nicht entscheiden!','Es gibt so viel Auswahl, ich kann mich einfach nicht entscheiden!',18019),
 (75359,'esES','Hay tantas cosas... ¡No sé qué comer!','Hay tantas cosas... ¡No sé qué comer!',18019),
 (75359,'esMX','Hay tantas cosas... ¡No sé qué comer!','Hay tantas cosas... ¡No sé qué comer!',18019),
 (75359,'frFR','Il y a trop de choix, je n’arrive pas à me décider !','Il y a trop de choix, je n’arrive pas à me décider !',18019),
@@ -583535,7 +583535,8 @@ INSERT INTO `broadcast_text_locale` VALUES
 (77352,'ruRU','Мы едины, как никогда прежде. Мы подарили мир жителям Калимдора, прорвали блокаду и положили конец всеобщей войне, на которой было пролито столько крови по обе стороны великого моря.$b$bЧтобы закрепить мир, я планирую разместить у Терамора гарнизон. Нужно будет понять, как очистить земли Гилнеаса от чумы, чтобы вернуть их к жизни. Мы также должны остудить Сильвану.$b$bС этого дня Альянс будет действовать решительнее. Мы не допустим появления нового Адского Крика.','',18019),
 (77352,'zhCN','我们如今正空前的团结。我们为卡利姆多的人民带来了安全，终止了封锁，并结束了这场令大洋两岸无数人民流血牺牲的战争。$b$b现在，我们该致力于恢复和平。我打算在塞拉摩附近建立一座军营。我们需要研究如何净化吉尔尼恩的瘟疫，以便他们重建家园。我们必须遏制希尔瓦娜斯。$b$b从今往后，联盟将采取先发制人的策略，绝不会再让第二个地狱咆哮出现。','',18019),
 (77352,'zhTW','我們從未如此團結強大。我們讓卡林多的人民回歸安定的生活，撤除了封鎖線，結束了多年來血濺東西邊海岸的全面爭戰。$b$b當務之急是維持眼下的和平。我想要在塞拉摩派駐軍隊。我們需要調查吉爾尼斯瘟疫淨化的狀況是否可進行重建。我們還得好好管好希瓦娜斯。$b$b從現在開始，聯盟將會積極應對。絕對不能再讓一個像地獄吼的傢伙出現。','',18019),
-(77353,'deDE','Ich kann nachvollziehen, dass Ihr der Horde noch mehr Leid zufügen wollt. Aber wo soll es enden? Wie viele weitere Allianzsoldaten sollen auf den Schlachtfeldern von Donnerfels, Azshara und den Echoinseln fallen? Und wie sollen wir die eroberten Völker regieren?$b$bDie Pandaren stellen immer die Frage, warum man kämpft. Heute hat die Gerechtigkeit gesiegt und wir haben der Horde Gelegenheit gegeben, Wiedergutmachung zu leisten, indem wir die Rebellion unterstützt haben. Jedes weitere Blutvergießen dient nur noch der Rache – und wer Rache sät, wird Rache ernten.','',18019),
+(77353,'deDE','Ich kann nachvollziehen, dass Ihr der Horde noch mehr Leid zufügen wollt. Aber wo soll es enden? Wie viele weitere Allianzsoldaten sollen auf den Schlachtfeldern von Donnerfels, Azshara und den Echoinseln fallen? Und wie sollen wir die eroberten Völker regieren?$b$bDie Pandaren stellen immer die Frage, warum man kämpft. Heute hat die Gerechtigkeit gesiegt und wir haben der Horde Gelegenheit gegeben, Wiedergutmachung zu leisten, indem wir die Rebellion unterstützt haben. Jedes weitere Blutvergießen dient nur noch der Rache – und wer Rache sät, wird Rache ernten.','',18019);
+INSERT INTO `broadcast_text_locale` VALUES 
 (77353,'esES','Entiendo tu deseo de infligir más sufrimiento a la Horda. Pero, ¿cuál es el límite? ¿Cuántos miembros más de la Alianza perderían la vida si invadiésemos la Cima del Trueno, Azshara y las Islas del Eco? Y, ¿cómo gobernaríamos a los pueblos conquistados?$b$bLos pandaren siempre preguntan por qué luchamos. Hoy, hemos ganado justicia y hemos dado a la Horda una oportunidad de redención apoyando su rebelión. Continuar el río de sangre sería solo venganza... y obtendríamos venganza a cambio.','',18019),
 (77353,'esMX','Entiendo tu deseo de infligir más sufrimiento a la Horda. Pero, ¿cuál es el límite? ¿Cuántos miembros más de la Alianza perderían la vida si invadiésemos la Cima del Trueno, Azshara y las Islas del Eco? Y, ¿cómo gobernaríamos a los pueblos conquistados?$b$bLos pandaren siempre preguntan por qué luchamos. Hoy, hemos ganado justicia y hemos dado a la Horda una oportunidad de redención apoyando su rebelión. Continuar el río de sangre sería solo venganza... y obtendríamos venganza a cambio.','',18019),
 (77353,'frFR','Je comprends votre désir d’infliger plus de souffrances à la Horde, mais où nous arrêterions-nous ? Combien de membres de l’Alliance perdrions-nous si nous envahissions Les Pitons-du-Tonnerre, Azshara et les îles de l’Écho ? Et comment gouvernerions-nous les peuples conquis ?$b$bLes Pandarens posent toujours la question des raisons derrière un combat. Aujourd’hui, nous avons obtenu justice et nous avons donné l’opportunité à la Horde de se racheter en apportant notre soutien à leur rébellion. Faire couler le sang à nouveau ne serait que pure vengeance... et nous ne récolterions que vengeance en retour.','',18019),
@@ -583547,8 +583548,7 @@ INSERT INTO `broadcast_text_locale` VALUES
 (77354,'esES','','El Rey Wrynn lamentará el día en que permitió a la Horda nombrar a otro Jefe de Guerra.$b$bDeberíamos haber seguido luchando. ¿Quién nos asegura que este nuevo Jefe de Guerra no desarrollará ninguna idea en su cabeza de trol dentro de unos años?',18019),
 (77354,'esMX','','El Rey Wrynn lamentará el día en que permitió a la Horda nombrar a otro Jefe de Guerra.$b$bDeberíamos haber seguido luchando. ¿Quién nos asegura que este nuevo Jefe de Guerra no desarrollará ninguna idea en su cabeza de trol dentro de unos años?',18019),
 (77354,'frFR','','Le roi Wrynn maudira bientôt le jour où il a permis à la Horde de nommer un nouveau chef de guerre.$b$bNous aurions dû poursuivre le combat. Qui dit que ce nouveau chef de guerre ne va pas se mettre des idées en tête d’ici quelques années ?',18019),
-(77354,'koKR','','바리안 폐하는 호드가 새로운 대족장을 뽑게 놔둔 걸 반드시 후회하게 될 거예요.$b$b우리는 계속 싸웠어야 해요. 몇 년 지나지 않아서, 이 새로운 대족장이 또 어떤 트롤다운 생각에 휩싸일지 누가 알겠어요?',18019);
-INSERT INTO `broadcast_text_locale` VALUES 
+(77354,'koKR','','바리안 폐하는 호드가 새로운 대족장을 뽑게 놔둔 걸 반드시 후회하게 될 거예요.$b$b우리는 계속 싸웠어야 해요. 몇 년 지나지 않아서, 이 새로운 대족장이 또 어떤 트롤다운 생각에 휩싸일지 누가 알겠어요?',18019),
 (77354,'ruRU','','Король Ринн пожалеет, что позволил Орде выбрать нового Вождя.$b$bНужно было продолжить сражаться. Кто знает, вдруг через пару лет этот новый Вождь удумает какой-нибудь новый план?',18019),
 (77354,'zhCN','','乌瑞恩国王迟早会为自己允许部落出现另一个酋长而后悔的。$b$b我们应该继续打下去。谁敢保证几年之后这位新酋长的巨魔脑袋里不会冒出什么馊主意？',18019),
 (77354,'zhTW','','烏瑞恩國王將會後悔讓部落選出另外一個大酋長。$b$b我們應該繼續戰下去。誰說新上任大酋長的食人妖腦袋裡不會在幾年後打什麼歪主意?',18019),
@@ -583671,7 +583671,15 @@ INSERT INTO `broadcast_text_locale` VALUES
 (77865,'koKR','|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n|1이;가; 전투를 시작하려고 합니다. 전투 시작에 필요한 추가 인원: $8589w','',18019),
 (77865,'ruRU','|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n $gсогласился:согласилась; начать бой. Число недостающих игроков:  $8589w.','',18019),
 (77865,'zhCN','|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n已同意开始战斗。另外还需要$8589w名玩家才可开始。','',18019),
-(77865,'zhTW','|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n同意進行戰鬥。另外還需要$8589w名玩家才可開始。','',18019);
+(77865,'zhTW','|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n同意進行戰鬥。另外還需要$8589w名玩家才可開始。','',18019),
+(91243,'deDE','macht einige seltsame Gesten.','macht einige seltsame Gesten.',0),
+(91243,'esES','hace extraños gestos.','hace extraños gestos.',0),
+(91243,'esMX','hace extraños gestos.','hace extraños gestos.',0),
+(91243,'frFR','fait des gestes bizarres.','fait des gestes bizarres.',0),
+(91243,'koKR','|1이;가; 이상한 동작을 취합니다.','|1이;가; 이상한 동작을 취합니다.',0),
+(91243,'ruRU','совершает странные телодвижения.','совершает странные телодвижения.',0),
+(91243,'zhCN','打着奇怪的手势。','打着奇怪的手势。',0),
+(91243,'zhTW','做了一些奇怪的手勢。','做了一些奇怪的手勢。',0);
 /*!40000 ALTER TABLE `broadcast_text_locale` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
