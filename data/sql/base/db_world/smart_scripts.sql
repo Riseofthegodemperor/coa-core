@@ -6,41 +6,41 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 DROP TABLE IF EXISTS `smart_scripts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = UTF8MB4 */;
 CREATE TABLE `smart_scripts` 
 (
-  `entryorguid` int(11) NOT NULL,
-  `source_type` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `id` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `link` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `event_type` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `event_phase_mask` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `event_chance` tinyint(3) unsigned NOT NULL DEFAULT 100,
-  `event_flags` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `event_param1` int(10) unsigned NOT NULL DEFAULT 0,
-  `event_param2` int(10) unsigned NOT NULL DEFAULT 0,
-  `event_param3` int(10) unsigned NOT NULL DEFAULT 0,
-  `event_param4` int(10) unsigned NOT NULL DEFAULT 0,
-  `event_param5` int(10) unsigned NOT NULL DEFAULT 0,
-  `action_type` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `action_param1` int(10) unsigned NOT NULL DEFAULT 0,
-  `action_param2` int(10) unsigned NOT NULL DEFAULT 0,
-  `action_param3` int(10) unsigned NOT NULL DEFAULT 0,
-  `action_param4` int(10) unsigned NOT NULL DEFAULT 0,
-  `action_param5` int(10) unsigned NOT NULL DEFAULT 0,
-  `action_param6` int(10) unsigned NOT NULL DEFAULT 0,
-  `target_type` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `target_param1` int(10) unsigned NOT NULL DEFAULT 0,
-  `target_param2` int(10) unsigned NOT NULL DEFAULT 0,
-  `target_param3` int(10) unsigned NOT NULL DEFAULT 0,
-  `target_param4` int(10) unsigned NOT NULL DEFAULT 0,
+  `entryorguid` INT NOT NULL,
+  `source_type` TINYINT unsigned NOT NULL DEFAULT 0,
+  `id` SMALLINT unsigned NOT NULL DEFAULT 0,
+  `link` SMALLINT unsigned NOT NULL DEFAULT 0,
+  `event_type` TINYINT unsigned NOT NULL DEFAULT 0,
+  `event_phase_mask` SMALLINT unsigned NOT NULL DEFAULT 0,
+  `event_chance` TINYINT unsigned NOT NULL DEFAULT 100,
+  `event_flags` SMALLINT unsigned NOT NULL DEFAULT 0,
+  `event_param1` INT unsigned NOT NULL DEFAULT 0,
+  `event_param2` INT unsigned NOT NULL DEFAULT 0,
+  `event_param3` INT unsigned NOT NULL DEFAULT 0,
+  `event_param4` INT unsigned NOT NULL DEFAULT 0,
+  `event_param5` INT unsigned NOT NULL DEFAULT 0,
+  `action_type` TINYINT unsigned NOT NULL DEFAULT 0,
+  `action_param1` INT unsigned NOT NULL DEFAULT 0,
+  `action_param2` INT unsigned NOT NULL DEFAULT 0,
+  `action_param3` INT unsigned NOT NULL DEFAULT 0,
+  `action_param4` INT unsigned NOT NULL DEFAULT 0,
+  `action_param5` INT unsigned NOT NULL DEFAULT 0,
+  `action_param6` INT unsigned NOT NULL DEFAULT 0,
+  `target_type` TINYINT unsigned NOT NULL DEFAULT 0,
+  `target_param1` INT unsigned NOT NULL DEFAULT 0,
+  `target_param2` INT unsigned NOT NULL DEFAULT 0,
+  `target_param3` INT unsigned NOT NULL DEFAULT 0,
+  `target_param4` INT unsigned NOT NULL DEFAULT 0,
   `target_x` float NOT NULL DEFAULT 0,
   `target_y` float NOT NULL DEFAULT 0,
   `target_z` float NOT NULL DEFAULT 0,
   `target_o` float NOT NULL DEFAULT 0,
   `comment` text NOT NULL COMMENT 'Event Comment',
   PRIMARY KEY (`entryorguid`,`source_type`,`id`,`link`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+) ENGINE=MyISAM DEFAULT CHARSET=UTF8MB4 ROW_FORMAT=FIXED;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `smart_scripts` WRITE;
@@ -41398,7 +41398,7 @@ INSERT INTO `smart_scripts` VALUES
 (3039600,9,0,0,0,0,100,0,2000,2000,0,0,0,11,56677,0,0,0,0,0,19,30399,30,0,0,0,0,0,0,'Loken - On Script - Cast \'Loken\'s Knockback\''),
 (3039600,9,1,0,0,0,100,0,3000,3000,0,0,0,97,40,20,0,0,0,0,1,0,0,0,0,8611.14,-627.65,926.204,0,'Loken - On Script - Jump To Pos'),
 (3039600,9,2,0,0,0,100,0,2000,2000,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Loken - On Script - Say Line 1'),
-(3039600,9,3,0,0,0,100,0,1000,1000,0,0,0,5,25,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Loken - On Script - Play emote \'ONESHOT_POINT(DNR)\''),
+(3039600,9,3,0,0,0,100,0,1000,1000,0,0,0,5,25,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Loken - On Script - Play emote \'ONESHOT_POINT\''),
 (3039600,9,4,0,0,0,100,0,6000,6000,0,0,0,101,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Loken - On Script - Set Home Position'),
 (3039600,9,5,0,0,0,100,0,10500,10500,0,0,0,11,10689,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Loken - On Script - Cast \'Knockback\''),
 (3039600,9,6,0,0,0,100,0,3000,3000,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Loken - On Script - Say Line 2'),

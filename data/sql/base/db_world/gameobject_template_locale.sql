@@ -6,16 +6,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 DROP TABLE IF EXISTS `gameobject_template_locale`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = UTF8MB4 */;
 CREATE TABLE `gameobject_template_locale` 
 (
-  `entry` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `entry` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `locale` varchar(4) NOT NULL,
   `name` text DEFAULT NULL,
   `castBarCaption` text DEFAULT NULL,
-  `VerifiedBuild` smallint(5) DEFAULT 0,
+  `VerifiedBuild` SMALLINT DEFAULT 0,
   PRIMARY KEY (`entry`,`locale`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=UTF8MB4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `gameobject_template_locale` WRITE;

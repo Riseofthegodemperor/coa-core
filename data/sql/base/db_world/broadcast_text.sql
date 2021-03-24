@@ -6,25 +6,25 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 DROP TABLE IF EXISTS `broadcast_text`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = UTF8MB4 */;
 CREATE TABLE `broadcast_text` 
 (
-  `ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `Language` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `ID` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `Language` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `MaleText` longtext DEFAULT NULL,
   `FemaleText` longtext DEFAULT NULL,
-  `EmoteID0` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `EmoteID1` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `EmoteID2` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `EmoteDelay0` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `EmoteDelay1` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `EmoteDelay2` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `SoundId` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `Unk1` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `Unk2` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `VerifiedBuild` smallint(5) DEFAULT 0,
+  `EmoteID0` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `EmoteID1` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `EmoteID2` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `EmoteDelay0` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `EmoteDelay1` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `EmoteDelay2` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `SoundId` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `Unk1` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `Unk2` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `VerifiedBuild` SMALLINT DEFAULT 0,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=UTF8MB4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `broadcast_text` WRITE;

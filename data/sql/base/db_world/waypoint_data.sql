@@ -6,22 +6,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 DROP TABLE IF EXISTS `waypoint_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = UTF8MB4 */;
 CREATE TABLE `waypoint_data` 
 (
-  `id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Creature GUID',
-  `point` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `id` INT unsigned NOT NULL DEFAULT 0 COMMENT 'Creature GUID',
+  `point` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `position_x` float NOT NULL DEFAULT 0,
   `position_y` float NOT NULL DEFAULT 0,
   `position_z` float NOT NULL DEFAULT 0,
   `orientation` float NOT NULL DEFAULT 0,
-  `delay` int(10) unsigned NOT NULL DEFAULT 0,
-  `move_type` int(11) NOT NULL DEFAULT 0,
-  `action` int(11) NOT NULL DEFAULT 0,
-  `action_chance` smallint(6) NOT NULL DEFAULT 100,
-  `wpguid` int(11) unsigned NOT NULL DEFAULT 0,
+  `delay` INT unsigned NOT NULL DEFAULT 0,
+  `move_type` INT NOT NULL DEFAULT 0,
+  `action` INT NOT NULL DEFAULT 0,
+  `action_chance` SMALLINT NOT NULL DEFAULT 100,
+  `wpguid` INT unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`,`point`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=UTF8MB4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `waypoint_data` WRITE;

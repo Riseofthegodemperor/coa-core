@@ -6,10 +6,10 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 DROP TABLE IF EXISTS `quest_template_locale`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = UTF8MB4 */;
 CREATE TABLE `quest_template_locale` 
 (
-  `ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `ID` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `locale` varchar(4) NOT NULL,
   `Title` text DEFAULT NULL,
   `Details` text DEFAULT NULL,
@@ -20,9 +20,9 @@ CREATE TABLE `quest_template_locale`
   `ObjectiveText2` text DEFAULT NULL,
   `ObjectiveText3` text DEFAULT NULL,
   `ObjectiveText4` text DEFAULT NULL,
-  `VerifiedBuild` smallint(5) DEFAULT 0,
+  `VerifiedBuild` SMALLINT DEFAULT 0,
   PRIMARY KEY (`ID`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `quest_template_locale` WRITE;

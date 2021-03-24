@@ -6,37 +6,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 DROP TABLE IF EXISTS `creature`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = UTF8MB4 */;
 CREATE TABLE `creature` 
 (
-  `guid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Global Unique Identifier',
-  `id` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Creature Identifier',
-  `map` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT 'Map Identifier',
-  `zoneId` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT 'Zone Identifier',
-  `areaId` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT 'Area Identifier',
-  `spawnMask` tinyint(3) unsigned NOT NULL DEFAULT 1,
-  `phaseMask` int(10) unsigned NOT NULL DEFAULT 1,
-  `modelid` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `equipment_id` tinyint(3) NOT NULL DEFAULT 0,
+  `guid` INT unsigned NOT NULL AUTO_INCREMENT COMMENT 'Global Unique Identifier',
+  `id` MEDIUMINT unsigned NOT NULL DEFAULT 0 COMMENT 'Creature Identifier',
+  `map` SMALLINT unsigned NOT NULL DEFAULT 0 COMMENT 'Map Identifier',
+  `zoneId` SMALLINT unsigned NOT NULL DEFAULT 0 COMMENT 'Zone Identifier',
+  `areaId` SMALLINT unsigned NOT NULL DEFAULT 0 COMMENT 'Area Identifier',
+  `spawnMask` TINYINT unsigned NOT NULL DEFAULT 1,
+  `phaseMask` INT unsigned NOT NULL DEFAULT 1,
+  `modelid` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `equipment_id` TINYINT NOT NULL DEFAULT 0,
   `position_x` float NOT NULL DEFAULT 0,
   `position_y` float NOT NULL DEFAULT 0,
   `position_z` float NOT NULL DEFAULT 0,
   `orientation` float NOT NULL DEFAULT 0,
-  `spawntimesecs` int(10) unsigned NOT NULL DEFAULT 120,
+  `spawntimesecs` INT unsigned NOT NULL DEFAULT 120,
   `wander_distance` float NOT NULL DEFAULT 0,
-  `currentwaypoint` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `curhealth` int(10) unsigned NOT NULL DEFAULT 1,
-  `curmana` int(10) unsigned NOT NULL DEFAULT 0,
-  `MovementType` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `npcflag` int(10) unsigned NOT NULL DEFAULT 0,
-  `unit_flags` int(10) unsigned NOT NULL DEFAULT 0,
-  `dynamicflags` int(10) unsigned NOT NULL DEFAULT 0,
+  `currentwaypoint` MEDIUMINT unsigned NOT NULL DEFAULT 0,
+  `curhealth` INT unsigned NOT NULL DEFAULT 1,
+  `curmana` INT unsigned NOT NULL DEFAULT 0,
+  `MovementType` TINYINT unsigned NOT NULL DEFAULT 0,
+  `npcflag` INT unsigned NOT NULL DEFAULT 0,
+  `unit_flags` INT unsigned NOT NULL DEFAULT 0,
+  `dynamicflags` INT unsigned NOT NULL DEFAULT 0,
   `ScriptName` char(64) DEFAULT '',
-  `VerifiedBuild` smallint(5) DEFAULT 0,
+  `VerifiedBuild` SMALLINT DEFAULT 0,
   PRIMARY KEY (`guid`),
   KEY `idx_map` (`map`),
   KEY `idx_id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3110360 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=MyISAM AUTO_INCREMENT=3110360 DEFAULT CHARSET=UTF8MB4 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `creature` WRITE;
