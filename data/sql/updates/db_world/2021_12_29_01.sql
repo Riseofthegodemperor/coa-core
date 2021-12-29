@@ -1,3 +1,19 @@
+-- DB update 2021_12_29_00 -> 2021_12_29_01
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+SELECT COUNT(*) INTO @COLEXISTS
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'version_db_world' AND COLUMN_NAME = '2021_12_29_00';
+IF @COLEXISTS = 0 THEN LEAVE proc; END IF;
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2021_12_29_00 2021_12_29_01 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1639867371368353600'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
+
 -- INSERT INTO `version_db_world` (`sql_rev`) VALUES ('1639867371368353600');
 
 DELETE FROM `broadcast_text`;
@@ -73041,3 +73057,13 @@ INSERT INTO `broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `Emote
 	(77369, 0, '|TInterface\\Icons\\inv_misc_bomb_05:20|tYou have |cFFFF0000|Hspell:145996|h[Set to Blow]|h|r! Use |cFFFF0000|Hspell:146364|h[Throw Bomb]|h|r to throw them!', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, 18019),
 	(77371, 0, 'Dat\'s de end of Hellscream.$b$b<Vol\'jin eyes you warily.>$b$bWhat next, $r?', '', 274, 0, 0, 0, 0, 0, 0, 0, 0, 18019),
 	(77865, 0, '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n has agreed to begin the encounter. Additional players required to begin: $8589w.', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, 18019);
+
+--
+-- END UPDATING QUERIES
+--
+UPDATE version_db_world SET date = '2021_12_29_01' WHERE sql_rev = '1639867371368353600';
+COMMIT;
+END //
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
