@@ -14,7 +14,7 @@ SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '163986737136835360
 -- START UPDATING QUERIES
 --
 
--- INSERT INTO `version_db_world` (`sql_rev`) VALUES ('1639867371368353600');
+INSERT INTO `version_db_world` (`sql_rev`) VALUES ('1639867371368353600');
 
 DELETE FROM `broadcast_text`;
 INSERT INTO `broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES
