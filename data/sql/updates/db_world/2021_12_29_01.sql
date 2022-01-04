@@ -16,7 +16,7 @@ SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '163986737136835360
 
 INSERT INTO `version_db_world` (`sql_rev`) VALUES ('1639867371368353600');
 
-DELETE FROM `broadcast_text`;
+DELETE FROM `broadcast_text`; -- Delete texts
 INSERT INTO `broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES
 	(1, 0, 'Help help!  I\'m being repressed!', '', 0, 0, 0, 0, 0, 0, 0, 0, 6, 18019),
 	(3, 0, 'Company.. HALT!  ... Fall IN!', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, 18019),
