@@ -12,10 +12,10 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Дамп структуры для таблица _acore_world.broadcast_text_locale
+-- Дамп структуры для таблица acore_world.broadcast_text_locale
 DROP TABLE IF EXISTS `broadcast_text_locale`;
 CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
-  `ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `ID` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `locale` varchar(4) NOT NULL,
   `MaleText` text DEFAULT NULL,
   `FemaleText` text DEFAULT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Дамп данных таблицы _acore_world.broadcast_text_locale: ~602 456 rows (приблизительно)
+-- Дамп данных таблицы acore_world.broadcast_text_locale: ~544 466 rows (приблизительно)
 DELETE FROM `broadcast_text_locale`;
 /*!40000 ALTER TABLE `broadcast_text_locale` DISABLE KEYS */;
 INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
@@ -583680,31 +583680,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(77865, 'koKR', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n|1이;가; 전투를 시작하려고 합니다. 전투 시작에 필요한 추가 인원: $8589w', '', 18019),
 	(77865, 'ruRU', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n $gсогласился:согласилась; начать бой. Число недостающих игроков:  $8589w.', '', 18019),
 	(77865, 'zhCN', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n已同意开始战斗。另外还需要$8589w名玩家才可开始。', '', 18019),
-	(77865, 'zhTW', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n同意進行戰鬥。另外還需要$8589w名玩家才可開始。', '', 18019),
-	(80000, 'esES', 'El maestro de hermandad', 'El maestro de hermandad', 18019),
-	(80000, 'esMX', 'El maestro de hermandad', 'El maestro de hermandad', 18019),
-	(80001, 'esES', 'El buzón', 'El buzón', 18019),
-	(80001, 'esMX', 'El buzón', 'El buzón', 18019),
-	(80002, 'esES', 'La casa de subastas', 'La casa de subastas', 18019),
-	(80002, 'esMX', 'La casa de subastas', 'La casa de subastas', 18019),
-	(80003, 'esES', 'El maestro de zepelines', 'El maestro de zepelines', 18019),
-	(80003, 'esMX', 'El maestro de zepelines', 'El maestro de zepelines', 18019),
-	(80004, 'esES', 'El instructor de armas', 'El instructor de armas', 18019),
-	(80004, 'esMX', 'El instructor de armas', 'El instructor de armas', 18019),
-	(80005, 'esES', 'La sala de las leyendas', 'La sala de las leyendas', 18019),
-	(80005, 'esMX', 'La sala de las leyendas', 'La sala de las leyendas', 18019),
-	(80006, 'esES', 'El maestro de batalla', 'El maestro de batalla', 18019),
-	(80006, 'esMX', 'El maestro de batalla', 'El maestro de batalla', 18019),
-	(80007, 'esES', 'Sala de los campeones', 'Sala de los campeones', 18019),
-	(80007, 'esMX', 'Sala de los campeones', 'Sala de los campeones', 18019),
-	(91243, 'deDE', 'macht einige seltsame Gesten.', 'macht einige seltsame Gesten.', 0),
-	(91243, 'esES', 'hace extraños gestos.', 'hace extraños gestos.', 0),
-	(91243, 'esMX', 'hace extraños gestos.', 'hace extraños gestos.', 0),
-	(91243, 'frFR', 'fait des gestes bizarres.', 'fait des gestes bizarres.', 0),
-	(91243, 'koKR', '|1이;가; 이상한 동작을 취합니다.', '|1이;가; 이상한 동작을 취합니다.', 0),
-	(91243, 'ruRU', 'совершает странные телодвижения.', 'совершает странные телодвижения.', 0),
-	(91243, 'zhCN', '打着奇怪的手势。', '打着奇怪的手势。', 0),
-	(91243, 'zhTW', '做了一些奇怪的手勢。', '做了一些奇怪的手勢。', 0);
+	(77865, 'zhTW', '|TInterface\\Icons\\achievement_arena_2v2_5:20|t$n同意進行戰鬥。另外還需要$8589w名玩家才可開始。', '', 18019);
 /*!40000 ALTER TABLE `broadcast_text_locale` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
