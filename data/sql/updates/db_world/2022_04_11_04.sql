@@ -1,3 +1,19 @@
+-- DB update 2022_04_11_03 -> 2022_04_11_04
+DROP PROCEDURE IF EXISTS `updateDb`;
+DELIMITER //
+CREATE PROCEDURE updateDb ()
+proc:BEGIN DECLARE OK VARCHAR(100) DEFAULT 'FALSE';
+SELECT COUNT(*) INTO @COLEXISTS
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'version_db_world' AND COLUMN_NAME = '2022_04_11_03';
+IF @COLEXISTS = 0 THEN LEAVE proc; END IF;
+START TRANSACTION;
+ALTER TABLE version_db_world CHANGE COLUMN 2022_04_11_03 2022_04_11_04 bit;
+SELECT sql_rev INTO OK FROM version_db_world WHERE sql_rev = '1649360383011171700'; IF OK <> 'FALSE' THEN LEAVE proc; END IF;
+--
+-- START UPDATING QUERIES
+--
+
 INSERT INTO `version_db_world` (`sql_rev`) VALUES ('1649360383011171700');
 
 REPLACE INTO `achievement_reward_locale` (`ID`, `Locale`, `Subject`, `Text`) VALUES
@@ -36493,3 +36509,13 @@ REPLACE INTO `quest_template_locale` (`ID`, `locale`, `Title`, `Details`, `Objec
 ('24223', 'zhCN', '战斗的召唤：阿拉希盆地', '事实上，我们在多线作战，$g小子:小姑娘，而且我们不能把军队部署得太过分布，否则我们可能会全盘皆输！$b$b我们需要以天为单位来部署最关键的部队，今天，阿拉希盆地的战斗最需要勇敢的士兵！$b$b带着胜利的消息回来吧，$n。我们不允许部落狗来威胁属于我们的资源！', '在阿拉希盆地战场中获得一场胜利，然后向任意联盟主城、冬拥湖、达拉然或沙塔斯城中的联盟准将复命。', '在阿拉希盆地获胜', '去找联盟准将。', '', '', '', '', '0'),
 ('24427', 'zhCN', '战斗的召唤：奥特兰克山谷', '事实上，我们在多线作战，$g小子:小姑娘，而且我们不能把军队部署得太过分布，否则我们可能会全盘皆输！$b$b我们需要以天为单位来部署最关键的部队，今天，奥特兰克山谷的战斗最需要勇敢的士兵们！$b$b现在就出发吧，$N，去帮助雷矛远征军。我们不能就这么看着霜狼氏族逃脱他们应受的惩罚。', '在奥特兰克山谷战场中获得一场胜利，然后向任意联盟主城、达拉然、冬拥湖或沙塔斯城中的联盟准将复命。', '在奥特兰克山谷获胜', '去找联盟准将。', '', '', '', '', '0'),
 ('25306', 'zhCN', '你参军了！', '[ph] War！', '[ph] Log Description', '', '', '测试弹射系统', '', '', '', '0');
+
+--
+-- END UPDATING QUERIES
+--
+UPDATE version_db_world SET date = '2022_04_11_04' WHERE sql_rev = '1649360383011171700';
+COMMIT;
+END //
+DELIMITER ;
+CALL updateDb();
+DROP PROCEDURE IF EXISTS `updateDb`;
