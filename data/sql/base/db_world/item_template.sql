@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Хост:                         127.0.0.1
--- Версия сервера:               10.6.4-MariaDB - mariadb.org binary distribution
--- Операционная система:         Win64
--- HeidiSQL Версия:              11.3.0.6295
+-- Värd:                         127.0.0.1
+-- Serverversion:                8.0.28 - MySQL Community Server - GPL
+-- Server-OS:                    Win64
+-- HeidiSQL Version:             11.3.0.6295
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -12,14 +12,14 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Дамп структуры для таблица acore_world.item_template
+-- Dumpar struktur för tabell acore_world.item_template
 DROP TABLE IF EXISTS `item_template`;
 CREATE TABLE IF NOT EXISTS `item_template` (
   `entry` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `class` TINYINT unsigned NOT NULL DEFAULT 0,
   `subclass` TINYINT unsigned NOT NULL DEFAULT 0,
-  `SoundOverrideSubclass` TINYINT NOT NULL DEFAULT -1,
-  `name` varchar(255) NOT NULL DEFAULT '',
+  `SoundOverrideSubclass` TINYINT NOT NULL DEFAULT '-1',
+  `name` VARCHAR(255) NOT NULL DEFAULT '',
   `displayid` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `Quality` TINYINT unsigned NOT NULL DEFAULT 0,
   `Flags` INT unsigned NOT NULL DEFAULT 0,
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `item_template` (
   `BuyPrice` BIGINT NOT NULL DEFAULT 0,
   `SellPrice` INT unsigned NOT NULL DEFAULT 0,
   `InventoryType` TINYINT unsigned NOT NULL DEFAULT 0,
-  `AllowableClass` INT NOT NULL DEFAULT -1,
-  `AllowableRace` INT NOT NULL DEFAULT -1,
+  `AllowableClass` INT NOT NULL DEFAULT '-1',
+  `AllowableRace` INT NOT NULL DEFAULT '-1',
   `ItemLevel` SMALLINT unsigned NOT NULL DEFAULT 0,
   `RequiredLevel` TINYINT unsigned NOT NULL DEFAULT 0,
   `RequiredSkill` SMALLINT unsigned NOT NULL DEFAULT 0,
@@ -78,46 +78,46 @@ CREATE TABLE IF NOT EXISTS `item_template` (
   `frost_res` TINYINT unsigned NOT NULL DEFAULT 0,
   `shadow_res` TINYINT unsigned NOT NULL DEFAULT 0,
   `arcane_res` TINYINT unsigned NOT NULL DEFAULT 0,
-  `delay` SMALLINT unsigned NOT NULL DEFAULT 1000,
+  `delay` SMALLINT unsigned NOT NULL DEFAULT '1000',
   `ammo_type` TINYINT unsigned NOT NULL DEFAULT 0,
   `RangedModRange` float NOT NULL DEFAULT 0,
   `spellid_1` MEDIUMINT NOT NULL DEFAULT 0,
   `spelltrigger_1` TINYINT unsigned NOT NULL DEFAULT 0,
   `spellcharges_1` SMALLINT NOT NULL DEFAULT 0,
   `spellppmRate_1` float NOT NULL DEFAULT 0,
-  `spellcooldown_1` INT NOT NULL DEFAULT -1,
+  `spellcooldown_1` INT NOT NULL DEFAULT '-1',
   `spellcategory_1` SMALLINT unsigned NOT NULL DEFAULT 0,
-  `spellcategorycooldown_1` INT NOT NULL DEFAULT -1,
+  `spellcategorycooldown_1` INT NOT NULL DEFAULT '-1',
   `spellid_2` MEDIUMINT NOT NULL DEFAULT 0,
   `spelltrigger_2` TINYINT unsigned NOT NULL DEFAULT 0,
   `spellcharges_2` SMALLINT NOT NULL DEFAULT 0,
   `spellppmRate_2` float NOT NULL DEFAULT 0,
-  `spellcooldown_2` INT NOT NULL DEFAULT -1,
+  `spellcooldown_2` INT NOT NULL DEFAULT '-1',
   `spellcategory_2` SMALLINT unsigned NOT NULL DEFAULT 0,
-  `spellcategorycooldown_2` INT NOT NULL DEFAULT -1,
+  `spellcategorycooldown_2` INT NOT NULL DEFAULT '-1',
   `spellid_3` MEDIUMINT NOT NULL DEFAULT 0,
   `spelltrigger_3` TINYINT unsigned NOT NULL DEFAULT 0,
   `spellcharges_3` SMALLINT NOT NULL DEFAULT 0,
   `spellppmRate_3` float NOT NULL DEFAULT 0,
-  `spellcooldown_3` INT NOT NULL DEFAULT -1,
+  `spellcooldown_3` INT NOT NULL DEFAULT '-1',
   `spellcategory_3` SMALLINT unsigned NOT NULL DEFAULT 0,
-  `spellcategorycooldown_3` INT NOT NULL DEFAULT -1,
+  `spellcategorycooldown_3` INT NOT NULL DEFAULT '-1',
   `spellid_4` MEDIUMINT NOT NULL DEFAULT 0,
   `spelltrigger_4` TINYINT unsigned NOT NULL DEFAULT 0,
   `spellcharges_4` SMALLINT NOT NULL DEFAULT 0,
   `spellppmRate_4` float NOT NULL DEFAULT 0,
-  `spellcooldown_4` INT NOT NULL DEFAULT -1,
+  `spellcooldown_4` INT NOT NULL DEFAULT '-1',
   `spellcategory_4` SMALLINT unsigned NOT NULL DEFAULT 0,
-  `spellcategorycooldown_4` INT NOT NULL DEFAULT -1,
+  `spellcategorycooldown_4` INT NOT NULL DEFAULT '-1',
   `spellid_5` MEDIUMINT NOT NULL DEFAULT 0,
   `spelltrigger_5` TINYINT unsigned NOT NULL DEFAULT 0,
   `spellcharges_5` SMALLINT NOT NULL DEFAULT 0,
   `spellppmRate_5` float NOT NULL DEFAULT 0,
-  `spellcooldown_5` INT NOT NULL DEFAULT -1,
+  `spellcooldown_5` INT NOT NULL DEFAULT '-1',
   `spellcategory_5` SMALLINT unsigned NOT NULL DEFAULT 0,
-  `spellcategorycooldown_5` INT NOT NULL DEFAULT -1,
+  `spellcategorycooldown_5` INT NOT NULL DEFAULT '-1',
   `bonding` TINYINT unsigned NOT NULL DEFAULT 0,
-  `description` varchar(255) NOT NULL DEFAULT '',
+  `description` VARCHAR(255) NOT NULL DEFAULT '',
   `PageText` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `LanguageID` TINYINT unsigned NOT NULL DEFAULT 0,
   `PageMaterial` TINYINT unsigned NOT NULL DEFAULT 0,
@@ -142,12 +142,12 @@ CREATE TABLE IF NOT EXISTS `item_template` (
   `socketContent_3` MEDIUMINT NOT NULL DEFAULT 0,
   `socketBonus` MEDIUMINT NOT NULL DEFAULT 0,
   `GemProperties` MEDIUMINT NOT NULL DEFAULT 0,
-  `RequiredDisenchantSkill` SMALLINT NOT NULL DEFAULT -1,
+  `RequiredDisenchantSkill` SMALLINT NOT NULL DEFAULT '-1',
   `ArmorDamageModifier` float NOT NULL DEFAULT 0,
   `duration` INT unsigned NOT NULL DEFAULT 0,
   `ItemLimitCategory` SMALLINT NOT NULL DEFAULT 0,
   `HolidayId` INT unsigned NOT NULL DEFAULT 0,
-  `ScriptName` varchar(64) NOT NULL DEFAULT '',
+  `ScriptName` VARCHAR(64) NOT NULL DEFAULT '',
   `DisenchantID` MEDIUMINT unsigned NOT NULL DEFAULT 0,
   `FoodType` TINYINT unsigned NOT NULL DEFAULT 0,
   `minMoneyLoot` INT unsigned NOT NULL DEFAULT 0,
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `item_template` (
   KEY `items_index` (`class`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ROW_FORMAT=FIXED COMMENT='Item System';
 
--- Дамп данных таблицы acore_world.item_template: 46 096 rows
+-- Dumpar data för tabell acore_world.item_template: 46 096 rows
 DELETE FROM `item_template`;
 /*!40000 ALTER TABLE `item_template` DISABLE KEYS */;
 INSERT INTO `item_template` (`entry`, `class`, `subclass`, `SoundOverrideSubclass`, `name`, `displayid`, `Quality`, `Flags`, `FlagsExtra`, `BuyCount`, `BuyPrice`, `SellPrice`, `InventoryType`, `AllowableClass`, `AllowableRace`, `ItemLevel`, `RequiredLevel`, `RequiredSkill`, `RequiredSkillRank`, `requiredspell`, `requiredhonorrank`, `RequiredCityRank`, `RequiredReputationFaction`, `RequiredReputationRank`, `maxcount`, `stackable`, `ContainerSlots`, `StatsCount`, `stat_type1`, `stat_value1`, `stat_type2`, `stat_value2`, `stat_type3`, `stat_value3`, `stat_type4`, `stat_value4`, `stat_type5`, `stat_value5`, `stat_type6`, `stat_value6`, `stat_type7`, `stat_value7`, `stat_type8`, `stat_value8`, `stat_type9`, `stat_value9`, `stat_type10`, `stat_value10`, `ScalingStatDistribution`, `ScalingStatValue`, `dmg_min1`, `dmg_max1`, `dmg_type1`, `dmg_min2`, `dmg_max2`, `dmg_type2`, `armor`, `holy_res`, `fire_res`, `nature_res`, `frost_res`, `shadow_res`, `arcane_res`, `delay`, `ammo_type`, `RangedModRange`, `spellid_1`, `spelltrigger_1`, `spellcharges_1`, `spellppmRate_1`, `spellcooldown_1`, `spellcategory_1`, `spellcategorycooldown_1`, `spellid_2`, `spelltrigger_2`, `spellcharges_2`, `spellppmRate_2`, `spellcooldown_2`, `spellcategory_2`, `spellcategorycooldown_2`, `spellid_3`, `spelltrigger_3`, `spellcharges_3`, `spellppmRate_3`, `spellcooldown_3`, `spellcategory_3`, `spellcategorycooldown_3`, `spellid_4`, `spelltrigger_4`, `spellcharges_4`, `spellppmRate_4`, `spellcooldown_4`, `spellcategory_4`, `spellcategorycooldown_4`, `spellid_5`, `spelltrigger_5`, `spellcharges_5`, `spellppmRate_5`, `spellcooldown_5`, `spellcategory_5`, `spellcategorycooldown_5`, `bonding`, `description`, `PageText`, `LanguageID`, `PageMaterial`, `startquest`, `lockid`, `Material`, `sheath`, `RandomProperty`, `RandomSuffix`, `block`, `itemset`, `MaxDurability`, `area`, `Map`, `BagFamily`, `TotemCategory`, `socketColor_1`, `socketContent_1`, `socketColor_2`, `socketContent_2`, `socketColor_3`, `socketContent_3`, `socketBonus`, `GemProperties`, `RequiredDisenchantSkill`, `ArmorDamageModifier`, `duration`, `ItemLimitCategory`, `HolidayId`, `ScriptName`, `DisenchantID`, `FoodType`, `minMoneyLoot`, `maxMoneyLoot`, `flagsCustom`, `VerifiedBuild`) VALUES
@@ -13450,7 +13450,7 @@ INSERT INTO `item_template` (`entry`, `class`, `subclass`, `SoundOverrideSubclas
 	(17065, 4, 0, -1, 'Medallion of Steadfast Might', 4841, 4, 0, 0, 1, 133525, 33381, 2, -1, -1, 68, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 7, 13, 4, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13669, 1, 0, 0, 0, 0, 0, 13387, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17066, 4, 6, -1, 'Drillborer Disk', 34110, 4, 0, 0, 1, 226144, 45228, 14, -1, -1, 67, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 7, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2918, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15438, 1, 0, 0, -1, 0, -1, 13675, 1, 0, 0, -1, 0, -1, 22852, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 4, 0, 0, 60, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17067, 4, 0, -1, 'Ancient Cornerstone Grimoire', 29717, 4, 0, 0, 1, 301810, 75452, 23, -1, -1, 76, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 6, 11, 5, 15, 7, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17490, 0, 0, 0, 900000, 94, 60000, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
-	(17068, 2, 0, -1, 'Deathbringer', 29161, 4, 0, 0, 1, 392265, 78453, 13, -1, -1, 75, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 114, 213, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2900, 0, 0, 18138, 2, 0, -4, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
+	(17068, 2, 0, -1, 'Deathbringer', 29161, 4, 0, 0, 1, 392265, 78453, 13, -1, -1, 75, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 114, 213, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2900, 0, 0, 18138, 2, 0, 1.7, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17069, 2, 2, -1, 'Striker\'s Mark', 30927, 4, 0, 0, 1, 274840, 54968, 15, -1, -1, 69, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 84, 158, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2500, 2, 100, 9332, 1, 0, 0, -1, 0, -1, 15464, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17070, 2, 15, -1, 'Fang of the Mystics', 29706, 4, 0, 0, 1, 382417, 76483, 21, -1, -1, 70, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1500, 0, 0, 18384, 1, 0, 0, -1, 0, -1, 21362, 1, 0, 0, -1, 0, -1, 18056, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, -10.2, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17071, 2, 15, -1, 'Gutgore Ripper', 34111, 4, 0, 0, 1, 379072, 75814, 13, -1, -1, 69, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 119, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1800, 0, 0, 21151, 2, 0, 2.2, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
@@ -13458,7 +13458,7 @@ INSERT INTO `item_template` (`entry`, `class`, `subclass`, `SoundOverrideSubclas
 	(17073, 2, 5, -1, 'Earthshaker', 32162, 4, 0, 0, 1, 459518, 91903, 17, -1, -1, 66, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 175, 263, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3500, 0, 0, 21152, 2, 0, 1, -1, 0, -1, 9332, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17074, 2, 6, -1, 'Shadowstrike', 29176, 4, 1088, 0, 1, 443341, 88668, 17, -1, -1, 63, 58, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 147, 221, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3100, 0, 0, 21170, 2, 0, 2, -1, 0, -1, 21180, 0, 0, 0, -1, 1150, 60000, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17075, 2, 7, -1, 'Vis\'kag the Bloodletter', 32197, 4, 524288, 0, 1, 408430, 81686, 13, -1, -1, 74, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 187, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2600, 0, 0, 21140, 2, 0, 1.5, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
-	(17076, 2, 8, -1, 'Bonereaver\'s Edge', 32199, 4, 0, 0, 1, 530337, 106067, 17, -1, -1, 77, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 7, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 206, 310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3400, 0, 0, 21153, 2, 0, 1, -1, 0, -1, 7597, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
+	(17076, 2, 8, -1, 'Bonereaver\'s Edge', 32199, 4, 0, 0, 1, 530337, 106067, 17, -1, -1, 77, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 7, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 206, 310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3400, 0, 0, 21153, 2, 0, 3, -1, 0, -1, 7597, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17077, 2, 19, -1, 'Crimson Shocker', 29195, 4, 0, 0, 1, 268855, 53771, 26, -1, -1, 63, 58, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 102, 191, 2, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 2000, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17078, 4, 1, -1, 'Sapphiron Drape', 29719, 4, 0, 0, 1, 120954, 24190, 16, -1, -1, 72, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 5, 17, 7, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 6, 0, 6, 0, 0, 0, 9343, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
 	(17082, 4, 0, -1, 'Shard of the Flame', 29722, 4, 524288, 0, 1, 184585, 46146, 12, -1, -1, 74, 60, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23210, 1, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 1, '', 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 241, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, '', 65, 0, 0, 0, 0, 12340),
