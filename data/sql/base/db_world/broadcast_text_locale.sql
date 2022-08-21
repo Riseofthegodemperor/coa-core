@@ -15,15 +15,15 @@
 -- Dumpar struktur för tabell acore_world.broadcast_text_locale
 DROP TABLE IF EXISTS `broadcast_text_locale`;
 CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
-  `ID` MEDIUMINT unsigned NOT NULL DEFAULT 0,
-  `locale` VARCHAR(4) NOT NULL,
+  `ID` mediumint unsigned NOT NULL DEFAULT '0',
+  `locale` varchar(4) NOT NULL,
   `MaleText` text,
   `FemaleText` text,
-  `VerifiedBuild` SMALLINT DEFAULT 0,
+  `VerifiedBuild` smallint DEFAULT '0',
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumpar data för tabell acore_world.broadcast_text_locale: ~527 337 rows (ungefär)
+-- Dumpar data för tabell acore_world.broadcast_text_locale: ~583 570 rows (ungefär)
 DELETE FROM `broadcast_text_locale`;
 /*!40000 ALTER TABLE `broadcast_text_locale` DISABLE KEYS */;
 INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES

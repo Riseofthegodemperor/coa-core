@@ -15,8 +15,8 @@
 -- Dumpar struktur för tabell acore_world.quest_template_locale
 DROP TABLE IF EXISTS `quest_template_locale`;
 CREATE TABLE IF NOT EXISTS `quest_template_locale` (
-  `ID` MEDIUMINT unsigned NOT NULL DEFAULT 0,
-  `locale` VARCHAR(4) NOT NULL,
+  `ID` mediumint unsigned NOT NULL DEFAULT '0',
+  `locale` varchar(4) NOT NULL,
   `Title` text,
   `Details` text,
   `Objectives` text,
@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS `quest_template_locale` (
   `ObjectiveText2` text,
   `ObjectiveText3` text,
   `ObjectiveText4` text,
-  `VerifiedBuild` SMALLINT DEFAULT 0,
+  `VerifiedBuild` smallint DEFAULT '0',
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumpar data för tabell acore_world.quest_template_locale: ~50 323 rows (ungefär)
+-- Dumpar data för tabell acore_world.quest_template_locale: ~61 287 rows (ungefär)
 DELETE FROM `quest_template_locale`;
 /*!40000 ALTER TABLE `quest_template_locale` DISABLE KEYS */;
 INSERT INTO `quest_template_locale` (`ID`, `locale`, `Title`, `Details`, `Objectives`, `EndText`, `CompletedText`, `ObjectiveText1`, `ObjectiveText2`, `ObjectiveText3`, `ObjectiveText4`, `VerifiedBuild`) VALUES
@@ -53363,7 +53363,7 @@ INSERT INTO `quest_template_locale` (`ID`, `locale`, `Title`, `Details`, `Object
 	(12957, 'esMX', 'Esclavos de los Tronaforjado', 'Al suroeste, en el lado occidental de las Llanuras Ventisquero, los enanos férreos han excavado una mina en la ladera. Allí utilizan mecagnomos cautivos, sirvientes del guardián Mimir, para extraer menas.$B$BNo sé de dónde han salido esos mecagnomos ni qué harían si fueran libres, pero quizás podamos conseguir que nos ayuden.$B$BVe a la Mina Gélida, $n, y libera a esas criaturas de sus ataduras. Pregúntales si quieren luchar a nuestro lado contra la tiranía de los enanos férreos.', 'Pedruscón el Creador de rocas en el Refugio de Pedruscón quiere que liberes a 6 mecagnomos cautivos y que mates a 3 capataces Tronaforjado.', '', 'Vuelve con: Pedruscón el Creador de rocas. Zona: Refugio de Pedruscón, Las Cumbres Tormentosas.', '', '', '', '', 18019),
 	(12957, 'frFR', 'Les esclaves des Forge-foudre', 'Au sud-ouest, sur la façade ouest des plaines des Congères, les nains de fer ont creusé une mine sous la colline. Ils y forcent des mécagnomes capturés, les serviteurs du gardien Mimir, à extraire du minerai.$B$BJe ne sais pas d\'où viennent ces mécagnomes, ni ce qu\'ils feraient de leur liberté, mais nous pouvons peut-être obtenir leur aide.$B$BRendez-vous dans la mine Gelée, $n, et libérez ces créatures de leurs chaînes. Demandez-leur s\'ils veulent se battre à nos côtés contre la tyrannie des nains de fer.', 'Rochecombe le Sculpteroc au Refuge de Rochecombe veut que vous libériez 6 Mécagnomes captifs et que vous tuiez 3 Sous-chefs forge-foudre.', '', 'Retournez voir Rochecombe le Sculpteroc au Refuge de Rochecombe, dans les Pics Foudroyés.', '', '', '', '', 18019),
 	(12957, 'ruRU', 'Рабы Закаленных Бурей', 'На юго-западе, в западной части Снежных равнин, у железных дворфов есть шахта. Они свозят туда пленных механогномов, слуг Хранителя Мимира, и заставляют их добывать руду.$B$BЯ не знаю, откуда взялись эти механогномы и что они стали бы делать, если бы обрели свободу, но, может быть, они станут нашими союзниками и смогут нам чем-то помочь.$B$BОтправляйся на Замерзший рудник, $n, и освободи пленников. И спроси, может быть, они станут сражаться бок о бок с нами против тирании железных дворфов.', 'По заданию Глыбоскала Камнетеса из Приюта Глыбоскала освободите 6 пленных механогномов и убейте 3 надсмотрщиков из клана Закаленных Бурей.', '', 'Вернитесь к Глыбоскалу Камнетесу в Приют Глыбоскала, что в Грозовой Гряде.', '', '', '', '', 18019),
-	(12957, 'zhCN', '雷铸铁矮人的奴隶', '在这里的西南方，雪流平原的西面，铁矮人在山坡上掘出了一个矿洞。在那里，它们利用米米尔的仆从——被俘虏的机械侏儒来采集矿石。$B$B我不知道这些机械侏儒是哪来的，也不知道解救它们之后会怎么样，但或许它们愿意帮助我们呢？$B$B到冰霜矿洞去，$N，让这些机械侏儒恢复自由。问问它们是否愿意站在我们这边，对抗铁矮人的暴行。', '布德克拉格庇护所的塑石者布德克拉格希望你去解救6名机械侏儒俘虏，并杀死3名雷铸工头。', '', '去风暴峭壁找布德克拉格庇护所的塑石者布德克拉格。', '', '', '', '', 0),
+	(12957, 'zhCN', '雷铸铁矮人的奴隶', '在这里的西南方，雪流平原的西面，铁矮人在山坡上掘出了一个矿洞。在那里，它们利用米米尔的仆从——被俘虏的机械侏儒来采集矿石。$B$B我不知道这些机械侏儒是哪来的，也不知道解救它们之后会怎么样，但或许它们愿意帮助我们呢？$B$B到冰霜矿洞去，$N，让这些机械侏儒恢复自由。问问它们是否愿意站在我们这边，对抗铁矮人的暴行。', '布德克拉格庇护所的塑石者布德克拉格希望你去解救6名机械侏儒俘虏，并杀死3名雷铸工头。', '', '去风暴峭壁找布德克拉格庇护所的塑石者布德克拉格。', '解救机械侏儒俘虏', '', '', '', 0),
 	(12957, 'zhTW', '風鑄奴隸', '鐵矮人在西南方，雪迅平原的西側的山丘上挖了一個礦坑。他們利用被俘虜的機械地精，也就是守護者彌米爾的僕從們來替他們採礦。$B$B我不知道這些機械地精是從哪裡來的，也不知道他們自由了以後會做什麼，但也許我們能夠得到他們的幫助。$B$B前往冰凍礦坑，$n，然後將他們從奴役中解放出來。問問他們願不願意與我們一同對抗鐵矮人的暴行。', '石崖避難所的『塑岩者』石崖要你釋放6個被俘虜的機械地精，並殺死3個風鑄監工。', '', '到風暴群山的石崖避難所找『塑岩者』石崖。', '嘗試解救被俘虜的機械地精', '', '', '', 0),
 	(12958, 'deDE', 'Lieferung: Blutrotes Nephritamulett', 'Ein wohlhabendes Lieferungsunternehmen hat eine Sammlung Blutjadeamulette für den Verkauf in Lorenhall beantragt. Falls Ihr mir eins bringen könntet, würde ich Euch mit einem Juwelierssymbol von Dalaran belohnen.', 'Kombiniert ein Vrykulamulett mit einem Nephrit und einem Blutstein, um ein blutrotes Nephritamulet herzustellen und es dann zu Jonas Timotheus in Dalaran zu bringen.$B$BVrykulamulette könnt Ihr von jedem Vrykul in Nordend erhalten.', '', 'Kehrt zu Jonas Timotheus bei Juwelier Cartier & Co. in Dalaran zurück.', '', '', '', '', 18019),
 	(12958, 'esES', 'Envío: amuleto de jade de sangre', 'Un comerciante muy rico ha pedido una colección de amuletos de jade de sangre para venderlos en Minahonda. Si me traes uno, te recompensaré con una muestra de joyero de Dalaran.|n', 'Reúne un amuleto vrykul, un jade oscuro y una sangrita para hacer un amuleto de jade de sangre, y llévaselo a Timothy Jones en Dalaran.$b$bPodrás encontrar amuletos vrykul en cualquier vrykul de Rasganorte.', '', 'Vuelve con: Timothy Jones. Zona: Joyería Fina Cartier y Cía., Dalaran.', '', '', '', '', 18019),
@@ -59427,7 +59427,7 @@ INSERT INTO `quest_template_locale` (`ID`, `locale`, `Title`, `Details`, `Object
 	(14203, 'esMX', 'Receta encharcada', 'Parecen los restos de una potente mezcla de vinos. Igual le interesa a la propietaria de Una Copa Más en Dalaran...', 'Llévale la receta encharcada a Christi Stockton en la Ciudad de Dalaran.', '', 'Vuelve con: Christi Stockton. Zona: Presa del Muro de Hierro, Corona de Hielo.', '', '', '', '', 18019),
 	(14203, 'frFR', 'Une recette détrempée', 'On dirait la recette d’un vin particulièrement corsé. Peut-être intéressera-t-elle la propriétaire d’Un dernier pour la route, à Dalaran.', 'Remettez la Recette détrempée à Christi Stockton à Dalaran.', '', 'Retournez voir Christi Stockton au Barrage Mur-de-fer, dans la Couronne de glace.', '', '', '', '', 18019),
 	(14203, 'ruRU', 'Промокший рецепт', 'Похоже, это остатки смеси, применяемой для изготовления очень крепкого вина. Возможно, владелец лавки "Еще по сто" заинтересуется этим рецептом...', 'Принесите промокший рецепт Кристи Стоктон в Даларан.', '', 'Вернитесь к Кристи Стоктон на Железную плотину, что в Ледяной Короне.', '', '', '', '', 18019),
-	(14203, 'zhCN', '被浸透的配方', '看起来，这张被水浸透的纸上应该是记录着一种烈性酒的酿造配方。也许达拉然“再来一杯”的店主会对这个感兴趣……', '将被浸透的配方交给达拉然城中的克莉丝蒂·斯多克顿。', '', '去冰冠冰川找铁墙大坝的克莉丝蒂·斯多克顿。', '', '', '', '', 0),
+	(14203, 'zhCN', '被浸透的配方', '看起来，这张被水浸透的纸上应该是记录着一种烈性酒的酿造配方。也许达拉然“再来一杯”的店主会对这个感兴趣……', '将被浸透的配方交给达拉然城中的克莉丝蒂·斯多克顿。', '', '去达拉然找再来一杯的克莉丝蒂·斯多克顿。', '', '', '', '', 0),
 	(14203, 'zhTW', '浸水的配方', '看起來這似乎是張調配烈酒的破舊配方。也許達拉然的「勸君更進一杯酒」的老闆對它會有興趣...', '將浸水的配方交給達拉然城的克利斯蒂‧斯托克頓。', '', '', '', '', '', '', 0),
 	(14349, 'deDE', 'Der Befehl', 'Der Befehl ist gekommen, $C. Sylvanas selbst hat verlangt, dass ich meine \'tüchtigsten\' Agenten auf eine höchst diffizile taktische Mission nach Unterstadt schicke.$B$BLeider wurden meine tüchtigsten Agenten alle vor drei Jahren getötet. An ihrer Stelle habe ich eine Bande hirntoter Trottel.$B$B<Nathanos schaut Euch kalt an.>$B$BReist sofort nach Unterstadt und erstattet der Dunklen Fürstin Bericht. Macht mir keine Schande, $C!', 'Reist nach Unterstadt und sprecht mit Fürstin Sylvanas Windläufer.', '', '', '', '', '', '', 18019),
 	(14349, 'esES', 'La llamada del teniente', 'Ha llegado la orden, $c. La mismísima Sylvanas ha solicitado que envíe a mis mejores agentes a Entrañas para una operación táctica muy delicada.$B$BPor desgracia, mis mejores agentes murieron hace más de tres años. Ahora solo cuento con un mísero grupo de chusma descerebrada.$B$B<Nathanos te lanza una fría mirada.>$B$BParte de inmediato hacia Entrañas y preséntate ante la Dama Oscura. ¡Y no me hagas quedar mal, $c!', 'Viaja a Entrañas y habla con Sylvanas Brisaveloz.', '', '', '', '', '', '', 18019),
