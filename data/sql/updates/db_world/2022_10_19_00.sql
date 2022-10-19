@@ -1,3 +1,4 @@
+-- DB update 2022_10_18_00 -> 2022_10_19_00
 --
 /*!40000 ALTER TABLE `gameobject` DISABLE KEYS */;
 REPLACE INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`) VALUES
