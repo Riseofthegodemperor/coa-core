@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `spell_dbc` (
   `SpellDescriptionVariableID` int unsigned NOT NULL DEFAULT '0',
   `SpellDifficultyID` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table acore_world.spell_dbc: 4,543 rows
 DELETE FROM `spell_dbc`;

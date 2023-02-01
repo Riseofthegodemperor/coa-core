@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `creature` (
   PRIMARY KEY (`guid`),
   KEY `idx_map` (`map`),
   KEY `idx_id` (`id1`)
-) ENGINE=MyISAM AUTO_INCREMENT=3110422 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=MyISAM AUTO_INCREMENT=3110422 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 
 -- Dumping data for table acore_world.creature: 147,348 rows
 DELETE FROM `creature`;

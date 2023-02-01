@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `page_text_locale` (
   `Text` text,
   `VerifiedBuild` mediumint DEFAULT NULL,
   PRIMARY KEY (`ID`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table acore_world.page_text_locale: ~9,945 rows (approximately)
 DELETE FROM `page_text_locale`;

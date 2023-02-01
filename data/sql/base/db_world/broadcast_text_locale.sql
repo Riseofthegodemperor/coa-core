@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
   `FemaleText` text,
   `VerifiedBuild` smallint DEFAULT '0',
   PRIMARY KEY (`ID`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table acore_world.broadcast_text_locale: ~550,208 rows (approximately)
 DELETE FROM `broadcast_text_locale`;

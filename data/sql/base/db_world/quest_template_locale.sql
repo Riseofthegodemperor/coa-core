@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `quest_template_locale` (
   `ObjectiveText4` text,
   `VerifiedBuild` mediumint DEFAULT NULL,
   PRIMARY KEY (`ID`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table acore_world.quest_template_locale: ~56,832 rows (approximately)
 DELETE FROM `quest_template_locale`;

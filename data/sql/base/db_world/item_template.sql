@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `item_template` (
   PRIMARY KEY (`entry`),
   KEY `idx_name` (`name`(250)),
   KEY `items_index` (`class`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=FIXED COMMENT='Item System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ROW_FORMAT=FIXED COMMENT='Item System';
 
 -- Dumping data for table acore_world.item_template: 46,096 rows
 DELETE FROM `item_template`;

@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `smart_scripts` (
   `target_o` float NOT NULL DEFAULT '0',
   `comment` text NOT NULL COMMENT 'Event Comment',
   PRIMARY KEY (`entryorguid`,`source_type`,`id`,`link`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=FIXED;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ROW_FORMAT=FIXED;
 
 -- Dumping data for table acore_world.smart_scripts: 46,172 rows
 DELETE FROM `smart_scripts`;

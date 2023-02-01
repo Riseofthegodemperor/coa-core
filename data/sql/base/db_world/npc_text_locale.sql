@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `npc_text_locale` (
   `Text7_0` longtext,
   `Text7_1` longtext,
   PRIMARY KEY (`ID`,`Locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table acore_world.npc_text_locale: ~21,454 rows (approximately)
 DELETE FROM `npc_text_locale`;

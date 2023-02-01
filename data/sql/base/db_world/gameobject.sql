@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `gameobject` (
   `ScriptName` char(64) DEFAULT '',
   `VerifiedBuild` mediumint DEFAULT NULL,
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2135455 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=FIXED COMMENT='Gameobject System';
+) ENGINE=MyISAM AUTO_INCREMENT=2135455 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=FIXED COMMENT='Gameobject System';
 
 -- Dumping data for table acore_world.gameobject: 85,801 rows
 DELETE FROM `gameobject`;

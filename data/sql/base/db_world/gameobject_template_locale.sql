@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `gameobject_template_locale` (
   `castBarCaption` text,
   `VerifiedBuild` mediumint DEFAULT NULL,
   PRIMARY KEY (`entry`,`locale`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table acore_world.gameobject_template_locale: 159,831 rows
 DELETE FROM `gameobject_template_locale`;

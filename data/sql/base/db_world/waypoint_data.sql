@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `waypoint_data` (
   `action_chance` smallint NOT NULL DEFAULT '100',
   `wpguid` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`point`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table acore_world.waypoint_data: 135,917 rows
 DELETE FROM `waypoint_data`;

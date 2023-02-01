@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `npc_text` (
   `em7_5` smallint unsigned NOT NULL DEFAULT '0',
   `VerifiedBuild` mediumint DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table acore_world.npc_text: 8,348 rows
 DELETE FROM `npc_text`;

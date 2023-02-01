@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `quest_template` (
   `ObjectiveText4` text,
   `VerifiedBuild` mediumint DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Quest System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='Quest System';
 
 -- Dumping data for table acore_world.quest_template: 9,464 rows
 DELETE FROM `quest_template`;

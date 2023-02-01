@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `creature_loot_template` (
   `MaxCount` tinyint unsigned NOT NULL DEFAULT '1',
   `Comment` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Entry`,`Item`,`Reference`,`GroupId`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Loot System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='Loot System';
 
 -- Dumping data for table acore_world.creature_loot_template: 329,593 rows
 DELETE FROM `creature_loot_template`;
