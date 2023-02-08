@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumping data for table acore_world.broadcast_text_locale: ~550,208 rows (approximately)
+-- Dumping data for table acore_world.broadcast_text_locale: ~583,570 rows (approximately)
 DELETE FROM `broadcast_text_locale`;
 INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(1, 'deDE', 'Hilfe, Hilfe! Ich werde bedrängt!', '', 18019),
@@ -9087,7 +9087,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(1207, 'deDE', '', 'Zurück von einer langen Reise? Ruht Euch im "Pfeifenden Schwein" aus!', 18019),
 	(1207, 'esES', '', '¿De vuelta de un viaje largo? ¡Descansa y relájate en El Cerdo Borracho!', 18019),
 	(1207, 'esMX', '', '¿De vuelta de un viaje largo? ¡Descansa y relájate en El Cerdo Borracho!', 18019),
-	(1207, 'frFR', '', 'Vous rentrez d\'un long voyage ? Venez vous reposer au Cochon siffleur !', 18019),
+	(1207, 'frFR', '', 'Vous rentrez d\'un long voyage ? Venez vous reposer au Cochon siffleur !', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(1207, 'koKR', '', '오랜 여행에서 돌아오셨나요? 돼지와 휘파람 선술집에서 편안한 휴식을 맛보세요!', 18019),
 	(1207, 'ruRU', '', 'Устали с дороги? Отдохните и расслабьтесь в "Свинье и свистке"!', 18019),
 	(1207, 'zhCN', '', '刚刚长途旅行归来？在猪和哨声旅店休息放松一下吧！', 18019),
@@ -10027,8 +10028,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(1327, 'koKR', '%s|1이;가; 어둠 속에서 튀어나옵니다!', '%s|1이;가; 어둠 속에서 튀어나옵니다!', 18019),
 	(1327, 'ruRU', '%s выпрыгивает из тени!', '%s выпрыгивает из тени!', 18019),
 	(1327, 'zhCN', '%s从阴影中跳了出来！', '%s从阴影中跳了出来！', 18019),
-	(1327, 'zhTW', '%s從陰影中跳了出來!', '%s從陰影中跳了出來!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(1327, 'zhTW', '%s從陰影中跳了出來!', '%s從陰影中跳了出來!', 18019),
 	(1328, 'deDE', 'Es wird langsam Zeit, dass jemand diese Kreatur tötet.', '', 18019),
 	(1328, 'esES', 'Ya era hora de que alguien acabara con el pobre infeliz.', '', 18019),
 	(1328, 'esMX', 'Ya era hora de que alguien acabara con el pobre infeliz.', '', 18019),
@@ -17554,7 +17554,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(2807, 'esMX', 'Una vez seguí la senda del Martillo Crepuscular. Obsesionado con resucitar a los dioses antiguos, me interné en las profundidades de esta guarida para intentar absorber el poder de Aku\'mai, ¡bestia maldita!$b$bTras presenciar el sacrificio de incontables inocentes, recuperé el sentido.$b$b¡Estaba atrapado, pero ahora soy libre! ¡Y ahora estoy tan lejos de mi tierra natal Khaz Modan!$b$bValiente $gaventurero:aventurera;, te enseñaré el camino a una tierra muy especial a cambio de que mates a Aku\'mai. Si lo deseas, puedo transportarte a la ciudad de Darnassus.', '', 18019),
 	(2807, 'frFR', 'Autrefois, j’ai suivi la voie du Marteau du crépuscule. Obsédé par la volonté de ramener les Dieux très anciens à la vie, j’ai voyagé dans les profondeurs de cette tanière pour extraire la puissance de cette maudite bête, Aku’mai !$b$bAprès avoir été témoin du sacrifice d’innombrables innocents, je suis revenu à la raison.$b$bJ’étais piégé, mais à présent je suis libre ! Cependant, je suis si loin de ma patrie, Khaz Modan !$b$bBrave $gaventurier:aventurière;, je vous offre le passage menant à un pays très spécial si, en échange, vous tuez Aku’mai. Si vous le voulez, je peux vous mener à la ville de Darnassus.', '', 18019),
 	(2807, 'koKR', '나는 한때 황혼의 망치단을 따랐었소. 고대 신들을 환생시키는 데 집착했던 나는 그 몹쓸 짐승 아쿠마이의 힘을 얻기 위해 이 깊은 굴속으로 들어왔지.$B$B수많은 무고한 생명이 제물로 바쳐지는 것을 보고서야 정신을 차리게 되었소.$B$B이제는 덫에서 풀려나 자유의 몸이 되었소! 하지만 고향인 카즈 모단은 너무나 멀리 있군.$B$B용감한 모험가여, 아쿠마이를 처치해 준 답례로 아주 특별한 땅으로 가는 길을 알려주겠소. 원한다면 다르나서스로 이동시켜주리다.', '', 18019),
-	(2807, 'ruRU', 'Когда-то я следовал путем Сумеречного Молота. Одержимый желанием воскресить древних богов, я забрался в глубины этого логова, чтобы забрать силу этого проклятого зверя Аку\'май.$b$bНо, увидев, сколько невинных приносят здесь в жертву, я опомнился.$b$bЯ был в ловушке, но теперь свободен. Но моя родина, Каз Модан, так далеко отсюда!$b$bВ благодарность за победу над Аку\'май я предлагаю тебе, $gхрабрый странник:храбрая странница;, побывать в очень необычном месте. Стоит тебе пожелать, и я отправлю тебя в город Дарнас.', '', 18019),
+	(2807, 'ruRU', 'Когда-то я следовал путем Сумеречного Молота. Одержимый желанием воскресить древних богов, я забрался в глубины этого логова, чтобы забрать силу этого проклятого зверя Аку\'май.$b$bНо, увидев, сколько невинных приносят здесь в жертву, я опомнился.$b$bЯ был в ловушке, но теперь свободен. Но моя родина, Каз Модан, так далеко отсюда!$b$bВ благодарность за победу над Аку\'май я предлагаю тебе, $gхрабрый странник:храбрая странница;, побывать в очень необычном месте. Стоит тебе пожелать, и я отправлю тебя в город Дарнас.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(2807, 'zhCN', '我以前曾经追寻过墓光之锤的道路。为了找到复活上古之神的方法，我只身深入这座巢穴，想要找到从那个该死的恶魔阿库麦尔身上抽取能量的方法。$B$B在看到无数无辜人白白地牺牲之后，我慢慢恢复了理智。$B$B我被困住了一段时间，但是现在我自由了！不幸的是，这里离我的家乡卡兹莫丹太远了！$B$B勇敢的冒险者，我现在可以将你传送到一个特别的地方，然后回来干掉阿库麦尔。如果你愿意的话，我现在就送你到达纳苏斯去。', '', 18019),
 	(2807, 'zhTW', '我以前曾經追尋過暮光之錘的道路。為了找到復活上古諸神的方法，我隻身深入這座巢穴，想要找到從那個該死的惡魔阿庫麥爾身上抽取能量的方法。$B$B在看到無數無辜人白白地犧牲之後，我慢慢恢復了理智。$B$B我被困住了一段時間，但是現在我自由了!不幸的是，這裡離我的家鄉卡茲莫丹太遠了!$B$B勇敢的冒險者，我現在可以將你傳送至一個特別的地方，然後回來幹掉阿庫麥爾。如果你願意的話，我現在就送你到達納蘇斯去。', '', 18019),
 	(2821, 'deDE', 'Willkommen in meinem Gasthaus, $G müder Reisender:müde Reisende;. Was kann ich für Euch tun?', 'Willkommen in meinem Gasthaus, $G müder Reisender:müde Reisende;. Was kann ich für Euch tun?', 18019),
@@ -20028,8 +20029,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(3337, 'koKR', '오, 약초채집가로군요. 흠, 보아하니 당신은 아직 잡초나 캐고 있을 것 같으니, 내 제대로 된 약초채집 기술을 몇 가지 가르쳐 주도록 하겠소.', '오, 약초채집가로군요. 흠, 보아하니 당신은 아직 잡초나 캐고 있을 것 같으니, 내 제대로 된 약초채집 기술을 몇 가지 가르쳐 주도록 하겠소.', 18019),
 	(3337, 'ruRU', 'Очередной травник, хмм. Сомневаюсь, что у тебя такой же великолепный навык, как и у меня, поэтому, может быть, я смогу обучить тебя парочке приемчиков.', 'Очередной травник, хмм. Сомневаюсь, что у тебя такой же великолепный навык, как и у меня, поэтому, может быть, я смогу обучить тебя парочке приемчиков.', 18019),
 	(3337, 'zhCN', '关于草药学，嗯……我认为你现在和我的水平已经差不多了，也许我只能在个别细节上给你一些点拨。', '关于草药学，嗯……我认为你现在和我的水平已经差不多了，也许我只能在个别细节上给你一些点拨。', 18019),
-	(3337, 'zhTW', '你也是草藥師嗎，嗯...我想你的水準應該還沒有我這麼棒，那讓我來教你一點專業的技巧吧。', '你也是草藥師嗎，嗯...我想你的水準應該還沒有我這麼棒，那讓我來教你一點專業的技巧吧。', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(3337, 'zhTW', '你也是草藥師嗎，嗯...我想你的水準應該還沒有我這麼棒，那讓我來教你一點專業的技巧吧。', '你也是草藥師嗎，嗯...我想你的水準應該還沒有我這麼棒，那讓我來教你一點專業的技巧吧。', 18019),
 	(3338, 'deDE', 'Willkommen in meinem Laden. Es ist gut, hier in Sturmwind einen zweiten Schneider zu wissen. Oder seid Ihr vielleicht wegen einer Lektion hier?', 'Willkommen in meinem Laden. Es ist gut, hier in Sturmwind einen zweiten Schneider zu wissen. Oder seid Ihr vielleicht wegen einer Lektion hier?', 18019),
 	(3338, 'esES', 'Te doy la bienvenida a mi tienda, es bueno ver a otro sastre por aquí en Ventormenta. ¿Has venido tal vez para recibir instrucción?', 'Te doy la bienvenida a mi tienda, es bueno ver a otro sastre por aquí en Ventormenta. ¿Has venido tal vez para recibir instrucción?', 18019),
 	(3338, 'esMX', 'Te doy la bienvenida a mi tienda, es bueno ver a otro sastre por aquí en Ventormenta. ¿Has venido tal vez para recibir instrucción?', 'Te doy la bienvenida a mi tienda, es bueno ver a otro sastre por aquí en Ventormenta. ¿Has venido tal vez para recibir instrucción?', 18019),
@@ -22363,7 +22363,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(3931, 'esMX', '¡Eh! ¡Apártate de nuestro tesoro!', '¡Eh! ¡Apártate de nuestro tesoro!', 18019),
 	(3931, 'frFR', 'Hé ! Éloignez-vous de notre trésor !', 'Hé ! Éloignez-vous de notre trésor !', 18019),
 	(3931, 'koKR', '이봐! 우리 보물에서 손 떼라고!', '이봐! 우리 보물에서 손 떼라고!', 18019),
-	(3931, 'ruRU', 'Эй! Убирайся от нашего сокровища!', 'Эй! Убирайся от нашего сокровища!', 18019),
+	(3931, 'ruRU', 'Эй! Убирайся от нашего сокровища!', 'Эй! Убирайся от нашего сокровища!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(3931, 'zhCN', '嘿！离我们的财宝远一点！', '嘿！离我们的财宝远一点！', 18019),
 	(3931, 'zhTW', '嘿!離我們的財寶遠一點!', '嘿!離我們的財寶遠一點!', 18019),
 	(3932, 'deDE', 'Das ist unser Schatz, Landratte!', 'Das ist unser Schatz, Landratte!', 18019),
@@ -27582,7 +27583,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(4809, 'ruRU', 'Зайус со своими жрецами живет в Обители Духов. Иди к озеру вверх и на запад по Аллее Силы – придешь на Аллею Духов, а там $gсам:сама; увидишь.', 'Зайус со своими жрецами живет в Обители Духов. Иди к озеру вверх и на запад по Аллее Силы – придешь на Аллею Духов, а там $gсам:сама; увидишь.', 18019),
 	(4809, 'zhCN', '萨尤斯与他的牧师在精神谷那的灵魂小屋里。去力量谷上方西侧的湖泊那里可以找到他。', '萨尤斯与他的牧师在精神谷那的灵魂小屋里。去力量谷上方西侧的湖泊那里可以找到他。', 18019),
 	(4809, 'zhTW', '薩尤斯與他的牧師在精神谷那的靈魂小屋裡。去力量谷上方西側的湖泊那裡可以找到他。', '薩尤斯與他的牧師在精神谷那的靈魂小屋裡。去力量谷上方西側的湖泊那裡可以找到他。', 18019),
-	(4810, 'deDE', 'Heilung ist für jene, die keinen Schmerz ertragen können. Aber wenn es denn unbedingt sein muss, dann geht zur Geisterlodge am See im Tal der Geister, über dem Tal der Stärke im Westen.', 'Heilung ist für jene, die keinen Schmerz ertragen können. Aber wenn es denn unbedingt sein muss, dann geht zur Geisterlodge am See im Tal der Geister, über dem Tal der Stärke im Westen.', 18019),
+	(4810, 'deDE', 'Heilung ist für jene, die keinen Schmerz ertragen können. Aber wenn es denn unbedingt sein muss, dann geht zur Geisterlodge am See im Tal der Geister, über dem Tal der Stärke im Westen.', 'Heilung ist für jene, die keinen Schmerz ertragen können. Aber wenn es denn unbedingt sein muss, dann geht zur Geisterlodge am See im Tal der Geister, über dem Tal der Stärke im Westen.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(4810, 'esES', 'La curación es para aquellos que no pueden soportar el dolor. No obstante, si para ti es imprescindible, busca el Recinto de los Espíritus en el lago que está en el Valle de los Espíritus, arriba y al oeste del Valle de la Fuerza.', 'La curación es para aquellos que no pueden soportar el dolor. No obstante, si para ti es imprescindible, busca el Recinto de los Espíritus en el lago que está en el Valle de los Espíritus, arriba y al oeste del Valle de la Fuerza.', 18019),
 	(4810, 'esMX', 'La curación es para aquellos que no pueden soportar el dolor. No obstante, si para ti es imprescindible, busca el Recinto de los Espíritus en el lago que está en el Valle de los Espíritus, arriba y al oeste del Valle de la Fuerza.', 'La curación es para aquellos que no pueden soportar el dolor. No obstante, si para ti es imprescindible, busca el Recinto de los Espíritus en el lago que está en el Valle de los Espíritus, arriba y al oeste del Valle de la Fuerza.', 18019),
 	(4810, 'frFR', 'Les soins, c\'est pour ceux qui ne supportent pas la douleur. Mais si vous le voulez vraiment, cherchez l\'Autel des esprits sur le lac de la vallée des Esprits, au-dessus de la vallée de la Force, à l\'ouest.', 'Les soins, c\'est pour ceux qui ne supportent pas la douleur. Mais si vous le voulez vraiment, cherchez l\'Autel des esprits sur le lac de la vallée des Esprits, au-dessus de la vallée de la Force, à l\'ouest.', 18019),
@@ -30029,8 +30031,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(5119, 'koKR', '요리', '요리', 18019),
 	(5119, 'ruRU', 'Кулинария', 'Кулинария', 18019),
 	(5119, 'zhCN', '烹饪', '烹饪', 18019),
-	(5119, 'zhTW', '烹飪', '烹飪', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(5119, 'zhTW', '烹飪', '烹飪', 18019),
 	(5120, 'deDE', 'Ein Kochkunstlehrer soll es sein? Wohlan, begebt Euch \'Zum Bronzekessel\' auf der nordöstlichen Seite der Großen Schmiede. Daryl Riknussun bringt Euch bei, wie man ein sagenhaft leckeres Gericht zubereitet, das Eure Lebensgeister ganz bestimmt wieder weckt!', 'Ein Kochkunstlehrer soll es sein? Wohlan, begebt Euch \'Zum Bronzekessel\' auf der nordöstlichen Seite der Großen Schmiede. Daryl Riknussun bringt Euch bei, wie man ein sagenhaft leckeres Gericht zubereitet, das Eure Lebensgeister ganz bestimmt wieder weckt!', 18019),
 	(5120, 'esES', '¿Necesitas un instructor en el arte de cocinar? Bueno, entonces ve a La Tetera de Bronce, al noreste de La Gran Fundición. ¡Daryl Riknussun te enseñará a cocinar un plato que te hará resucitar!', '¿Necesitas un instructor en el arte de cocinar? Bueno, entonces ve a La Tetera de Bronce, al noreste de La Gran Fundición. ¡Daryl Riknussun te enseñará a cocinar un plato que te hará resucitar!', 18019),
 	(5120, 'esMX', '¿Necesitas un instructor en el arte de cocinar? Bueno, entonces ve a La Tetera de Bronce, al noreste de La Gran Fundición. ¡Daryl Riknussun te enseñará a cocinar un plato que te hará resucitar!', '¿Necesitas un instructor en el arte de cocinar? Bueno, entonces ve a La Tetera de Bronce, al noreste de La Gran Fundición. ¡Daryl Riknussun te enseñará a cocinar un plato que te hará resucitar!', 18019),
@@ -32772,7 +32773,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(5484, 'esMX', 'Una hermandad de espíritus similares puede constituir una fuerza poderosa. Krumn te ayudará a conseguirlo. Lo encontrarás en el centro de Información al ciudadano, en la pequeña pendiente que está junto a los ascensores.', 'Una hermandad de espíritus similares puede constituir una fuerza poderosa. Krumn te ayudará a conseguirlo. Lo encontrarás en el centro de Información al ciudadano, en la pequeña pendiente que está junto a los ascensores.', 18019),
 	(5484, 'frFR', 'Une communauté d\'esprits frères peut représenter une puissante force. Krumn vous aidera à réaliser cela. Vous le trouverez au Centre d\'information civique des Pitons-du-Tonnerre, sur la Cime inférieure, non loin des ascenseurs.', 'Une communauté d\'esprits frères peut représenter une puissante force. Krumn vous aidera à réaliser cela. Vous le trouverez au Centre d\'information civique des Pitons-du-Tonnerre, sur la Cime inférieure, non loin des ascenseurs.', 18019),
 	(5484, 'koKR', '동족과의 우정은 아주 강력한 힘이 될 수 있습니다. 이런 일은 크룸이 도와 줄 수 있지요. 봉우리 하층, 승강기 옆에 있는 썬더 블러프 길드 사무소를 찾아가 보십시오.', '동족과의 우정은 아주 강력한 힘이 될 수 있습니다. 이런 일은 크룸이 도와 줄 수 있지요. 봉우리 하층, 승강기 옆에 있는 썬더 블러프 길드 사무소를 찾아가 보십시오.', 18019),
-	(5484, 'ruRU', 'Объединение родственных душ – огромная сила. Крумн поможет тебе обрести ее. Ищи его в информационном центре Громового Утеса. Это на нижнем уступе, рядом с подъемниками.', 'Объединение родственных душ – огромная сила. Крумн поможет тебе обрести ее. Ищи его в информационном центре Громового Утеса. Это на нижнем уступе, рядом с подъемниками.', 18019),
+	(5484, 'ruRU', 'Объединение родственных душ – огромная сила. Крумн поможет тебе обрести ее. Ищи его в информационном центре Громового Утеса. Это на нижнем уступе, рядом с подъемниками.', 'Объединение родственных душ – огромная сила. Крумн поможет тебе обрести ее. Ищи его в информационном центре Громового Утеса. Это на нижнем уступе, рядом с подъемниками.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(5484, 'zhCN', '一个志趣相投的团体可以成为一支非常强大的力量。克拉姆会帮助你们达到这个目的。你可以在雷霆崖升降梯旁边中部高地的底层的公民信息中心找到他。', '一个志趣相投的团体可以成为一支非常强大的力量。克拉姆会帮助你们达到这个目的。你可以在雷霆崖升降梯旁边中部高地的底层的公民信息中心找到他。', 18019),
 	(5484, 'zhTW', '一個志趣相投的團體可以成為一支非常強大的力量。克拉姆會幫助你們達到這個目的。你可以在雷霆崖升降梯旁邊中部高地的底層的公民資訊中心找到他。', '一個志趣相投的團體可以成為一支非常強大的力量。克拉姆會幫助你們達到這個目的。你可以在雷霆崖升降梯旁邊中部高地的底層的公民資訊中心找到他。', 18019),
 	(5485, 'deDE', 'Die Natur spendet alles, was wir brauchen. Sprecht mit Komin Winterhuf bei \'Ganzheitliche Kräuterkunde\' auf der mittleren Anhöhe.', 'Die Natur spendet alles, was wir brauchen. Sprecht mit Komin Winterhuf bei \'Ganzheitliche Kräuterkunde\' auf der mittleren Anhöhe.', 18019),
@@ -38323,7 +38325,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(6207, 'esES', '¡Te arrancaré los secretos de la carne!', '', 18019),
 	(6207, 'esMX', '¡Te arrancaré los secretos por la fuerza!', '', 18019),
 	(6207, 'frFR', 'J\'arracherai les secrets de votre chair !', '', 18019),
-	(6207, 'koKR', '낱낱이 밝혀내고야 말겠다!', '', 18019),
+	(6207, 'koKR', '낱낱이 밝혀내고야 말겠다!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(6207, 'ruRU', 'Я вырву эти тайны из вашей плоти!', '', 18019),
 	(6207, 'zhCN', '我要从你的肉体中把秘密都挖出来！', '', 18019),
 	(6207, 'zhTW', '我要從你的肉體中把秘密都挖出來!', '', 18019),
@@ -40030,8 +40033,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(6422, 'koKR', '네 가죽으로 내 시린 무릎을 덮어야겠다! 담배? 내 눈에 흙이 들어가기 전까지는 절대... 으... 우워어어어!!!', '', 18019),
 	(6422, 'ruRU', 'Я твою шкуру на жилетки пущу! Сапоги тебе? Да ты снимешь их только с моего тру... э... РРРРРР!!!', '', 18019),
 	(6422, 'zhCN', '我要把你的皮当作便服来穿！长靴呢？你得将它们从那儿撬下来！！！！', '', 18019),
-	(6422, 'zhTW', '我要把你的皮當作便服來穿!長靴呢?你得將它們從那兒撬下來!!!!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(6422, 'zhTW', '我要把你的皮當作便服來穿!長靴呢?你得將它們從那兒撬下來!!!!', '', 18019),
 	(6423, 'deDE', 'Lasst nichts zurück!', '', 18019),
 	(6423, 'esES', '¡No te olvides de nada!', '', 18019),
 	(6423, 'esMX', '¡No te olvides de nada!', '', 18019),
@@ -42455,7 +42457,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(6733, 'koKR', '마을을 가로지르는 길의 남동쪽 끝에 있는 교수대끝 선술집으로 가게. 여관주인 리니가 기다리고 있을 거야.', '마을을 가로지르는 길의 남동쪽 끝에 있는 교수대끝 선술집으로 가게. 여관주인 리니가 기다리고 있을 거야.', 18019),
 	(6733, 'ruRU', 'Ренни можно найти в ее таверне "Петля висельника". Чтобы добраться туда, пройди на юго-восток по улице, которая идет через весь город.', 'Ренни можно найти в ее таверне "Петля висельника". Чтобы добраться туда, пройди на юго-восток по улице, которая идет через весь город.', 18019),
 	(6733, 'zhCN', '你可以在穿过城镇的道路东南端的恐惧之末旅店里面找到旅店老板瑞尼。', '你可以在穿过城镇的道路东南端的恐惧之末旅店里面找到旅店老板瑞尼。', 18019),
-	(6733, 'zhTW', '你可以在穿過城鎮的道路東南端的恐懼之末旅店裡面找到旅店老闆芮妮。', '你可以在穿過城鎮的道路東南端的恐懼之末旅店裡面找到旅店老闆芮妮。', 18019),
+	(6733, 'zhTW', '你可以在穿過城鎮的道路東南端的恐懼之末旅店裡面找到旅店老闆芮妮。', '你可以在穿過城鎮的道路東南端的恐懼之末旅店裡面找到旅店老闆芮妮。', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(6734, 'deDE', 'Also, wenn ich Gastwirtin Renee wäre, wo wäre ich dann wohl? Hmmm? Oh, vielleicht in der Taverne Zur Galgenschlinge. Ja, genau, das war\'s, da bin ich mir ganz sicher. Versucht\'s mal am südöstlichen Ende von Brill... glaubt Ihr, das findet Ihr?', 'Also, wenn ich Gastwirtin Renee wäre, wo wäre ich dann wohl? Hmmm? Oh, vielleicht in der Taverne Zur Galgenschlinge. Ja, genau, das war\'s, da bin ich mir ganz sicher. Versucht\'s mal am südöstlichen Ende von Brill... glaubt Ihr, das findet Ihr?', 18019),
 	(6734, 'esES', 'Bien, ¿si yo fuera la tabernera Renee, dónde estaría? ¿Ummm? Oh, quizás en el Mesón La Horca. Sí, eso es, estoy seguro. Ve al extremo sureste de Rémol... ¿crees que podrás encontrarlo?', 'Bien, ¿si yo fuera la tabernera Renee dónde estaría? ¿Ummm? Oh, quizás en el Mesón La Horca. Sí, eso es, estoy seguro. Ve al extremo sureste de Rémol... ¿crees que podrás encontrarlo?', 18019),
 	(6734, 'esMX', 'Bien, ¿si yo fuera la tabernera Renee, dónde estaría? ¿Ummm? Oh, quizás en el Mesón La Horca. Sí, eso es, estoy seguro. Ve al extremo sureste de Rémol... ¿crees que podrás encontrarlo?', 'Bien, ¿si yo fuera la tabernera Renee dónde estaría? ¿Ummm? Oh, quizás en el Mesón La Horca. Sí, eso es, estoy seguro. Ve al extremo sureste de Rémol... ¿crees que podrás encontrarlo?', 18019),
@@ -46616,7 +46619,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(7259, 'ruRU', 'Эксперт по оружию', 'Эксперт по оружию', 18019),
 	(7259, 'zhCN', '武器大师', '武器大师', 18019),
 	(7259, 'zhTW', '武器大師', '武器大師', 18019),
-	(7260, 'deDE', 'Es wäre klug, Euch zu erklären, welche Mühen unsere Feinde auf sich nehmen, um sich direkt unter unseren Augen zu verstecken.$B$BEines müsst Ihr vor allem wissen: Unser Feind ist der Schattenrat. Ganz gleich, welche Aufgabe ich Euch gebe oder gegen wen ich Euch zu handeln heiße, diese eine einfache Tatsache dürft Ihr nie vergessen.$B$BEs existieren viele Kulte innerhalb des Rates, doch nur aus dem einen Grund, um seine Handlungen vor den Narren zu verbergen.$B$BGruppen wie die Brennende Klinge, die Arguswacht und die Sengende Klinge sind alles Werkzeuge des Rates. Erachtet sie als ein und dasselbe.', '', 18019),
+	(7260, 'deDE', 'Es wäre klug, Euch zu erklären, welche Mühen unsere Feinde auf sich nehmen, um sich direkt unter unseren Augen zu verstecken.$B$BEines müsst Ihr vor allem wissen: Unser Feind ist der Schattenrat. Ganz gleich, welche Aufgabe ich Euch gebe oder gegen wen ich Euch zu handeln heiße, diese eine einfache Tatsache dürft Ihr nie vergessen.$B$BEs existieren viele Kulte innerhalb des Rates, doch nur aus dem einen Grund, um seine Handlungen vor den Narren zu verbergen.$B$BGruppen wie die Brennende Klinge, die Arguswacht und die Sengende Klinge sind alles Werkzeuge des Rates. Erachtet sie als ein und dasselbe.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(7260, 'esES', 'Sería acertado explicarte las profundidades a las que huirían nuestros enemigos para esconderse ante nuestras narices.$B$BEsto es lo primero y más importante: nuestro enemigo es el Consejo de las Sombras. No importa qué tarea te dé ni contra quién te ordene actuar, recuerda solo ese simple hecho.$B$BExisten muchos cultos en el Consejo, pero todos se resumen en ocultar sus acciones frente al imprudente.$B$BGrupos como la Hoja Abrasadora, el Despertar de Argus y la Hoja Abrasadora son herramientas del Consejo. Considéralos una misma cosa.', '', 18019),
 	(7260, 'esMX', 'Sería acertado explicarte las profundidades a las que huirían nuestros enemigos para esconderse ante nuestras narices.$B$BEsto es lo primero y más importante: nuestro enemigo es el Consejo de las Sombras. No importa qué tarea te dé ni contra quién te ordene actuar, recuerda solo ese simple hecho.$B$BExisten muchos cultos en el Consejo, pero todos se resumen en ocultar sus acciones frente al imprudente.$B$BGrupos como la Hoja Abrasadora, el Despertar de Argus y la Hoja Abrasadora son herramientas del Consejo. Considéralos una misma cosa.', '', 18019),
 	(7260, 'frFR', 'Il me paraît sage de vous expliquer à quelles profondeurs nos ennemis iront pour se cacher sous notre propre nez.$B$BSachez avant tout que notre ennemi est le Conseil des ombres. Quelle que soit la tâche que je vous donnerai, quel que soit celui contre qui je vous demanderai d\'agir, n\'oubliez pas cela.$B$BDe nombreux cultes existent au sein du Conseil, mais ils existent seulement pour camoufler ses agissements aux yeux des naïfs.$B$BDes groupes comme la Lame ardente, la Veille d\'Argus et la Lame brûlante ne sont que des pions du Conseil. Vous devriez les considérer comme un seul et même groupe.', '', 18019),
@@ -50031,8 +50035,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(7696, 'koKR', '힘 좀 써보라고! 고된 일과 결단력만이 살길이야! 책만 보면 모든 걸 배울 수 있다는 녀석들은 쳐다보지도 말게.', '', 18019),
 	(7696, 'ruRU', 'Выкладывайся полностью, $gпарень:девушка;. Терпение и труд все перетрут! И не верь тем, кто говорит, что любое дело можно выучить по книгам!', '', 18019),
 	(7696, 'zhCN', '$g小伙子:姑娘;，努力吧。苦干和决心——那就是成功之道！书本知识是远远不够的。', '', 18019),
-	(7696, 'zhTW', '$g小夥子:小姑娘;，努力吧。苦幹和決心 - 那才是成功之道!書本知識是遠遠不夠的。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(7696, 'zhTW', '$g小夥子:小姑娘;，努力吧。苦幹和決心 - 那才是成功之道!書本知識是遠遠不夠的。', '', 18019),
 	(7697, 'deDE', 'Ach, \'s gibt nix, was ich Euch beibringen kann, $n. Redet ma\' mit Tally Brausefitz da drüben. Sie kann zwar kaum über die Tischplatte kucken, aber wenn die ma\'n Trank braut - hossa!', '', 18019),
 	(7697, 'esES', 'Oj, no puedo enseñarte nada, $n. Habla con Tally Burbubaya. Casi no llega a la mesa, pero si empieza a preparar una poción ¡presta atención!', '', 18019),
 	(7697, 'esMX', 'Oj, no puedo enseñarte nada, $n. Habla con Tally Burbubaya. Casi no llega a la mesa, pero si empieza a preparar una poción ¡presta atención!', '', 18019),
@@ -51850,7 +51853,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(7927, 'zhCN', '有些冒险家认为附魔术不起作用。我发现当我向他们挑战，要与他们作战时，他们的看法就改变了！', '', 18019),
 	(7927, 'zhTW', '有些冒險家認為附魔術不起作用。我發現當我向他們挑戰，要與他們作戰時，他們的看法就改變了!', '', 18019),
 	(7928, 'deDE', 'Ich bin Euren Fertigkeiten nicht gewachsen, Fremdling. Sprecht mit Hgarth in Sonnenfels im Steinkrallengebirge. Er wird Euch mehr Wissen vermitteln können als ich es kann.', '', 18019),
-	(7928, 'esES', 'Tus habilidades superan con creces a las mías, $gforastero:forastera;. Ve a hablar con Hgarth en el Refugio Roca del Sol de la Sierra Espolón. Con él podrás avanzar en tu conocimiento.', '', 18019),
+	(7928, 'esES', 'Tus habilidades superan con creces a las mías, $gforastero:forastera;. Ve a hablar con Hgarth en el Refugio Roca del Sol de la Sierra Espolón. Con él podrás avanzar en tu conocimiento.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(7928, 'esMX', 'Tus habilidades superan con creces a las mías, $gforastero:forastera;. Ve a hablar con Hgarth en el Refugio Roca del Sol de la Sierra Espolón. Con él podrás avanzar en tu conocimiento.', '', 18019),
 	(7928, 'frFR', 'Vos compétences surclassent de loin les miennes. Allez voir Hgarth à la Retraite de Roche-Soleil, dans les Serres-Rocheuses. Il vous offrira plus de connaissances que je n\'en possède.', '', 18019),
 	(7928, 'koKR', '이방인 친구, 자네의 솜씨는 내가 가르칠 수 있는 정도를 초월했군. 돌발톱 산맥으로 가서 해바위 야영지에서 하가스와 얘기해 보게나. 나보다 더 많은 걸 가르쳐 줄 테니까.', '', 18019),
@@ -57258,7 +57262,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(8612, 'zhCN', '%s发出威胁的叫声。', '', 18019),
 	(8612, 'zhTW', '%s讓我們發出威脅的叫聲。', '', 18019),
 	(8613, 'deDE', '', 'Soldaten der Frostwölfe, kommt mir zu Hilfe! Die Zeit ist reif, um den Furor der Elemente zu entfesseln!', 18019),
-	(8613, 'esES', '', '¡Soldados Lobo Gélido, venid en mi ayuda! ¡Ha llegado la hora de desatar la furia de los elementos sobre ellos!', 18019),
+	(8613, 'esES', '', '¡Soldados Lobo Gélido, venid en mi ayuda! ¡Ha llegado la hora de desatar la furia de los elementos sobre ellos!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(8613, 'esMX', '', '¡Soldados Lobo Gélido, venid en mi ayuda! ¡Ha llegado la hora de desatar la furia de los elementos sobre ellos!', 18019),
 	(8613, 'frFR', '', 'Soldats de Loup-de-givre, venez à mon aide ! L\'heure est venue de déverser sur eux la furie des éléments !', 18019),
 	(8613, 'koKR', '', '서리늑대 부족 병사들이여, 나를 따르라! 적들에게 정령들의 분노를 보여줄 때가 왔노라!', 18019),
@@ -60032,8 +60037,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(8968, 'koKR', '고맙다, 고귀한 $c|1이여;여;.', '', 18019),
 	(8968, 'ruRU', 'Спасибо, $gдобрый:добрая; |3-6($c).', '', 18019),
 	(8968, 'zhCN', '谢谢你，好心的$c。', '', 18019),
-	(8968, 'zhTW', '謝謝你，好心的$c。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(8968, 'zhTW', '謝謝你，好心的$c。', '', 18019),
 	(8969, 'deDE', 'Seid gegrüßt, $n. Ich bin Doktor Gregory Victor, Cheftraumachirurg der Traumatologie der Horde.', '', 18019),
 	(8969, 'esES', 'Hola, $n. Soy el doctor Gregory Víctor, cirujano de traumatismos cerebrales de la Horda.', '', 18019),
 	(8969, 'esMX', 'Hola, $n. Soy el doctor Gregory Víctor, cirujano de traumatismos cerebrales de la Horda.', '', 18019),
@@ -63294,7 +63298,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(9384, 'esES', '', 'El Príncipe planeó encarcelar a un demonio de gran poder en un campo de fuerza. Las torres canalizarían las energías latentes hacia el campo, manteniéndolo operativo.$B$BMientras estuviera atrapado, Immol\'thar serviría como energía para el pueblo de Eldre\'Thalas.', 18019),
 	(9384, 'esMX', '', 'El Príncipe planeó encarcelar a un demonio de gran poder en un campo de fuerza. Las torres canalizarían las energías latentes hacia el campo, manteniéndolo operativo.$B$BMientras estuviera atrapado, Immol\'thar serviría como energía para el pueblo de Eldre\'Thalas.', 18019),
 	(9384, 'frFR', '', 'Le prince tenta d’emprisonner un démon très puissant derrière un vaste champ de force. Les pylônes devaient canaliser les énergies latentes vers le champ, le maintenant en activité.$B$BEt durant son emprisonnement, Immol’thar devait servir de batterie à la population d’Eldre’Thalas.', 18019),
-	(9384, 'koKR', '', '토르텔드린 왕자는 거대한 마법진 안에 어마어마한 힘을 가진 악마를 가두려는 계획을 세웠지요. 그 마법진은 수정탑들이 전달하는 눈에 보이지 않는 어떤 마력에 의해 작동하는 것 같았어요.$B$B이몰타르는 그 안에 갇혀 있는 동안 엘드레탈라스 주민들에게 힘의 원천이 되었습니다.', 18019),
+	(9384, 'koKR', '', '토르텔드린 왕자는 거대한 마법진 안에 어마어마한 힘을 가진 악마를 가두려는 계획을 세웠지요. 그 마법진은 수정탑들이 전달하는 눈에 보이지 않는 어떤 마력에 의해 작동하는 것 같았어요.$B$B이몰타르는 그 안에 갇혀 있는 동안 엘드레탈라스 주민들에게 힘의 원천이 되었습니다.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(9384, 'ruRU', '', 'Принц собирался пленить невероятно могущественного демона Бессмер\'тера и заключить его в мощное силовое поле. Для направления и поддержки этого поля и были созданы пилоны.$B$BОжидалось, что Бессмер\'тер будет снабжать энергией население Эльдре\'Таласа.', 18019),
 	(9384, 'zhCN', '', '王子策划将拥有巨大力量的恶魔伊莫塔尔禁锢到一个巨大的力场中。水晶塔能将潜在的能量汇集到这个力场中。$B$B一旦被囚禁，恶魔将成为埃雷萨拉斯人民的能量来源。', 18019),
 	(9384, 'zhTW', '', '王子策劃將擁有巨大力量的惡魔伊莫塔爾禁錮到一個巨大的力場中。水晶塔能將潛在的能量彙集到這個力場中。$B$B一旦被囚禁，惡魔將成為埃德薩拉斯人民的能量來源。', 18019),
@@ -67830,7 +67835,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(9959, 'esES', 'No luchéis con armas ni armaduras rotas. ¡Reparación experta de armas y armaduras aquí! Mientras esperáis...', '', 18019),
 	(9959, 'esMX', 'No luchéis con armas ni armaduras rotas. ¡Reparación experta de armas y armaduras aquí! Mientras esperáis...', '', 18019),
 	(9959, 'frFR', 'Ne combattez pas avec des armes et armures endommagées ! Réparation minute d\'armes et armures ici, travail de première qualité !', '', 18019),
-	(9959, 'koKR', '부서진 무기와 방어구를 가지고 싸우지 마시오! 전문 방어구 및 무기 수리를 즉석에서 해 드리고 있소이다!', '', 18019),
+	(9959, 'koKR', '부서진 무기와 방어구를 가지고 싸우지 마시오! 전문 방어구 및 무기 수리를 즉석에서 해 드리고 있소이다!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(9959, 'ruRU', 'Хватит сражаться сломанным оружием и в дырявой броне! Чиню доспехи и оружие по высшему классу в присутствии заказчика!', '', 18019),
 	(9959, 'zhCN', '不要使用破碎的武器和护甲参加战斗！我这里可以在你等待的时候进行专家级的武器和护甲修理！', '', 18019),
 	(9959, 'zhTW', '不要使用壞掉的武器和護甲參加戰鬥!我這裡可以在你等待的時候，進行專家級的武器和護甲修理!', '', 18019),
@@ -70033,8 +70039,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(10238, 'koKR', '$962w명 살아있습니다.', '', 18019),
 	(10238, 'ruRU', '$962w, боец.', '', 18019),
 	(10238, 'zhCN', '$962w，士兵。', '', 18019),
-	(10238, 'zhTW', '$962w，士兵。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(10238, 'zhTW', '$962w，士兵。', '', 18019),
 	(10239, 'deDE', 'Wie viele unserer Leutnants sind am Leben, Vanndar?', 'Wie viele unserer Leutnants sind am Leben, Vanndar?', 18019),
 	(10239, 'esES', '¿Cuántos de nuestros tenientes siguen con vida, Vanndar?', '¿Cuántos de nuestros tenientes siguen con vida, Vanndar?', 18019),
 	(10239, 'esMX', '¿Cuántos de nuestros tenientes siguen con vida, Vanndar?', '¿Cuántos de nuestros tenientes siguen con vida, Vanndar?', 18019),
@@ -72953,7 +72958,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(10616, 'frFR', 'Nous, trolls zandalariens, avons voyagé jusqu\'ici depuis des îles lointaines, car nous ne pouvons ignorer la menace qu\'affronte à présent notre monde.$B$BLe chef de notre expédition, Molthor, nous a conduits sur l\'île de Yojamba, le long des côtes nord de Strangleronce, et recrute maintenant des héros courageux pour s\'aventurer dans l\'ancienne cité trolle... Zul\'Gurub.', '', 18019),
 	(10616, 'koKR', '우리 잔달라 트롤들은 지금 이 세계에 닥친 위협을 묵인할 수 없어 머나먼 섬에서 이곳까지 건너왔네.$B$B원정대의 지도자인 몰소르 님은 가시덤불 골짜기 북부 해안에 있는 요잠바 섬으로 우리를 인도하셨고, 지금도 고대 트롤 도시로 들어가 모험을 감행할 용맹한 영웅들을 모으고 있지... 바로 줄구룹으로 갈 영웅들 말일세.', '', 18019),
 	(10616, 'ruRU', 'Мы, зандаларские тролли, прибыли сюда с далеких островов, потому что не можем оставаться равнодушными к угрозе, нависшей над нашим миром.$B$BПредводитель нашей экспедиции, Молтор, привел нас на остров Йоджамба у северных берегов Тернистой долины. Сейчас он набирает героев для похода в древний город троллей... в Зул\'Гуруб.', '', 18019),
-	(10616, 'zhCN', '我们赞达拉巨魔长途跋涉来自此地，因为我们不能对威胁整个世界的危机视而不见。$B$B我们的远征队首领莫托尔带领我们来到荆棘谷海岸以北的尤亚姆巴岛，招募勇敢的英雄深入古老的巨魔城市……祖尔格拉布。', '', 18019),
+	(10616, 'zhCN', '我们赞达拉巨魔长途跋涉来自此地，因为我们不能对威胁整个世界的危机视而不见。$B$B我们的远征队首领莫托尔带领我们来到荆棘谷海岸以北的尤亚姆巴岛，招募勇敢的英雄深入古老的巨魔城市……祖尔格拉布。', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(10616, 'zhTW', '我們，贊達拉食人妖長途跋涉來此，因為我們無法坐視即將到來的危機。$B$B我們的遠征隊首領莫托爾帶領我們來到荊棘谷海岸以北的尤亞姆巴島，儘管如此，依然有勇敢的英雄前來造訪這座古老的食人妖城市...祖爾格拉布。', '', 18019),
 	(10618, 'deDE', 'Wir, die Zandalaritrolle, sind hierher von weit entfernten Inseln gereist, denn wir können uns der Bedrohung, die sich unserer Welt stellt, nicht entziehen.', '', 18019),
 	(10618, 'esES', 'Nosotros, los trols Zandalar llegamos aquí desde islas muy lejanas porque no podemos ignorar la amenaza que afronta nuestro mundo.', '', 18019),
@@ -77339,7 +77345,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(11177, 'ruRU', 'Нарайн, мне нужен еще один особый набор.', 'Нарайн, мне нужен еще один особый набор.', 18019),
 	(11177, 'zhCN', '纳瑞安，我还想再要一个特殊工具箱。', '纳瑞安，我还想再要一个特殊工具箱。', 18019),
 	(11177, 'zhTW', '納里安，我需要另一個特殊工具箱。', '納里安，我需要另一個特殊工具箱。', 18019),
-	(11178, 'deDE', 'Narain, wenn du noch genug Materialien hast, könnte ich eine weitere Arkanitboje brauchen.', 'Narain, wenn du noch genug Materialien hast, könnte ich eine weitere Arkanitboje brauchen.', 18019),
+	(11178, 'deDE', 'Narain, wenn du noch genug Materialien hast, könnte ich eine weitere Arkanitboje brauchen.', 'Narain, wenn du noch genug Materialien hast, könnte ich eine weitere Arkanitboje brauchen.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(11178, 'esES', 'Narain, si tienes suficientes pertrechos, podría coger otra boya de arcanita.', 'Narain, si tienes suficientes pertrechos, podría coger otra boya de arcanita.', 18019),
 	(11178, 'esMX', 'Narain, si tienes suficientes pertrechos, podría coger otra boya de arcanita.', 'Narain, si tienes suficientes pertrechos, podría coger otra boya de arcanita.', 18019),
 	(11178, 'frFR', 'Narain, si vous avez assez de matières premières, j’aurais besoin d’une autre bouée d’arcanite.', 'Narain, si vous avez assez de matières premières, j’aurais besoin d’une autre bouée d’arcanite.', 18019),
@@ -80034,8 +80041,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(11516, 'koKR', '장로 실버베인은 어디에 있습니까?', '장로 실버베인은 어디에 있습니까?', 18019),
 	(11516, 'ruRU', 'Где я могу найти предка Среброжила?', 'Где я могу найти предка Среброжила?', 18019),
 	(11516, 'zhCN', '银脉长者在哪里？', '银脉长者在哪里？', 18019),
-	(11516, 'zhTW', '銀脈長者在哪裡?', '銀脈長者在哪裡?', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(11516, 'zhTW', '銀脈長者在哪裡?', '銀脈長者在哪裡?', 18019),
 	(11517, 'deDE', '', 'Elune sei mit Euch, $C.', 18019),
 	(11517, 'esES', '', 'Que Elune esté contigo, $c.', 18019),
 	(11517, 'esMX', '', 'Que Elune esté contigo, $c.', 18019),
@@ -81833,7 +81839,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(11749, 'esMX', 'Llevas tanto tiempo trabajando entre máquinas que en ocasiones te olvidas de la gente de verdad.', 'Llevas tanto tiempo trabajando entre máquinas que en ocasiones te olvidas de la gente de verdad.', 18019),
 	(11749, 'frFR', 'À force de travailler avec des machines, on oublie parfois que les gens ont aussi un cœur.', 'À force de travailler avec des machines, on oublie parfois que les gens ont aussi un cœur.', 18019),
 	(11749, 'koKR', '기계와 함께한 시간이 너무 길어서인지, 진정한 마음에 대해서 종종 잊어버리는 거 같다니까.', '기계와 함께한 시간이 너무 길어서인지, 진정한 마음에 대해서 종종 잊어버리는 거 같아요.', 18019),
-	(11749, 'ruRU', 'Когда долго имеешь дело с механизмами, забываешь о живых, бьющихся сердцах.', 'Когда долго имеешь дело с механизмами, забываешь о живых, бьющихся сердцах.', 18019),
+	(11749, 'ruRU', 'Когда долго имеешь дело с механизмами, забываешь о живых, бьющихся сердцах.', 'Когда долго имеешь дело с механизмами, забываешь о живых, бьющихся сердцах.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(11749, 'zhCN', '你和机器共处的时间太久了，久到让你忘了真正的爱情。', '你和机器共处的时间太久了，久到让你忘了真正的爱情。', 18019),
 	(11749, 'zhTW', '你與機器為伍工作好長一段時間，有時候你都忘了如何與人相處。', '你與機器為伍工作好長一段時間，有時候你都忘了如何與人相處。', 18019),
 	(11750, 'deDE', 'Wenn man so lange nur mit Maschinen arbeitet, vergisst man schon mal, echten Herzen seine Aufmerksamkeit zu schenken.', '', 18019),
@@ -86757,7 +86764,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(12379, 'zhCN', '叩首！向灰烬使者叩首！', '叩首！向灰烬使者叩首！', 18019),
 	(12379, 'zhTW', '跪下!在灰燼使者前跪下!', '跪下!在灰燼使者前跪下!', 18019),
 	(12380, 'deDE', 'Ich bin unwürdig, $G Sire:Mylady;.', 'Ich bin unwürdig, $G Sire:Mylady;.', 18019),
-	(12380, 'esES', 'No soy digno de ello, $gseñor:señora;.', 'No soy digna de ello, $gseñor:señora;.', 18019),
+	(12380, 'esES', 'No soy digno de ello, $gseñor:señora;.', 'No soy digna de ello, $gseñor:señora;.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(12380, 'esMX', 'No soy digno de ello, $gseñor:señora;.', 'No soy digna de ello, $gseñor:señora;.', 18019),
 	(12380, 'frFR', 'Je n\'en suis pas digne, $gmessire:ma dame;.', 'Je n\'en suis pas digne, $gmessire:ma dame;.', 18019),
 	(12380, 'koKR', '저는 자격이 없습니다.', '저는 자격이 없습니다.', 18019),
@@ -90035,8 +90043,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(12798, 'koKR', '이 병은 어디에 놓을까요?', '이 병은 어디에 놓을까요?', 18019),
 	(12798, 'ruRU', 'Куда девать эти бутылки?', 'Куда девать эти бутылки?', 18019),
 	(12798, 'zhCN', '你想把这些瓶子放在哪儿？', '你想把这些瓶子放在哪儿？', 18019),
-	(12798, 'zhTW', '你想要這些酒瓶幹嘛?', '你想要這些酒瓶幹嘛?', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(12798, 'zhTW', '你想要這些酒瓶幹嘛?', '你想要這些酒瓶幹嘛?', 18019),
 	(12799, 'deDE', 'Habe eine weitere Lieferung für Euch, Sid.', 'Habe eine weitere Lieferung für Euch, Sid.', 18019),
 	(12799, 'esES', 'Tengo otro envío para ti, Sid.', 'Tengo otro envío para ti, Sid.', 18019),
 	(12799, 'esMX', 'Tengo otro envío para ti, Sid.', 'Tengo otro envío para ti, Sid.', 18019),
@@ -92871,7 +92878,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(13277, 'zhTW', '為了部落!', '', 18019),
 	(13278, 'deDE', 'Ober, noch eine Flasche, schnell!', 'Ober, noch eine Flasche, schnell!', 18019),
 	(13278, 'esES', '¡Camarero, otra botella, y date prisa!', '¡Camarero, otra botella, y date prisa!', 18019),
-	(13278, 'esMX', '¡Camarero, otra botella, y date prisa!', '¡Camarero, otra botella, y date prisa!', 18019),
+	(13278, 'esMX', '¡Camarero, otra botella, y date prisa!', '¡Camarero, otra botella, y date prisa!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(13278, 'frFR', 'Garçon, une autre bouteille, et faites vite !', 'Garçon, une autre bouteille, et faites vite !', 18019),
 	(13278, 'koKR', '웨이터, 여기 한 병 더! 빨리, 빨리!', '웨이터, 여기 한 병 더! 빨리, 빨리!', 18019),
 	(13278, 'ruRU', 'Официант, еще бутылку, и поскорее!', 'Официант, еще бутылку, и поскорее!', 18019),
@@ -100036,8 +100044,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(14203, 'koKR', '보고 드리러 왔습니다, 코르팡 님!', '', 18019),
 	(14203, 'ruRU', 'Услышь меня, Корклык!', '', 18019),
 	(14203, 'zhCN', '听我的命令，库尔冯！', '', 18019),
-	(14203, 'zhTW', '聽我的話，柯爾樊!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(14203, 'zhTW', '聽我的話，柯爾樊!', '', 18019),
 	(14204, 'deDE', 'Dann lasst diese Türme zu ihrem Grab werden! Vernichtet sie!', '', 18019),
 	(14204, 'esES', '¡Entonces, que esas torres sean sus tumbas! ¡A por ellos!', '', 18019),
 	(14204, 'esMX', '¡Entonces, que esas torres sean sus tumbas! ¡A por ellos!', '', 18019),
@@ -100497,7 +100504,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(14263, 'deDE', 'Nein... Ihr seid nicht Morae, aber ich spüre, dass Ihr Euch begegnet seid. Wenn Ihr sie seht, sagt ihr, dass ich den Absturz überlebt habe, nur um wenig später durch die Verräter den Tod zu finden.', '', 18019),
 	(14263, 'esES', 'No... No eres Morae, pero siento que os conocéis. Cuando la veas, dile que sobreviví al accidente para caer en manos de los infiltradores.', '', 18019),
 	(14263, 'esMX', 'No... No eres Morae, pero siento que os conocéis. Cuando la veas, dile que sobreviví al accidente para caer en manos de los infiltradores.', '', 18019),
-	(14263, 'frFR', 'Non, vous n’êtes pas Morae, mais je sens que vous la connaissez. Lorsque vous la verrez, dites-lui que j’ai survécu à l’accident, mais que les infiltrateurs m’ont achevé.', '', 18019),
+	(14263, 'frFR', 'Non, vous n’êtes pas Morae, mais je sens que vous la connaissez. Lorsque vous la verrez, dites-lui que j’ai survécu à l’accident, mais que les infiltrateurs m’ont achevé.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(14263, 'koKR', '아, 당신은 내 아내가 아니로군. 하지만, 그녀와 만난 적이 있군. 그녀를 만나거든 내가 추락에서는 살아남았으나 이곳 침투요원들에게 죽임을 당했다고 전해 주시오.', '', 18019),
 	(14263, 'ruRU', 'Нет... вы не Морэ, но я чувствую, что вы встречались с ней. Когда увидите ее, передайте, что я выжил в катастрофе, но только для того, чтобы со мной покончили проникшие враги.', '', 18019),
 	(14263, 'zhCN', '不……你不是莫莱，但我感觉到你遇到过她。当你看见她的时候，告诉她我在坠毁中幸存了下来，但是没想到会被那些血精灵杀死……', '', 18019),
@@ -106416,7 +106424,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(15015, 'zhTW', '', '等我抓到你，我就會將你的零件都分解，所以救救我...', 18019),
 	(15016, 'deDE', 'Alles, was wir haben, haben wir uns mit Zähnen und Tentakeln erkämpft... Telaar von den Orcs und Ogern zurückzuerobern war keine leichte Aufgabe.', '', 18019),
 	(15016, 'esES', 'Todo lo que tenemos, lo hemos conseguido luchando con dientes y tentáculos. Retomar Telaar de los orcos, y después de los ogros, no fue tarea fácil.', '', 18019),
-	(15016, 'esMX', 'Todo lo que tenemos, lo hemos conseguido luchando con dientes y tentáculos. Retomar Telaar de los orcos, y después de los ogros, no fue tarea fácil.', '', 18019),
+	(15016, 'esMX', 'Todo lo que tenemos, lo hemos conseguido luchando con dientes y tentáculos. Retomar Telaar de los orcos, y después de los ogros, no fue tarea fácil.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(15016, 'frFR', 'Tout ce que nous avons, nous nous sommes battus dent et tentacule pour le conquérir… Reprendre Telaar aux orcs et aux ogres ne fut pas une tâche facile.', '', 18019),
 	(15016, 'koKR', '우리가 지니고 있는 이 모든 것들은 우리가 필사적으로 싸운 결과라네... 오크에게서 텔라아르를 되찾았으나 오우거들은 결코 쉽지 않은 상대였네.', '', 18019),
 	(15016, 'ruRU', 'За все, что у нас есть, мы дрались не жалея щупалец... Отбить Телаар у орков, а потом у огров было совсем не просто.', '', 18019),
@@ -110037,8 +110046,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(15475, 'koKR', '드디어 모두가 기다리던 순간이 왔습니다! 전쟁망치 용사가 수주일 만에 처음으로 피의 투기장에서 그의 실력을 뽐낼 것입니다! $n|1이;가; 전쟁망치 용사가 싸웠던 다른 상대들처럼 쉽게 무릎을 꿇게 될까요? 숨죽이고 지켜보도록 하지요...', '', 18019),
 	(15475, 'ruRU', 'Настал момент, которого мы все ждали! Чемпион клана Боевого Молота собирается впервые за несколько недель выступать в Кольце Крови! Потерпит ли $n поражение так же быстро, как и прошлые претенденты? Посмотрим...', '', 18019),
 	(15475, 'zhCN', '这是我们最为期待的时刻！战槌勇士要开始他本周在鲜血竞技场的第一场表演了！$n会不会像这位勇士的其他对手那样被轻松打败呢？我们拭目以待……', '', 18019),
-	(15475, 'zhTW', '這是我們一直在等待的時刻!戰槌勇士就要在血色競技場展開他幾週內的第一次演出了!$n會像其他挑戰勇士的人一樣輕易地倒下嗎?我們等著瞧吧...', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(15475, 'zhTW', '這是我們一直在等待的時刻!戰槌勇士就要在血色競技場展開他幾週內的第一次演出了!$n會像其他挑戰勇士的人一樣輕易地倒下嗎?我們等著瞧吧...', '', 18019),
 	(15476, 'deDE', 'Stück um Stück werde ich diesen Herausforderer auseinandernehmen... STÜCK UM STÜCK!', '', 18019),
 	(15476, 'esES', 'Pedazo a pedazo, destrozaré a este aspirante... ¡PEDAZO A PEDAZO!', '', 18019),
 	(15476, 'esMX', 'Pedazo a pedazo, destrozaré a este aspirante... ¡PEDAZO A PEDAZO!', '', 18019),
@@ -112910,7 +112918,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(15844, 'koKR', '세나리온 드루이드가 불꽃날개 거점을 점령했다는 소식을 외부에 있는 우리 정찰병이 전해왔습니다.', '', 18019),
 	(15844, 'ruRU', 'Разведчик донес нам, что один из кенарийских друидов попал в плен в Лагере Огнекрылов.', '', 18019),
 	(15844, 'zhCN', '我们得到情报说，有个塞纳里奥的德鲁伊在火翼岗哨被俘虏了。', '', 18019),
-	(15844, 'zhTW', '我們從逃跑的斥候那裡拿到報告，報告上指出塞納里奧其中有一個德魯伊被囚禁在火翼崗哨。', '', 18019),
+	(15844, 'zhTW', '我們從逃跑的斥候那裡拿到報告，報告上指出塞納里奧其中有一個德魯伊被囚禁在火翼崗哨。', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(15845, 'deDE', 'Ihr sucht die Jäger? Ihr findet sie auf der zweiten Ebene der Händlertreppe, im Sanktum der Jäger.', 'Ihr sucht die Jäger? Ihr findet sie auf der zweiten Ebene der Händlertreppe, im Sanktum der Jäger.', 18019),
 	(15845, 'esES', '¿Buscas cazadores? Los encontrarás en el segundo nivel de la Grada de los Mercaderes, en el Sagrario de los cazadores.', '¿Buscas cazadores? Los encontrarás en el segundo nivel de la Grada de los Mercaderes, en el Sagrario de los cazadores.', 18019),
 	(15845, 'esMX', '¿Buscas cazadores? Los encontrarás en el segundo nivel de la Grada de los Mercaderes, en el Sagrario de los cazadores.', '¿Buscas cazadores? Los encontrarás en el segundo nivel de la Grada de los Mercaderes, en el Sagrario de los cazadores.', 18019),
@@ -118913,7 +118922,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(16622, 'zhTW', '如果今天的死亡是我們的命運，我們也不會如此輕易的死去!記住我的話，這些惡魔將像小麥般的倒下!', '', 18019),
 	(16623, 'deDE', 'Kämpft weiter und beweist unseren Ahnen wie viel Mut und Kraft in uns steckt! Heute jagen wir in ihrem Namen und im Namen Azeroths!', '', 18019),
 	(16623, 'esES', '¡Luchad y que nuestros ancestros sean testigos de nuestra fuerza y valentía! ¡Hoy, nuestra caza es para ellos y para el mundo!', '', 18019),
-	(16623, 'esMX', '¡Luchad y que nuestros ancestros sean testigos de nuestra fuerza y valentía! ¡Hoy, nuestra caza es para ellos y para el mundo!', '', 18019),
+	(16623, 'esMX', '¡Luchad y que nuestros ancestros sean testigos de nuestra fuerza y valentía! ¡Hoy, nuestra caza es para ellos y para el mundo!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(16623, 'frFR', 'Continuez à combattre, et que nos aïeux voient notre courage et notre force ! Aujourd’hui, nous dédions notre chasse à nos ancêtres et à notre monde !', '', 18019),
 	(16623, 'koKR', '싸워라! 선조가 우리의 용맹과 힘을 지켜보고 계신다! 오늘 우리 세계를 위하여 저들을 끝까지 추격한다!', '', 18019),
 	(16623, 'ruRU', 'Деритесь, и пусть наши предки видят всю нашу храбрость и силу! Сегодня мы воюем за них и за весь наш мир!', '', 18019),
@@ -120038,8 +120048,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(16763, 'koKR', '빛이 없는 곳에서는 절망과 혐오, 그리고 분노만이 창궐하는 법이지요.', '', 18019),
 	(16763, 'ruRU', 'Там, где нет света, процветают отчаяние, ненависть и гнев.', '', 18019),
 	(16763, 'zhCN', '在没有圣光的地方，绝望、厌恶和愤怒横行。', '', 18019),
-	(16763, 'zhTW', '那裡沒有光明、絕望、厭惡和盛行的繁榮。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(16763, 'zhTW', '那裡沒有光明、絕望、厭惡和盛行的繁榮。', '', 18019),
 	(16764, 'deDE', 'Wir wurden in einem gefährlichen Zeitalter geboren, wo die Kräfte der Dunkelheit entschlossen sind, unsere Zerstörung herbeizuführen.', '', 18019),
 	(16764, 'esES', 'Hemos nacido en una época peligrosa, donde las fuerzas de la oscuridad están dispuestas a destruirnos.', '', 18019),
 	(16764, 'esMX', 'Hemos nacido en una época peligrosa, donde las fuerzas de la oscuridad están dispuestas a destruirnos.', '', 18019),
@@ -125377,7 +125386,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(17450, 'zhCN', 'Pat Nagle! World design team! Cory Stockton, Paul C., Jim Chadwick, Staats, Ed Hanes, Morris, Gotcher, Jesse!, Sarah B., Victor C., Dave A.! All of our amazing exterior artists!', '', 18019),
 	(17450, 'zhTW', 'Pat Nagle! World design team! Cory Stockton, Paul C., Jim Chadwick, Staats, Ed Hanes, Morris, Gotcher, Jesse!, Sarah B., Victor C., Dave A.! All of our amazing exterior artists!', '', 18019),
 	(17451, 'deDE', 'Scott Mercer! Geoff, Wyatt, Joe, Travis, Kris, Steven! Brazie!', '', 18019),
-	(17451, 'esES', '¡Scott Mercer! ¡Geoff, Wyatt, Joe, Travis, Kris, Steven! ¡Brazie!', '', 18019),
+	(17451, 'esES', '¡Scott Mercer! ¡Geoff, Wyatt, Joe, Travis, Kris, Steven! ¡Brazie!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(17451, 'esMX', '¡Scott Mercer! ¡Geoff, Wyatt, Joe, Travis, Kris, Steven! ¡Brazie!', '', 18019),
 	(17451, 'frFR', 'Scott Mercer ! Geoff, Wyatt, Joe, Travis, Kris, Steven ! Brazie !', '', 18019),
 	(17451, 'koKR', '스콧 머서! 제프, 와이어트, 조, 트래비스, 크리스, 스티븐! 브레이지!', '', 18019),
@@ -130039,8 +130049,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(18044, 'koKR', '헬쿨라, 당신은 키린 토의 일원도 아니고 강령술사도 아니니 당신이 걱정할 일이 아니오.', '', 18019),
 	(18044, 'ruRU', 'Это тебя совершенно не касается, Гелькулар, ты ведь не из Кирин-Тора и не некромант.', '', 18019),
 	(18044, 'zhCN', '这和你无关，赫尔库拉，你既不是肯瑞托的一员也不是一个通灵师。', '', 18019),
-	(18044, 'zhTW', '那不關你的事，赫爾庫拉，因為你既不屬於祈倫托也不是一名死靈法師。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(18044, 'zhTW', '那不關你的事，赫爾庫拉，因為你既不屬於祈倫托也不是一名死靈法師。', '', 18019),
 	(18045, 'deDE', 'Weitermachen!', 'Weitermachen!', 18019),
 	(18045, 'esES', '¡Espera mis órdenes!', '¡Espera mis órdenes!', 18019),
 	(18045, 'esMX', '¡Espera mis órdenes!', '¡Espera mis órdenes!', 18019),
@@ -132360,7 +132369,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(18334, 'koKR', '우리의 새로운 동맹 너울소나무 펄볼그는 우리가 어떤 가죽을 사용하는지에 관심을 보이더군요. 저는 북쪽에 살고 있는 그들에게 가죽세공을 배울 작정이랍니다.', '우리의 새로운 동맹 너울소나무 펄볼그는 우리가 어떤 가죽을 사용하는지에 관심을 보이더군요. 저는 북쪽에 살고 있는 그들에게 가죽세공을 배울 작정이랍니다.', 18019),
 	(18334, 'ruRU', 'Наши новые союзники, фурболги из племени Тихвой, не прочь забрать найденные нами шкуры. Они живут на севере. Я буду искать у них знания.', 'Наши новые союзники, фурболги из племени Тихвой, не прочь забрать найденные нами шкуры. Они живут на севере. Я буду искать у них знания.', 18019),
 	(18334, 'zhCN', '我们的新朋友——止松要塞的熊怪们对我们找到的皮革表现出了很强烈的兴趣。他们就住在北面，不如去他们那里问问看。', '我们的新朋友——止松要塞的熊怪们对我们找到的皮革表现出了很强烈的兴趣。他们就住在北面，不如去他们那里问问看。', 18019),
-	(18334, 'zhTW', '我們的新盟友靜松熊怪，已經談及對我們找到的皮革感興趣。他們住在北方;你可以從他們身上學習知識。', '我們的新盟友靜松熊怪，已經談及對我們找到的皮革感興趣。他們住在北方;你可以從他們身上學習知識。', 18019),
+	(18334, 'zhTW', '我們的新盟友靜松熊怪，已經談及對我們找到的皮革感興趣。他們住在北方;你可以從他們身上學習知識。', '我們的新盟友靜松熊怪，已經談及對我們找到的皮革感興趣。他們住在北方;你可以從他們身上學習知識。', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(18335, 'deDE', 'Dulvi ist die Frau, nach der Ihr sucht. Sie bildet neue Talente in der Mitte der Wacht aus.', 'Dulvi ist die Frau, nach der Ihr sucht. Sie bildet neue Talente in der Mitte der Wacht aus.', 18019),
 	(18335, 'esES', 'Dulvi es la mujer que quieres. Instruye a nuevas posibilidades en medio de la Avanzada.', 'Dulvi es la mujer que quieres. Instruye a los nuevos en medio de la Avanzada.', 18019),
 	(18335, 'esMX', 'Dulvi es la mujer que quieres. Instruye a nuevas posibilidades en medio de la Avanzada.', 'Dulvi es la mujer que quieres. Instruye a los nuevos en medio de la Avanzada.', 18019),
@@ -139387,7 +139397,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(19224, 'zhTW', '奧多爾獸欄', '奧多爾獸欄', 18019),
 	(19225, 'deDE', 'Stall der Seher', 'Stall der Seher', 18019),
 	(19225, 'esES', 'Establo Arúspice', 'Establo Arúspice', 18019),
-	(19225, 'esMX', 'Establo Arúspice', 'Establo Arúspice', 18019),
+	(19225, 'esMX', 'Establo Arúspice', 'Establo Arúspice', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(19225, 'frFR', 'Étable des Clairvoyants', 'Étable des Clairvoyants', 18019),
 	(19225, 'koKR', '점술가 길드 야수 관리인', '점술가 길드 야수 관리인', 18019),
 	(19225, 'ruRU', 'Стойла Провидцев', 'Стойла Провидцев', 18019),
@@ -140040,8 +140051,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(19306, 'koKR', '우리는 전투 준비가 끝났네. $n, 자네만 준비되면 돼.', '', 18019),
 	(19306, 'ruRU', 'Мы вступим в бой, когда вы будете готовы, $n.', '', 18019),
 	(19306, 'zhCN', '你准备好了我们就开战，$n。', '', 18019),
-	(19306, 'zhTW', '你準備好我們就戰鬥吧，$n。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(19306, 'zhTW', '你準備好我們就戰鬥吧，$n。', '', 18019),
 	(19307, 'deDE', 'Ich bin bereit, Oronok. Lasst uns Cyrukh zerstören und die Elemente befreien!', 'Ich bin bereit, Oronok. Lasst uns Cyrukh zerstören und die Elemente befreien!', 18019),
 	(19307, 'esES', 'Estoy preparado, Oronok. ¡Destruyamos a Cyrukh y liberemos los elementos!', 'Estoy preparada, Oronok. ¡Destruyamos a Cyrukh y liberemos los elementos!', 18019),
 	(19307, 'esMX', 'Estoy preparado, Oronok. ¡Destruyamos a Cyrukh y liberemos los elementos!', 'Estoy preparada, Oronok. ¡Destruyamos a Cyrukh y liberemos los elementos!', 18019),
@@ -145807,7 +145817,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(20036, 'esMX', 'Sí, el único resultado lógico.', '', 18019),
 	(20036, 'frFR', 'C\'était la seule issue logique.', '', 18019),
 	(20036, 'koKR', '그래, 논리적으로 당연한 결과지.', '', 18019),
-	(20036, 'ruRU', 'Да, таков единственный логический исход.', '', 18019),
+	(20036, 'ruRU', 'Да, таков единственный логический исход.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(20036, 'zhCN', '啊，这是唯一符合逻辑的结果。', '', 18019),
 	(20036, 'zhTW', '是的，唯一合乎邏輯的結果。', '', 18019),
 	(20037, 'deDE', 'Zwei Mal messen, ein Mal schneiden.', '', 18019),
@@ -150041,8 +150052,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(20575, 'koKR', '둔기라면 불리위크의 전문 분야지요! 그는 투덜거리며 이 상점을 돌아다닌답니다. 그의 훈련 기술이 맘에 들지 않는다면, 한디르라고 둔기에 관해서 잘 아는 엑소다르에 있는 드레나이 무기 전문가가 있다고 들었으니 그리로 가 보십시오! 그는 엑소다르에 교역 지구에서 만날 수 있을 겁니다.', '둔기라면 불리위크의 전문 분야지요! 그는 투덜거리며 이 상점을 돌아다닌답니다. 그의 훈련 기술이 맘에 들지 않는다면, 한디르라고 둔기에 관해서 잘 아는 엑소다르에 있는 드레나이 무기 전문가가 있다고 들었으니 그리로 가 보십시오! 그는 엑소다르에 교역 지구에서 만날 수 있을 겁니다.', 18019),
 	(20575, 'ruRU', 'Бульвайф специализируется на ударном оружии! Он где-то рядом с этим магазином, как всегда брюзжит. Если его тренировочные техники тебе не подходят, я слышал, есть дренейский эксперт по оружию в Экзодаре, Хандиир, тоже способный обучить тебя. Он стоит там в Торговом ряду.', 'Бульвайф специализируется на ударном оружии! Он где-то рядом с этим магазином, как всегда брюзжит. Если его тренировочные техники тебе не подходят, я слышал, есть дренейский эксперт по оружию в Экзодаре, Хандиир, тоже способный обучить тебя. Он стоит там в Торговом ряду.', 18019),
 	(20575, 'zhCN', '锤子是布里维夫的最拿手的武器！他就在这家店附近。如果你不喜欢他的训练方法，我听说埃索达的德莱尼的武器大师韩迪尔同样也知道怎么摆弄锤子！他就在贸易阶梯那里。', '锤子是布里维夫的最拿手的武器！他就在这家店附近。如果你不喜欢他的训练方法，我听说埃索达的德莱尼的武器大师韩迪尔同样也知道怎么摆弄锤子！他就在贸易阶梯那里。', 18019),
-	(20575, 'zhTW', '錘類武器是布里維夫的專長!他就在這家店的某處，發勞騷中。如果他的訓練技術非你的風格，我聽說艾克索達的德萊尼武器大師，哈戴爾，也對武器有他的一套方式!他就在貿易區的上層。', '錘類武器是布里維夫的專長!他就在這家店的某處，發勞騷中。如果他的訓練技術非你的風格，我聽說艾克索達的德萊尼武器大師，哈戴爾，也對武器有他的一套方式!他就在貿易區的上層。', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(20575, 'zhTW', '錘類武器是布里維夫的專長!他就在這家店的某處，發勞騷中。如果他的訓練技術非你的風格，我聽說艾克索達的德萊尼武器大師，哈戴爾，也對武器有他的一套方式!他就在貿易區的上層。', '錘類武器是布里維夫的專長!他就在這家店的某處，發勞騷中。如果他的訓練技術非你的風格，我聽說艾克索達的德萊尼武器大師，哈戴爾，也對武器有他的一套方式!他就在貿易區的上層。', 18019),
 	(20576, 'deDE', 'Woo Ping ist ein Meister im Umgang mit Stangenwaffen. Er unterrichtet seine Schüler in Wellers Arsenal in Sturmwind.', 'Woo Ping ist ein Meister im Umgang mit Stangenwaffen. Er unterrichtet seine Schüler in Wellers Arsenal in Sturmwind.', 18019),
 	(20576, 'esES', 'Woo Ping es el maestro de las armas de asta. Entrena a sus pupilos en el Arsenal de Weller en Ventormenta.', 'Woo Ping es el maestro de las armas de asta. Entrena a sus pupilos en el Arsenal de Weller en Ventormenta.', 18019),
 	(20576, 'esMX', 'Woo Ping es el maestro de las armas de asta. Entrena a sus pupilos en el Arsenal de Weller en Ventormenta.', 'Woo Ping es el maestro de las armas de asta. Entrena a sus pupilos en el Arsenal de Weller en Ventormenta.', 18019),
@@ -152451,7 +152461,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(20881, 'ruRU', 'Очень хорошо. Как бы то ни было, позже я хотел бы увидеть доказательства честности твоей рекламы.', '', 18019),
 	(20881, 'zhCN', '好吧。咱们待会儿再谈，不过我很想看看你所宣称的证据。', '', 18019),
 	(20881, 'zhTW', '很好。不過，晚一點，我希望看到你聲明的證據。', '', 18019),
-	(20882, 'deDE', 'Ja! Ja, später, Mann. Viel später.', '', 18019),
+	(20882, 'deDE', 'Ja! Ja, später, Mann. Viel später.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(20882, 'esES', '¡Sí! Sí. Más tarde, colega. Mucho más tarde.', '', 18019),
 	(20882, 'esMX', '¡Sí! Sí. Más tarde, colega. Mucho más tarde.', '', 18019),
 	(20882, 'frFR', 'Ouais, ouais, plus tard, mon pote. Beaucoup, beaucoup plus tard.', '', 18019),
@@ -159777,7 +159788,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(21803, 'frFR', 'Seigneur Illidan, voici le Gueule-de-dragon dont nous vous avons parlé. Il nous conduira à la victoire !', '', 18019),
 	(21803, 'koKR', '일리단 님, 이 오크가 저와 다른 이들이 이야기하던 용아귀 부족의 용사입니다. 이 용사가 우리에게 승리를 가져다줄 것입니다!', '', 18019),
 	(21803, 'ruRU', 'Владыка Иллидан, это тот из Драконьей Пасти, о котором вам говорили я и другие. Он поведет нас к победе!', '', 18019),
-	(21803, 'zhCN', '伊利丹大人，这位就是我和其他人向您提到过的龙喉氏族的英雄。他会引领我们走向胜利！', '', 18019),
+	(21803, 'zhCN', '伊利丹大人，这位就是我和其他人向您提到过的龙喉氏族的英雄。他会引领我们走向胜利！', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(21803, 'zhTW', '伊利丹王，這就是我和其他人曾經跟您說過的龍喉獸人。他將會帶領著我們獲得勝利!', '', 18019),
 	(21804, 'deDE', 'Was soll das bedeuten, Mor\'ghor?', '', 18019),
 	(21804, 'esES', '¿Qué significa esto, Mor’ghor?', '', 18019),
@@ -160042,8 +160054,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(21836, 'koKR', '우리의 작은 친구 $n 님, 이곳에 오시다니 영광입니다.', '', 18019),
 	(21836, 'ruRU', 'Твое присутствие – честь для нас, $gмаленький брат:маленькая сестра; $n.', '', 18019),
 	(21836, 'zhCN', '$n，你能来这里，真是我们的荣幸。', '', 18019),
-	(21836, 'zhTW', '你的出現讓我們感到榮幸，小$g兄弟:姐妹;$n。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(21836, 'zhTW', '你的出現讓我們感到榮幸，小$g兄弟:姐妹;$n。', '', 18019),
 	(21837, 'deDE', 'Wir haben gehört, dass $n eigenhändig ein Konstruktionslager ausgelöscht hat!', '', 18019),
 	(21837, 'esES', 'Hemos oído que $n eliminó un campamento Forja solo.', '', 18019),
 	(21837, 'esMX', 'Hemos oído que $n eliminó un campamento Forja solo.', '', 18019),
@@ -165887,7 +165898,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(22575, 'deDE', 'Ich bin beschäftigt, $C. Ihr solltet Eure Zeit lieber sinvoll nutzen und Euer Anliegen Kudrii vortragen.', '', 18019),
 	(22575, 'esES', 'Estoy ocupado, $c. Aprovecharías mejor tu tiempo si trataras con Kudrii.', '', 18019),
 	(22575, 'esMX', 'Estoy ocupado, $c. Aprovecharías mejor tu tiempo si trataras con Kudrii.', '', 18019),
-	(22575, 'frFR', 'Je suis occupé, $c. Vous perdriez moins de temps à discuter de ces affaires avec Kudrii.', '', 18019),
+	(22575, 'frFR', 'Je suis occupé, $c. Vous perdriez moins de temps à discuter de ces affaires avec Kudrii.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(22575, 'koKR', '난 바쁘다네, $c|1이여;여;. 쿠드리하고 의논하는 게 나을 걸세.', '', 18019),
 	(22575, 'ruRU', 'Я занят, |3-6($c). Пойди лучше обсуди эти вопросы с Кудрией.', '', 18019),
 	(22575, 'zhCN', '$c，我正忙着呢。你最好和库德里恩谈谈训练的事儿。', '', 18019),
@@ -170043,8 +170055,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(23097, 'koKR', '오... 대단해.', '이야... 장난이 아닌데.', 18019),
 	(23097, 'ruRU', 'Это... нечто особенное.', 'Это... нечто особенное.', 18019),
 	(23097, 'zhCN', '真……特别。', '真……特别。', 18019),
-	(23097, 'zhTW', '那很...特別。', '那很...特別。', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(23097, 'zhTW', '那很...特別。', '那很...特別。', 18019),
 	(23098, 'deDE', 'Das ist die neue Seuche der Verlassenen?!', 'Das ist die neue Seuche der Verlassenen?!', 18019),
 	(23098, 'esES', '¡¿Esa es la nueva peste de los Renegados?!', '¡¿Esa es la nueva peste de los Renegados?!', 18019),
 	(23098, 'esMX', '¡¿Esa es la nueva peste de los Renegados?!', '¡¿Esa es la nueva peste de los Renegados?!', 18019),
@@ -172763,7 +172774,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(23440, 'frFR', 'Qu\'est-ce que c\'est que ces lunettes bizarres ?', 'Qu\'est-ce que c\'est que ces lunettes bizarres ?', 18019),
 	(23440, 'koKR', '그 말도 안 되는 당신 고글은 어떻게 된 겁니까?', '그 말도 안 되는 당신 고글은 어떻게 된 거죠?', 18019),
 	(23440, 'ruRU', 'Что у тебя за дурацкие очки?', 'Что у тебя за дурацкие очки?', 18019),
-	(23440, 'zhCN', '你的疯狂眼镜有什么用？', '你的疯狂眼镜有什么用？', 18019),
+	(23440, 'zhCN', '你的疯狂眼镜有什么用？', '你的疯狂眼镜有什么用？', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(23440, 'zhTW', '你的護目鏡怎麼那麼古怪?', '你的護目鏡怎麼那麼古怪?', 18019),
 	(23441, 'deDE', 'Seid leise, $C. Wir wollen doch nicht, dass sie uns hören.', '', 18019),
 	(23441, 'esES', 'Mantén la voz baja, $c. No queremos que nos oigan.', '', 18019),
@@ -179210,7 +179222,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(24250, 'esMX', 'Archonisus ya no existe. ¡Ay de nosotros! Es... es demasiado tarde…$B$B¡Kil\'jaeden ha sido liberado! Los héroes del mundo son nuestra única esperanza ahora.', '', 18019),
 	(24250, 'frFR', 'Archonisus n\'est plus. Hélas, nous… Nous arrivons trop tard.$B$BKil\'jaeden est libre ! Les héros de ce monde sont notre seul espoir.', '', 18019),
 	(24250, 'koKR', '아르코니수스를 무너트렸지만... 아아... 너무 늦었군...$B$B킬제덴이 해방되다니! 이제는 그대와 같은 영웅들이 우리의 유일한 희망이오.', '', 18019),
-	(24250, 'ruRU', 'Архониуса больше нет. Увы, мы... мы опоздали...$B$BКил\'джеден на воле! Теперь единственная наша надежда – герои.', '', 18019),
+	(24250, 'ruRU', 'Архониуса больше нет. Увы, мы... мы опоздали...$B$BКил\'джеден на воле! Теперь единственная наша надежда – герои.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(24250, 'zhCN', '埃库尼苏已经不复存在，但是，我们……太迟了……$B$B基尔加丹被释放了！我们唯一的希望只剩下这个世界的英雄们了！', '', 18019),
 	(24250, 'zhTW', '亞坎努斯已經蕩然無存了。唉，我們...我們太遲了...$b$b基爾加丹已經被降臨了!這個世界的英雄們是我們唯一的希望了。', '', 18019),
 	(24251, 'deDE', 'Flottschraub, schnell! Wir haben hier unten ein Problem!!', '', 18019),
@@ -180044,8 +180057,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(24356, 'koKR', '우리와 대화하는 법을 배웠나 봐, $r. 뭐 그렇게 대단한 일은 아니라고 생각하지만.$B$B반드시 처치해야 할 겨울지느러미 배반자들이 저 건너편에 있어.', '', 18019),
 	(24356, 'ruRU', 'Ты $gнаучился:научилась; говорить с нами, |3-6($r), но я не впечатлен.$B$BТам, на другом берегу, живут предатели Зимние Плавники, которые должны быть уничтожены.', '', 18019),
 	(24356, 'zhCN', '$r，你已经掌握了与我们交流的诀窍，不过这算不了什么。$B$B水塘那边还有大群的冬鳞背叛者等着你去收拾呢。', '', 18019),
-	(24356, 'zhTW', '$r，你學會了和我們溝通的技巧，但是我一點也不驚訝。$B$B有很多冬鰭魚人的叛徒在水的對岸，一定要殺掉。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(24356, 'zhTW', '$r，你學會了和我們溝通的技巧，但是我一點也不驚訝。$B$B有很多冬鰭魚人的叛徒在水的對岸，一定要殺掉。', '', 18019),
 	(24357, 'deDE', 'Der Nächste!', '', 18019),
 	(24357, 'esES', '¡Siguiente!', '', 18019),
 	(24357, 'esMX', '¡Siguiente!', '', 18019),
@@ -186381,7 +186393,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(25168, 'koKR', '내가 왜 당신한테 그런 소리를 들어야 하나, 형씨!', '이봐요, 제가 왜 당신한테 그런 소리를 들어야 하나요!', 18019),
 	(25168, 'ruRU', 'Слушать эту чушь в мои обязанности не входит, приятель!', 'Слушать эту чушь в мои обязанности не входит, приятель!', 18019),
 	(25168, 'zhCN', '我没有义务来听你胡扯，先生！', '我没有义务来听你胡扯，先生！', 18019),
-	(25168, 'zhTW', '我不需要聽你廢話，先生!', '我不需要聽你廢話，先生!', 18019),
+	(25168, 'zhTW', '我不需要聽你廢話，先生!', '我不需要聽你廢話，先生!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(25169, 'deDE', 'Musst du natürlich nicht, Kumpel, denn die gute Nachricht ist, IHR SEID GEFEUERT! Die schlechte Nachricht ist, ihr - ihr alle - habt von heute Abend an nur eine Woche, um eure Arbeitsplätze zurückzuerhalten. Mit dem Bauvorhaben von heute Abend geht es los.', '', 18019),
 	(25169, 'esES', '¡Claro que no, amigo, porque la buena noticia es que ESTÁS DESPEDIDO! Y la mala noticia es que todos, todos vosotros tenéis una sola semana para reconquistar vuestros puestos, empezando esta noche, empezando con la construcción de esta noche.', '', 18019),
 	(25169, 'esMX', '¡Claro que no, amigo, porque la buena noticia es que ESTÁS DESPEDIDO! Y la mala noticia es que todos, todos ustedes tienen una sola semana para reconquistar sus puestos, empezando esta noche, empezando con la construcción de esta noche.', '', 18019),
@@ -190045,8 +190058,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(25631, 'koKR', '약해 빠졌어!', '', 18019),
 	(25631, 'ruRU', 'Легче легкого!', '', 18019),
 	(25631, 'zhCN', '太简单啦！', '', 18019),
-	(25631, 'zhTW', '太簡單啦!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(25631, 'zhTW', '太簡單啦!', '', 18019),
 	(25632, 'deDE', 'Bringt den Kampf zu mir!', '', 18019),
 	(25632, 'esES', '¡Pelead contra mí!', '', 18019),
 	(25632, 'esMX', '¡Pelead contra mí!', '', 18019),
@@ -193470,7 +193482,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(26064, 'koKR', '부탁할 일이 또 있다. 그대 또한 바라는 일일 것이다, 작은 자여.', '', 18019),
 	(26064, 'ruRU', 'Если захочешь, я дам тебе еще одно задание, $gмалыш:малышка;.', '', 18019),
 	(26064, 'zhCN', '如果你愿意的话，我还有一项任务要交给你。', '', 18019),
-	(26064, 'zhTW', '我有別的任務要託付給你，你應該會願意幫忙，小傢伙。', '', 18019),
+	(26064, 'zhTW', '我有別的任務要託付給你，你應該會願意幫忙，小傢伙。', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(26065, 'deDE', 'Hör zu, $gKleiner:Kleines;. Ich hab\' hier alles im Griff. Du hältst mir nur den Rücken frei!', '', 18019),
 	(26065, 'esES', 'Escucha, $gchico:chica;. Puedo encargarme de esto. ¡Tú cúbreme las espaldas!', '', 18019),
 	(26065, 'esMX', 'Escucha, $gchico:chica;. Puedo encargarme de esto. ¡Tú cúbreme las espaldas!', '', 18019),
@@ -200046,8 +200059,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(26903, 'koKR', '공격이다! 도로로 후퇴하라!', '', 18019),
 	(26903, 'ruRU', 'Он приближается! Отступаем вниз по проходу!', '', 18019),
 	(26903, 'zhCN', '敌袭！撤回通道！', '', 18019),
-	(26903, 'zhTW', '來襲!躲回坑道!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(26903, 'zhTW', '來襲!躲回坑道!', '', 18019),
 	(26904, 'deDE', 'Rückzug! Da kommt ein Glutwyrm!', '', 18019),
 	(26904, 'esES', '¡Replegaos! ¡Se acerca una vermis de brasas!', '', 18019),
 	(26904, 'esMX', '¡Replegaos! ¡Se acerca una vermis de brasas!', '', 18019),
@@ -200345,7 +200357,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(26940, 'zhCN', '', '巫妖王已经伸出魔爪……肆无忌惮地践踏着龙族最神圣的领地。他想逼迫我们采取行动。', 18019),
 	(26940, 'zhTW', '', '巫妖王的魔掌延伸至遠方...大膽染指對所有飛龍來說極為神聖的土地。他打算逼我們先動手。', 18019),
 	(26941, 'deDE', '', 'Meine Zeit ist abgelaufen... im Leben habe ich Alexstrasza mich selbst angeboten, aber im Tode ist mir nichts mehr übrig, um es anzubieten. Sie wird einen neuen Hüter für ihren Schrein brauchen.', 18019),
-	(26941, 'esES', '', 'Mi tiempo ha acabado... Me entregué a Alexstrasza en vida, pero no me queda nada que ofrecerle en la muerte. Ella necesitará un nuevo guardián para su santuario.', 18019),
+	(26941, 'esES', '', 'Mi tiempo ha acabado... Me entregué a Alexstrasza en vida, pero no me queda nada que ofrecerle en la muerte. Ella necesitará un nuevo guardián para su santuario.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(26941, 'esMX', '', 'Mi tiempo ha acabado... Me entregué a Alexstrasza en vida, pero no me queda nada que ofrecerle en la muerte. Ella necesitará un nuevo guardián para su santuario.', 18019),
 	(26941, 'frFR', '', 'Mon temps est passé… J\'ai fait don de moi à Alexstrasza de mon vivant mais, morte, je n\'ai plus rien à offrir. Il lui faudra un nouveau gardien pour son sanctuaire.', 18019),
 	(26941, 'koKR', '', '내 시간은 끝났어요... 살았을 때는 알렉스트라자 님을 섬겼지만, 목숨을 잃은 지금은 그렇게 할 수가 없군요. 그분께서 제단의 수호자를 새로 찾으셔야 할 겁니다.', 18019),
@@ -206619,7 +206632,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(27738, 'deDE', 'Schamane Vekjik kommt aus dem nahegelegenen Unterholz heraus.', '', 18019),
 	(27738, 'esES', 'El chamán Vekjik sale del arbusto cercano.', '', 18019),
 	(27738, 'esMX', 'El chamán Vekjik sale del arbusto cercano.', '', 18019),
-	(27738, 'frFR', 'Le chaman Vekjik surgit des buissons.', '', 18019),
+	(27738, 'frFR', 'Le chaman Vekjik surgit des buissons.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(27738, 'koKR', '주술사 베크지크가 근처의 덤불 사이로 모습을 드러냅니다.', '', 18019),
 	(27738, 'ruRU', 'Шаман Векжик выходит из ближайшего подлеска.', '', 18019),
 	(27738, 'zhCN', '萨满祭司维克伊克从旁边的灌木丛中走了出来。', '', 18019),
@@ -210047,8 +210061,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(28190, 'koKR', '궁금할까 봐 말해주겠는데, 벌레들한테 쏘이면 별로 기분이 좋지 않다. 괜히 시험해볼 생각 마라.', '', 18019),
 	(28190, 'ruRU', 'Ежели тебе интересно, когда оса жалит – это не очень приятно. Не надо пробовать.', '', 18019),
 	(28190, 'zhCN', '我告诉你，被蜇的滋味可不好受。你最好别去尝试。', '', 18019),
-	(28190, 'zhTW', '以防你會想知道，黃蜂刺的感覺很糟。不需要去試。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(28190, 'zhTW', '以防你會想知道，黃蜂刺的感覺很糟。不需要去試。', '', 18019),
 	(28191, 'deDE', 'Zeit für einen weiteren klugen Tipp von Dajik! Kristalle funktionieren bisschen zu gut auf Rücken, der jucken. Nich\' versuchen.', '', 18019),
 	(28191, 'esES', '¡Hora de recibir otro consejo inteligente de Dajik! Cristales rascar espalda demasiado bien. No intentar.', '', 18019),
 	(28191, 'esMX', '¡Hora de recibir otro consejo inteligente de Dajik! Cristales rascar espalda demasiado bien. No intentar.', '', 18019),
@@ -214504,7 +214517,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(28754, 'koKR', '십자군은 이미 죽은 목숨입니다!', '십자군은 이미 죽은 목숨입니다!', 18019),
 	(28754, 'ruRU', 'Алый марш был обречен с самого начала!', 'Алый марш был обречен с самого начала!', 18019),
 	(28754, 'zhCN', '十字军注定会被毁灭！', '十字军注定会被毁灭！', 18019),
-	(28754, 'zhTW', '十字軍被標上了死亡印記!', '十字軍被標上了死亡印記!', 18019),
+	(28754, 'zhTW', '十字軍被標上了死亡印記!', '十字軍被標上了死亡印記!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(28755, 'deDE', 'Ich werde Euer erlesener Ritter sein, Salanar!', 'Ich werde Euer erlesener Ritter sein, Salanar!', 18019),
 	(28755, 'esES', '¡Yo seré tu caballero elegido, Salanar!', '¡Yo seré tu caballero elegido, Salanar!', 18019),
 	(28755, 'esMX', '¡Yo seré tu caballero elegido, Salanar!', '¡Yo seré tu caballero elegido, Salanar!', 18019),
@@ -220048,8 +220062,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(29452, 'koKR', '구울 타액!', '구울 타액!', 18019),
 	(29452, 'ruRU', 'Слюну вурдалака!', 'Слюну вурдалака!', 18019),
 	(29452, 'zhCN', '食尸鬼的口水！', '食尸鬼的口水！', 18019),
-	(29452, 'zhTW', '食屍鬼唾液!', '食屍鬼唾液!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(29452, 'zhTW', '食屍鬼唾液!', '食屍鬼唾液!', 18019),
 	(29453, 'deDE', 'Seuchenkristall!', 'Seuchenkristall!', 18019),
 	(29453, 'esES', '¡Cristal de añublo!', '¡Cristal de añublo!', 18019),
 	(29453, 'esMX', '¡Cristal de añublo!', '¡Cristal de añublo!', 18019),
@@ -221556,7 +221569,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(29644, 'zhTW', '你是怪物!', '你是怪物!', 18019),
 	(29645, 'deDE', 'Bitte! Verschont mich! Ich...', 'Bitte! Verschont mich! Ich...', 18019),
 	(29645, 'esES', '¡Por favor! ¡Perdóname! Yo...', '¡Por favor! ¡Perdóname! Yo...', 18019),
-	(29645, 'esMX', '¡Por favor! ¡Perdóname! Yo...', '¡Por favor! ¡Perdóname! Yo...', 18019),
+	(29645, 'esMX', '¡Por favor! ¡Perdóname! Yo...', '¡Por favor! ¡Perdóname! Yo...', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(29645, 'frFR', 'S\'il vous plaît ! Épargnez-moi ! Je…', 'S\'il vous plaît ! Épargnez-moi ! Je…', 18019),
 	(29645, 'koKR', '제발요! 살려 주세요! 저는...', '제발요! 살려 주세요! 저는...', 18019),
 	(29645, 'ruRU', 'Пожалуйста! Пощади меня! Я...', 'Пожалуйста! Пощади меня! Я...', 18019),
@@ -229169,7 +229183,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(30606, 'koKR', '', '그에 대한 대답에는 추가적인 배경 지식이 필요합니다. 에시르와 바니르의 대대적인 전쟁은,', 18019),
 	(30606, 'ruRU', '', 'Найдена дополнительная информация, соответствующая вашему запросу: вследствие глобальной войны между Эзиром и Ваниром...', 18019),
 	(30606, 'zhCN', '', '另有后台信息与你的问询关联：在艾塞尔和瓦尼尔的全面战争之后——', 18019),
-	(30606, 'zhTW', '', '查詢額外關連背景:隨著華納神族跟阿薩神族間的全面戰鬥--', 18019),
+	(30606, 'zhTW', '', '查詢額外關連背景:隨著華納神族跟阿薩神族間的全面戰鬥--', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(30607, 'deDE', '', 'Unbekannt. Daten lassen darauf schließen, dass Ursache für den globalen Kampf bei Haupteinheit Loken zu finden ist. Haupteinheit Loken neutralisierte alle verbliebenen Aesir und Vanir, was zur Terminierung des Konfliktes führte. Haupteinheit Loken initialisierte dann den Stasiszustand über einige Spezies, einschließlich Irdener, Riesen und Vrykul, in designierten Lagereinrichtungen.', 18019),
 	(30607, 'esES', '', 'Desconocido. Los datos sugieren que el ímpetu del combate original con el principal designado Loken, que neutralizó a los Aesir y Vanir restantes, afectó al final del conflicto. El principal designado Loken comenzó la estasis de varias semillas de razas, incluyendo terráneos, gigantes y vrykul en instalaciones de contención designadas.', 18019),
 	(30607, 'esMX', '', 'Desconocido. Se sabe que el impulso por el combate global se inició con Loken, el primer elegido, que neutralizó a todos los Aesir y Vanir sobrevivientes, afectando el final del conflicto. Luego inicio el letargo de varias razas simientes como los Earthen, los Gigantes y los Vrykul en depósitos para tal fin.', 18019),
@@ -230049,8 +230064,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(30716, 'koKR', '믿을 수가 없군요! 새로운 용사가 고뇌의 투기장을 접수했습니다!!! 어중이떠중이로 이루어진 어설픈 무리에게 도살자 블라도프가 지고 말았군요! 참으로 극적입니다!', '', 18019),
 	(30716, 'ruRU', 'НЕВЕРОЯТНО! У НАС НОВЫЙ ЧЕМПИОН АМФИТЕАТРА СТРАДАНИЙ!!! Владоф Мясник побежден сборищем никому не известных оборванцев! Немыслимая развязка!', '', 18019),
 	(30716, 'zhCN', '难以置信！新的痛苦斗兽场勇士诞生了！！！一群无名小卒击败了屠夫乌拉多弗！真是个奇迹！', '', 18019),
-	(30716, 'zhTW', '我不相信!我們的苦痛競技場有了新的勇士!『屠夫』伏雷多弗被一個下層社會的無名小卒所打敗!這是難以置信的結局!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(30716, 'zhTW', '我不相信!我們的苦痛競技場有了新的勇士!『屠夫』伏雷多弗被一個下層社會的無名小卒所打敗!這是難以置信的結局!', '', 18019),
 	(30717, 'deDE', '%s sammelt sein Mojo und stürmt vorwärts!', '', 18019),
 	(30717, 'esES', '¡%s reúne su mojo y carga hacia adelante!', '', 18019),
 	(30717, 'esMX', '¡%s reúne su mojo y carga hacia adelante!', '', 18019),
@@ -235726,7 +235740,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(31439, 'deDE', 'Die Hallen der Blitze, ein Stufe 80 Dungeon innerhalb der Sturmgipfel, sind nun für Testzwecke verfügbar. Erreicht volle Gruppenstärke, bevor Ihr Euch in den Dungeon teleportiert. Versammlungssteine sind für diesen Dungeon noch nicht verfügbar.\r\n\r\nUm die Hallen der Blize zu verlassen, geht einfach durch den normalen Ausgang innerhalb des Dungeons, und Ihr werdet hierhin zurückgebracht. Wenn Ihr sterbt und freigelassen werdet, solltet Ihr von diesem NSC aus zurückteleportieren.', '', 18019),
 	(31439, 'esES', 'Las Cámaras de los Relámpagos, una mazmorra de nivel 80 en las Cumbres Tormentosas, ya está disponible para pruebas. El grupo tiene que estar completo para el teletransporte a la mazmorra. Aún no hay rocas de encuentro disponibles para esta mazmorra.\r\nPara salir de las Cámaras de los Relámpagos, basta con salir por la salida normal que hay dentro de la mazmorra y volverás a este lugar. Si mueres y liberas tu espíritu, tienes que volver a teletransportarte desde este PNJ.', '', 18019),
 	(31439, 'esMX', 'Las Cámaras de los Relámpagos, una mazmorra de nivel 80 en las Cumbres Tormentosas, ya está disponible para pruebas. El grupo tiene que estar completo para el teletransporte a la mazmorra. Aún no hay rocas de encuentro disponibles para esta mazmorra.\nPara salir de las Cámaras de los Relámpagos, basta con salir por la salida normal que hay dentro de la mazmorra y volverás a este lugar. Si mueres y liberas tu espíritu, tienes que volver a teletransportarte desde este PNJ.', '', 18019),
-	(31439, 'frFR', 'Les salles de Foudre, un donjon de niveau 80 situé dans les pics Foudroyés, est ouvert au test. Merci de disposer d\'un groupe complet avant de vous y téléporter. Il n\'y a pas encore de pierre de rencontre pour cette instance.\r\n\r\nPour quitter les salles de Foudre, il vous suffit de sortir par l\'issue normale et vous reviendrez ici. Si vous mourez et libérez votre esprit, il faut parler à ce PNJ pour retourner là-bas.', '', 18019),
+	(31439, 'frFR', 'Les salles de Foudre, un donjon de niveau 80 situé dans les pics Foudroyés, est ouvert au test. Merci de disposer d\'un groupe complet avant de vous y téléporter. Il n\'y a pas encore de pierre de rencontre pour cette instance.\r\n\r\nPour quitter les salles de Foudre, il vous suffit de sortir par l\'issue normale et vous reviendrez ici. Si vous mourez et libérez votre esprit, il faut parler à ce PNJ pour retourner là-bas.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(31439, 'koKR', '번개의 전당은 폭풍우 봉우리 안에 있는 80 레벨 던전으로 지금 시험해볼 수 있습니다. 던전 안으로 순간이동하기 전에 파티를 맺은 상태여야 합니다. 만남의 돌은 아직 사용할 수 없습니다. 번개의 전당에서 나오려면, 던전 안에 있는 입구로 빠져나오면 됩니다. 그러면 바로 여기로 돌아오지요. 죽어서 영혼이 빠져나갔다면 다시 NPC와 얘기하여 순간이동해야 합니다.', '', 18019),
 	(31439, 'ruRU', 'Чертоги Молний, подземелье уровня 80, находящееся на Грозовой Гряде, теперь доступно для тестирования. Пожалуйста, сформируйте полную группу, прежде чем переместиться туда. Камни встречи для этого подземелья пока не работают.\r\n\r\nЧтобы выйти из Чертогов Молний, просто покиньте их через обычный выход внутри подземелья, и вы вернетесь сюда. Если вы умерли и покинули свое тело, для обратного телепорта вам необходимо будет поговорить с этим NPC.', '', 18019),
 	(31439, 'zhCN', '位于风暴峭壁的80级地下城闪电大厅已开放测试。请在进入地下城之前组满队伍。该地下城的集合石尚未开放。\n您只要通过从地下城的常规出口，就能离开闪电大厅，返回这里。如果您的角色死亡并选择了释放，您可从该NPC处传送回去。', '', 18019),
@@ -240050,8 +240065,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(31991, 'koKR', '불쌍히 여겨주마, 살타리온. 이번 한 번만이다.', '', 18019),
 	(31991, 'ruRU', 'Я пожалею тебя, Сартарион, но только в этот раз.', '', 18019),
 	(31991, 'zhCN', '我真是同情你，萨塔里奥，仅此一次。', '', 18019),
-	(31991, 'zhTW', '我真是同情你，撒爾薩里安，就這麼一次。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(31991, 'zhTW', '我真是同情你，撒爾薩里安，就這麼一次。', '', 18019),
 	(31992, 'deDE', 'Uhnhh... Für mich ist es zu spät, $g Bruder:Schwester;.$B$BMit mir... ist es... aus...', 'Uhnhh... Für mich ist es zu spät, $g Bruder:Schwester;.$B$BMit mir... ist es... aus...', 18019),
 	(31992, 'esES', 'Aarrgh... Es demasiado tarde para mí, $ghermano:hermana;.$B$BEstoy... acabado...', 'Aarrgh... Es demasiado tarde para mí, $ghermano:hermana;.$B$BEstoy... acabada...', 18019),
 	(31992, 'esMX', 'Aarrgh... Es demasiado tarde para mí, $ghermano:hermana;.$B$BEstoy... acabado...', 'Aarrgh... Es demasiado tarde para mí, $ghermano:hermana;.$B$BEstoy... acabada...', 18019),
@@ -243181,7 +243195,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(32391, 'zhCN', '钥石拼好了！我们成功啦，$n！', '', 18019),
 	(32391, 'zhTW', '拱心石完成了!我們辦到了，$n!', '', 18019),
 	(32392, 'deDE', 'Unser Schiff "Die Zuversicht" ist irgendwie mit Käfern überschwemmt worden und es ist uns unmöglich, die Segel nach Nordend zu setzen.', '', 18019),
-	(32392, 'esES', 'Por algún motivo, La Garantía está infestada de bichos y no podemos partir hacia Rasganorte.', '', 18019),
+	(32392, 'esES', 'Por algún motivo, La Garantía está infestada de bichos y no podemos partir hacia Rasganorte.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(32392, 'esMX', 'Por algún motivo, La Garantía está infestada de bichos y no podemos partir hacia Rasganorte.', '', 18019),
 	(32392, 'frFR', 'L\'Assurance a subi une infestation de vermine qui nous empêche de partir pour le Norfendre.', '', 18019),
 	(32392, 'koKR', '품질보증연합은 넘쳐나는 문제들로 바빠져서 노스렌드로 돛을 올려 출항할 수가 없습니다.', '', 18019),
@@ -250051,8 +250066,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(33266, 'koKR', '장로 돌나무껍질이 |cFFFF0000대지 진동|r을 시전합니다!', '', 18019),
 	(33266, 'ruRU', 'Древень Каменная Кора начинает читать заклинание |cFFFF0000Дрожание земли!|r', '', 18019),
 	(33266, 'zhCN', '石树长老开始施放|cFFFF0000大地震颤！|r', '', 18019),
-	(33266, 'zhTW', '石木長者開始施展|cFFFF0000地面震顫!|r', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(33266, 'zhTW', '石木長者開始施展|cFFFF0000地面震顫!|r', '', 18019),
 	(33267, 'deDE', '%s umgibt sich mit einer knisternden Runenbarriere!', '', 18019),
 	(33267, 'esES', '¡%s se rodea de una chisporroteante Barrera rúnica!', '', 18019),
 	(33267, 'esMX', '¡%s se rodea de una chisporroteante Barrera rúnica!', '', 18019),
@@ -250170,7 +250184,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(33281, 'esMX', '¡Calas el motor!$bProvocas una pérdida de presión.', '¡Calas el motor!$bProvocas una pérdida de presión.', 18019),
 	(33281, 'frFR', 'Vous avez coincé l\'embrayage !$BOn a perdu de la pression.', 'Vous avez coincé l\'embrayage !$BOn a perdu de la pression.', 18019),
 	(33281, 'koKR', '기어가 떨어졌습니다!$B압력이 낮아졌습니다.', '기어가 떨어졌습니다!$B압력이 낮아졌습니다.', 18019),
-	(33281, 'ruRU', 'Вы заземлили шестеренки!$BДавление падает.', 'Вы заземлили шестеренки!$BДавление падает.', 18019),
+	(33281, 'ruRU', 'Вы заземлили шестеренки!$BДавление падает.', 'Вы заземлили шестеренки!$BДавление падает.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(33281, 'zhCN', '齿轮磨损了！$B压力消失。', '齿轮磨损了！$B压力消失。', 18019),
 	(33281, 'zhTW', '打檔到底!$B正在失壓。', '打檔到底!$B正在失壓。', 18019),
 	(33282, 'deDE', 'Der Motor ist abgekühlt!$BDer gesamte Druck ist gesunken.', 'Der Motor ist abgekühlt!$BDer gesamte Druck ist gesunken.', 18019),
@@ -257271,7 +257286,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(34183, 'zhTW', '一點也不。我一輩子也搞不懂這是怎麼運作的。', '一點也不。我一輩子也搞不懂這是怎麼運作的。', 18019),
 	(34184, 'deDE', 'Schon Glück gehabt?', 'Schon Glück gehabt?', 18019),
 	(34184, 'esES', '¿Ha habido suerte?', '¿Ha habido suerte?', 18019),
-	(34184, 'esMX', '¿Ha habido suerte?', '¿Ha habido suerte?', 18019),
+	(34184, 'esMX', '¿Ha habido suerte?', '¿Ha habido suerte?', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(34184, 'frFR', 'Qu\'est-ce que ça donne ?', 'Qu\'est-ce que ça donne ?', 18019),
 	(34184, 'koKR', '좋은 소식이라도?', '좋은 소식이라도?', 18019),
 	(34184, 'ruRU', 'Есть успехи?', 'Есть успехи?', 18019),
@@ -260052,8 +260068,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(34539, 'koKR', '저걸 없애세요!', '', 18019),
 	(34539, 'ruRU', 'Убить!', '', 18019),
 	(34539, 'zhCN', '杀了它！', '', 18019),
-	(34539, 'zhTW', '殺死它!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(34539, 'zhTW', '殺死它!', '', 18019),
 	(34540, 'deDE', 'Mutter?', '', 18019),
 	(34540, 'esES', '¿Madre?', '', 18019),
 	(34540, 'esMX', '¿Madre?', '', 18019),
@@ -263998,7 +264013,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(35040, 'ruRU', 'Ты представляешь – наконец-то нам разрешили летать по этим краям! Нет ничего лучше путешествий на дирижабле, я прав? И зачем было так волноваться – мы разбили всего один летательный аппарат о скалу во время тестового полета.', '', 18019),
 	(35040, 'zhCN', '你相信吗？他们终于解除了这个地方的禁制，让我们的飞艇能够穿越这里的天空了！这里不再是飞行禁区了。毕竟，我们在测试飞行中只不过让一艘飞艇撞上了崖壁。我完全不明白他们到底在担心什么。', '', 18019),
 	(35040, 'zhTW', '你相信嗎?他們終於開放這個地方讓我們開飛艇經過這兒!不再有禁飛區了，對吧?我們只有在試飛的時候墜毀過一條船。我真不知道他們在擔心什麼。', '', 18019),
-	(35041, 'deDE', 'Nur herangetreten! Der Zeppelin nach Orgrimmar hat angelegt! Alle an Bord nach Durotar!', '', 18019),
+	(35041, 'deDE', 'Nur herangetreten! Der Zeppelin nach Orgrimmar hat angelegt! Alle an Bord nach Durotar!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(35041, 'esES', '¡Venid! ¡Ha llegado el zepelín a Orgrimmar! ¡Todos a bordo para ir a Durotar!', '', 18019),
 	(35041, 'esMX', '¡Vengan! ¡Ha llegado el zepelín a Orgrimmar! ¡Todos a bordo para ir a Durotar!', '', 18019),
 	(35041, 'frFR', 'En voiture ! Le zeppelin pour Orgrimmar est à quai ! Tout le monde à bord, direction Durotar !', '', 18019),
@@ -270053,8 +270069,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(35896, 'koKR', '은빛십자군이 여는 마상시합에 여러분을 초대합니다. 다른 아제로스의 용사들과 명예로운 전투를 치르고 자신의 실력을 가늠해 보십시오.', '', 18019),
 	(35896, 'ruRU', 'Серебряный Авангард приглашает вас испытать силы в честной борьбе против других героев Азерота на Серебряном турнире.', '', 18019),
 	(35896, 'zhCN', '银色十字军邀请你参加银色锦标赛，在光荣的战斗中与艾泽拉斯各地的英雄们比试，并以此测试你的战斗技艺。', '', 18019),
-	(35896, 'zhTW', '銀白十字軍邀請你在銀白聯賽中，透過與艾澤拉斯英雄們的榮譽之戰來磨練你的戰技。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(35896, 'zhTW', '銀白十字軍邀請你在銀白聯賽中，透過與艾澤拉斯英雄們的榮譽之戰來磨練你的戰技。', '', 18019),
 	(35897, 'deDE', '', 'Kalytha ... es ist getan. Der Sarsenstein ist vollständig geladen und lenkt bereits Energie vom Portal um. Seid Ihr noch immer eine so unglaubliche Schwimmerin wie einst vor vielen Jahren? Der Stein darf weder von den Dämonen noch von unserer "geliebten" Königin gefunden werden.$B$BSchwimmt zum Grund des Sees, Kalytha, und vergrabt den Stein tief unter dem Mittelbogen. Hoffentlich werden diese dämonischen Angreifer ihn nicht entdecken, wenn sie den umliegenden Tempel zerstören. Los!', 18019),
 	(35897, 'esES', '', 'Kalytha... Ya está hecho. La piedra sarcita está totalmente cargada y ya está desviando la energía del portal. ¿Sigues siendo esa magnífica nadadora que conocí hace tantos años? Ni los demonios ni nuestra "amada" Reina deben encontrar la piedra.$b$bNada hasta el fondo del lago, Kalytha, y entierra la piedra bajo el arco central. Con suerte, los invasores demoníacos no la descubrirán cuando asalten el templo circundante. ¡Ve!', 18019),
 	(35897, 'esMX', '', 'Kalytha... Ya está hecho. La piedra sarcita está totalmente cargada y ya está desviando la energía del portal. ¿Sigues siendo esa magnífica nadadora que conocí hace tantos años? Ni los demonios ni nuestra "amada" Reina deben encontrar la piedra.$b$bNada hasta el fondo del lago, Kalytha, y entierra la piedra bajo el arco central. Con suerte, los invasores demoníacos no la descubrirán cuando asalten el templo circundante. ¡Ve!', 18019),
@@ -270737,7 +270752,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(35988, 'zhTW', '嗯，等你準備好出發的時候，我會用信號通知提里奧。', '', 18019),
 	(35989, 'deDE', 'Gebt das Signal! Wir sind bereit!', 'Gebt das Signal! Wir sind bereit!', 18019),
 	(35989, 'esES', '¡Da la señal! ¡Estamos preparados!', '¡Da la señal! ¡Estamos preparados!', 18019),
-	(35989, 'esMX', '¡Da la señal! ¡Estamos preparados!', '¡Da la señal! ¡Estamos preparados!', 18019),
+	(35989, 'esMX', '¡Da la señal! ¡Estamos preparados!', '¡Da la señal! ¡Estamos preparados!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(35989, 'frFR', 'Envoyez le signal ! Nous sommes prêts !', 'Envoyez le signal ! Nous sommes prêts !', 18019),
 	(35989, 'koKR', '신호를 보내세요! 저희는 준비됐습니다!', '신호를 보내세요! 저희는 준비됐습니다!', 18019),
 	(35989, 'ruRU', 'Подавай сигнал! Мы готовы!', 'Подавай сигнал! Мы готовы!', 18019),
@@ -277416,7 +277432,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(36834, 'zhCN', '我曾经遵从阿尔萨斯，这真让人难以置信。', '我曾经遵从阿尔萨斯，这真让人难以置信。', 18019),
 	(36834, 'zhTW', '真不敢相信我曾經還很尊敬阿薩斯。', '真不敢相信我曾經還很尊敬阿薩斯。', 18019),
 	(36835, 'deDE', 'Sklaven unseres eigenen Prinzen, so zu leben ist schlimmer als der Tod.', 'Sklaven unseres eigenen Prinzen, so zu leben ist schlimmer als der Tod.', 18019),
-	(36835, 'esES', 'Esclavos de nuestro propio Príncipe, nos trata peor vivos que muertos.', 'Esclavos de nuestro propio Príncipe, nos trata peor vivos que muertos.', 18019),
+	(36835, 'esES', 'Esclavos de nuestro propio Príncipe, nos trata peor vivos que muertos.', 'Esclavos de nuestro propio Príncipe, nos trata peor vivos que muertos.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(36835, 'esMX', 'Esclavos de nuestro propio Príncipe, nos trata peor vivos que muertos.', 'Esclavos de nuestro propio Príncipe, nos trata peor vivos que muertos.', 18019),
 	(36835, 'frFR', 'Esclaves de notre propre prince, nous sommes encore plus mal traités vivants que morts.', 'Esclaves de notre propre prince, nous sommes encore plus mal traités vivants que morts.', 18019),
 	(36835, 'koKR', '왕자의 노예가 돼서, 죽은 자보다 더 못한 취급을 받고 있다니.', '왕자의 노예가 돼서, 죽은 자보다 더 못한 취급을 받고 있다니.', 18019),
@@ -280054,8 +280071,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(37171, 'koKR', '', '우리는 안전하다... 당분간은 말이지. 마지막으로 싸웠을 때보다 아서스는 열 배나 강해졌다. 리치 왕을 물리치려면 강력한 군대가 필요하다. 호드가 모을 수 있는 것보다 더 강력한 군대 말이다.', 18019),
 	(37171, 'ruRU', '', 'Мы в безопасности... пока что. Его сила возросла десятикратно со времен нашей последней битвы. Чтобы победить Короля-лича, потребуется огромная армия. Куда большая, чем сможет собрать Орда.', 18019),
 	(37171, 'zhCN', '', '我们暂时……安全了。他的力量已经十倍于往昔。只有一支大军才能战胜巫妖王。单凭部落的力量毫无胜算。', 18019),
-	(37171, 'zhTW', '', '我們安全了...起碼現在如此。他的力量比我們上一次交手時強上十倍。我們需要一支強大的軍隊才能消滅巫妖王。一支遠超過部落動員能力的大軍。', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(37171, 'zhTW', '', '我們安全了...起碼現在如此。他的力量比我們上一次交手時強上十倍。我們需要一支強大的軍隊才能消滅巫妖王。一支遠超過部落動員能力的大軍。', 18019),
 	(37172, 'deDE', 'Eure Verbündeten sind hier, Jaina, wie Ihr verspracht. Ihr werdet alle zu mächtigen Dienern der Geißel.', '', 18019),
 	(37172, 'esES', 'Han llegado tus aliados, Jaina, como prometiste. Todos seréis poderosos agentes de la Plaga.', '', 18019),
 	(37172, 'esMX', 'Han llegado tus aliados, Jaina, como lo prometiste. Se convertirán en poderosos agentes de la Plaga.', '', 18019),
@@ -283933,7 +283949,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(37667, 'esMX', 'No... ¡No! ¿Por qué no pude morir en las llamas? ¡Ahora todos ARDERÁN!', '', 18019),
 	(37667, 'frFR', 'Non ! Pourquoi n\'ai-je pas eu droit à la mort par les flammes ? Vous allez tous BRÛLER !', '', 18019),
 	(37667, 'koKR', '안 돼! 안 돼! 왜 화장조차 허락되지 않는 거지? 너희 모두 불타버려!', '', 18019),
-	(37667, 'ruRU', 'Нет! Почему мне не дали умереть в огне? Сгорите все!', '', 18019),
+	(37667, 'ruRU', 'Нет! Почему мне не дали умереть в огне? Сгорите все!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(37667, 'zhCN', '不！不！为什么我不能在火中死去？ 都烧成焦炭吧！', '', 18019),
 	(37667, 'zhTW', '不!不!為什麼不以火焰結束我的生命?你一定要全燒光!', '', 18019),
 	(37668, 'deDE', 'Es war... ein würdiges Leben nach dem Tod.', '', 18019),
@@ -290055,8 +290072,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(38442, 'koKR', '그대가 이곳에 머무르는 동안, 쿠엘델라는 계속 사악함을 흡수한다네.', '', 18019),
 	(38442, 'ruRU', 'Пока ты здесь, Кель\'Делар впитывает зло, которым пронизано это место.', '', 18019),
 	(38442, 'zhCN', '只要你留在这里，奎尔德拉就会汲取这里的邪能。', '', 18019),
-	(38442, 'zhTW', '你在此的每一秒，奎爾德拉都在吸取這裡的邪惡。', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(38442, 'zhTW', '你在此的每一秒，奎爾德拉都在吸取這裡的邪惡。', '', 18019),
 	(38443, 'deDE', 'Genau wie in den guten alten Zeiten, was, $n?', '', 18019),
 	(38443, 'esES', 'Como en los viejos tiempos, ¿eh, $n?', '', 18019),
 	(38443, 'esMX', 'Como en los viejos tiempos, ¿eh, $n?', '', 18019),
@@ -291172,7 +291188,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(38585, 'deDE', 'Falls wir überleben, wird es Monate dauern, mein Messing von den ganzen Gehirnen zu befreien.', '', 18019),
 	(38585, 'esES', 'Si al final resulta que salimos de esta, me llevará todo un mes limpiar los sesos de toda la decoración de latón.', '', 18019),
 	(38585, 'esMX', 'Si al final resulta que salimos de esta, me llevará todo un mes limpiar los sesos de toda la decoración de latón.', '', 18019),
-	(38585, 'frFR', 'Même si on survit à ça, il me faudra un mois pour enlever les traces de cervelle de mes cuivres.', '', 18019),
+	(38585, 'frFR', 'Même si on survit à ça, il me faudra un mois pour enlever les traces de cervelle de mes cuivres.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(38585, 'koKR', '이 상황에서 살아남는다 해도, 내 모자에 튄 살점을 닦아내려면 족히 한 달은 걸리겠군.', '', 18019),
 	(38585, 'ruRU', 'Если мы все это переживем, мне потребуется месяц, чтобы прийти в себя.', '', 18019),
 	(38585, 'zhCN', '即使我们能取得胜利，我也要用一个月的时间才能把甲板上的脏东西清理干净。', '', 18019),
@@ -298079,7 +298096,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(39466, 'esES', 'No sé nada. Quizá tan solo la Madre Tierra sepa la causa. Pero debemos hacer algo antes de que continúe...', '', 18019),
 	(39466, 'esMX', 'No sé nada. Quizá tan solo la Madre Tierra sepa la causa. Pero debemos hacer algo antes de que continúe...', '', 18019),
 	(39466, 'frFR', 'Je ne sais plus quoi penser. Peut-être que seule la Terre-mère elle-même connaît la cause de tout cela. Mais il faut que nous fassions quelque chose pour empêcher que ça ne continue…', '', 18019),
-	(39466, 'koKR', '막막하군. 대지모신께서만이 이 일의 원인을 아실지도 모르겠소. 하지만 우린 이번 일이 계속 되기 전에 조치해야만 하오.', '', 18019),
+	(39466, 'koKR', '막막하군. 대지모신께서만이 이 일의 원인을 아실지도 모르겠소. 하지만 우린 이번 일이 계속 되기 전에 조치해야만 하오.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(39466, 'ruRU', 'Я в растерянности. Возможно, лишь только Мать-Земля знает причину всего этого. Но мы должны что-то предпринять...', '', 18019),
 	(39466, 'zhCN', '我迷惑了。也许只有大地之母本人才明白这一切的缘由。但我们必须设法阻止它……', '', 18019),
 	(39466, 'zhTW', '我已經一籌莫展了。大概只有大地之母她自己才知道起因。但我們必須做些什麼來應對...', '', 18019),
@@ -300056,8 +300074,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(39725, 'esMX', '¡Vamos a vivir! ¡Sobreviviremos! Hoy celebramos...', '', 18019),
 	(39725, 'frFR', 'Nous allons vivre ! Nous allons survivre ! Aujourd\'hui nous célébrons le jour…', '', 18019),
 	(39725, 'koKR', '우리는 죽지 않는다! 우리는 살아남을 것이다! 기억하라. 오늘은 우리의...', '', 18019),
-	(39725, 'ruRU', 'Мы будем жить! Мы будем продолжать жить! Сегодня мы празднуем...', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(39725, 'ruRU', 'Мы будем жить! Мы будем продолжать жить! Сегодня мы празднуем...', '', 18019),
 	(39725, 'zhCN', '虽然历经劫难，但我们还是会生存下去！今天，我们要庆祝……', '', 18019),
 	(39725, 'zhTW', '我們會繼續活著!我們會存活下去!今天我們要慶祝...', '', 18019),
 	(39726, 'deDE', '...unseren Eigenständigkeitstag!', '', 18019),
@@ -304565,7 +304582,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(40293, 'zhCN', '', '卡亚矿石在几千年前把我们变得非常聪明，现在却对我们这些巨魔产生不了任何效果，这不奇怪吗？', 18019),
 	(40293, 'zhTW', '', '你不覺得很奇怪嗎?卡迦邁礦在幾千年前讓我們變聰明，但是對我們的食人妖奴隸卻毫無影響。', 18019),
 	(40294, 'deDE', '', 'Die Destillation von Kaja\'Cola aus Kaja\'mit war ein wahrer Geistesblitz Eurerseits, $n. Der Handelsprinz zittert sicher schon, dass Ihr ihm seinen Titel wegschnappt!', 18019),
-	(40294, 'esES', '', 'Destilar Kaja\'Cola de la kaja\'mita fue un golpe de puro genio por tu parte, $n. ¡El Príncipe mercante estará preocupado de que le vayas a quitar el título!', 18019),
+	(40294, 'esES', '', 'Destilar Kaja\'Cola de la kaja\'mita fue un golpe de puro genio por tu parte, $n. ¡El Príncipe mercante estará preocupado de que le vayas a quitar el título!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(40294, 'esMX', '', 'Destilar Kaja\'Cola de la kaja\'mita fue un golpe de puro genio por tu parte, $n. ¡El Príncipe mercante estará preocupado de que le vayas a quitar el título!', 18019),
 	(40294, 'frFR', '', 'Distiller le Kaja\'Cola à partir de la kaja\'mite, c\'est un coup de pur génie de ta part, $n. Le prince marchand doit être inquiet et penser que tu vas prendre son titre !', 18019),
 	(40294, 'koKR', '', '카자마이트에서 카자콜라를 증류하는 걸 생각해 내다니! 당신 정말 천재임에 틀림이 없어요, $n 님! 무역왕 자리는 당신 차지가 될 거예요. 지금 무역왕은 걱정 좀 되겠네요!', 18019),
@@ -310057,8 +310075,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(40988, 'esMX', 'Permíteme que te haga una sencilla pregunta: ¿acaso un hombre no tiene derecho al sudor de su frente?', '', 18019),
 	(40988, 'frFR', 'Laissez-moi vous poser une question toute simple. Un homme peut-il garder la sueur de son front ? En a-t-il le droit ?', '', 18019),
 	(40988, 'koKR', '아주 간단한 질문 하나만 드렸으면 합니다. 인간은 땀 흘리며 일할 허락을, 아니 자격을 얻었습니까?', '', 18019),
-	(40988, 'ruRU', 'Позвольте мне задать простой вопрос: "Разве не человеку – и только ему – принадлежат плоды его трудов?"', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(40988, 'ruRU', 'Позвольте мне задать простой вопрос: "Разве не человеку – и только ему – принадлежат плоды его трудов?"', '', 18019),
 	(40988, 'zhCN', '请允许我问一个简单的问题：一个男人是否有资格靠自己的血汗为生？', '', 18019),
 	(40988, 'zhTW', '請容我問個簡單的問題:人是否能夠，甚至有資格，保有自己辛勤工作的成果?', '', 18019),
 	(40989, 'deDE', 'Ich habe bis an mein Lebensende genug von dieser Höhle gesehen. Ich kann es kaum erwarten, nach Kharanos zurückzukehren.', '', 18019),
@@ -311916,7 +311933,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(41220, 'koKR', '당신은 정말 멋지고도 멋진 분이십니다.', '당신은 정말 멋지고도 멋진 분이세요.', 18019),
 	(41220, 'ruRU', 'До чего приятно видеть тебя, дружище.', 'До чего приятно видеть тебя, дружище.', 18019),
 	(41220, 'zhCN', '见到你实在是太好了，太好了，朋友。', '见到你实在是太好了，太好了，朋友。', 18019),
-	(41220, 'zhTW', '看到你真是令人無比高興，朋友。', '看到你真是令人無比高興，朋友。', 18019),
+	(41220, 'zhTW', '看到你真是令人無比高興，朋友。', '看到你真是令人無比高興，朋友。', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(41221, 'deDE', 'Haben alle anderen es geschafft? War der Angriff erfolgreich?', 'Haben alle anderen es geschafft? War der Angriff erfolgreich?', 18019),
 	(41221, 'esES', '¿Todos los demás han sobrevivido? ¿Ha tenido éxito el ataque?', '¿Todos los demás han sobrevivido? ¿Ha tenido éxito el ataque?', 18019),
 	(41221, 'esMX', '¿Todos los demás han sobrevivido? ¿Ha tenido éxito el ataque?', '¿Todos los demás han sobrevivido? ¿Ha tenido éxito el ataque?', 18019),
@@ -319100,7 +319118,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(42126, 'koKR', '당신이 여기서 망치단을 괴멸하고 있다고 테일러 부대장님께 분명히 말씀드리겠습니다.', '당신이 여기서 망치단을 괴멸하고 있다고 테일러 부대장님께 분명히 말씀드리겠어요.', 18019),
 	(42126, 'ruRU', 'Я непременно расскажу капитану Тейлору о том, что тебе удалось убить сектантов Молота.', 'Я непременно расскажу капитану Тейлору о том, что тебе удалось убить сектантов Молота.', 18019),
 	(42126, 'zhCN', '我一定会转告泰勒上尉，你正在这里解决暮光之锤。', '我一定会转告泰勒上尉，你正在这里解决暮光之锤。', 18019),
-	(42126, 'zhTW', '我會跟泰勒隊長說，讓他知道你要在這摧毀暮光之錘。', '我會跟泰勒隊長說，讓他知道你要在這摧毀暮光之錘。', 18019),
+	(42126, 'zhTW', '我會跟泰勒隊長說，讓他知道你要在這摧毀暮光之錘。', '我會跟泰勒隊長說，讓他知道你要在這摧毀暮光之錘。', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(42127, 'deDE', '$n kümmert sich drum! Ich gehe besser zum Hauptmann zurück.', '$n kümmert sich drum! Ich gehe besser zum Hauptmann zurück.', 18019),
 	(42127, 'esES', '¡$n está en ello! Será mejor que vuelva con el capitán.', '¡$n está en ello! Será mejor que vuelva con el capitán.', 18019),
 	(42127, 'esMX', '¡$n está en ello! Será mejor que vuelva con el capitán.', '¡$n está en ello! Será mejor que vuelva con el capitán.', 18019),
@@ -320058,8 +320077,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(42247, 'esMX', 'Lo siento, no puedo ofrecerte instrucción.', '', 18019),
 	(42247, 'frFR', 'Désolé, je ne peux pas vous offrir d\'entraînement.', '', 18019),
 	(42247, 'koKR', '죄송합니다. 제가 가르쳐 드릴 수 있는 게 없군요.', '', 18019),
-	(42247, 'ruRU', 'Прости, я не могу учить тебя.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(42247, 'ruRU', 'Прости, я не могу учить тебя.', '', 18019),
 	(42247, 'zhCN', '对不起，我无法对你进行训练。', '', 18019),
 	(42247, 'zhTW', '抱歉，我無法訓練你。', '', 18019),
 	(42248, 'deDE', 'Los, kämpft weiter, $n!', 'Los, kämpft weiter, $n!', 18019),
@@ -326466,7 +326484,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(43153, 'esES', '¡No puedo realizar el ritual si me están pegando!', '', 18019),
 	(43153, 'esMX', '¡No puedo realizar el ritual si me están pegando!', '', 18019),
 	(43153, 'frFR', 'Je ne peux pas accomplir le rituel tant qu\'ils me tapent dessus !', '', 18019),
-	(43153, 'koKR', '이렇게 공격을 당하면 의식을 수행할 수 없습니다.', '', 18019),
+	(43153, 'koKR', '이렇게 공격을 당하면 의식을 수행할 수 없습니다.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(43153, 'ruRU', 'Я не могу совершить ритуал, пока они набрасываются на меня!', '', 18019),
 	(43153, 'zhCN', '我没法在他们攻击我的时候继续进行仪式！', '', 18019),
 	(43153, 'zhTW', '我無法在他們攻擊我的時候進行儀式!', '', 18019),
@@ -330059,8 +330078,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(43613, 'esMX', '¡De pie! ¡Ataquen, nagas!', '', 18019),
 	(43613, 'frFR', 'En position ! Les nagas attaquent !', '', 18019),
 	(43613, 'koKR', '응수하라! 나가가 공격한다!', '', 18019),
-	(43613, 'ruRU', 'По местам! Наги атакуют!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(43613, 'ruRU', 'По местам! Наги атакуют!', '', 18019),
 	(43613, 'zhCN', '稳住！纳迦进攻了！', '', 18019),
 	(43613, 'zhTW', '做好準備!納迦來襲!', '', 18019),
 	(43614, 'deDE', 'Beeilung! Tut etwas, Schamane!', '', 18019),
@@ -334844,7 +334862,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(44218, 'esMX', 'Él nos guiará…', '', 18019),
 	(44218, 'frFR', 'Il nous guidera pour la suite…', '', 18019),
 	(44218, 'koKR', '그분께서 우리를 인도하시겠지요...', '', 18019),
-	(44218, 'ruRU', 'Он подскажет, что делать дальше...', '', 18019),
+	(44218, 'ruRU', 'Он подскажет, что делать дальше...', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(44218, 'zhCN', '他会指引我们……', '', 18019),
 	(44218, 'zhTW', '他會引領我們接下來的步伐...', '', 18019),
 	(44219, 'deDE', 'Erunak! Neeeiiin!', '', 18019),
@@ -340060,8 +340079,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(44887, 'esMX', '¡Cambio de fo\'ma! ¡Zen\'Kiki abso\'be el daño!', '', 18019),
 	(44887, 'frFR', 'Changeforme ! Zen\'Kiki, il va encaisser grave !', '', 18019),
 	(44887, 'koKR', '변신술! 피해 흡수!', '', 18019),
-	(44887, 'ruRU', 'Превращение! Зен\'Кики примет урон на себя!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(44887, 'ruRU', 'Превращение! Зен\'Кики примет урон на себя!', '', 18019),
 	(44887, 'zhCN', '变形！赞吉吉吸收伤害！', '', 18019),
 	(44887, 'zhTW', '變身!贊基奇會吸收傷害!', '', 18019),
 	(44888, 'deDE', 'Gestaltwandel! Zeit für die Bärengestalt!', '', 18019),
@@ -342421,7 +342439,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(45214, 'esMX', '', '¡Inclínense ante sus superiores, y quizá sobrevivan a la destrucción de este mísero mundo!', 18019),
 	(45214, 'frFR', '', 'Inclinez-vous devant ceux qui vous sont supérieurs, et vous pourrez peut-être survivre à la destruction de ce misérable monde !', 18019),
 	(45214, 'koKR', '', '우월하신 자 앞에 고개 숙여라. 그러면 이 하찮은 세상이 무너질 때 살아남으리라!', 18019),
-	(45214, 'ruRU', '', 'Преклоните колена перед повелителями и, быть может, вы переживете разрушение этого ничтожного мира!', 18019),
+	(45214, 'ruRU', '', 'Преклоните колена перед повелителями и, быть может, вы переживете разрушение этого ничтожного мира!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(45214, 'zhCN', '', '拜服于强者脚下，你也许还能在这个渺小世界的毁灭中逃过一死！', 18019),
 	(45214, 'zhTW', '', '向你的上者臣服，或許你仍有機會活過這卑微世界的毀滅浩劫!', 18019),
 	(45215, 'deDE', '', 'Opfert die Ungläubigen! In Namen Sargeras\'.', 18019),
@@ -349077,7 +349096,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(46070, 'esMX', 'Es difícil explicar a los Faucedraco conceptos como "campo de fuego" o "ráfaga disuasoria".$b$bAfortunadamente, cuentan con una sólida comprensión de "zonas a matar" y... eh... "asesinato".', '', 18019),
 	(46070, 'frFR', 'Il n\'est pas facile de faire comprendre au Gueules-de-dragon des concepts comme le « tir croisé » ou le « tir de suppression ».$B$BFort heureusement, ils maîtrisent parfaitement d\'autres concepts importants, par exemple « l\'embuscade violente » ou, euh, « le meurtre ».', '', 18019),
 	(46070, 'koKR', '용아귀 부족한테 군사 용어를 설명하기가 얼마나 어려운지 모른다고. 왜 있잖아, "전천후 사격"이라던가 "제압 사격" 같은 거.$B$B다행히 "사망자 집중 지역"에 대해서는 설명할 필요가 없더군... 그러니까... 알아서 잘 해치우더란 말이지.', '', 18019),
-	(46070, 'ruRU', 'Оркам Драконьей Пасти сложно объяснить понятия типа "Сектор обстрела" или "Огонь на подавление".$B$BК счастью, они отлично усвоили, что такое "Огневой мешок" и... ну да... "Убийство".', '', 18019),
+	(46070, 'ruRU', 'Оркам Драконьей Пасти сложно объяснить понятия типа "Сектор обстрела" или "Огонь на подавление".$B$BК счастью, они отлично усвоили, что такое "Огневой мешок" и... ну да... "Убийство".', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(46070, 'zhCN', '很难向龙喉兽人解释“火力覆盖”和“压制炮火”这样的概念。$B$B幸运的是，他们很清楚什么是“杀”和……嗯……“杀光”。', '', 18019),
 	(46070, 'zhTW', '很難跟龍喉氏族解釋何謂「射界」或「壓制火力」的觀念。$B$B還好，他們對於「殺傷區」倒是理解得很清楚，還有...呃，「殺戮」。', '', 18019),
 	(46071, 'deDE', 'Ich habe um Verstärkung gebeten, die uns hilft, den Strand zu halten. Und die Horde schickt uns diese winzigen Männchen mit ihren kleinen Metallrohren.$B$B<Gralok beäugt den nahestehenden Goblin verächtlich.>', '', 18019),
@@ -350061,8 +350081,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(46196, 'esMX', '', 'Nada, de momento...', 18019),
 	(46196, 'frFR', '', 'Rien, encore…', 18019),
 	(46196, 'koKR', '', '아무 짓도 하지 않았다. 아직은...', 18019),
-	(46196, 'ruRU', '', 'Пока ничего...', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(46196, 'ruRU', '', 'Пока ничего...', 18019),
 	(46196, 'zhCN', '', '暂时还没做什么……', 18019),
 	(46196, 'zhTW', '', '目前，還沒有...', 18019),
 	(46197, 'deDE', '', 'Ich stelle Euch nun vor die Wahl – eine Wahl, die ich niemals hatte.', 18019),
@@ -356319,7 +356338,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(46992, 'frFR', 'Cette fois-ci, mes amis, j\'ai un PETIT quelque chose de spécial à vous proposer ! Même un homme averti ne vaut pas la moitié de cette moitié d\'homme ! $n contre le féroce Marteau-hardi… Sully Pète-Rotule !', '', 18019),
 	(46992, 'koKR', '여러분, 이번엔 특별히 "조그만" 놀라움을 준비했습니다! 작은 고추가 매운 법! 잔인한 와일드해머 드워프... 설리 니캐퍼와 $n의 대결을 지켜보십시오!', '', 18019),
 	(46992, 'ruRU', 'На сей раз у меня для вас есть МА-А-АЛЕНЬКИЙ сюрприз, друзья мои! Вы не стоите и половины этого полурослика! Итак, $n против яростного дворфа Громового Молота... Сулла Коленодроба!!!', '', 18019),
-	(46992, 'zhCN', '接下来为大家准备了个特别的节目！你们在这家伙面前简直渺小如微尘！$n对决凶残的蛮锤斗士……萨利·碎膝！！！', '', 18019),
+	(46992, 'zhCN', '接下来为大家准备了个特别的节目！你们在这家伙面前简直渺小如微尘！$n对决凶残的蛮锤斗士……萨利·碎膝！！！', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(46992, 'zhTW', '各位觀眾!這回我特別安排了個「小」東西要給大家!告訴你們，你們連這個一半身高的傢伙的一半都比不上!由$n對決最兇、最狠的蠻錘矮人:蘇利·碎膝者!', '', 18019),
 	(46993, 'deDE', 'Dieser Kampf wird auf jeden Fall KURZ sein! Okay, okay, ich bin ja schon fertig. Möge das Blutbad beginnen!', '', 18019),
 	(46993, 'esES', '¡Esta pelea seguro que será de CORTA duración! Está bien, está bien, ya termino. ¡Que empiece el baño de sangre!', '', 18019),
@@ -360062,8 +360082,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(47462, 'esMX', 'Después de la catástrrrofe del rrritual, me lo defes, $r.$b$b¡Y tengo pensado cobrrrarme la deuda!', '', 18019),
 	(47462, 'frFR', 'Après le fiasco du rituel, fous me defez gros, $r.$B$BEt che compte bien recefoir mon dû !', '', 18019),
 	(47462, 'koKR', '의식이 그렇게 엉망으로 끝났으니, 넌 내게 큰 빚을 졌어, $r.$b$b그리고 난 받을 빚은 잊지 않는 사람이거든!', '', 18019),
-	(47462, 'ruRU', 'После провал ритуал вы есть мой должник, |3-6($r).$B$BА я планировайт получайт майн долг!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(47462, 'ruRU', 'После провал ритуал вы есть мой должник, |3-6($r).$B$BА я планировайт получайт майн долг!', '', 18019),
 	(47462, 'zhCN', '现在那个仪式完蛋了。你欠我一大笔债，$r。$b$b我会让你还的！', '', 18019),
 	(47462, 'zhTW', '這是儀式失敗之後你欠我的，$r。$b$b而且我要跟你討債了!', '', 18019),
 	(47463, 'deDE', 'Seid ruhig da drin. Ihre Ruhepausen sind nur dreißig Minuten lang und ich werde es nicht zulassen, dass Ihr sie stört.', 'Seid ruhig da drin. Ihre Ruhepausen sind nur dreißig Minuten lang und ich werde es nicht zulassen, dass Ihr sie stört.', 18019),
@@ -362797,7 +362816,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(47804, 'deDE', '%s beschwört ein temporäres Erdungsfeld!', '', 18019),
 	(47804, 'esES', '¡%s invoca un campo derribador temporal!', '', 18019),
 	(47804, 'esMX', '¡%s invoca un campo derribador temporal!', '', 18019),
-	(47804, 'frFR', '%s invoque un champ d\'immobilisation temporaire !', '', 18019),
+	(47804, 'frFR', '%s invoque un champ d\'immobilisation temporaire !', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(47804, 'koKR', '%s|1이;가; 임시 마법 흡수장을 생성합니다!', '', 18019),
 	(47804, 'ruRU', '%s вызывает нестойкое заземляющее поле!', '', 18019),
 	(47804, 'zhCN', '%s施放了不稳定的接地场！', '', 18019),
@@ -370063,8 +370083,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(48718, 'esMX', 'He oído historias de que La Vorágine se ha abierto y amenaza con devorar el mundo. ¿Puedes imaginar una cosa así?', '', 18019),
 	(48718, 'frFR', 'J\'ai entendu dire que le Maelström était carrément en train de s\'ouvrir, et qu\'il risquait d\'engloutir le monde. Vous arrivez à imaginer un truc pareil ?', '', 18019),
 	(48718, 'koKR', '혼돈의 소용돌이가 열려 우리 세상을 집어삼킬 수도 있다는 소문을 들었네. 그런 일을 감히 상상할 수 있나?', '', 18019),
-	(48718, 'ruRU', 'Я слыхал, что сам Водоворот открылся и угрожает поглотить весь мир. Можешь себе представить такое?', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(48718, 'ruRU', 'Я слыхал, что сам Водоворот открылся и угрожает поглотить весь мир. Можешь себе представить такое?', '', 18019),
 	(48718, 'zhCN', '我听说大漩涡已经打开了，将要吞掉整个世界。你能想象这种事情吗？', '', 18019),
 	(48718, 'zhTW', '我聽說大漩渦整個打開把世界吞沒的故事。你可以想像這樣的事情發生嗎?', '', 18019),
 	(48719, 'deDE', 'Wenn wir diese Zwerge und Worgen aufhalten, dann werden wir als große Helden der Horde gefeiert!', '', 18019),
@@ -370086,7 +370105,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(48721, 'deDE', 'Tragt immer einen Kopfschutz, wenn Ihr arbeitet! Man weiß nie, wann einem Fräulein Darla wieder mal ins Gesicht schlägt!', '', 18019),
 	(48721, 'esES', '¡Mientras estés trabajando lleva siempre protección en la cabeza! ¡Nunca sabes cuándo a la señorita Darla le dará por pegarte un cachete en la cara!', '', 18019),
 	(48721, 'esMX', '¡Mientras estés trabajando lleva siempre protección en la cabeza! ¡Nunca sabes cuándo a la señorita Darla le dará por pegarte un cachete en la cara!', '', 18019),
-	(48721, 'frFR', 'Ne travaillez pas sans votre casque ! On n\'sait jamais quand mam\'zelle Darla pourrait avoir besoin de vous coller une claque !', '', 18019),
+	(48721, 'frFR', 'Ne travaillez pas sans votre casque ! On n\'sait jamais quand mam\'zelle Darla pourrait avoir besoin de vous coller une claque !', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(48721, 'koKR', '작업 중엔 항상 머리 보호구를 착용하십시오! 달라 아가씨가 언제 얼굴에 주먹을 날릴지 모르니까요!', '', 18019),
 	(48721, 'ruRU', 'На работе всегда носи каску! Никому неизвестно, когда Дарла решит дать тебе по физиономии!', '', 18019),
 	(48721, 'zhCN', '工作时一定要戴上护头设备！没有人知道达尔拉小姐什么时候会给你的脑袋来一下！', '', 18019),
@@ -377385,7 +377405,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(49638, 'frFR', 'La mort est décisive. Éternelle. La mort... est mon royaume.', '', 18019),
 	(49638, 'koKR', '최후에 오는 것은 죽음이다. 죽음은 영원하지. 죽음은... 내 영역이다.', '', 18019),
 	(49638, 'ruRU', 'А смерти принадлежит вечность. Смерть – моя империя.', '', 18019),
-	(49638, 'zhCN', '死亡才是终途，死亡才是永恒，死亡……是我的领域。', '', 18019),
+	(49638, 'zhCN', '死亡才是终途，死亡才是永恒，死亡……是我的领域。', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(49638, 'zhTW', '死亡是終點，死亡才是永恆的。死亡...是我的領域。', '', 18019),
 	(49639, 'deDE', 'Sieh mich an und sieh den leibhaftigen Tod, den Weltenzerstörer.', '', 18019),
 	(49639, 'esES', 'Mírame y verás la muerte encarnada, la aniquiladora de mundos.', '', 18019),
@@ -380064,8 +380085,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(49974, 'esMX', '', 'Vas a tener que llevar la pelea hasta ellos, $n. Busca a Izzy en el exterior de su poblado.', 18019),
 	(49974, 'frFR', '', 'Il va falloir aller les combattre sur leur terrain, $n. Allez trouver Izzy à l\'extérieur de leur village.', 18019),
 	(49974, 'koKR', '', '저들과 제대로 한 판 붙어 주셔야 해요. $n 님, 소인족 마을 바깥쪽에서 이지를 찾아보세요.', 18019),
-	(49974, 'ruRU', '', 'Тебе придется сразиться с ними, $n. Иззи можно найти сразу за деревней.', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(49974, 'ruRU', '', 'Тебе придется сразиться с ними, $n. Иззи можно найти сразу за деревней.', 18019),
 	(49974, 'zhCN', '', '如果你要和他们战斗，$n，你可以在他们的村外去找小静。', 18019),
 	(49974, 'zhTW', '', '你得跟他們開戰，$n。在他們的村落外面找找伊茲。', 18019),
 	(49975, 'deDE', 'Ich kann Euch nicht helfen, $C.', 'Ich kann Euch nicht helfen, $C.', 18019),
@@ -384459,7 +384479,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(50528, 'koKR', 'D 구역의 악마들은 우리가 여기 도착했을 때부터 우리를 괴롭혀왔네. 자네가 우리를 좀 도와줄 수 있겠나?', 'D 구역의 악마들은 우리가 여기 도착했을 때부터 우리를 괴롭혀왔네. 자네가 우리를 좀 도와줄 수 있겠나?', 18019),
 	(50528, 'ruRU', 'Демоны из блока Д докучают нам с тех пор, как мы высадились на остров. Ты не $gмог:могла; бы нам помочь?', 'Демоны из блока Д докучают нам с тех пор, как мы высадились на остров. Ты не $gмог:могла; бы нам помочь?', 18019),
 	(50528, 'zhCN', '自从我们到这里来之后，恶魔监狱中的恶魔一直在给我们惹麻烦。你能帮助我们吗？', '自从我们到这里来之后，恶魔监狱中的恶魔一直在给我们惹麻烦。你能帮助我们吗？', 18019),
-	(50528, 'zhTW', '自從我們來到這裡，D區的惡魔就給我們惹了不少麻煩。你可以幫我們嗎?', '自從我們來到這裡，D區的惡魔就給我們惹了不少麻煩。你可以幫我們嗎?', 18019),
+	(50528, 'zhTW', '自從我們來到這裡，D區的惡魔就給我們惹了不少麻煩。你可以幫我們嗎?', '自從我們來到這裡，D區的惡魔就給我們惹了不少麻煩。你可以幫我們嗎?', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(50529, 'deDE', 'Ywaq maq oou.', '', 18019),
 	(50529, 'esES', 'Ywaq maq oou.', '', 18019),
 	(50529, 'esMX', 'Ywaq maq oou.', '', 18019),
@@ -390065,8 +390086,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(51274, 'esMX', 'Se pueden ver en este objeto varias manchas de sangre seca, probablemente como resultado de alguna pelea por quitarles el artefacto a los trols. Sin embargo, el objeto es bastante mundano y puede que no mereciera la pena verter sangre por él.', '', 18019),
 	(51274, 'frFR', 'Plusieurs taches de sang séché sont visibles sur cet objet, comme si les trolls avaient dû lutter pour se procurer cet artéfact. Il est cependant tout ce qu’il y a de plus ordinaire et ne valait probablement pas qu’on se batte pour lui.', '', 18019),
 	(51274, 'koKR', '이 물체에서는 마른 핏자국이 몇 군데 보입니다. 트롤들이 이 유물을 차지하려고 다투는 과정에서 생겼을 것입니다. 하지만 물체 자체는 상당히 평범해 보이며, 그렇게 서로 다툴 만한 물건은 아닌 듯합니다.', '', 18019),
-	(51274, 'ruRU', 'Вы видите на этом объекте несколько капель высохшей крови. Вероятно, они появились там в результате попыток троллей завладеть этим артефактом. Впрочем, эта штука весьма простая и вред ли стоила того, чтобы за нее бороться.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(51274, 'ruRU', 'Вы видите на этом объекте несколько капель высохшей крови. Вероятно, они появились там в результате попыток троллей завладеть этим артефактом. Впрочем, эта штука весьма простая и вред ли стоила того, чтобы за нее бороться.', '', 18019),
 	(51274, 'zhCN', '该物件上残留着斑斑血迹，很可能是巨魔们在争夺它时留下的。然而这个物件本身平凡无奇，其实并不值得争抢。', '', 18019),
 	(51274, 'zhTW', '這件物品上面有好幾個乾涸的血漬，看來食人妖在取得這件文物時曾經歷一番爭鬥。不過，此物看來一般，很可能不具抗爭奪取的價值。', '', 18019),
 	(51275, 'deDE', '', 'Rubin, möchtest du eine Belohnung?', 18019),
@@ -391839,7 +391859,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(51499, 'zhTW', '這隻小迅猛龍抬頭看著你。你不是很確定，不過你覺得在牠眼中閃過一絲認同感。', '', 18019),
 	(51500, 'deDE', 'Die Zandalari müssen aufgehalten werden. Wenn sie alle Trolle in Azeroth befehligen würden, würden sie uns alle bedrohen.', '', 18019),
 	(51500, 'esES', 'Los Zandalari deben ser detenidos. Con todos los trols de Azeroth bajo su dominio, supondrían una gran amenaza pa\' todos nosotros.', '', 18019),
-	(51500, 'esMX', 'Los Zandalari deben ser detenidos. Con todos los trols de Azeroth bajo su dominio, supondrían una gran amenaza pa\' todos nosotros.', '', 18019),
+	(51500, 'esMX', 'Los Zandalari deben ser detenidos. Con todos los trols de Azeroth bajo su dominio, supondrían una gran amenaza pa\' todos nosotros.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(51500, 'frFR', 'Les Zandalari doivent être arrêtés. Avec tous les trolls d’Azeroth sous leurs ordres, ils seraient une grande menace pour tous.', '', 18019),
 	(51500, 'koKR', '잔달라 놈들을 막아야 하네. 놈들이 아제로스의 모든 트롤을 지배하게 되면, 우리 모두 위험해질 게야.', '', 18019),
 	(51500, 'ruRU', 'Зандаларов необходимо остановить. Если под их знамена встанут все тролли Азерота, нам не поздоровится.', '', 18019),
@@ -399689,7 +399710,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(52537, 'esES', '', 'Solo puedo teletransportarnos una vez. Asegúrate de que quieres partir. Go\'el nos espera en el fondo del océano...', 18019),
 	(52537, 'esMX', '', 'Solo puedo teletransportarnos una vez. Asegúrate de que quieres partir. Go\'el nos espera en el fondo del océano...', 18019),
 	(52537, 'frFR', '', 'Je peux nous téléporter une seule fois. Assurez-vous d’être vraiment $gprêt:prête;. Go’el nous attend au fond de l’océan…', 18019),
-	(52537, 'koKR', '', '전 오직 단 한 번만 우리를 그곳으로 순간이동시킬 수 있습니다. 준비 단단히 하세요. 고엘이 바다 밑바닥에서 우리를 기다리고 있습니다...', 18019),
+	(52537, 'koKR', '', '전 오직 단 한 번만 우리를 그곳으로 순간이동시킬 수 있습니다. 준비 단단히 하세요. 고엘이 바다 밑바닥에서 우리를 기다리고 있습니다...', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(52537, 'ruRU', '', 'Я смогу телепортировать нас только один раз. Убедись, что ты $gготов:готова;. Го\'эл ждет нас на дне океана...', 18019),
 	(52537, 'zhCN', '', '我的力量只够传送一次。所以你一定要做好充分的准备。古伊尔在海底等着我们……', 18019),
 	(52537, 'zhTW', '', '我只能傳送我們一次。確認你已經準備好了。高爾在海底等著我們。', 18019),
@@ -400066,8 +400088,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(52586, 'esMX', '¡Gusanos de lava ígneos surgen del suelo!', '¡Gusanos de lava ígneos surgen del suelo!', 18019),
 	(52586, 'frFR', 'Des vers de lave embrasés surgissent du sol !', 'Des vers de lave embrasés surgissent du sol !', 18019),
 	(52586, 'koKR', '불타는 용암 벌레가 땅에서 튀어나옵니다!', '불타는 용암 벌레가 땅에서 튀어나옵니다!', 18019),
-	(52586, 'ruRU', 'На поверхность вылезают огненные лавовые паразиты!', 'На поверхность вылезают огненные лавовые паразиты!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(52586, 'ruRU', 'На поверхность вылезают огненные лавовые паразиты!', 'На поверхность вылезают огненные лавовые паразиты!', 18019),
 	(52586, 'zhCN', '熔岩火虫从地下涌出来了！', '熔岩火虫从地下涌出来了！', 18019),
 	(52586, 'zhTW', '熾炎熔岩蟲從地上鑽了出來!', '熾炎熔岩蟲從地上鑽了出來!', 18019),
 	(52588, 'deDE', '|TInterface\\Icons\\inv_misc_horn_03.blp:20|t Als die Kreaturen der Feuerlande fallen, erklingt das Horn eines Jägers in der Ferne.', '', 18019),
@@ -406231,7 +406252,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(53398, 'zhCN', '你好，欢迎来到暗月马戏团入口处。$b$b这座传送门能送你去暗月马戏团。$b$b如果你在出发前有什么疑问的话，我也可以帮你解答。', '你好，欢迎来到暗月马戏团入口处。$b$b这座传送门能送你去暗月马戏团。$b$b如果你在出发前有什么疑问的话，我也可以帮你解答。', 18019),
 	(53398, 'zhTW', '您好，$c，歡迎來到暗月馬戲團的籌備區。$b$b這裡的門會把你帶到暗月馬戲團的位置。$b$b但若您在前往之前有任何問題，我可以幫忙回答。', '您好，$c，歡迎來到暗月馬戲團的籌備區。$b$b這裡的門會把你帶到暗月馬戲團的位置。$b$b但若您在前往之前有任何問題，我可以幫忙回答。', 18019),
 	(53399, 'deDE', 'Auf dem Dunkelmond-Jahrmarkt gibt es viele aufregende Attraktionen. Wir haben einen Wahrsager, ein Konzert, einen Angelwettbewerb und zahlreiche Spiele.$B$BDer Jahrmarkt wird ständig um neue Attraktionen erweitert!$B$BMöchtet Ihr Informationen zu einer bestimmten Attraktion?', 'Auf dem Dunkelmond-Jahrmarkt gibt es viele aufregende Attraktionen. Wir haben einen Wahrsager, ein Konzert, einen Angelwettbewerb und zahlreiche Spiele.$B$BDer Jahrmarkt wird ständig um neue Attraktionen erweitert!$B$BMöchtet Ihr Informationen zu einer bestimmten Attraktion?', 18019),
-	(53399, 'esES', 'La Feria de la Luna Negra está llena de todo tipo de atracciones divertidas. Tenemos un clarividente, un concierto, un concurso de pesca y un montón de juegos.$b$bAmpliamos constantemente la feria con múltiples y variadas atracciones.$b$b¿Te gustaría informarte acerca de alguna atracción?', 'La Feria de la Luna Negra está llena de todo tipo de atracciones divertidas. Tenemos un clarividente, un concierto, un concurso de pesca y un montón de juegos.$b$bAmpliamos constantemente la feria con múltiples y variadas atracciones.$b$b¿Te gustaría informarte acerca de alguna atracción?', 18019),
+	(53399, 'esES', 'La Feria de la Luna Negra está llena de todo tipo de atracciones divertidas. Tenemos un clarividente, un concierto, un concurso de pesca y un montón de juegos.$b$bAmpliamos constantemente la feria con múltiples y variadas atracciones.$b$b¿Te gustaría informarte acerca de alguna atracción?', 'La Feria de la Luna Negra está llena de todo tipo de atracciones divertidas. Tenemos un clarividente, un concierto, un concurso de pesca y un montón de juegos.$b$bAmpliamos constantemente la feria con múltiples y variadas atracciones.$b$b¿Te gustaría informarte acerca de alguna atracción?', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(53399, 'esMX', 'La Feria de la Luna Negra está llena de todo tipo de atracciones divertidas. Tenemos un clarividente, un concierto, un concurso de pesca y un montón de juegos.$b$bAmpliamos constantemente la feria con múltiples y variadas atracciones.$b$b¿Te gustaría informarte acerca de alguna atracción?', 'La Feria de la Luna Negra está llena de todo tipo de atracciones divertidas. Tenemos un clarividente, un concierto, un concurso de pesca y un montón de juegos.$b$bAmpliamos constantemente la feria con múltiples y variadas atracciones.$b$b¿Te gustaría informarte acerca de alguna atracción?', 18019),
 	(53399, 'frFR', 'La foire de Sombrelune possède toutes sortes d’attractions extraordinaires. Nous avons une diseuse de bonne aventure, un concert, un concours de pêche et des tas de jeux.$b$bNous rajoutons constamment de nouvelles attractions à la foire !$b$bÀ propos de quelle attraction aimeriez-vous avoir davantage d\'informations ?', 'La foire de Sombrelune possède toutes sortes d’attractions extraordinaires. Nous avons une diseuse de bonne aventure, un concert, un concours de pêche et des tas de jeux.$b$bNous rajoutons constamment de nouvelles attractions à la foire !$b$bÀ propos de quelle attraction aimeriez-vous avoir davantage d\'informations ?', 18019),
 	(53399, 'koKR', '다크문 축제는 온갖 놀라운 구경거리가 가득합니다. 점쟁이와 공연, 낚시 대회와 수많은 게임이 있지요.$b$b우리는 계속해서 다양한 종류의 구경거리를 더 만들어내고 있습니다!$b$b더 알고 싶으신 구경거리가 있으십니까?', '다크문 축제는 온갖 놀라운 구경거리가 가득해요. 점쟁이와 공연, 낚시 대회와 수많은 게임이 있답니다.$b$b우리는 계속해서 다양한 종류의 구경거리를 더 만들어내고 있어요!$b$b더 알고 싶으신 구경거리가 있으신가요?', 18019),
@@ -410067,8 +410089,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(53954, 'esMX', 'Sabía que vendría alguien a rescatarnos. Gracias, $c.', '', 18019),
 	(53954, 'frFR', 'Je savais que quelqu’un viendrait nous sauver. Merci, $c !', '', 18019),
 	(53954, 'koKR', '누군가 우릴 구하러 올 줄 알았습니다. 감사합니다, $c님!', '', 18019),
-	(53954, 'ruRU', 'Спасибо, |3-6($c), за то, что $gвыручил:выручила:c; нас.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(53954, 'ruRU', 'Спасибо, |3-6($c), за то, что $gвыручил:выручила:c; нас.', '', 18019),
 	(53954, 'zhCN', '我就知道会有人来救我们的。谢谢你，$c！', '', 18019),
 	(53954, 'zhTW', '我就知道會有人來救我們。謝謝你，$c!', '', 18019),
 	(53955, 'deDE', 'Ich danke Euch, $C. Ich werde es jetzt allein ins Lager zurückschaffen.', '', 18019),
@@ -413512,7 +413533,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(54400, 'zhCN', '只有刨根问底，才能明察秋毫。', '', 18019),
 	(54400, 'zhTW', '深層的真相只能透過深入的質疑來尋得。', '', 18019),
 	(54401, 'deDE', 'Sehr gut, $R. Vergesst nicht, dass Euer Ring erst in vielen Stunden vollständig aufgeladen sein wird.', 'Sehr gut, $R. Vergesst nicht, dass Euer Ring erst in vielen Stunden vollständig aufgeladen sein wird.', 18019),
-	(54401, 'esES', '¡Muy bien, $r! Recuerda, tu anillo no se cargará del todo hasta dentro de muchas horas.', '¡Muy bien, $r! Recuerda, tu anillo no se cargará del todo hasta dentro de muchas horas.', 18019),
+	(54401, 'esES', '¡Muy bien, $r! Recuerda, tu anillo no se cargará del todo hasta dentro de muchas horas.', '¡Muy bien, $r! Recuerda, tu anillo no se cargará del todo hasta dentro de muchas horas.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(54401, 'esMX', '¡Muy bien, $r! Recuerda, tu anillo no se cargará del todo hasta dentro de muchas horas.', '¡Muy bien, $r! Recuerda, tu anillo no se cargará del todo hasta dentro de muchas horas.', 18019),
 	(54401, 'frFR', 'Très bien, $r ! N’oubliez pas qu’il faudra plusieurs heures pour que votre anneau soit chargé à pleine puissance.', 'Très bien, $r ! N’oubliez pas qu’il faudra plusieurs heures pour que votre anneau soit chargé à pleine puissance.', 18019),
 	(54401, 'koKR', '좋습니다, $r 님! 충전하는 데 시간이 오래 걸린다는 걸 기억해 주십시오.', '좋습니다, $r 님! 충전하는 데 시간이 오래 걸린다는 걸 기억해 주십시오.', 18019),
@@ -420068,8 +420090,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(55235, 'esMX', 'Los nativos son muy amistosos. Bueno, a excepción de los monos.', '', 18019),
 	(55235, 'frFR', 'Les indigènes sont relativement amicaux. Enfin, à l’exception de ces singes.', '', 18019),
 	(55235, 'koKR', '이곳의 원주민도 비교적 호의적입니다. 아, 저 원숭이들은 제외하고요.', '', 18019),
-	(55235, 'ruRU', 'Аборигены весьма дружелюбны – ну, за исключением тех обезьян.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(55235, 'ruRU', 'Аборигены весьма дружелюбны – ну, за исключением тех обезьян.', '', 18019),
 	(55235, 'zhCN', '这里的原住民都很友善。呃，那些猴子除外。', '', 18019),
 	(55235, 'zhTW', '這裡的原生住民相當友善。好吧，除了那些猴子。', '', 18019),
 	(55236, 'deDE', 'Die Jinyu scheinen eine ein uraltes Volk zu sein. Mit der Zeit werden wir ihre Geheimnisse lüften.', '', 18019),
@@ -421738,7 +421759,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(55443, 'zhTW', '你沒辦法靠近主人的。龍騎兵，攻擊!', '', 18019),
 	(55444, 'deDE', 'Hmm, gut gemacht. Doch ich frage mich, ob Ihr gut genug seid... ihn zu besiegen.', '', 18019),
 	(55444, 'esES', 'Bien... hecho, je. Pero me pregunto si seréis tan buenos como para... vencerlo... a él.', '', 18019),
-	(55444, 'esMX', 'Bien... hecho, je. Pero me pregunto si serían tan buenos como para... vencerlo.', '', 18019),
+	(55444, 'esMX', 'Bien... hecho, je. Pero me pregunto si serían tan buenos como para... vencerlo.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(55444, 'frFR', 'Bien… joué, hé. Mais je me demande si vous serez à la hauteur… pour le battre lui.', '', 18019),
 	(55444, 'koKR', '꽤... 하는군, 헤헷. 하지만 그분께 대적할 정도는... 아니야.', '', 18019),
 	(55444, 'ruRU', 'Вы... победили. Интересно, хватит ли вам сил, чтобы одержать верх... над ним.', '', 18019),
@@ -430069,8 +430091,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(56538, 'esMX', 'Miré a los ojos del dragón, y perdí la esperanza…', '', 18019),
 	(56538, 'frFR', 'J\'ai regardé le dragon dans les yeux… le désespoir…', '', 18019),
 	(56538, 'koKR', '난 그 용의 눈을 들여다봤어... 그리고 절망했지...', '', 18019),
-	(56538, 'ruRU', 'Я заглянул в глаза Дракона, и отчаяние охватило меня...', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(56538, 'ruRU', 'Я заглянул в глаза Дракона, и отчаяние охватило меня...', '', 18019),
 	(56538, 'zhCN', '在巨龙的眼中，我只看到了绝望……', '', 18019),
 	(56538, 'zhTW', '我看著巨龍的眼睛，感到了絕望...', '', 18019),
 	(56539, 'deDE', 'Möge das Licht mit Euch sein.', '', 18019),
@@ -430318,7 +430339,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(56569, 'esMX', 'Se llama "Nalice". Y, hasta hace poco, se encontraba en el Templo del Reposo del Dragón como representante del Vuelo Negro. Ahora es una prófuga.', '', 18019),
 	(56569, 'frFR', 'Elle s’appelle Nalice. Jusqu’à présent elle était au temple du Repos du ver. Elle représentait le Vol noir. Maintenant, elle est en fuite.', '', 18019),
 	(56569, 'koKR', '이름은 날리스라고 한다. 최근까지만 해도 검은용군단의 대표로서 고룡쉼터 사원에 머물렀지. 지금은? 도망자 신세다.', '', 18019),
-	(56569, 'ruRU', 'Ее зовут Нэлис. Совсем недавно она была посланником черных драконов в храме Драконьего Покоя. Теперь она в бегах.', '', 18019),
+	(56569, 'ruRU', 'Ее зовут Нэлис. Совсем недавно она была посланником черных драконов в храме Драконьего Покоя. Теперь она в бегах.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(56569, 'zhCN', '她的名字叫“纳莉丝”。不久之前她还作为黑龙军团的代表站在龙眠神殿里。现在？她逃走了。', '', 18019),
 	(56569, 'zhTW', '她的名字是「納麗絲」。不久前她還在龍眠神殿擔任黑龍軍團的代表。現在呢?她正在逃命。', '', 18019),
 	(56570, 'deDE', 'Ich hoffe, dass Ihr diese Mission überlebt. Falls nicht, möchte ich meinen Respekt für Eure Arbeit aussprechen. Ihr seid eine Bereicherung für Euer Volk. Viel Glück.', '', 18019),
@@ -437872,7 +437894,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(57540, 'koKR', '반갑네, $r! 딱 좋을 때에 왔군.$b$b이 땅에서 얼라이언스의 일원을 만날 줄이야.', '', 18019),
 	(57540, 'ruRU', 'Привет, |3-6($r)! Ты очень вовремя.$b$bМы не ожидали встретить здесь представителей Альянса.', '', 18019),
 	(57540, 'zhCN', '你好，$r！你来的正是时候。$b$b我们没想到在这里还能遇见联盟的人。', '', 18019),
-	(57540, 'zhTW', '你好啊，$r!今天真是個好日子。$b$b我們沒預料到還能在這塊土地上找到聯盟的人。', '', 18019),
+	(57540, 'zhTW', '你好啊，$r!今天真是個好日子。$b$b我們沒預料到還能在這塊土地上找到聯盟的人。', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(57541, 'deDE', 'Achtet auf die magischen Fesseln an den Grenzbereichen der Oubliette. Es sollte drei davon geben.', '', 18019),
 	(57541, 'esES', 'Busca los grilletes en los extremos del calabozo. Debería haber tres.', '', 18019),
 	(57541, 'esMX', 'Busca los grilletes en los extremos del calabozo. Debería haber tres.', '', 18019),
@@ -440070,8 +440093,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(57831, 'esMX', '', '¡Me parece bien! A ver si la próxima vez nos avisas del COCODRILO ASESINO GIGANTE.', 18019),
 	(57831, 'frFR', '', 'Ça me semble bien ! Et peut-être que la prochaine fois, vous pourriez nous prévenir pour le CROCODILE TUEUR GÉANT.', 18019),
 	(57831, 'koKR', '', '전 좋아요! 참, 다음에는 사나운 거대 악어를 조심하란 말을 미리 좀 해 주셨으면 참 좋겠네요.', 18019),
-	(57831, 'ruRU', '', 'Неплохо! Только, может, в следующий раз ты предупредишь нас об огромном кровожадном кроколиске.', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(57831, 'ruRU', '', 'Неплохо! Только, может, в следующий раз ты предупредишь нас об огромном кровожадном кроколиске.', 18019),
 	(57831, 'zhCN', '', '听起来不错！也许下次你可以提醒我们“巨型杀人鳄”的事。', 18019),
 	(57831, 'zhTW', '', '聽起來很不錯!或許下次，你可以先警告我們，有殘忍的大、鱷、魚。', 18019),
 	(57832, 'deDE', '', 'Oh, fein! Ein Jinyu!', 18019),
@@ -445545,7 +445567,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(58572, 'koKR', '', '이것 보세요, 이방인님. 고명하신 전승지기님께 말씀드린 것과 같은 이야기를 다시 한번 해줄게요...$B$B<한 마디 한 마디 말할 때마다 눈을 점점 더 크게 뜨며 당신에게 위협적으로 접근하는 만>$B$B비취가, 하나도, 없다고요!', 18019),
 	(58572, 'ruRU', '', 'Послушай, я скажу тебе то же самое, что и достопочтенному хранителю истории...$B$B<Широко раскрыв глаза, Манн с каждым словом наклоняется все ближе к вам.>$B$BНефрита... у... меня... нет!', 18019),
 	(58572, 'zhCN', '', '听着，陌生人，我刚才已经跟那位尊贵的游学者说了，我现在再跟你重复一遍……$B$B<孟一边说一边走了过来，她的眼睛突然瞪得很大。>$B$B我！没！有！玉！石！', 18019),
-	(58572, 'zhTW', '', '聽著，陌生人。我會把我跟尊貴的博學行者講過的話原封不動地告訴你...$b$b<蔓恩湊過身子，瞪大眼睛，一字一字地說。>$B$B玉、沒、了!', 18019),
+	(58572, 'zhTW', '', '聽著，陌生人。我會把我跟尊貴的博學行者講過的話原封不動地告訴你...$b$b<蔓恩湊過身子，瞪大眼睛，一字一字地說。>$B$B玉、沒、了!', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(58573, 'deDE', 'Das ist faszinierend, aber was könnte es bedeuten?!$B$BDie Jade, die Ihr von diesen Geistern gesammelt habt, wird uns helfen, die nächste Tafel zu füllen. Doch wir werden noch mehr brauchen, um das ganze Fresko zu vervollständigen.$B$BBitte helft der Vorarbeiterin, ihren Steinbruch wieder in Betrieb zu nehmen.', '', 18019),
 	(58573, 'esES', 'Esto es fascinante, ¿pero qué podría significar?$b$bEl jade que has recolectado de esos duendes nos ayudará a rellenar el próximo panel, pero necesitaremos más para terminar el fresco entero.$b$bAyuda a la supervisora a retomar la producción en la cantera.', '', 18019),
 	(58573, 'esMX', 'Esto es fascinante, ¿pero qué podría significar?$b$bEl jade que has recolectado de esos duendes nos ayudará a rellenar el próximo panel, pero necesitaremos más para terminar el fresco entero.$b$bAyuda a la supervisora a retomar la producción en la cantera.', '', 18019),
@@ -450071,8 +450094,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(59145, 'esMX', 'Necesitaremos al menos 8 manzanas. Y unos cuantos manojos de arándanos; con 50 bastará.', '', 18019),
 	(59145, 'frFR', 'Nous aurons besoin d’au moins 8 pommes. Et quelques poignées de gruelles. 50, ça devrait aller.', '', 18019),
 	(59145, 'koKR', '적어도 사과 8개와, 학딸기 몇 움큼... 그러니까 한 50개 정도가 필요하겠군요.', '', 18019),
-	(59145, 'ruRU', 'Нам нужно по крайней мере 8 яблок и немного клюквы – 50 пригоршней будет в самый раз.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(59145, 'ruRU', 'Нам нужно по крайней мере 8 яблок и немного клюквы – 50 пригоршней будет в самый раз.', '', 18019),
 	(59145, 'zhCN', '我们至少需要8只苹果，还有一些蔓越莓——50个差不多了。', '', 18019),
 	(59145, 'zhTW', '我們至少需要8顆蘋果。還有一些鶴紅苺，50顆應該夠了。', '', 18019),
 	(59146, 'deDE', 'Hier Bier!', '', 18019),
@@ -453156,7 +453178,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(59539, 'zhCN', '有时候兔妖会在地里打洞然后住进去，盼着蔬菜能掉到它们头上——我想它们是觉得我们把蔬菜放进土里是有什么原因的。$B$B赖着不走的家伙，我爷爷是这么叫它们的。你得脚踏实地，我是说字面意思。你用脚使劲跺地面，把它们震出来！', '', 18019),
 	(59539, 'zhTW', '有時候兔妖會在土壤裡打洞並住在裡面，期待蔬菜自己掉到他們頭上。我想他們不知為何知道我們會把蔬菜全放在地底下。$B$B我爺爺說他們是「住霸王屋的」。你得踏下去。就是字面上的意思。重重踏在地面並把他們徹底趕出來!', '', 18019),
 	(59540, 'deDE', 'Hartnäckiges Kraut! Es ist eine ständige Plage... macht sich auf dem Ackerboden breit und droht, ihn sich ganz einzuverleiben.$B$BBevor Ihr den Acker bestellen könnt, müsst Ihr das Unkraut rausreißen. Es gibt keine besondere Technik - packt es einfach und reißt es raus!$B$BOder wie mein Großvater gesagt hätte: "Man muss einfach störrischer sein als das Kraut!"', '', 18019),
-	(59540, 'esES', '¡Hierbajos obcecados! Son una molestia constante, invaden el terreno y amenazan con cubrir todas tus tierras.$B$BAntes de poder arar esa parcela, tienes que arrancar los hierbajos. No hay ningún truco, la verdad: ¡solo hay que agarrar y tirar!$B$BComo decía mi abuelo, "¡solo hay que ser más terco que el hierbajo!".', '', 18019),
+	(59540, 'esES', '¡Hierbajos obcecados! Son una molestia constante, invaden el terreno y amenazan con cubrir todas tus tierras.$B$BAntes de poder arar esa parcela, tienes que arrancar los hierbajos. No hay ningún truco, la verdad: ¡solo hay que agarrar y tirar!$B$BComo decía mi abuelo, "¡solo hay que ser más terco que el hierbajo!".', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(59540, 'esMX', '¡Hierbajos obcecados! Son una molestia constante, invaden el terreno y amenazan con cubrir todas tus tierras.$B$BAntes de poder arar esa parcela, tienes que arrancar los hierbajos. No hay ningún truco, la verdad: ¡solo hay que agarrar y tirar!$B$BComo decía mi abuelo, "¡solo hay que ser más terco que el hierbajo!".', '', 18019),
 	(59540, 'frFR', 'Ah, les mauvaises herbes récalcitrantes ! Elles constituent une nuisance perpétuelle, s\'infiltrant dans le sol et menaçant d’envahir toutes vos terres.$B$BAvant de pouvoir labourer ce lopin, vous devez arracher les mauvaises herbes. Y’a vraiment pas grand-chose à savoir, il faut juste les attraper et tirer dessus !$B$BComme disait mon grand-papa : « Il suffit d’être encore plus mauvais que les mauvaises herbes ! »', '', 18019),
 	(59540, 'koKR', '억센 잡초라! 끝없는 골칫거리지요. 땅에서 스멀스멀 자라나 밭을 집어삼키려고 위협합니다.$B$B밭을 갈기 전에는, 잡초를 뽑아내야 합니다. 정말이지 잡초를 제거하는 데 쉬운 방법은 없습니다. 그냥 붙잡고 냅다 잡아당기는 거지요!$B$B할아버지 말씀에 따르면 "이름 모를 잡초보다 성질이 더욱 더러워져야 한다!"라고 하시더군요.', '', 18019),
@@ -460072,8 +460095,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(60436, 'esMX', '¡TEME AL MONO!', '', 18019),
 	(60436, 'frFR', 'SINGE TOUT COLÈRE !', '', 18019),
 	(60436, 'koKR', '원숭이 무서운 줄 알아라!', '', 18019),
-	(60436, 'ruRU', 'Бойтесь обезьяну!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(60436, 'ruRU', 'Бойтесь обезьяну!', '', 18019),
 	(60436, 'zhCN', '在猴子面前战栗吧！', '', 18019),
 	(60436, 'zhTW', '害怕猴子的到來吧!', '', 18019),
 	(60437, 'deDE', 'Vielleicht... habe ich meinen Zustand ein wenig zu... optimistisch beurteilt...', '', 18019),
@@ -461440,7 +461462,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(60609, 'esES', '¡Enfrentémonos a este juntos!', '', 18019),
 	(60609, 'esMX', '¡Enfrentémonos a este juntos!', '', 18019),
 	(60609, 'frFR', 'Occupons-nous de celui-là ensemble !', '', 18019),
-	(60609, 'koKR', '함께 해보자!', '', 18019),
+	(60609, 'koKR', '함께 해보자!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(60609, 'ruRU', 'Давай возьмемся за это вместе!', '', 18019),
 	(60609, 'zhCN', '同心协力，其利断金！', '', 18019),
 	(60609, 'zhTW', '我們一起搞定這個傢伙!', '', 18019),
@@ -470073,8 +470096,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(61702, 'esMX', 'Como no perteneces a estas tierras, seguramente no conocerás el Shadopan.', '', 18019),
 	(61702, 'frFR', 'Puisque vous venez d\'une autre contrée, vous ne connaissez peut-être pas les Pandashan.', '', 18019),
 	(61702, 'koKR', '이 땅에 처음 오셨으니, 음영파에 대해 잘 모르시겠군요.', '', 18019),
-	(61702, 'ruRU', 'Тебе незнакомы эти земли, а значит ты ничего не знаешь и о Шадо-Пан.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(61702, 'ruRU', 'Тебе незнакомы эти земли, а значит ты ничего не знаешь и о Шадо-Пан.', '', 18019),
 	(61702, 'zhCN', '作为刚刚抵达这片土地的陌生人，你也许还不熟悉影踪派。', '', 18019),
 	(61702, 'zhTW', '做為初到這片土地的陌生人，你或許對影潘並不熟悉。', '', 18019),
 	(61703, 'deDE', 'Wir tragen unsere Verantwortung schon seit langer Zeit, seit den Tagen Shaohaos, unseres Gründers und des letzten Kaisers von Pandaria.', '', 18019),
@@ -470239,7 +470261,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(61722, 'zhTW', '你有什麼資格敢要求影潘?', '', 18019),
 	(61723, 'deDE', 'Erledigt ihn! Werft ihn von der Mauer!', '', 18019),
 	(61723, 'esES', '¡Acaba con él! ¡Échalo de la muralla de una patada!', '', 18019),
-	(61723, 'esMX', '¡Acaba con él! ¡Échalo de la muralla de una patada!', '', 18019),
+	(61723, 'esMX', '¡Acaba con él! ¡Échalo de la muralla de una patada!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(61723, 'frFR', 'Achevez-le ! Envoyez-le en bas de la muraille !', '', 18019),
 	(61723, 'koKR', '마무리하십시오! 장벽에서 떨어뜨리십시오!', '', 18019),
 	(61723, 'ruRU', 'Прикончи его! Скинь его со стены!', '', 18019),
@@ -478804,7 +478827,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(62815, 'koKR', '네 생명은 내가 접수하겠다.', '', 18019),
 	(62815, 'ruRU', 'Ты поплатишься жизнью.', '', 18019),
 	(62815, 'zhCN', '你的死期到了。', '', 18019),
-	(62815, 'zhTW', '你的小命就要沒了。', '', 18019),
+	(62815, 'zhTW', '你的小命就要沒了。', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(62816, 'deDE', 'Ihr wagt es, Euch uns in den Weg zu stellen?', '', 18019),
 	(62816, 'esES', '¿Osáis interponeros en nuestro camino?', '', 18019),
 	(62816, 'esMX', '¿Osáis interponeros en nuestro camino?', '', 18019),
@@ -480074,8 +480098,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(62974, 'esMX', '¡No hay nada que no les pueda arrebatar!', '', 18019),
 	(62974, 'frFR', 'Il n\'y a rien dont je ne puisse me saisir !', '', 18019),
 	(62974, 'koKR', '내가 못 가지는 건 없어!', '', 18019),
-	(62974, 'ruRU', 'Нет ничего, что я бы не мог забрать.', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(62974, 'ruRU', 'Нет ничего, что я бы не мог забрать.', '', 18019),
 	(62974, 'zhCN', '没有什么是我得不到的！', '', 18019),
 	(62974, 'zhTW', '我可以奪走任何東西!', '', 18019),
 	(62975, 'deDE', 'Ich spüre... Mut. Willensstärke. Licht. Hmpf. Das reicht nicht.', '', 18019),
@@ -487271,7 +487294,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(63878, 'zhCN', '我们得加快速度了，唤醒者。这里并不安全。', '', 18019),
 	(63878, 'zhTW', '我們必須快點工作，喚醒者。這個區域不安全', '', 18019),
 	(63879, 'deDE', 'Euer Geist ist stark, $gErwecker:Erweckerin;. Sogar jetzt muss ich mich anstrengen, um mit Euch zu kommunizieren. Euch zu kontrollieren dürfte fast unmöglich sein...', '', 18019),
-	(63879, 'esES', 'Tu mente es fuerte, heraldo. Todavía me cuesta comunicarme contigo. Controlarte sería casi imposible...', '', 18019),
+	(63879, 'esES', 'Tu mente es fuerte, heraldo. Todavía me cuesta comunicarme contigo. Controlarte sería casi imposible...', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(63879, 'esMX', 'Tu mente es fuerte, heraldo. Todavía me cuesta comunicarme contigo. Controlarte sería casi imposible...', '', 18019),
 	(63879, 'frFR', 'Votre esprit est fort, Somnifuge. Encore maintenant, je peine à communiquer avec vous. Vous contrôler serait presque impossible…', '', 18019),
 	(63879, 'koKR', '깨우는 자여, 정신력이 참 강하구나. 지금도 내가 너와 대화하려고 애써야 한다니... 너를 조종하는 것은 거의 불가능하겠다.', '', 18019),
@@ -490075,8 +490099,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(64231, 'esMX', '¡Pobres hozen y jinyu! Sabíamos que no se gustaban, pero no hasta este punto...', '¡Pobres hozen y jinyu! Sabíamos que no se gustaban, pero no hasta este punto...', 18019),
 	(64231, 'frFR', 'Les hozen et les jinyu, pauvre d’eux ! Nous savions qu’ils ne s’aimaient pas beaucoup les uns les autres, mais qu’ils en soient arrivés à de telles extrémités…', 'Les hozen et les jinyu, pauvre d’eux ! Nous savions qu’ils ne s’aimaient pas beaucoup les uns les autres, mais qu’ils en soient arrivés à de telles extrémités…', 18019),
 	(64231, 'koKR', '불쌍한 호젠과 진위! 둘이 서로를 싫어하는 건 알았지만, 일이 이렇게까지 될 줄은 몰랐습니다...', '불쌍한 호젠과 진위! 둘이 서로를 싫어하는 건 알았지만, 일이 이렇게까지 될 줄은 몰랐어요...', 18019),
-	(64231, 'ruRU', 'У тебя потрясающий подбородок! А какой окрас! Ты откуда $gвзялся:взялась;?', 'У тебя потрясающий подбородок! А какой окрас! Ты откуда $gвзялся:взялась;?', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(64231, 'ruRU', 'У тебя потрясающий подбородок! А какой окрас! Ты откуда $gвзялся:взялась;?', 'У тебя потрясающий подбородок! А какой окрас! Ты откуда $gвзялся:взялась;?', 18019),
 	(64231, 'zhCN', '可怜的猢狲和锦鱼人！我们知道他们不喜欢对方，但走到今天这一步……', '可怜的猢狲和锦鱼人！我们知道他们不喜欢对方，但走到今天这一步……', 18019),
 	(64231, 'zhTW', '可憐的猴人和錦魚人!我們本來就知道他們彼此不和，但鬧到這種程度...', '可憐的猴人和錦魚人!我們本來就知道他們彼此不和，但鬧到這種程度...', 18019),
 	(64232, 'deDE', 'Kamen sämtliche Jinyu und Ho-zen in der Schlacht um? Wo sind die Überlebenden?', 'Kamen sämtliche Jinyu und Ho-zen in der Schlacht um? Wo sind die Überlebenden?', 18019),
@@ -494286,7 +494309,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(64757, 'koKR', '전승지기를 어떻게 도와야 합니까?', '전승지기를 어떻게 도와야 할까요?', 18019),
 	(64757, 'ruRU', 'Чем помочь хранителям истории?', 'Чем помочь хранителям истории?', 18019),
 	(64757, 'zhCN', '我如何才能帮助游学者？', '我如何才能帮助游学者？', 18019),
-	(64757, 'zhTW', '我能如何幫助博學行者?', '我能如何幫助博學行者?', 18019),
+	(64757, 'zhTW', '我能如何幫助博學行者?', '我能如何幫助博學行者?', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(64758, 'deDE', '', 'Ich komme gerade von der Mauer.$B$BIch hörte dort Gerüchte von einer Gruppe namens Klaxxi von jenseits des Schlangenrückens. Angeblich ist es ein Rat von Mantisältesten, die sich vom Mantisreich loslösten und nun direkt gegen die Mantiskönigin arbeiten.$B$BIch habe mit meinen eigenen Augen gesehen, welche Kraft diese Mantis haben.$B$BWenn an diesen Gerüchten etwas Wahres dran ist, könnte man sich vielleicht mit diesen... Klaxxi... verbünden, um den Mantisschwarm aufzuhalten.', 18019),
 	(64758, 'esES', '', 'Acabo de regresar de la muralla.$B$BAllí he oído hablar de una facción a la que llaman los Klaxxi del otro lado del Espinazo del Dragón. Supuestamente, son un consejo de ancianos mántides que se han escindido del imperio mántide, y ahora desafían directamente a la reina de los mántides.$B$BHe visto con mis propios ojos el poder que ostentan esos mántides.$B$BSi los rumores son ciertos, quizás podamos aliarnos con esos... Klaxxi... y colaborar con ellos para detener el enjambre mántide.', 18019),
 	(64758, 'esMX', '', 'Acabo de regresar de la muralla.$B$BAllí he oído hablar de una facción a la que llaman los Klaxxi del otro lado del Espinazo del Dragón. Supuestamente, son un consejo de ancianos mántides que se han escindido del imperio mántide, y ahora desafían directamente a la reina de los mántides.$B$BHe visto con mis propios ojos el poder que ostentan esos mántides.$B$BSi los rumores son ciertos, quizás podamos aliarnos con esos... Klaxxi... y colaborar con ellos para detener el enjambre mántide.', 18019),
@@ -500076,8 +500100,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(65491, 'esMX', 'Li Li no entiende por qué siempre me paro a probar la cerveza local, pero he comprobado que lo que bebe la gente dice mucho de ella.$b$b¿Has probado la cerveza de los pandaren del continente? Muy amarga, muy oscura. Un sorbo y ya sabes que la han preparado para beberla despacio. Es la bebida de gente que no tiene prisa, que disfruta pasando el rato con sus amigos.$b$b¿Tú qué bebes, $c? ¿Y qué diría tu bebida de ti?', '', 18019),
 	(65491, 'frFR', 'Li Li ne comprend pas pourquoi je m\'arrête toujours pour goûter les bières locales. Mais dans mon expérience, on peut en apprendre beaucoup sur les gens d\'après ce qu\'ils boivent !$b$bAvez-vous goûté les bières de la Pandarie continentale ? Elles sont très nerveuses, très noires. Dès la première gorgée, on sait qu\'elles sont faites pour être savourées lentement. C\'est la boisson d\'un peuple qui n\'est pas pressé, qui aime prendre son temps avec ses amis.$b$bEt vous, que buvez-vous, $c ? Et qu\'est-ce que ça me dirait sur vous ?', '', 18019),
 	(65491, 'koKR', '리 리는 왜 내가 항상 각지의 술을 맛보는지 이해를 못 한다네. 하지만 내 경험으로는, 뭘 마시는지 보면 어떤 사람인지를 알 수 있지.$b$b본토 판다렌의 맥주를 맛본 적 있는가? 색이 어둡고 맛이 산뜻하지. 한 모금만 마시면 천천히 음미하면서 마시는 술이란 걸 알 수 있네. 서두르지 않으며, 친구들과 함께하는 시간을 즐기는 민족의 술이지.$b$b자네는 뭘 마시는가, $c? 그리고 그것이 자네에 대해 무엇을 말해 주는가?', '', 18019),
-	(65491, 'ruRU', 'Ли Ли не понимает, почему я всегда задерживаюсь, чтобы попробовать местное пиво. Однако мой опыт подсказывает, что о народе многое можно сказать, если посмотреть, что они пьют!$b$bТебе доводилось пробовать эль, который варят материковые пандарены? Очень темный и терпкий. С первого глотка понимаешь, что варили его, чтобы потом неторопливо смаковать. Это напиток народа, который никуда не спешит, который любит проводить время с друзьями.$b$bНу а ты что пьешь, |3-6($c)? И что этот напиток расскажет мне о тебе?', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(65491, 'ruRU', 'Ли Ли не понимает, почему я всегда задерживаюсь, чтобы попробовать местное пиво. Однако мой опыт подсказывает, что о народе многое можно сказать, если посмотреть, что они пьют!$b$bТебе доводилось пробовать эль, который варят материковые пандарены? Очень темный и терпкий. С первого глотка понимаешь, что варили его, чтобы потом неторопливо смаковать. Это напиток народа, который никуда не спешит, который любит проводить время с друзьями.$b$bНу а ты что пьешь, |3-6($c)? И что этот напиток расскажет мне о тебе?', '', 18019),
 	(65491, 'zhCN', '丽丽不明白为什么我总是停下来品尝各地的美酒。可根据我的经验，一个人群的性格，就体现在他们喝的东西里！$b$b你尝过大陆熊猫人的啤酒了吗？口感既清冽，又醇厚。只需品上一口，你就会知道，这酒是经由悉心慢酿而成。喝这酒的人，也必然是淡然恬静，不慌不忙，乐于与朋友分享美好的时光。$b$b你喝什么呢，$c？它又如何反映着你的性格，嗯？', '', 18019),
 	(65491, 'zhTW', '莉莉不了解為什麼我總是停下來品嚐當地的酒。但在我的經驗之中，你從人們喝的東西就能學到關於他們的許多事!$b$b你有試過本土熊貓人的酒嗎?非常清新，顏色非常深。只喝一小口你就知道那些酒得慢慢品嚐。這就是步調緩慢的人所喝的酒，他們樂於跟他們的朋友共度時間。$b$b你都喝什麼東西，$c?它能告訴我什麼關於你的事，嗯?', '', 18019),
 	(65492, 'deDE', 'Diese Pandarenbauern sind amüsant! Eine zusammengeschweißte Gemeinschaft. Jeder kennt jeden.$b$bGanz anders als in den großen Städten in Kalimdor oder in den Östlichen Königreichen.', '', 18019),
@@ -500384,7 +500407,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(65530, 'ruRU', 'Смерть вам принесло умение |cFFFF0000|Hspell:122713|h[Сила и мощь]|h|r императорского визиря Зор\'лока. Постарайтесь войти в одну из |cFFFF0000|Hspell:122706|h[звуконепроницаемых зон]|h|r, чтобы уменьшить губительную силу умения, и не забывайте, что вам или вашему союзнику нужно исцелять вас.', 'Смерть вам принесло умение |cFFFF0000|Hspell:122713|h[Сила и мощь]|h|r императорского визиря Зор\'лока. Постарайтесь войти в одну из |cFFFF0000|Hspell:122706|h[звуконепроницаемых зон]|h|r, чтобы уменьшить губительную силу умения, и не забывайте, что вам или вашему союзнику нужно исцелять вас.', 18019),
 	(65530, 'zhCN', '你被皇家宰相佐尔洛克的|cFFFF0000|Hspell:122713|h[力与魄]|h|r杀死了。试着进入|cFFFF0000|Hspell:122706|h[噪音取消]|h|r区域来尽量降低力与魄的伤害，并进行自我治疗或让同伴用治疗技能来保你不死。', '你被皇家宰相佐尔洛克的|cFFFF0000|Hspell:122713|h[力与魄]|h|r杀死了。试着进入|cFFFF0000|Hspell:122706|h[噪音取消]|h|r区域来尽量降低力与魄的伤害，并进行自我治疗或让同伴用治疗技能来保你不死。', 18019),
 	(65530, 'zhTW', '你死在女皇大臣索拉格的|cFFFF0000|Hspell:122713|h[力量與氣魄]|h|r之下。試著進入其中一個|cFFFF0000|Hspell:122706|h[定音區]|h|r來使力量與氣魄的傷害降到最低，並且請盟友或自己使用治療技能來讓你保命。', '你死在女皇大臣索拉格的|cFFFF0000|Hspell:122713|h[力量與氣魄]|h|r之下。試著進入其中一個|cFFFF0000|Hspell:122706|h[定音區]|h|r來使力量與氣魄的傷害降到最低，並且請盟友或自己使用治療技能來讓你保命。', 18019),
-	(65531, 'deDE', 'Ihr seid am |cFFFF0000|Hspell:123791|h[Gesang der Kaiserin]|h|r des kaiserlichen Wesirs Zor\'lok gestorben. Sorgt dafür, dass Ihr oder einer Eurer Verbündeten sich zu der Plattform begibt, auf der der kaiserliche Wesir Zor\'lok sich befindet, um ihn anzugreifen.', 'Ihr seid am |cFFFF0000|Hspell:123791|h[Gesang der Kaiserin]|h|r des kaiserlichen Wesirs Zor\'lok gestorben. Sorgt dafür, dass Ihr oder einer Eurer Verbündeten sich zu der Plattform begibt, auf der der kaiserliche Wesir Zor\'lok sich befindet, um ihn anzugreifen.', 18019),
+	(65531, 'deDE', 'Ihr seid am |cFFFF0000|Hspell:123791|h[Gesang der Kaiserin]|h|r des kaiserlichen Wesirs Zor\'lok gestorben. Sorgt dafür, dass Ihr oder einer Eurer Verbündeten sich zu der Plattform begibt, auf der der kaiserliche Wesir Zor\'lok sich befindet, um ihn anzugreifen.', 'Ihr seid am |cFFFF0000|Hspell:123791|h[Gesang der Kaiserin]|h|r des kaiserlichen Wesirs Zor\'lok gestorben. Sorgt dafür, dass Ihr oder einer Eurer Verbündeten sich zu der Plattform begibt, auf der der kaiserliche Wesir Zor\'lok sich befindet, um ihn anzugreifen.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(65531, 'esES', 'Has muerto víctima de la facultad |cFFFF0000|Hspell:123791|h[Canción de la Emperatriz]|h|r del visir imperial Zor\'lok. Asegúrate de que tú o uno de tus aliados os desplazáis a la plataforma en la que está el visir imperial Zor\'lok y entabláis combate con él.', 'Has muerto víctima de la facultad |cFFFF0000|Hspell:123791|h[Canción de la Emperatriz]|h|r del visir imperial Zor\'lok. Asegúrate de que tú o uno de tus aliados os desplazáis a la plataforma en la que está el visir imperial Zor\'lok y entabláis combate con él.', 18019),
 	(65531, 'esMX', 'Has muerto víctima de la facultad |cFFFF0000|Hspell:123791|h[Canción de la Emperatriz]|h|r del visir imperial Zor\'lok. Asegúrate de que tú o uno de tus aliados os desplazáis a la plataforma en la que está el visir imperial Zor\'lok y entabláis combate con él.', 'Has muerto víctima de la facultad |cFFFF0000|Hspell:123791|h[Canción de la Emperatriz]|h|r del visir imperial Zor\'lok. Asegúrate de que tú o uno de tus aliados os desplazáis a la plataforma en la que está el visir imperial Zor\'lok y entabláis combate con él.', 18019),
 	(65531, 'frFR', 'La technique |cFFFF0000|Hspell:123791|h[Chant de l\'impératrice]|h|r du vizir impérial Zor\'lok a eu raison de vous. Faites attention à ce que vous ou un de vos alliés se rendent sur sa plateforme pour le combattre.', 'La technique |cFFFF0000|Hspell:123791|h[Chant de l\'impératrice]|h|r du vizir impérial Zor\'lok a eu raison de vous. Faites attention à ce que vous ou un de vos alliés se rendent sur sa plateforme pour le combattre.', 18019),
@@ -508591,7 +508615,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(66573, 'koKR', '이곳에 정말 판다리아의 고대 황제들이 살았단 말입니까? 정말 아름답군요.', '이곳에 정말 판다리아의 고대 황제들이 살았단 말이에요? 정말 아름답네요.', 18019),
 	(66573, 'ruRU', 'Здесь и правда жили древние императоры Пандарии? Невероятная красота.', 'Здесь и правда жили древние императоры Пандарии? Невероятная красота.', 18019),
 	(66573, 'zhCN', '这里真是潘达利亚古代皇帝的家园么？真是太美了。', '这里真是潘达利亚古代皇帝的家园么？真是太美了。', 18019),
-	(66573, 'zhTW', '這真的是潘達利亞古代皇帝的家嗎?真美。', '這真的是潘達利亞古代皇帝的家嗎?真美。', 18019),
+	(66573, 'zhTW', '這真的是潘達利亞古代皇帝的家嗎?真美。', '這真的是潘達利亞古代皇帝的家嗎?真美。', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(66574, 'deDE', 'Zeuge der Öffnung der Tore geworden zu sein... davon werde ich noch meinen Enkeln berichten.', 'Zeuge der Öffnung der Tore geworden zu sein... davon werde ich noch meinen Enkeln berichten.', 18019),
 	(66574, 'esES', 'Presenciar la apertura de las puertas... Es una experiencia que transmitiré a los hijos de mis hijos.', 'Presenciar la apertura de las puertas... Es una experiencia que transmitiré a los hijos de mis hijos.', 18019),
 	(66574, 'esMX', 'Presenciar la apertura de las puertas... Es una experiencia que transmitiré a los hijos de mis hijos.', 'Presenciar la apertura de las puertas... Es una experiencia que transmitiré a los hijos de mis hijos.', 18019),
@@ -510077,8 +510102,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(66762, 'esMX', '', '¡Observa esta maravillosa tierra! Parece... ¡tierra!', 18019),
 	(66762, 'frFR', '', 'Regardez-moi cette incroyable poussière ! Elle est si... poussiéreuse !', 18019),
 	(66762, 'koKR', '', '이 대단한 흙먼지 좀 봐요! 정말 흙먼지 같아요!', 18019),
-	(66762, 'ruRU', '', 'Погляди на эту чудесную грязь! Смотри, какая она грязная!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(66762, 'ruRU', '', 'Погляди на эту чудесную грязь! Смотри, какая она грязная!', 18019),
 	(66762, 'zhCN', '', '瞧瞧这令人惊讶的泥土！简直太有泥土的样子了！', 18019),
 	(66762, 'zhTW', '', '看看這美妙的土!多麼有土的樣子!', 18019),
 	(66763, 'deDE', 'Warum tanzt Ihr stattdessen nicht einfach mit mir?', '', 18019),
@@ -514746,7 +514770,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(67362, 'zhCN', '我们必须保护美酒！', '', 18019),
 	(67362, 'zhTW', '我們必須保護酒!', '', 18019),
 	(67363, 'deDE', 'Ich bin vielleicht kein Krieger, aber ich werden mein Zuhause und meine Familie beschützen!', '', 18019),
-	(67363, 'esES', 'Es posible que no sea un guerrero, ¡pero protegeré mi hogar y a mi familia!', '', 18019),
+	(67363, 'esES', 'Es posible que no sea un guerrero, ¡pero protegeré mi hogar y a mi familia!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(67363, 'esMX', 'Es posible que no sea un guerrero, ¡pero protegeré mi hogar y a mi familia!', '', 18019),
 	(67363, 'frFR', 'Je ne suis peut-être pas un guerrier, mais je protégerai ma famille et mon foyer jusqu’au bout !', '', 18019),
 	(67363, 'koKR', '난 전사는 아니지만, 내 집과 가족을 지키고 싶다!', '', 18019),
@@ -520078,8 +520103,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(68037, 'esMX', '', '¡No te dejaré ganar!', 18019),
 	(68037, 'frFR', '', 'Je ne vais pas vous ménager !', 18019),
 	(68037, 'koKR', '', '안 봐줄 거예요!', 18019),
-	(68037, 'ruRU', '', 'Я не стану тебе поддаваться!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(68037, 'ruRU', '', 'Я не стану тебе поддаваться!', 18019),
 	(68037, 'zhCN', '', '我不会对你客气的！', 18019),
 	(68037, 'zhTW', '', '我才不會對你留情!', 18019),
 	(68038, 'deDE', '', 'Ha!', 18019),
@@ -523324,7 +523348,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(68450, 'zhTW', '在你得到金蓮的崇敬地位後，你就能幫助聖獸天尊。$B$B在東方，玉龍的神廟正遭受疑惑之煞的攻擊。$B$B在南方，赤吉的門徒們在神廟被攻擊後正進行著重建和重新訓練。$B$B在北方，雪怒考驗著進入他競技場中夠資格的戰士們的力量。$B$B而在西方，怒兆警戒地對抗著一些潘達利亞中最危險的敵人。', '', 18019),
 	(68451, 'deDE', 'Auktionshausdienste könnt Ihr in Eurer Heimatstadt finden.', 'Auktionshausdienste könnt Ihr in Eurer Heimatstadt finden.', 18019),
 	(68451, 'esES', 'Los servicios de la casa de subastas están disponibles en tu capital.', 'Los servicios de la casa de subastas están disponibles en tu capital.', 18019),
-	(68451, 'esMX', 'Los servicios de la casa de subastas están disponibles en tu capital.', 'Los servicios de la casa de subastas están disponibles en tu capital.', 18019),
+	(68451, 'esMX', 'Los servicios de la casa de subastas están disponibles en tu capital.', 'Los servicios de la casa de subastas están disponibles en tu capital.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(68451, 'frFR', 'Le service de l’hôtel des ventes se trouve dans votre capitale.', 'Le service de l’hôtel des ventes se trouve dans votre capitale.', 18019),
 	(68451, 'koKR', '경매장을 이용하시려면 대도시에 가셔야 합니다.', '경매장을 이용하시려면 대도시에 가셔야 합니다.', 18019),
 	(68451, 'ruRU', 'Услугами аукциона можно воспользоваться в своем родном городе.', 'Услугами аукциона можно воспользоваться в своем родном городе.', 18019),
@@ -530079,8 +530104,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(69335, 'esMX', 'Agh... me duele... ¡la cabeza!', 'Agh... me duele... ¡la cabeza!', 18019),
 	(69335, 'frFR', 'Unngh... ma tête... J’ai mal !', 'Unngh... ma tête... J’ai mal !', 18019),
 	(69335, 'koKR', '윽... 내 머리... 깨질것같아!', '윽... 내 머리... 깨질것같아!', 18019),
-	(69335, 'ruRU', 'У-у... голова... болит!', 'У-у... голова... болит!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(69335, 'ruRU', 'У-у... голова... болит!', 'У-у... голова... болит!', 18019),
 	(69335, 'zhCN', '啊……我的头……好疼！', '啊……我的头……好疼！', 18019),
 	(69335, 'zhTW', '喔...我的頭...好痛!', '喔...我的頭...好痛!', 18019),
 	(69336, 'deDE', 'W-Was ist passiert? Ich hatte keine Kontrolle über meinen eigenen Körper.', 'W-Was ist passiert? Ich hatte keine Kontrolle über meinen eigenen Körper.', 18019),
@@ -531427,7 +531451,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(69504, 'ruRU', 'Долгие годы оно оставалось нетронутым и постепенно набирало силу...', '', 18019),
 	(69504, 'zhCN', '多年来，它饱受煎熬，慢慢积蓄力量。', '', 18019),
 	(69504, 'zhTW', '多年來它被棄置於此，然後力量慢慢增長...', '', 18019),
-	(69505, 'deDE', '', 'Das... ist ja unglaublich... eine unberührte Quelle roher arkaner Energie.', 18019),
+	(69505, 'deDE', '', 'Das... ist ja unglaublich... eine unberührte Quelle roher arkaner Energie.', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(69505, 'esES', '', 'Es... increíble. ¡Una fuente inexplorada de energía arcana pura!', 18019),
 	(69505, 'esMX', '', 'Es... increíble. ¡Una fuente inexplorada de energía arcana pura!', 18019),
 	(69505, 'frFR', '', 'C’est… c’est incroyable… une réserve d’énergie arcanique brute encore intacte.', 18019),
@@ -539154,7 +539179,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(70517, 'koKR', '그리고 가로쉬는 그 망할 종이 빨리 나타나지 않아서 짜증이 났어. 모구가 잘 숨겼나봐!', '', 18019),
 	(70517, 'ruRU', 'А Гаррош терять терпение, потому что не может найти шлямский колокол. Могу его хорошо спрятали.', '', 18019),
 	(70517, 'zhCN', '加尔鲁什找不到那口该死的钟，他已经快没耐心了。魔古族可真会藏东西！', '', 18019),
-	(70517, 'zhTW', '還有卡爾洛斯找那個該死的鐘已經找到失去耐心了。魔古還真會藏鐘!', '', 18019),
+	(70517, 'zhTW', '還有卡爾洛斯找那個該死的鐘已經找到失去耐心了。魔古還真會藏鐘!', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(70518, 'deDE', 'Ich höre, dass Garrosh den Mogugefangenen foltern will, bis er redet.', '', 18019),
 	(70518, 'esES', 'Yo oye ke Garrosh va a torturar al prisionero mogu hasta ke hable.', '', 18019),
 	(70518, 'esMX', 'Yo oye ke Garrosh va a torturar al prisionero mogu hasta ke hable.', '', 18019),
@@ -540080,8 +540106,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(70635, 'esMX', '', 'En fin, sé dónde se oculta el príncipe, así que te llevaré a verlo.', 18019),
 	(70635, 'frFR', '', 'Bon, je sais exactement où se cache le prince, je vais vous conduire jusqu’à lui.', 18019),
 	(70635, 'koKR', '', '어쨌든, 왕자님께서 어디 숨어 계신지 알고 있으니 거기로 데려다 드릴게요.', 18019),
-	(70635, 'ruRU', '', 'Одним словом, я знаю, где скрывается принц, и отвезу тебя прямо к нему.', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(70635, 'ruRU', '', 'Одним словом, я знаю, где скрывается принц, и отвезу тебя прямо к нему.', 18019),
 	(70635, 'zhCN', '', '不管怎样，我知道王子躲藏在哪里，我会把你送到他那儿去的。', 18019),
 	(70635, 'zhTW', '', '言歸正傳，我知道王子躲在哪，我就直接帶你過去吧。', 18019),
 	(70636, 'deDE', '', 'Gefällt mir nicht, dass sich der Junge alleine herumtreibt, aber er braucht wohl etwas Zeit zum Nachdenken.', 18019),
@@ -546388,7 +546413,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(71478, 'ruRU', 'Я чувствую запах чужаков. Они близко.$b$b<Морской дракон подозрительно смотрит на вас.>', '', 18019),
 	(71478, 'zhCN', '我闻到了入侵者的味道。他们就在附近。$b$b<海龙战士狐疑地看着你。>', '', 18019),
 	(71478, 'zhTW', '我聞到了入侵者的味道，他們就在附近。$b$b<海龍用可疑的目光看著你。>', '', 18019),
-	(71479, 'deDE', 'Einige Saurierpriester nennen mich einen Verräter. "Kroshik jagt nicht im Meer," sagen sie.$b$bIch folge dem Pfad Kros\', aber ich stimme diesen Priestern nicht zu. Kroshik jagt, WO AUCH IMMER ER KANN, und das tue ich auch.$b$bDiese Priester und ihre sture, engstirnige Ansicht von Kroshik haben keinen Platz in den heutigen Skumklingen.', '', 18019),
+	(71479, 'deDE', 'Einige Saurierpriester nennen mich einen Verräter. "Kroshik jagt nicht im Meer," sagen sie.$b$bIch folge dem Pfad Kros\', aber ich stimme diesen Priestern nicht zu. Kroshik jagt, WO AUCH IMMER ER KANN, und das tue ich auch.$b$bDiese Priester und ihre sture, engstirnige Ansicht von Kroshik haben keinen Platz in den heutigen Skumklingen.', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(71479, 'esES', 'Algunos sacerdotes saurios me llaman traidor. "Kroshik no caza en el mar", dicen.$b$bYo sigo el camino de Kros, pero no estoy de acuerdo con esos sacerdotes. Kroshik caza DONDE PUEDE, igual que yo.$b$bLa visión obstinada y cerrada de esos sacerdotes no tiene sentido para los Hojaescoria de hoy en día.', '', 18019),
 	(71479, 'esMX', 'Algunos sacerdotes saurios me llaman traidor. "Kroshik no caza en el mar", dicen.$b$bYo sigo el camino de Kros, pero no estoy de acuerdo con esos sacerdotes. Kroshik caza DONDE PUEDE, igual que yo.$b$bLa visión obstinada y cerrada de esos sacerdotes no tiene sentido para los Hojaescoria de hoy en día.', '', 18019),
 	(71479, 'frFR', 'Certains prêtres-saures disent que je suis un traître. « Kroshik ne chasse pas dans la mer », racontent-ils.$b$bJe suis la voie de Kros, mais je ne suis pas d’accord avec ces prêtres. Kroshik chasse OÙ IL PEUT, et je fais pareil.$b$bCes prêtres et leur opinion tranchée et bornée de Kroshik n’ont plus leur place dans le présent des Crasselames.', '', 18019),
@@ -550081,8 +550107,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(71943, 'esMX', '', '¡Mataron a mi marido!', 18019),
 	(71943, 'frFR', '', 'Ils ont tué mon mari !', 18019),
 	(71943, 'koKR', '', '제 남편을 죽인 놈들이에요!', 18019),
-	(71943, 'ruRU', '', 'Они убили моего мужа!', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(71943, 'ruRU', '', 'Они убили моего мужа!', 18019),
 	(71943, 'zhCN', '', '他们杀了我丈夫！', 18019),
 	(71943, 'zhTW', '', '但他們殺了我的丈夫!', 18019),
 	(71944, 'deDE', '', 'Das hier wird ihn nicht zurückbringen.', 18019),
@@ -554440,7 +554465,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(72500, 'deDE', 'Hah ha ha... Ihr dachtet, Ihr könntet mich besiegen? NICHTS kann mich mehr töten, sterblicher Winzling!', '', 18019),
 	(72500, 'esES', 'Ja, ja, ja... ¿Creías que podías derrotarme? NADA puede matarme ahora, pobre mortal.', '', 18019),
 	(72500, 'esMX', 'Ja, ja, ja... ¿Creías que podías derrotarme? NADA puede matarme ahora, pobre mortal.', '', 18019),
-	(72500, 'frFR', 'Ha ha ha… Vous pensiez pouvoir me vaincre ? Plus RIEN ne peut m’atteindre, misérable larve !', '', 18019),
+	(72500, 'frFR', 'Ha ha ha… Vous pensiez pouvoir me vaincre ? Plus RIEN ne peut m’atteindre, misérable larve !', '', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(72500, 'koKR', '하하하... 날 쓰러뜨렸다고 생각했나? 아무도 날 죽일 수 없다, 하찮은 필멸자여!', '', 18019),
 	(72500, 'ruRU', 'Ха-ха-ха… у тебя была надежда на победу? Теперь меня НИЧТО не сможет убить, жалкое смертное существо!', '', 18019),
 	(72500, 'zhCN', '哈哈哈……你以为自己能击败我？现在，没有什么能杀死我了，卑微的凡人！', '', 18019),
@@ -560082,8 +560108,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(73248, 'esMX', '|TInterfaceIconsinv_sword_102.blp:20|t ¡%s elige |cFFFF0000tijera|r! ¡Tú |cFF00FF00ganas|r!', '', 18019),
 	(73248, 'frFR', '|TInterface\\Icons\\inv_sword_102.blp:20|t %s choisit |cFFFF0000Ciseaux|r ! Vous avez |cFF00FF00gagné|r !', '', 18019),
 	(73248, 'koKR', '|TInterface\\Icons\\inv_sword_102.blp:20|t %s|1이;가; |cFFFF0000가위|r를 냅니다! 당신이 |cFF00FF00이겼습니다|r!', '', 18019),
-	(73248, 'ruRU', '|TInterface\\Icons\\inv_sword_102.blp:20|t %s выбирает |cFFFF0000ножницы|r! Вы |cFF00FF00выиграли|r!', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(73248, 'ruRU', '|TInterface\\Icons\\inv_sword_102.blp:20|t %s выбирает |cFFFF0000ножницы|r! Вы |cFF00FF00выиграли|r!', '', 18019),
 	(73248, 'zhCN', '|TInterface\\Icons\\inv_sword_102.blp:20|t %s选择了|cFFFF0000剪刀|r！你|cFF00FF00赢|r了！', '', 18019),
 	(73248, 'zhTW', '|TInterface\\Icons\\inv_sword_102.blp:20|t%s出|cFFFF0000剪刀|r!你|cFF00FF00贏|r了!', '', 18019),
 	(73249, 'deDE', 'Oh, bei meinem Bart, ich dachte, mein letztes Stündlein hätte geschlagen! Oh! Danke, danke!', '', 18019),
@@ -561580,7 +561605,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(73450, 'frFR', '', 'Ça vient du site de fouille dans le val de l’Éternel printemps. Qu’est-ce que Garrosh essaye de trouver là-bas?', 18019),
 	(73450, 'koKR', '', '이것들은 영원꽃 골짜기에 있는 발굴지에서 온 거예요. 가로쉬는 거기서 뭘 찾으려고 했던 걸까요?', 18019),
 	(73450, 'ruRU', '', 'Это с раскопок в Вечноцветущем доле. Что Гаррош пытается там найти?', 18019),
-	(73450, 'zhCN', '', '这些都是从锦绣谷的挖掘场运来的。加尔鲁什到底想在那里找什么？', 18019),
+	(73450, 'zhCN', '', '这些都是从锦绣谷的挖掘场运来的。加尔鲁什到底想在那里找什么？', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(73450, 'zhTW', '', '這些是從恆春谷的挖掘場拿來的。卡爾洛斯想找什麼東西?', 18019),
 	(73451, 'deDE', 'Beeilung, $p. Wir brauchen Euch hier drüben!', '', 18019),
 	(73451, 'esES', '¡Rápido, $p, te necesitamos aquí!', '', 18019),
@@ -569245,7 +569271,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(74624, 'koKR', '노루셴 전투를 시작하시겠습니까?', '노루셴 전투를 시작하시겠습니까?', 18019),
 	(74624, 'ruRU', 'Начать испытание Норусхена?', 'Начать испытание Норусхена?', 18019),
 	(74624, 'zhCN', '确定要开启诺鲁什之战吗？', '确定要开启诺鲁什之战吗？', 18019),
-	(74624, 'zhTW', '你想要開始與諾努衫的戰鬥嗎?', '你想要開始與諾努衫的戰鬥嗎?', 18019),
+	(74624, 'zhTW', '你想要開始與諾努衫的戰鬥嗎?', '你想要開始與諾努衫的戰鬥嗎?', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(74625, 'deDE', 'Hier ist die neueste Kreation aus dem Arsenal des Kriegshäuptlings: der eiserne Stern!', '', 18019),
 	(74625, 'esES', 'A ver qué os parece la última adquisición del arsenal del Jefe de Guerra: ¡la estrella de hierro!', '', 18019),
 	(74625, 'esMX', 'Veamos qué les parece la nueva adición al arsenal del Jefe de Guerra: ¡la Estrella de Hierro!', '', 18019),
@@ -570083,8 +570110,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(74798, 'esMX', '<El lobo te observa con una mirada sabia.>', '', 18019),
 	(74798, 'frFR', '<Le loup vous observe, les yeux emplis de sagesse.>', '', 18019),
 	(74798, 'koKR', '<늑대가 현명한 눈으로 당신을 봅니다.>', '', 18019),
-	(74798, 'ruRU', '<Волк смотрит на вас умным взглядом.>', '', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(74798, 'ruRU', '<Волк смотрит на вас умным взглядом.>', '', 18019),
 	(74798, 'zhCN', '<这头狼用充满智慧的眼睛看着你。>', '', 18019),
 	(74798, 'zhTW', '<那匹狼以睿智的雙眼望著你。>', '', 18019),
 	(74799, 'deDE', '', '|TInterface\\Icons\\ability_priest_halo_shadow:20|t %s beginnt, |cFFFF0000|Hspell:143491|h[Katastrophe]|h|r zu wirken!', 18019),
@@ -577822,7 +577848,8 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(75968, 'koKR', '', '이번에도 저를 잘 지켜 주세요. 로툰, 이번엔 어려운 걸로 부탁해!', 18019),
 	(75968, 'ruRU', '', 'Тебе снова придется меня защищать. Ротун, заставь нас попотеть!', 18019),
 	(75968, 'zhCN', '', '这次，你还是要保护我。嘿，罗敦，来场真正的挑战吧！', 18019),
-	(75968, 'zhTW', '', '你必須再次保護我。嘿，羅通，這次認真一點好嗎?', 18019),
+	(75968, 'zhTW', '', '你必須再次保護我。嘿，羅通，這次認真一點好嗎?', 18019);
+INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(75969, 'deDE', '', 'Unser Ende ist unausweichlich. Nehmen wir so viele mit uns, wie wir können. Seid bereit!', 18019),
 	(75969, 'esES', '', 'Aunque nuestro fin es inevitable, acabemos con todos los que podamos. ¡Prepárate!', 18019),
 	(75969, 'esMX', '', 'Si bien nuestro final es inevitable, tratemos de llevarnos con nosotros a cuantos podamos. ¡Prepárate!', 18019),
@@ -580084,8 +580111,7 @@ INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `
 	(76354, 'esMX', 'Furia de Grito Infernal.', 'Furia de Grito Infernal.', 18019),
 	(76354, 'frFR', 'Fureur de Hurlenfer.', 'Fureur de Hurlenfer.', 18019),
 	(76354, 'koKR', '헬스크림의 분노호.', '헬스크림의 분노호.', 18019),
-	(76354, 'ruRU', 'Ярость Адского Крика.', 'Ярость Адского Крика.', 18019);
-INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
+	(76354, 'ruRU', 'Ярость Адского Крика.', 'Ярость Адского Крика.', 18019),
 	(76354, 'zhCN', '地狱咆哮的狂怒。', '地狱咆哮的狂怒。', 18019),
 	(76354, 'zhTW', '地獄吼之怒。', '地獄吼之怒。', 18019),
 	(76355, 'deDE', 'Aggras Wut.', 'Aggras Wut.', 18019),

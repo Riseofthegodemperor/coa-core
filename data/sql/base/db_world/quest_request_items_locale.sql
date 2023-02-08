@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `quest_request_items_locale` (
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumping data for table acore_world.quest_request_items_locale: ~38,435 rows (approximately)
+-- Dumping data for table acore_world.quest_request_items_locale: ~42,027 rows (approximately)
 DELETE FROM `quest_request_items_locale`;
 INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
 	(1, 'frFR', NULL, 18019),
@@ -7520,7 +7520,8 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(2852, 'esMX', '¿Tienes listos los yelmos y los brazales de caparazón de tortuga ? ¡No olvides las dos atriplex salvajes que necesito!$B$BA estas alturas, estás empezando a darte cuenta del poder potencial que tiene la armadura de cuero salvaje. Una armadura que no tiene límites en la aplicación es de valor incalculable para un peletero. Los límites están solo en la cantidad de recursos para fabricar los artículos, ¡no en la calidad de los productos terminados!', 0),
 	(2852, 'frFR', NULL, 18019),
 	(2852, 'ruRU', 'У вас есть наручи и шлемы из черепашьей чешуи? Не забудь про две дикие лозы, которые мне нужны!$B$BК настоящему времени вы начинаете осознавать потенциальную силу, заключенную в дикой кожаной броне. Доспехи, не имеющие границ в применении, почти бесценны для кожевников. Ограничения заключаются только в количестве ресурсов для изготовления изделий, а не в качестве готовой продукции!', 0),
-	(2852, 'zhCN', '你弄到龟鳞头盔和护腕了吗？另外不要忘记我还要两株野葡萄。$B$B现在，你已经开始意识到蛮皮护胫潜在的能量了。一件拥有无穷应用潜力的护甲对于一个皮革匠来说是无价的，唯一的瓶颈是制作这些护甲所需要的原料——而不是成品的品质！', 0),
+	(2852, 'zhCN', '你弄到龟鳞头盔和护腕了吗？另外不要忘记我还要两株野葡萄。$B$B现在，你已经开始意识到蛮皮护胫潜在的能量了。一件拥有无穷应用潜力的护甲对于一个皮革匠来说是无价的，唯一的瓶颈是制作这些护甲所需要的原料——而不是成品的品质！', 0);
+INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
 	(2853, 'deDE', 'Seid gegrüßt, $R... Eurem Aussehen nach seid Ihr ein Lederer wie ich. Seid Ihr hier, um etwas von meinem Geschick zu erlangen, oder habt Ihr vielleicht andere Geschäfte mit mir zu besprechen?', 18019),
 	(2853, 'esES', 'Saludos, $r... por tu rostro puedo decirte que eres $gpeletero:peletera; como yo. ¿Has venido a sacar provecho de mis habilidades, o quizás tienes otros asuntos conmigo?', 0),
 	(2853, 'esMX', 'Saludos, $r... por tu rostro puedo decirte que eres $gpeletero:peletera; como yo. ¿Has venido a sacar provecho de mis habilidades, o quizás tienes otros asuntos conmigo?', 0),
@@ -10026,8 +10027,7 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(4541, 'zhCN', '', 0),
 	(4542, 'deDE', 'Was wollt Ihr, $C? Eine dringende Botschaft - für mich?', 18019),
 	(4542, 'esES', '¿Qué deseas, $c? Un mensaje urgente... ¿para mí?', 0),
-	(4542, 'esMX', '¿Qué deseas, $c? Un mensaje urgente... ¿para mí?', 0);
-INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
+	(4542, 'esMX', '¿Qué deseas, $c? Un mensaje urgente... ¿para mí?', 0),
 	(4542, 'frFR', NULL, 18019),
 	(4542, 'zhCN', '你有什么事，$C？紧急通知？这是给我的？', 0),
 	(4561, 'esES', 'Coges una muestra de babosa del Cráter de Un\'Goro y colocas un poco en los diversos tubos y vasos de precipitados que se encuentran sobre la mesa. A medida que todo empieza a hervir, la babosa cambia de color. Cuando el proceso comienza a detenerse y los líquidos dejan de bullir, ves una placa de Petri que contiene tus muestras de babosa de Un\'Goro purificadas y algunos restos.', 0),
@@ -13630,7 +13630,8 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(7491, 'zhCN', '这是一种光荣，也是一种特权，英雄。', 0),
 	(7492, 'frFR', NULL, 18019),
 	(7492, 'zhCN', '', 0),
-	(7493, 'frFR', NULL, 18019),
+	(7493, 'frFR', NULL, 18019);
+INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
 	(7493, 'zhCN', '', 0),
 	(7494, 'frFR', NULL, 18019),
 	(7494, 'zhCN', '', 0),
@@ -20027,8 +20028,7 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(9375, 'deDE', 'Was braucht Ihr, $C?', 18019),
 	(9375, 'esES', '¿Qué necesitas, $c?', 0),
 	(9375, 'esMX', '¿Qué necesitas, $c?', 0),
-	(9375, 'frFR', NULL, 18019);
-INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
+	(9375, 'frFR', NULL, 18019),
 	(9375, 'zhCN', '你有什么需要，$C？', 0),
 	(9376, 'deDE', 'Die Sache sieht nicht gut aus. So schafft sie es nie wieder auf die Straße. Habt Ihr den Beutel gefunden?', 26972),
 	(9376, 'esES', 'Las cosas no van bien. A este paso, no conseguirá volver al camino. ¿Has conseguido encontrar esa talega?', 0),
@@ -21218,7 +21218,8 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(9693, 'zhCN', '嗨，高尚的$C。', 0),
 	(9694, 'deDE', 'Es gibt so viele von ihnen... ich komme einfach nicht von dem Gefühl los, dass sie sich irgendwie vermehren.', 26972),
 	(9694, 'esES', 'Hay tantos de ellos que no puedo evitar pensar que de alguna manera se están multiplicando.', 0),
-	(9694, 'esMX', 'Hay tantos de ellos que no puedo evitar pensar que de alguna manera se están multiplicando.', 0),
+	(9694, 'esMX', 'Hay tantos de ellos que no puedo evitar pensar que de alguna manera se están multiplicando.', 0);
+INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
 	(9694, 'frFR', 'Ils sont si nombreux que je ne peux pas m\'empêcher de penser qu\'ils ont trouvé un moyen de se dédoubler.', 18019),
 	(9694, 'zhCN', '他们数量太多以致于我认为他们好像是以倍数成长。', 0),
 	(9695, 'frFR', NULL, 18019),
@@ -30028,8 +30029,7 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(11928, 'frFR', NULL, 18019),
 	(11928, 'zhCN', '', 0),
 	(11929, 'frFR', NULL, 18019),
-	(11929, 'zhCN', '', 0);
-INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
+	(11929, 'zhCN', '', 0),
 	(11930, 'frFR', NULL, 18019),
 	(11930, 'zhCN', '都没了。一切都没了。', 0),
 	(11931, 'deDE', 'Beeilt Euch, Sterbliche.$B$BJede Minute, die verstreicht, gewinnt Malygos an Kraft.', 18019),
@@ -31219,7 +31219,8 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(12222, 'deDE', 'Habt Ihr diese Talismane bekommen?', 18019),
 	(12222, 'esES', '¿Has conseguido esos talismanes?', 18019),
 	(12222, 'esMX', '¿Has conseguido esos talismanes?', 18019),
-	(12222, 'frFR', 'Avez-vous récupéré ces talismans ?', 18019),
+	(12222, 'frFR', 'Avez-vous récupéré ces talismans ?', 18019);
+INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
 	(12222, 'zhCN', '你收集好能量护符了吗？', 0),
 	(12223, 'deDE', 'Habt Ihr getan, was zu tun ist?', 18019),
 	(12223, 'esES', '¿Has hecho la acción?', 18019),
@@ -40029,8 +40030,7 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(27366, 'frFR', NULL, 18019),
 	(27367, 'frFR', NULL, 18019),
 	(27368, 'frFR', NULL, 18019),
-	(27369, 'frFR', NULL, 18019);
-INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
+	(27369, 'frFR', NULL, 18019),
 	(27370, 'frFR', NULL, 18019),
 	(27371, 'frFR', NULL, 18019),
 	(27372, 'frFR', NULL, 18019),
@@ -41220,7 +41220,8 @@ INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `Ver
 	(28568, 'frFR', NULL, 18019),
 	(28569, 'frFR', NULL, 18019),
 	(28570, 'frFR', NULL, 18019),
-	(28571, 'frFR', NULL, 18019),
+	(28571, 'frFR', NULL, 18019);
+INSERT INTO `quest_request_items_locale` (`ID`, `locale`, `CompletionText`, `VerifiedBuild`) VALUES
 	(28572, 'frFR', NULL, 18019),
 	(28573, 'frFR', NULL, 18019),
 	(28574, 'frFR', NULL, 18019),

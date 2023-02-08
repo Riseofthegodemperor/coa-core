@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `quest_offer_reward_locale` (
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumping data for table acore_world.quest_offer_reward_locale: ~53,410 rows (approximately)
+-- Dumping data for table acore_world.quest_offer_reward_locale: ~49,414 rows (approximately)
 DELETE FROM `quest_offer_reward_locale`;
 INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(1, 'frFR', 'Parlez à Kanrethad pour que vos talents, votre arme et votre monture vous soient rendus.', 18019),
@@ -4062,7 +4062,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(815, 'frFR', 'Z\'avez beau être un peu freluquet sur les bords, au moins, vous avez pas deux mains gauches pour ram\'ner des provisions, $N.$B$BAllez, prenez ça et filez, j\'ai d\'la cuisine qu\'attend de cuire.', 18019),
 	(815, 'zhCN', '你也许不是很强壮，不过还好不蠢，$N。$B$B拿着这个赶快闪开，我还得做饭呢。', 0),
 	(816, 'deDE', 'Oh, mein Sohn... mein wunderbarer Sohn.$B$BDie Ungewissheit über das Schicksal meines Sohns hat mich gequält, seit er weggegangen ist. Da ich jetzt weiß, was mit ihm geschehen ist, kann ich vielleicht endlich beginnen zu trauern.$B$BDanke, $N. Bitte, nehmt dies hier. Ich wollte es Kron bei seiner erfolgreichen Rückkehr schenken. Ich weiß jetzt, dass er tot ist, und kann es nicht ertragen, es zu sehen.', 18019),
-	(816, 'esES', 'Oh, mi hijo... mi querido hijo.$B$BMe he atormentado constantemente desde que se fue, pues no tenía noticias de su suerte. Ahora que sé lo que le ocurrió, quizás pueda empezar a llorarlo.$B$BGracias, $n. Y ten, acepta esto. Iba a dárselo a Kron como regalo, cuando volviera triunfante. Pero ahora que sé que está muerto, no puedo ni mirarlo.', 0),
+	(816, 'esES', 'Oh, mi hijo... mi querido hijo.$B$BMe he atormentado constantemente desde que se fue, pues no tenía noticias de su suerte. Ahora que sé lo que le ocurrió, quizás pueda empezar a llorarlo.$B$BGracias, $n. Y ten, acepta esto. Iba a dárselo a Kron como regalo, cuando volviera triunfante. Pero ahora que sé que está muerto, no puedo ni mirarlo.', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(816, 'esMX', 'Oh, mi hijo... mi querido hijo.$B$BMe he atormentado constantemente desde que se fue, pues no tenía noticias de su suerte. Ahora que sé lo que le ocurrió, quizás pueda empezar a llorarlo.$B$BGracias, $n. Y ten, acepta esto. Iba a dárselo a Kron como regalo, cuando volviera triunfante. Pero ahora que sé que está muerto, no puedo ni mirarlo.', 0),
 	(816, 'frFR', 'Oh, mon fils, mon bel enfant...$B$BIncertaine de son sort, j\'étais encore tourmentée par l\'espoir de le voir reparaître. Maintenant que je sais ce qui est arrivé, au moins puis-je commencer à porter le deuil.$B$BMerci, $N. S\'il vous plaît, prenez cela. Je le destinais à Kron, quand il serait rentré, victorieux. Maintenant qu\'il est mort, je ne puis supporter la vue de ce cadeau. Prenez-le.', 18019),
 	(816, 'zhCN', '我的儿子……我亲生的孩子啊！$B$B当我还不知道他究竟遭遇了什么的时候，我还一直在折磨着自己。现在我已经知道发生了什么，我可以开始为他哀悼了。$B$B谢谢你，$N。请你收下这个。我原来打算等克伦平安归来的时候就交给他的，但是我的儿子不在了，我也不忍再看它一眼。', 0),
@@ -7504,7 +7505,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(1719, 'esMX', 'Bien hecho, $n. ¡Has superado La Reyerta!$B$BEres $gun digno:una digna; $c y es un honor instruirte...', 0),
 	(1719, 'frFR', 'Bien joué, $N. Vous avez passé la Dispute !$B$BVous êtes un vaillant $C, et c\'est un honneur d\'être votre Maître...', 18019),
 	(1719, 'ruRU', 'Молодец, $N. Ты $Gпрошел:прошла; испытание Побоищем!$B$BТы могучий воин, и учить тебя – великая честь...', 0),
-	(1719, 'zhCN', '干得好，$N。你通过了格斗考验！$B$B你是个有价值的战士，我很荣幸能向你传授一些技艺……', 0),
+	(1719, 'zhCN', '干得好，$N。你通过了格斗考验！$B$B你是个有价值的战士，我很荣幸能向你传授一些技艺……', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(1738, 'deDE', 'Ja, ich sehe, dass das voll und ganz genügt, lasst mich nur einen Moment damit arbeiten...$B$BTakar ist ein recht findiger Bursche, nicht? Wenn ich ihn nur überreden könnte, wieder in die Zivilisation zu kommen.', 18019),
 	(1738, 'esES', 'Sí, puedo decir que esto funcionará bien, déjame trabajar un momento con esto...$B$BTakar es un tipo ingenioso para tenerlo cerca, ¿no es así? Si tan solo pudiera persuadirlo de que regresara a la civilización.', 0),
 	(1738, 'esMX', 'Sí, puedo decir que esto funcionará bien, déjame trabajar un momento con esto...$B$BTakar es un tipo ingenioso para tenerlo cerca, ¿no es así? Si tan solo pudiera persuadirlo de que regresara a la civilización.', 0),
@@ -10026,8 +10028,7 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(3442, 'deDE', 'Gut gemacht, $N. Wir sind fast so weit.', 18019),
 	(3442, 'esES', 'Muy bien, $n. Sigue, sigue.', 0),
 	(3442, 'esMX', 'Muy bien, $n. Sigue, sigue.', 0),
-	(3442, 'frFR', 'Bien joué, $N. Nous sommes presque prêts.', 18019);
-INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
+	(3442, 'frFR', 'Bien joué, $N. Nous sommes presque prêts.', 18019),
 	(3442, 'ruRU', 'Прекрасно, $N. Все готово к работе.', 0),
 	(3442, 'zhCN', '干得好，$N。我们准备得差不多了。', 0),
 	(3443, 'deDE', 'Ihr seid ein außergewöhnlicher Arbeiter, $N. Habt Ihr jemals darüber nachgedacht, einer anderen Berufung zu folgen? Vielleicht der eines Detektivs? Plundersammlers? Oh, ich weiß, Ihr könntet einer dieser dummen Gnome werden, die über die Strände von Azeroth schleichen und mit ihren Metalldetektor-Apparaten nach verlorenen Schätzen suchen. Ja, das wäre ein idealer Beruf für Euch.', 18019),
@@ -10877,7 +10878,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(3982, 'frFR', '', 18019),
 	(3982, 'ruRU', 'На этот раз все обошлось. Но теперь они поднимут тревогу... и пришлют за тобой еще стражников.', 0),
 	(3982, 'zhCN', '真是千钧一发呀。他们已经察觉到你了……会有更多的家伙过来的。', 0),
-	(4001, 'deDE', 'Dies ist eine Chance für die Horde, das politische Klima in unserer vom Krieg zerrissenen Welt für immer zu verändern. Hört gut zu, $N.$B$BEinen Fehlschlag dieser Mission werde ich nicht akzeptieren.', 18019),
+	(4001, 'deDE', 'Dies ist eine Chance für die Horde, das politische Klima in unserer vom Krieg zerrissenen Welt für immer zu verändern. Hört gut zu, $N.$B$BEinen Fehlschlag dieser Mission werde ich nicht akzeptieren.', 18019);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(4001, 'esES', 'Esta es una oportunidad para la Horda para cambiar para siempre el clima político de nuestro mundo desgarrado por la guerra. Escucha atentamente, $n.$B$BEl fracaso en esta misión no es una opción.', 0),
 	(4001, 'esMX', 'Esta es una oportunidad para la Horda para cambiar para siempre el clima político de nuestro mundo desgarrado por la guerra. Escucha atentamente, $n.$B$BEl fracaso en esta misión no es una opción.', 0),
 	(4001, 'frFR', '', 18019),
@@ -14404,7 +14406,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(6027, 'zhCN', '失踪许久的上古之书！我会确保把这本书送到议会手里的。你今天干得很漂亮，你这样的英雄应该受到感谢！', 0),
 	(6028, 'deDE', 'Gregor ist außerordentlich findig. Er hat schon seit geraumer Zeit mit dem Steamwheedle-Kartell zu tun und ist ein Experte in der \'Kunst\' von Goblin-Verhandlungen geworden. Es stimmt zwar, dass die Goblins weitgehend denen mit den größten Geldbörsen gegenüber loyal sind, aber sie kennen und achten auch den Wert der Diplomatie. Sie bringt ihnen immerhin Kunden ein, die wiederkommen ...$B$BWie auch immer, die Argentumdämmerung dankt Euch für Eure Bemühungen. Bitte nehmt dies mit unserem Dank.', 18019),
 	(6028, 'esES', 'Gregor es muy ingenioso. Ha estado lidiando con el Cártel Bonvapor desde hace algún tiempo y se ha convertido en un experto en el "arte" de las negociaciones con goblins. Aunque es cierto que la principal lealtad de los goblins reside en quienes tienen los monederos más grandes, también conocen y respetan el valor de la diplomacia. En todo caso, les proporciona clientes habituales...$B$BEn cualquier caso, el Alba Argenta te agradece tu esfuerzo. Por favor, toma esto junto con nuestro agradecimiento.', 0),
-	(6028, 'esMX', 'Gregor es muy ingenioso. Ha estado lidiando con el Cártel Bonvapor desde hace algún tiempo y se ha convertido en un experto en el "arte" de las negociaciones con goblins. Aunque es cierto que la principal lealtad de los goblins reside en quienes tienen los monederos más grandes, también conocen y respetan el valor de la diplomacia. En todo caso, les proporciona clientes habituales...$B$BEn cualquier caso, el Alba Argenta te agradece tu esfuerzo. Por favor, toma esto junto con nuestro agradecimiento.', 0),
+	(6028, 'esMX', 'Gregor es muy ingenioso. Ha estado lidiando con el Cártel Bonvapor desde hace algún tiempo y se ha convertido en un experto en el "arte" de las negociaciones con goblins. Aunque es cierto que la principal lealtad de los goblins reside en quienes tienen los monederos más grandes, también conocen y respetan el valor de la diplomacia. En todo caso, les proporciona clientes habituales...$B$BEn cualquier caso, el Alba Argenta te agradece tu esfuerzo. Por favor, toma esto junto con nuestro agradecimiento.', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(6028, 'frFR', 'Gregor est plein de ressources. Il traite avec le Cartel Gentepression depuis quelque temps maintenant et est devenu une sorte d\'expert dans l\' « art » de la négociation gobeline. On sait que la loyauté des gobelins va à la plus grosse bourse, mais qu’ils connaissent et respectent aussi la vertu de la diplomatie. Au pire, ça leur attire des clients...$B$BL\'Aube d\'argent vous est très reconnaissante pour vos efforts. S\'il vous plaît, prenez ceci et acceptez mes remerciements.', 18019),
 	(6028, 'zhCN', '格雷戈做得很好。他跟热砂企业打交道已经有些日子了，在地精的谈判“艺术”方面俨然成了个专家。虽然地精只对付钱最多的人表示忠诚，但是他们也明白并且尊重外交的价值。这样他们才能不断有新的顾客……$B$B不管怎么样，银色黎明需要你的帮助。请收下这个，谢谢你。', 0),
 	(6029, 'deDE', 'Gregor ist außerordentlich findig für einen Menschen. Er hat schon seit geraumer Zeit mit dem Steamwheedle-Kartell zu tun und ist ein Experte in der \'Kunst\' von Goblin-Verhandlungen geworden. Es stimmt zwar, dass die Goblins weitgehend denen mit den größten Geldbörsen gegenüber loyal sind, aber sie kennen und achten auch den Wert der Diplomatie. Sie bringt ihnen immerhin Kunden ein, die wiederkommen ...$B$BWie auch immer, die Argentumdämmerung dankt Euch für Eure Bemühungen. Bitte nehmt dies mit unserem Dank.', 18019),
@@ -18595,7 +18598,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(8328, 'esES', 'Ah, $n - Creo que eres $guno de los nuevos magos:una de las nuevas magas; aquí en la isla, ¿no? Bueno, has venido al lugar indicado. Si lo que buscas es el dominio arcano, entonces puedo proporcionar ese conocimiento, siempre que tengas los medios para abonar los costos de entrenamiento y la capacidad de concentrarte en las lecciones que te enseñaré.$B$B¡Empecemos!', 0),
 	(8328, 'esMX', 'Ah, $n - Creo que eres $guno de los nuevos magos:una de las nuevas magas; aquí en la isla, ¿no? Bueno, has venido al lugar indicado. Si lo que buscas es el dominio arcano, entonces puedo proporcionar ese conocimiento, siempre que tengas los medios para abonar los costos de entrenamiento y la capacidad de concentrarte en las lecciones que te enseñaré.$B$B¡Empecemos!', 0),
 	(8328, 'frFR', 'Ah, $N. À ce que j’ai compris, vous êtes parmi les nouveaux mages de l’île, n’est-ce pas ? Bien, vous êtes au bon endroit. Si vous cherchez à maîtriser les arcanes, je peux vous y aider… tant que vous aurez les moyens de payer le coût de votre entraînement… et la capacité à vous concentrer sur mes leçons.$b$bAllez, commençons !', 18019),
-	(8328, 'zhCN', '啊，$N……我想你是岛上的新法师之一，对吧？嗯，你来对地方了。如果你想寻求秘法专精，那么我可以提供你这类知识……', 0),
+	(8328, 'zhCN', '啊，$N……我想你是岛上的新法师之一，对吧？嗯，你来对地方了。如果你想寻求秘法专精，那么我可以提供你这类知识……', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(8329, 'frFR', 'Welcome to the Sunspire, young &lt;class&gt;! &nbsp;Mastery of weapons and battle tactics begins here and now - all I ask of my pupils is that they cover payment for training costs that may come up, and that they are as good of a listener as they are an aspiring &lt;class&gt;. &nbsp;The lessons I have to teach are extensive, and I don\'t like to repeat myself unnecessarially.$B$BLet\'s get to it then!', 18019),
 	(8329, 'zhCN', '啊哈！来跟我喝一杯，$g小伙子:小姑娘。你看起来很硬朗，不过让我看看几杯猪和哨声旅店里最烈的酒下肚以后你的表现如何！$B$B嗯……你是来向我学艺的？', 0),
 	(8330, 'deDE', 'Gut gemacht – ich wusste, dass Ihr für diese Aufgabe geeignet sein würdet. Sobald wir uns auf der Insel wieder frei bewegen können, werde ich meine Sachen gut einsetzen.$B$BWie ich schon sagte, Ihr könnt den Ranzen behalten. Außerdem könnte auch dieses Rüstungsteil von Nutzen für Euch sein. Betrachtet es als großzügige Entlohnung für eine einfache Pflichterfüllung! ', 26972),
@@ -20027,8 +20031,7 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(8649, 'esMX', 'Me alegra saber que la gente de estas tierras sigue prestando homenaje a las antiguas razas. Te deseo todo lo mejor, $n, y te ofrezco esta muestra...', 0),
 	(8649, 'frFR', NULL, 18019),
 	(8649, 'zhCN', '很庆幸这片大地的居民仍然会对古老的种族表达敬意。我祝你平安，$N，并且送你这个硬币……', 0),
-	(8650, 'deDE', 'Es ist gut zu wissen, dass die Bewohner dieser Welt noch immer die alten Völker verehren und sie nicht vergessen haben. Ich erbiete Euch meinen Respekt, $N. Nehmt dies als Zeichen meiner Dankbarkeit.', 18019);
-INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
+	(8650, 'deDE', 'Es ist gut zu wissen, dass die Bewohner dieser Welt noch immer die alten Völker verehren und sie nicht vergessen haben. Ich erbiete Euch meinen Respekt, $N. Nehmt dies als Zeichen meiner Dankbarkeit.', 18019),
 	(8650, 'esES', 'Me alegra saber que la gente de estas tierras sigue prestando homenaje a las antiguas razas. Te deseo todo lo mejor, $n, y te ofrezco esta muestra...', 0),
 	(8650, 'esMX', 'Me alegra saber que la gente de estas tierras sigue prestando homenaje a las antiguas razas. Te deseo todo lo mejor, $n, y te ofrezco esta muestra...', 0),
 	(8650, 'frFR', NULL, 18019),
@@ -22942,7 +22945,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(9234, 'esMX', 'Aquí está tu pedido, $n. ¡Entregado según lo prometido!', 0),
 	(9234, 'frFR', 'Here is your order, $n. Delivered as promised!', 18019),
 	(9234, 'ruRU', 'Вот твой заказ, $N. Как и было обещано!', 0),
-	(9234, 'zhCN', '这是你要求的东西，$N。依约抵达！', 0),
+	(9234, 'zhCN', '这是你要求的东西，$N。依约抵达！', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(9235, 'deDE', 'Hier ist Eure Bestellung, $N. Geliefert wie versprochen!', 18019),
 	(9235, 'esES', 'Aquí está tu pedido, $n. ¡Entregado según lo prometido!', 0),
 	(9235, 'esMX', 'Aquí está tu pedido, $n. ¡Entregado según lo prometido!', 0),
@@ -26927,7 +26931,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(10072, 'esMX', 'Ah bien, $gun:una; $c. Te he estado esperando.$B$BTengo unas tareas que son especialmente adecuadas para ti.', 18019),
 	(10072, 'frFR', 'Ah bien, $gun:une; $c. Je t\'attendais.$B$BJ\'ai quelques tâches pour vous qui vous iront à merveille.', 18019),
 	(10072, 'ruRU', 'Я ждал тебя, $c.У меня есть несколько поручений, для выполнения которых ты подходишь как нельзя лучше.', 18019),
-	(10072, 'zhCN', '哎呀很好，$C。我一直都在等待你。$B$B我这有几个任务特别适合你。', 0),
+	(10072, 'zhCN', '哎呀很好，$C。我一直都在等待你。$B$B我这有几个任务特别适合你。', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(10073, 'deDE', 'Ah, wie schön, ein $c. Ich habe Euch bereits erwartet.$B$BIch hätte da ein paar Aufgaben zu vergeben, für die Ihr Euch besonders gut eignet.', 18019),
 	(10073, 'esES', 'Ah bien, $gun:una; $c. Te he estado esperando.$B$BTengo unas tareas que son especialmente adecuadas para ti.', 18019),
 	(10073, 'esMX', 'Ah bien, $gun:una; $c. Te he estado esperando.$B$BTengo unas tareas que son especialmente adecuadas para ti.', 18019),
@@ -30028,8 +30033,7 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(10680, 'zhCN', '你肯来帮忙真是太好了，$r。我们有很多事情要做。', 0),
 	(10681, 'deDE', 'Es ist gut, dass Ihr gekommen seid, $R. Wir haben viel zu tun.', 26972),
 	(10681, 'esES', 'Qué bien que hayas venido, $r. Tenemos mucho trabajo pendiente.', 0),
-	(10681, 'esMX', 'Qué bien que hayas venido, $r. Tenemos mucho trabajo pendiente.', 0);
-INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
+	(10681, 'esMX', 'Qué bien que hayas venido, $r. Tenemos mucho trabajo pendiente.', 0),
 	(10681, 'frFR', 'C\'est une bonne chose que vous soyez venu, $R. Nous avons beaucoup de travail à faire.', 18019),
 	(10681, 'ruRU', 'Хорошо, что ты здесь, |3-6($R). Нам предстоит много работы.', 0),
 	(10681, 'zhCN', '你肯来帮忙真是太好了，$r。我们有很多事情要做。', 0),
@@ -30867,7 +30871,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(10833, 'esMX', 'Puedo ver que tu visita al altar ha sido todo un éxito. Hay una sutil diferencia en ti que muy pocos podrán ver, aunque no cabe ni la menor duda de que ahí está.', 0),
 	(10833, 'ruRU', 'Я вижу, что ваше посещение алтаря прошло успешно. В вас есть тонкая разница, которую немногие заметят, но нет никаких сомнений в том, что она есть.', 0),
 	(10833, 'zhCN', '我能看见你已成功的勘查祭坛了。你身上已有微妙而不可见的差异，但不用怀疑它确实存在。', 0),
-	(10834, 'deDE', 'Ah ja. Ich frage mich, ob Grillok in seinen dunklen, dunklen Träumen immer noch mit seinem verlorenen Auge verbunden ist, wie jemand, der eine Hand oder ein Bein in der Schlacht verloren hat...$B$BAuch ich werde davon träumen. Und wenn das Schicksal auf unserer Seite steht, werden wir dadurch erfahren, was Grillok und die Orcs des Blutenden Auges dazu gebracht hat, sich den Dämonen zu unterwerfen.', 26972),
+	(10834, 'deDE', 'Ah ja. Ich frage mich, ob Grillok in seinen dunklen, dunklen Träumen immer noch mit seinem verlorenen Auge verbunden ist, wie jemand, der eine Hand oder ein Bein in der Schlacht verloren hat...$B$BAuch ich werde davon träumen. Und wenn das Schicksal auf unserer Seite steht, werden wir dadurch erfahren, was Grillok und die Orcs des Blutenden Auges dazu gebracht hat, sich den Dämonen zu unterwerfen.', 26972);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(10834, 'esES', 'Ah, sí. Igual que quienes pierden una mano o una pierna en la batalla a menudo sienten el dolor de su miembro perdido, me pregunto si Grillok sigue viendo su ojo perdido en sus oscuros sueños...$B$BYo también soñaré con esto y, si la fortuna está de nuestro lado, quizás descubre lo que llevó a Grillok y al clan Foso Sangrante a sucumbir ante los demonios.', 0),
 	(10834, 'esMX', 'Ah, sí. Igual que quienes pierden una mano o una pierna en la batalla a menudo sienten el dolor de su miembro perdido, me pregunto si Grillok sigue viendo su ojo perdido en sus oscuros sueños...$B$BYo también soñaré con esto y, si la fortuna está de nuestro lado, quizás descubre lo que llevó a Grillok y al clan Foso Sangrante a sucumbir ante los demonios.', 0),
 	(10834, 'frFR', 'Ah, oui. Tout comme certains de ceux qui perdent une main ou une jambe au combat continuent parfois à sentir leur membre manquant, je me demande si Grillok tente encore de se raccrocher à son œil perdu dans ses rêves les plus obscurs...$B$BJe vais moi aussi rêver de cela, et si la fortune est avec nous, alors peut-être apprendrai-je ce qui a poussé Grillok et les orcs de l’Orbite-sanglante à succomber aux démons.', 18019),
@@ -34600,7 +34605,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(11700, 'esES', '¿Mañosa tiene una gemela malvada?$b$bBueno, si ella dice que está bien y si es capaz de volver pronto a la pista de aterrizaje, entonces me vale.', 0),
 	(11700, 'esMX', '¿Mañosa tiene una gemela malvada?$b$bBueno, si ella dice que está bien y si es capaz de volver pronto a la pista de aterrizaje, entonces me vale.', 0),
 	(11700, 'frFR', 'Bricole a une jumelle maléfique ?!$b$bBon, si elle dit que ça va et qu’elle va bientôt rentrer à la piste d’atterrissage, c\'est bon pour moi.', 18019),
-	(11700, 'ruRU', 'У Тинки есть темная сторона?!$B$BНу, если она говорит, что в полном порядке и сможет сама вскоре добраться до взлетной полосы, я спокойна.', 0),
+	(11700, 'ruRU', 'У Тинки есть темная сторона?!$B$BНу, если она говорит, что в полном порядке и сможет сама вскоре добраться до взлетной полосы, я спокойна.', 0);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(11700, 'zhCN', '丁奇有个不幸的双胞胎？！$B$B好吧，要是她说她可以的话，那她就有办法快速地将她自己带回简易机场，对我来说算好事。', 0),
 	(11701, 'deDE', 'Das sind Neuigkeiten, $N. Ein Wunder, dass bei all den Problemen hier draußen der Landeplatz nicht schon längst von der Landkarte getilgt wurde.$B$BDoch Dank Euch, gibt es nun einen Gegner weniger, um den wir uns den Kopf zerbrechen müssen.$B$BFür Anlässe wie diesen hier habe ich ein paar spezielle Gegenstände aufgehoben. Wieso sucht Ihr Euch nicht einfach einen aus?', 18019),
 	(11701, 'esES', 'Menuda historia, $N. Con todos los problemas que hay ahí fuera, es un milagro que la pista de aterrizaje siga en pie.$b$bPero, gracias a ti, tenemos un enemigo menos por el que preocuparnos.$b$bTenía guardadas unas cosas un tanto especiales para una ocasión como esta. ¿Por qué no escoges una?', 0),
@@ -39211,7 +39217,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(12714, 'esES', '¡Villa Refugio es nuestra! Un millar de cadáveres yacen en el suelo esperando pacientemente renacer. ¡Ahora atacamos a nuestro enemigo con la fuerza renacida de la Plaga!$B$BLos necrófagos ya han empezado su ataque en Nuevo Avalon. Nuestras fuerzas avanzan detrás de ellos y han tomado la Cripta de los Recuerdos.', 18019),
 	(12714, 'esMX', '¡Villa Refugio es nuestra! Un millar de cadáveres yacen en el suelo esperando pacientemente renacer. ¡Ahora atacamos a nuestro enemigo con la fuerza renacida de la Plaga!$B$BLos necrófagos ya han empezado su ataque en Nuevo Avalon. Nuestras fuerzas avanzan detrás de ellos y han tomado la Cripta de los Recuerdos.', 18019),
 	(12714, 'frFR', 'Havre-comté est à nous ! Un millier de corps jonche le sol, attendant patiemment leur renaissance. Nous frappons maintenant notre ennemi avec la puissance éveillée du Fléau !$b$bLes goules ont déjà commencé leur assaut sur la Nouvelle-Avalon. Nos forces les ont suivies et ont pris la crypte du Souvenir.', 18019),
-	(12714, 'ruRU', 'Тихоземье пало! Тысячи трупов устилают землю, терпеливо ожидая воскрешения. Скоро мы нанесем решающий удар по нашему врагу со всей силой, на которую способна возрожденная Плеть!$b$bНаши вурдалаки уже начали осаду Нового Авалона; скоро к ним присоединятся и остальные войска, захватившие Склеп Воспоминаний.', 18019),
+	(12714, 'ruRU', 'Тихоземье пало! Тысячи трупов устилают землю, терпеливо ожидая воскрешения. Скоро мы нанесем решающий удар по нашему врагу со всей силой, на которую способна возрожденная Плеть!$b$bНаши вурдалаки уже начали осаду Нового Авалона; скоро к ним присоединятся и остальные войска, захватившие Склеп Воспоминаний.', 18019);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(12714, 'zhCN', '海文郡是我们的了！成千的尸首散布在地上，耐心地等候着新生。我们现在要以觉醒的天灾之力打击我们的敌人！$B$B食尸鬼已经开始攻击新阿瓦隆了。我们的军队已经移到它们的后方，并占领了追忆墓穴。', 0),
 	(12715, 'deDE', 'Seid gegrüßt, Todesritter! Ich bin Blutfürst Keleseth, Herrscher über die südöstlichen Gebiete Nordends. Der Lichkönig möchte mich und meine Fähigkeiten dazu einsetzen, diesen Sterblichen, dieser Beleidigung in den Augen der Geißel, ein Ende zu setzen. Wie mit allen Dingen, die der Lichkönig von mir verlang, so werde ich auch jetzt mit Freude gehorchen. Meinen Durst mit einem Meer an endlos vielen Seelen zu stillen, versüßt natürlich die Sache, meint Ihr nicht auch?', 18019),
 	(12715, 'esES', 'Saludos, caballero de la Muerte. Soy el señor de sangre, Keleseth, gobernador de la parte sureste de Rasganorte. El Rey Exánime espera usar mis talentos para acabar con esta afrenta mortal a la Plaga. Me complace cumplir con todo lo que el Rey Exánime me pide. Claro está que un mar de infinitas almas para saciar mi sed endulzarán el trato, ¿no crees?', 18019),
@@ -40029,8 +40036,7 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(12941, 'frFR', NULL, 18019),
 	(12941, 'zhCN', '这种糖果桶在各地的旅店都有。来吧……拿点糖果！', 0),
 	(12942, 'deDE', 'Die Val\'kyr sind lediglich die Schoßhündchen des Lichkönigs. Sie werden getötet werden, diese Miststücke. Sie haben ihre Wahl getroffen, nun müssen sie sich den Konsequenzen stellen.', 18019),
-	(12942, 'frFR', 'Les val\'kyrs ne sont rien d\'autre que les jouets du roi-liche. Elles seront abattues comme la racaille qu\'elles sont. Elles ont fait leur choix, maintenant, elles doivent en subir les conséquences.', 18019);
-INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
+	(12942, 'frFR', 'Les val\'kyrs ne sont rien d\'autre que les jouets du roi-liche. Elles seront abattues comme la racaille qu\'elles sont. Elles ont fait leur choix, maintenant, elles doivent en subir les conséquences.', 18019),
 	(12942, 'zhCN', '瓦格里不过是巫妖王的走狗。我们会像杀死野狗一样地杀死她们。她们自己做出了决定，现在就要自己承担后果。', 0),
 	(12943, 'deDE', '<Herzog Lankral nickt zustimmend, als Ihr ihm von Eurem Erfolg berichtet.>$B$BWir haben es mit einem Gegner zu tun, der uns nicht nur körperlich, sondern auch zahlenmäßig zusetzt. Wenn wir den Kampf um Eiskrone gewinnen wollen, dann müssen wir ihn überlisten!$B$BUfrangs Tod verschafft uns in Jotunheim einen Vorteil. Sehen wir einmal, ob wir ihn nutzen können.', 18019),
 	(12943, 'frFR', '<Le duc Lankral hoche la tête avec approbation à l\'annonce de votre succès.>$b$bNous affrontons un ennemi qui nous écrase, non seulement par sa stature, mais également en nombre. Si nous voulons gagner la bataille pour la Couronne de glace, nous devons être plus intelligents qu\'eux !$b$bLa mort d\'Ufrang nous donne un avantage à Jotunheim. Voyons voir si nous pouvons le faire fructifier.', 18019),
@@ -43836,7 +43842,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(14351, 'ruRU', 'Так ты тот печально известный $C, который нанес такой решающий удар силам Альянса в Предгорьях Хилсбрада? Весть о твоих славных подвигах быстро дошла до Подгорода.$B$BУ тебя есть будущее в рядах Темной Госпожи, если ты продолжишь демонстрировать такое лидерство и опыт в бою.$B$BВ то время как наша главная угроза - это армия Плети Короля-лича, спускающаяся с севера, человеческая «проблема» продолжает мешать нашим планам сражения. Однако ты $Gпоказал:показала;, что люди могут падать и падут.', 0),
 	(14351, 'zhCN', '', 0),
 	(14352, 'deDE', 'Ich habe die Insignien auf dieser Rolle schon mal während meiner Zeit in Nordend gesehen. Ihr sagt, Ihr habt dies bei der Greisin gefunden, die die Schweine im Kral der Klingenhauer anführt?$B$BVerdammt will ich sein, wenn ich es der Geißel erlauben sollte, sich hier breitzumachen. Derjenige, der dies schrieb - dieser Malcin - ist natürlich einer der Diener des Lichkönigs und das macht ihn zu einem Ziel. Eurem Ziel.$B$BSie werden Kalimdor nicht bekommen.', 18019),
-	(14352, 'frFR', 'I\'ve seen the insignia on this scroll before during my time in Northrend. You say this was on that crone who leads the pigs in Razorfen Kraul?$B$BI\'ll be damned if I\'m going to let the Scourge get a foothold here. The one who wrote this - this Malcin - is one of the Lich King\'s servants, obviously, and that makes him a target. Your target.$B$BThey\'re not going to take Kalimdor.', 18019),
+	(14352, 'frFR', 'I\'ve seen the insignia on this scroll before during my time in Northrend. You say this was on that crone who leads the pigs in Razorfen Kraul?$B$BI\'ll be damned if I\'m going to let the Scourge get a foothold here. The one who wrote this - this Malcin - is one of the Lich King\'s servants, obviously, and that makes him a target. Your target.$B$BThey\'re not going to take Kalimdor.', 18019);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(14352, 'ruRU', 'Я видел знак отличия на этом свитке раньше, когда был в Нордсколе. Ты говоришь, что это была та старушка, которая водит свиней в Лабиринты Иглошкурых?$B$BБудь я проклят, если позволю Плети закрепиться здесь. Тот, кто написал это - этот Малкин - очевидно, один из слуг Короля-лича, и это делает его целью. Твоей целью.$B$BОни не возьмут Калимдор.', 0),
 	(14352, 'zhCN', '', 0),
 	(14353, 'frFR', 'Good work, &lt;class&gt;!$B$BYou\'ve done the Horde proud by stopping the Scourge from setting down roots on our soil. An act like that deserves a reward, and the Forsaken have enough lying around that I\'m sure they can spare a few things.$B$BWe may not know everything they\'ve done in the Downs, but we\'ll find out. They can\'t slink around in the dark forever.', 18019),
@@ -48643,7 +48650,8 @@ INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `Verified
 	(28604, 'frFR', 'Oh, ils ne mourront pas tout de suite, mais ils MOURRONT ! Quand ils finiront par identifier le responsable de la mort de leurs soldats, vous serez déjà loin, telle l\'ombre de la mort !', 18019),
 	(28605, 'frFR', 'Ces coups portés aux Foudrepiques n\'étaient qu\'un prélude à la détonation !', 18019),
 	(28606, 'frFR', NULL, 18019),
-	(28607, 'frFR', NULL, 18019),
+	(28607, 'frFR', NULL, 18019);
+INSERT INTO `quest_offer_reward_locale` (`ID`, `locale`, `RewardText`, `VerifiedBuild`) VALUES
 	(28608, 'frFR', 'C’est exactement ce dont j’avais besoin. Vous accomplirez de grandes choses au sein des Réprouvés, $N.$B$BVous savez, la rumeur dit que vous étiez un sacré $C dans votre vie antérieure. Peut-être devrais-je vous confier une mission plus gratifiante.', 18019),
 	(28609, 'frFR', 'Lilith veut que j\'apporte un rocher dans l\'observatoire, c\'est ça ? C\'est mon boulot : fournitures consolidées. D\'habitude, je ne fais pas pour les particuliers, mais bon, je ne vais pas poser de questions.', 18019),
 	(28610, 'frFR', 'On dirait qu\'il y en a une bonne quantité ! Voilà votre paiement, comme promis…', 18019),

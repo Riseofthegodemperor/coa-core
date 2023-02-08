@@ -5662,7 +5662,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(4442, 0, 1, 0, 0, 0, 100, 0, 4000, 9000, 12000, 20000, 0, 11, 3248, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Razorfen Defender - In Combat - Cast Improved Blocking'),
 	(4442, 0, 2, 0, 13, 0, 100, 0, 8000, 8000, 0, 0, 0, 11, 11972, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Razorfen Defender - Victim Casting - Cast Shield Bash'),
 	(4442, 0, 3, 0, 2, 0, 100, 1, 0, 15, 0, 0, 0, 25, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Razorfen Defender - Between 0-15% Health - Flee For Assist'),
-	(4444, 0, 0, 0, 6, 0, 100, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathstalker Vincent - On Death - Say Line 0'),
+	(4444, 0, 0, 0, 6, 0, 100, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathstalker Vincent - On Death - Say Line 0');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(4444, 0, 1, 0, 4, 0, 100, 512, 0, 0, 0, 0, 0, 91, 7, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathstalker Vincent - On Aggro - Remove Bytes1'),
 	(4457, 0, 0, 0, 0, 0, 100, 0, 1000, 2000, 19900, 30000, 0, 11, 13443, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Murkgill Forager - In Combat - Cast \'Rend\''),
 	(4457, 0, 1, 0, 0, 0, 100, 0, 2600, 2600, 3700, 9100, 0, 11, 744, 32, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Murkgill Forager - In Combat - Cast \'Poison\''),
@@ -10053,8 +10054,7 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(11290, 0, 0, 0, 0, 0, 100, 0, 2300, 3400, 9800, 12600, 0, 11, 3234, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Mossflayer Zombie - In Combat - Cast \'3234\''),
 	(11291, 0, 0, 0, 0, 0, 100, 0, 4000, 6000, 9000, 12000, 0, 11, 4974, 32, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Unliving Mossflayer - In Combat - Cast \'Wither Touch\''),
 	(11291, 0, 1, 0, 9, 0, 100, 0, 0, 5, 8000, 14000, 0, 11, 11428, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Unliving Mossflayer - Within 0-5 Range - Cast \'Knockdown\''),
-	(11318, 0, 0, 0, 0, 0, 100, 0, 1000, 2000, 4000, 8000, 0, 11, 11976, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Ragefire Trogg - In Combat - Cast Strike');
-INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+	(11318, 0, 0, 0, 0, 0, 100, 0, 1000, 2000, 4000, 8000, 0, 11, 11976, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Ragefire Trogg - In Combat - Cast Strike'),
 	(11319, 0, 0, 0, 0, 0, 100, 2, 0, 0, 6000, 8000, 0, 11, 9532, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Ragefire Shaman - In Combat - Cast \'Lightning Bolt\' (Normal Dungeon)'),
 	(11319, 0, 1, 0, 14, 0, 100, 2, 400, 40, 18000, 22000, 0, 11, 11986, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Ragefire Shaman - Friendly At 400 Health - Cast \'Healing Wave\' (Normal Dungeon)'),
 	(11319, 0, 2, 0, 2, 0, 100, 3, 0, 15, 0, 0, 0, 25, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Ragefire Shaman - Between 0-15% Health - Flee For Assist (No Repeat) (Normal Dungeon)'),
@@ -11265,7 +11265,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(13547, 0, 5, 0, 9, 1, 100, 2, 0, 40, 3400, 4800, 0, 11, 15242, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Within 0-40 Range - Cast \'Fireball\' (No Repeat) (Normal Dungeon)'),
 	(13547, 0, 6, 7, 3, 1, 100, 515, 0, 15, 0, 0, 0, 21, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Between 0-15% Mana - Enable Combat Movement (Phase 1) (No Repeat) (Normal Dungeon)'),
 	(13547, 0, 7, 0, 61, 1, 100, 512, 0, 0, 0, 0, 0, 23, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Between 0-15% Mana - Increment Phase By 1 (Phase 1) (No Repeat) (Normal Dungeon)'),
-	(13547, 0, 8, 0, 9, 1, 100, 515, 35, 80, 0, 0, 0, 21, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Within 35-80 Range - Enable Combat Movement (Phase 1) (No Repeat) (Normal Dungeon)'),
+	(13547, 0, 8, 0, 9, 1, 100, 515, 35, 80, 0, 0, 0, 21, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Within 35-80 Range - Enable Combat Movement (Phase 1) (No Repeat) (Normal Dungeon)');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(13547, 0, 9, 0, 9, 1, 100, 515, 5, 15, 0, 0, 0, 21, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Within 5-15 Range - Disable Combat Movement (Phase 1) (No Repeat) (Normal Dungeon)'),
 	(13547, 0, 10, 0, 9, 1, 100, 515, 0, 5, 0, 0, 0, 21, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Within 0-5 Range - Enable Combat Movement (Phase 1) (No Repeat) (Normal Dungeon)'),
 	(13547, 0, 11, 0, 3, 2, 100, 514, 30, 100, 100, 100, 0, 23, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Veteran Coldmine Explorer - Between 30-100% Mana - Decrement Phase By 1 (Phase 1) (No Repeat) (Normal Dungeon)'),
@@ -16844,7 +16845,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(19424, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 10000, 10000, 0, 11, 12542, 1, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 'Bleeding Hollow Tormentor - In Combat - Cast \'Fear\' (No Repeat)'),
 	(19424, 0, 1, 0, 0, 0, 100, 1, 0, 0, 3000, 3000, 0, 11, 34368, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Bleeding Hollow Tormentor - In Combat - Cast \'Summon Riding Worg\' (No Repeat)'),
 	(19424, 0, 2, 3, 2, 0, 100, 1, 0, 15, 0, 0, 0, 11, 31553, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Bleeding Hollow Tormentor - Between 0-15% Health - Cast \'Hamstring\' (No Repeat)'),
-	(19424, 0, 3, 0, 61, 0, 100, 0, 0, 0, 0, 0, 0, 25, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Bleeding Hollow Tormentor - Between 0-15% Health - Flee For Assist (No Repeat)'),
+	(19424, 0, 3, 0, 61, 0, 100, 0, 0, 0, 0, 0, 0, 25, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Bleeding Hollow Tormentor - Between 0-15% Health - Flee For Assist (No Repeat)');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(19287, 0, 0, 0, 0, 0, 100, 0, 3000, 6000, 12000, 24000, 0, 11, 11829, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Invading Voidwalker - In Combat - Cast \'Flamestrike\''),
 	(19286, 0, 0, 0, 0, 0, 100, 0, 3000, 3000, 15000, 20000, 0, 11, 32901, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Invading Fel Stalker - In Combat - Cast \'Carnivorous Bite\''),
 	(19428, 0, 0, 0, 0, 0, 100, 2, 5000, 7000, 8000, 11000, 0, 11, 38193, 64, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Cobalt Serpent - In Combat - Cast Lightning Breath'),
@@ -20054,8 +20056,7 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(22377, 0, 20, 0, 0, 0, 100, 0, 3000, 8000, 7000, 11000, 0, 11, 39945, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Akuno - In Combat - Cast Chain Lightning'),
 	(22378, 0, 0, 0, 0, 0, 100, 0, 5000, 8000, 9000, 14000, 0, 11, 39043, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Cabal Interrogator - In Combat - Cast \'Kick Akuno\''),
 	(22378, 0, 1, 0, 0, 0, 100, 0, 2000, 5000, 6000, 9000, 0, 11, 15691, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Cabal Interrogator - In Combat - Cast \'Eviscerate\''),
-	(22379, 0, 0, 1, 25, 0, 100, 512, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Serpentshrine Parasite - On Reset - Set React State');
-INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+	(22379, 0, 0, 1, 25, 0, 100, 512, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Serpentshrine Parasite - On Reset - Set React State'),
 	(22379, 0, 1, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 49, 0, 0, 0, 0, 0, 0, 18, 80, 0, 0, 0, 0, 0, 0, 0, 'Serpentshrine Parasite - On Reset - Attack Start'),
 	(22381, 0, 0, 0, 1, 0, 100, 0, 30000, 90000, 180000, 240000, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Hathyss the Wicked - Out of Combat - Say Line 0'),
 	(22381, 0, 1, 0, 0, 0, 100, 0, 3000, 7000, 9000, 18000, 0, 11, 36541, 33, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Hathyss the Wicked - In Combat - Cast \'Curse of Burning Shadows\''),
@@ -22443,7 +22444,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(24852, 0, 1, 2, 40, 0, 100, 513, 18, 24852, 0, 0, 0, 1, 1, 2000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Iron Rune Construct - On WP 18 reached - Say line'),
 	(24852, 0, 2, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 28, 44687, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Iron Rune Construct - On WP 18 reached - Remove aura Rocket Jump'),
 	(24852, 0, 3, 0, 52, 0, 100, 512, 1, 24852, 0, 0, 0, 11, 44688, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Iron Rune Construct - On text over - Spellcast System Failure'),
-	(24874, 0, 0, 1, 8, 0, 100, 0, 45323, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Fengir the Disgraced - On Spellhit \'Returning Vrykul Artifact\' - Say Line 0 (No Repeat)'),
+	(24874, 0, 0, 1, 8, 0, 100, 0, 45323, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Fengir the Disgraced - On Spellhit \'Returning Vrykul Artifact\' - Say Line 0 (No Repeat)');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(24874, 0, 1, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 33, 24874, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Fengir the Disgraced - On Spellhit \'Returning Vrykul Artifact\' - Quest Credit \'A Return to Resting\' (No Repeat)'),
 	(24875, 0, 0, 1, 8, 0, 100, 0, 45323, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Windan of the Kvaldir - On Spellhit \'Returning Vrykul Artifact\' - Say Line 0 (No Repeat)'),
 	(24875, 0, 1, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 33, 24875, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Windan of the Kvaldir - On Spellhit \'Returning Vrykul Artifact\' - Quest Credit \'A Return to Resting\' (No Repeat)'),
@@ -27947,7 +27949,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(29717, 0, 1, 0, 0, 0, 100, 0, 0, 1000, 3000, 4000, 0, 11, 32000, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Shadow Cultist - IC - Cast Mind Sear'),
 	(29721, 0, 0, 1, 4, 0, 100, 0, 0, 0, 0, 0, 0, 12, 9526, 4, 30000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skizzle Slickslide - On Aggro - Summon Creature \'Enraged Gryphon\''),
 	(29721, 0, 1, 0, 61, 0, 100, 0, 0, 0, 0, 0, 0, 12, 9297, 4, 30000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skizzle Slickslide - On Aggro - Summon Creature \'Enraged Wyvern\''),
-	(29724, 0, 0, 0, 1, 0, 100, 512, 2000, 45000, 60000, 60000, 0, 80, 2972400, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Library Guardian - Out of Combat - Run Script'),
+	(29724, 0, 0, 0, 1, 0, 100, 512, 2000, 45000, 60000, 60000, 0, 80, 2972400, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Library Guardian - Out of Combat - Run Script');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(29724, 0, 1, 0, 4, 0, 100, 0, 0, 0, 0, 0, 0, 103, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Library Guardian - On Aggro - Set Rooted Off'),
 	(29732, 0, 0, 1, 62, 0, 100, 512, 9891, 0, 0, 0, 0, 12, 30401, 3, 162000, 0, 0, 0, 8, 0, 0, 0, 0, 6606, -277, 986, 3.3, 'On gossip select - summon creature'),
 	(29732, 0, 1, 2, 61, 0, 100, 512, 0, 0, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Linked - Close gossip'),
@@ -30055,8 +30058,7 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(32442, 0, 2, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 11, 45797, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plague Cauldron Target 02 - On Spellhit \'Neutralizing Dose Applied\' - Cast \'Orange Radiation\''),
 	(32442, 0, 3, 0, 38, 0, 100, 512, 1, 1, 0, 0, 0, 28, 45797, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plague Cauldron Target 02 - On Data Set 1 1 - Remove Aura \'Orange Radiation\''),
 	(32443, 0, 0, 1, 25, 0, 100, 512, 0, 0, 0, 0, 0, 59, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Reset - Set Walk'),
-	(32443, 0, 1, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 80, 3244300, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Reset - Script9');
-INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+	(32443, 0, 1, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 80, 3244300, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Reset - Script9'),
 	(32445, 0, 0, 1, 54, 0, 100, 512, 0, 0, 0, 0, 0, 87, 3244500, 3244501, 3244502, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Summoned Plague Cauldron Bunny 02 - On Just Summoned - Run Random Script'),
 	(32445, 0, 1, 2, 61, 0, 100, 512, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Summoned Plague Cauldron Bunny 02 - On Just Summoned - Say Line 0'),
 	(32445, 0, 2, 0, 61, 0, 100, 512, 0, 0, 0, 0, 0, 11, 60059, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Summoned Plague Cauldron Bunny 02 - On Just Summoned - Cast \'Huge Green Splash\''),
@@ -33781,7 +33783,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(504600, 9, 2, 0, 0, 0, 100, 0, 4000, 4000, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Caldwell - On Script - Say Line 1'),
 	(504600, 9, 3, 0, 0, 0, 100, 0, 500, 500, 0, 0, 0, 45, 1, 1, 0, 0, 0, 0, 11, 5045, 20, 0, 0, 0, 0, 0, 0, 'Lieutenant Caldwell - On Script - Set Data 1 1'),
 	(508800, 9, 0, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 19, 4944, 50, 0, 0, 0, 0, 0, 0, 'On Script - Set Orientation Closest Creature \'Captain Garran Vimes\''),
-	(508800, 9, 1, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 17, 16, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Script - Play Kneel'),
+	(508800, 9, 1, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 17, 16, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Script - Play Kneel');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(508800, 9, 2, 0, 0, 0, 100, 0, 2000, 2000, 0, 0, 0, 17, 26, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Script - Play Stand'),
 	(508800, 9, 3, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Script - Say Line 0'),
 	(508800, 9, 4, 0, 0, 0, 100, 0, 4000, 4000, 0, 0, 0, 11, 6245, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'On Script - Cast \'Force Target - Salute\''),
@@ -39659,7 +39662,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(2799200, 9, 2, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 12, 24533, 4, 60000, 0, 1, 0, 8, 0, 0, 0, 0, 956, -5267, 198, 4.5, 'Script9 - Summon Creature'),
 	(2799200, 9, 3, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 12, 24533, 4, 60000, 0, 1, 0, 8, 0, 0, 0, 0, 965, -5241, 189, 4.5, 'Script9 - Summon Creature'),
 	(2799600, 9, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 21, 10, 0, 0, 0, 0, 0, 0, 0, 'WYRMREST VANQUISHER - ActionList - talk'),
-	(2799600, 9, 1, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'WYRMREST VANQUISHER - ActionList - despawn'),
+	(2799600, 9, 1, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'WYRMREST VANQUISHER - ActionList - despawn');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(2800500, 9, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 11, 50437, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Wastes Scavenger script - Spellcast Devour Ghoul'),
 	(2800500, 9, 1, 0, 0, 0, 100, 0, 4000, 4000, 0, 0, 0, 11, 50443, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Wastes Scavenger script - Spellcast Nourishment'),
 	(2800500, 9, 2, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Wastes Scavenger script - Despawn'),
@@ -40056,8 +40060,7 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(2884400, 9, 2, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 11, 51744, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Drakkari Skullcrusher - On Script - Cast \'Suicide (No Log)\''),
 	(2885700, 9, 0, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Say Line 0'),
 	(2885700, 9, 1, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 122, 2000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Flee For 2 Seconds'),
-	(2885700, 9, 2, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Despawn');
-INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+	(2885700, 9, 2, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Despawn'),
 	(2885701, 9, 0, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Say Line 1'),
 	(2885701, 9, 1, 0, 0, 0, 100, 0, 3000, 3000, 0, 0, 0, 122, 2000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Flee For 2 Seconds'),
 	(2885701, 9, 2, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Drostan - On Script - Despawn'),
@@ -45458,7 +45461,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 	(141300, 9, 4, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 90, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Set UNIT_STAND_STATE_SIT'),
 	(141300, 9, 5, 0, 0, 0, 100, 0, 1000, 2000, 0, 0, 0, 45, 1, 2, 0, 0, 0, 0, 10, 86597, 1414, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Set Data 1 2 \'Lisan Pierce\''),
 	(141300, 9, 6, 0, 0, 0, 100, 0, 1000, 2000, 0, 0, 0, 45, 1, 2, 0, 0, 0, 0, 10, 89294, 1415, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Set Data 1 2 \'Suzanne\''),
-	(141300, 9, 7, 0, 0, 0, 100, 0, 240000, 290000, 0, 0, 0, 5, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Emote Talk'),
+	(141300, 9, 7, 0, 0, 0, 100, 0, 240000, 290000, 0, 0, 0, 5, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Emote Talk');
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 	(141300, 9, 8, 0, 0, 0, 100, 0, 1000, 1000, 0, 0, 0, 91, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Remove UNIT_STAND_STATE_SIT'),
 	(141300, 9, 9, 0, 0, 0, 100, 0, 2000, 2000, 0, 0, 0, 45, 1, 3, 0, 0, 0, 0, 10, 86597, 1414, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Set Data 1 3 \'Lisan Pierce\''),
 	(141300, 9, 10, 0, 0, 0, 100, 0, 2000, 3000, 0, 0, 0, 45, 1, 3, 0, 0, 0, 0, 10, 89294, 1415, 0, 0, 0, 0, 0, 0, 'Janey Anship - On Script - Set Data 1 3 \'Suzanne\''),
