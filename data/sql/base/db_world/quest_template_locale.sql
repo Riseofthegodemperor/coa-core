@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `quest_template_locale` (
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumping data for table acore_world.quest_template_locale: ~61,287 rows (approximately)
+-- Dumping data for table acore_world.quest_template_locale: ~48,881 rows (approximately)
 DELETE FROM `quest_template_locale`;
 INSERT INTO `quest_template_locale` (`ID`, `locale`, `Title`, `Details`, `Objectives`, `EndText`, `CompletedText`, `ObjectiveText1`, `ObjectiveText2`, `ObjectiveText3`, `ObjectiveText4`, `VerifiedBuild`) VALUES
 	(1, 'deDE', 'Kanrethads Quest', 'Willkommen zurück vom Reich der Toten.$B$BEin ganzes Zeitalter ist es her, seit Ihr ein stolzer Held unter Euresgleichen wart. Doch nun seid Ihr $gein geschlagener Mann:eine geschlagene Frau; -gebrochen, ein Relikt vergangener Tage. Höret nun und ich werde der Legende, die Ihr einst wart, neues Leben einhauchen.$B$BIch werde Waffen und Kräfte, die Ihr verloren habt, wiederherstellen und Euch wieder ins Leben rufen.', 'Sprecht mit Kanrethad, um Eure Talente, Waffen und Euer Reittier wiederherzustellen.', '', 'Kehrt zu Kanrethad zurück.', 'An Eure Talente erinnern', '', '', '', 18019),

@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
--- Dumping data for table acore_world.broadcast_text_locale: ~583,570 rows (approximately)
+-- Dumping data for table acore_world.broadcast_text_locale: ~606,346 rows (approximately)
 DELETE FROM `broadcast_text_locale`;
 INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(1, 'deDE', 'Hilfe, Hilfe! Ich werde bedrängt!', '', 18019),
