@@ -17,15 +17,15 @@
 -- Dumping structure for table acore_world.broadcast_text_locale
 DROP TABLE IF EXISTS `broadcast_text_locale`;
 CREATE TABLE IF NOT EXISTS `broadcast_text_locale` (
-  `ID` mediumint unsigned NOT NULL DEFAULT '0',
-  `locale` varchar(4) NOT NULL,
-  `MaleText` text,
-  `FemaleText` text,
+  `ID` int unsigned NOT NULL DEFAULT '0',
+  `locale` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaleText` text COLLATE utf8mb4_unicode_ci,
+  `FemaleText` text COLLATE utf8mb4_unicode_ci,
   `VerifiedBuild` smallint DEFAULT '0',
   PRIMARY KEY (`ID`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table acore_world.broadcast_text_locale: ~606,346 rows (approximately)
+-- Dumping data for table acore_world.broadcast_text_locale: ~598,850 rows (approximately)
 DELETE FROM `broadcast_text_locale`;
 INSERT INTO `broadcast_text_locale` (`ID`, `locale`, `MaleText`, `FemaleText`, `VerifiedBuild`) VALUES
 	(1, 'deDE', 'Hilfe, Hilfe! Ich werde bedrängt!', '', 18019),
