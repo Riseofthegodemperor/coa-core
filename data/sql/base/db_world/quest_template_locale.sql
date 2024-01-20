@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.0.29 - MySQL Community Server - GPL
+-- Server version:               8.1.0 - MySQL Community Server - GPL
 -- Server OS:                    Win64
--- HeidiSQL Version:             12.0.0.6468
+-- HeidiSQL Version:             12.3.0.6589
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,21 +18,21 @@
 DROP TABLE IF EXISTS `quest_template_locale`;
 CREATE TABLE IF NOT EXISTS `quest_template_locale` (
   `ID` int unsigned NOT NULL DEFAULT '0',
-  `locale` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Title` text COLLATE utf8mb4_unicode_ci,
-  `Details` text COLLATE utf8mb4_unicode_ci,
-  `Objectives` text COLLATE utf8mb4_unicode_ci,
-  `EndText` text COLLATE utf8mb4_unicode_ci,
-  `CompletedText` text COLLATE utf8mb4_unicode_ci,
-  `ObjectiveText1` text COLLATE utf8mb4_unicode_ci,
-  `ObjectiveText2` text COLLATE utf8mb4_unicode_ci,
-  `ObjectiveText3` text COLLATE utf8mb4_unicode_ci,
-  `ObjectiveText4` text COLLATE utf8mb4_unicode_ci,
+  `locale` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `Details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `Objectives` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `EndText` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `CompletedText` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ObjectiveText1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ObjectiveText2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ObjectiveText3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ObjectiveText4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `VerifiedBuild` int DEFAULT NULL,
   PRIMARY KEY (`ID`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table acore_world.quest_template_locale: ~76,897 rows (approximately)
+-- Dumping data for table acore_world.quest_template_locale: ~51 483 rows (approximately)
 DELETE FROM `quest_template_locale`;
 INSERT INTO `quest_template_locale` (`ID`, `locale`, `Title`, `Details`, `Objectives`, `EndText`, `CompletedText`, `ObjectiveText1`, `ObjectiveText2`, `ObjectiveText3`, `ObjectiveText4`, `VerifiedBuild`) VALUES
 	(1, 'deDE', 'Kanrethads Quest', 'Willkommen zurück vom Reich der Toten.$B$BEin ganzes Zeitalter ist es her, seit Ihr ein stolzer Held unter Euresgleichen wart. Doch nun seid Ihr $gein geschlagener Mann:eine geschlagene Frau; -gebrochen, ein Relikt vergangener Tage. Höret nun und ich werde der Legende, die Ihr einst wart, neues Leben einhauchen.$B$BIch werde Waffen und Kräfte, die Ihr verloren habt, wiederherstellen und Euch wieder ins Leben rufen.', 'Sprecht mit Kanrethad, um Eure Talente, Waffen und Euer Reittier wiederherzustellen.', '', 'Kehrt zu Kanrethad zurück.', 'An Eure Talente erinnern', '', '', '', 18019),
