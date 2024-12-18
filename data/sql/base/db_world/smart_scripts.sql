@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.4.1, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: acore_world
 -- ------------------------------------------------------
--- Server version	8.4.1
+-- Server version	8.0.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -7411,7 +7411,7 @@ INSERT INTO `smart_scripts` VALUES
 (4542,0,2,0,0,0,100,0,0,3000,20000,20000,0,0,11,11647,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'High Inquisitor Fairbanks - In Combat - Cast Power Word: Shield'),
 (4542,0,3,0,0,0,100,0,10000,15000,20000,20000,0,0,11,12039,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'High Inquisitor Fairbanks - In Combat - Cast Heal'),
 (4542,0,4,5,37,0,100,1,0,0,0,0,0,0,83,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'fairbanks - initializes -Remove UNIT_NPC_FLAG_GOSSIP'),
-(4542,0,5,0,61,0,100,0,0,0,0,0,0,0,40,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'fairbanks - initializes - set_sheath ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
+(4542,0,5,0,61,0,100,0,0,0,0,0,0,0,40,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'fairbanks - initializes - set_sheath â€˜SHEATH_STATE_MELEEâ€™'),
 (4542,0,6,0,62,0,100,0,7282,0,0,0,0,0,80,454200,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'fairbanks- Gossip_Select 7282 - emto (273 ,1,1)'),
 (4542,0,7,0,62,0,100,0,7280,0,0,0,0,0,80,454201,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'fairbanks - Gossip_Select 7280 -emto (1,273,5)'),
 (4542,0,8,0,62,0,100,0,7278,0,0,0,0,0,80,454202,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'fairbanks - Gossip_Select 7278 - emto (273,1,1)'),
@@ -8072,8 +8072,8 @@ INSERT INTO `smart_scripts` VALUES
 (5296,0,0,0,2,0,100,1,5,30,0,0,0,0,11,8599,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Rage Scar Yeti - Between 5-30% Health - Cast \'8599\' (No Repeat)'),
 (5297,0,0,0,4,0,100,512,0,0,0,0,0,0,11,6507,2,0,0,0,0,1,0,0,0,0,0,0,0,0,'Elder Rage Scar - On Aggro - Cast \'Battle Roar\''),
 (5299,0,0,0,0,0,60,0,15000,15000,45000,45000,0,0,11,3147,0,0,0,0,0,5,0,0,0,0,0,0,0,0,'Ferocious Rage Scar - In Combat - Cast \'Rend Flesh\''),
-(5304,0,0,0,0,0,100,512,3000,5000,5000,8000,0,0,11,5708,2,0,0,0,0,2,0,0,0,0,0,0,0,0,'Frayfeather Stagwing - In Combat - Cast \'Swoop\''),
-(5305,0,0,0,0,0,100,512,2000,4000,20000,25000,0,0,11,6535,2,0,0,0,0,2,0,0,0,0,0,0,0,0,'Frayfeather Skystormer - In Combat - Cast \'Lightning Cloud\''),
+(5304,0,0,0,0,0,100,0,3000,5000,5000,8000,0,0,11,5708,2,0,0,0,0,2,0,0,0,0,0,0,0,0,'Frayfeather Stagwing - In Combat - Cast \'Swoop\''),
+(5305,0,0,0,0,0,100,0,2000,4000,20000,25000,0,0,11,6535,2,0,0,0,0,2,0,0,0,0,0,0,0,0,'Frayfeather Skystormer - In Combat - Cast \'Lightning Cloud\''),
 (5307,0,0,0,0,0,100,0,1200,1600,8900,9300,0,0,11,59220,0,0,0,0,0,2,0,0,0,0,0,0,0,0,'Vale Screecher - In Combat - Cast \'59220\''),
 (5307,0,1,0,2,0,100,1,20,50,0,0,0,0,11,8281,0,0,0,0,0,2,0,0,0,0,0,0,0,0,'Vale Screecher - Between 20-50% Health - Cast \'8281\' (No Repeat)'),
 (5308,0,0,0,0,0,100,0,2400,3200,12400,14800,0,0,11,8281,0,0,0,0,0,2,0,0,0,0,0,0,0,0,'Rogue Vale Screecher - In Combat - Cast \'8281\''),
@@ -38555,35 +38555,35 @@ INSERT INTO `smart_scripts` VALUES
 (450701,9,0,0,0,0,100,0,30000,30000,0,0,0,0,53,0,450700,0,0,0,0,1,0,0,0,0,0,0,0,0,'Daisy - On Script - Start Waypoint Movement'),
 (450701,9,1,0,0,0,100,0,8000,8000,0,0,0,0,66,0,0,0,0,0,0,8,0,0,0,0,0,0,0,1.60989,'Daisy - On Script - Set Orientation'),
 (450701,9,2,0,0,0,100,0,600000,600000,0,0,0,0,41,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Daisy - On Script - Force Despawn'),
-(454200,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath ÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454200,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath â€˜SHEATH_STATE_UNARMEDâ€™'),
 (454200,9,1,0,0,0,100,0,0,0,0,0,0,0,5,273,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Fairbanks - On Script - Play Emote 273'),
-(454200,9,3,0,0,0,100,0,2200,2200,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
+(454200,9,3,0,0,0,100,0,2200,2200,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath â€˜SHEATH_STATE_MELEEâ€™'),
 (454200,9,4,0,0,0,100,0,700,700,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Fairbanks - On Script - Play Emote 1'),
 (454200,9,6,0,0,0,100,0,2400,2400,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Fairbanks - On Script - Play Emote 1'),
 (454201,9,0,0,0,0,100,0,0,0,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 1'),
-(454201,9,1,0,0,0,100,0,2500,2500,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath ÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454201,9,1,0,0,0,100,0,2500,2500,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath â€˜SHEATH_STATE_UNARMEDâ€™'),
 (454201,9,2,0,0,0,100,0,0,0,0,0,0,0,5,273,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 273'),
-(454201,9,3,0,0,0,100,0,2400,2400,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
-(454201,9,5,0,0,0,100,0,700,700,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath ÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454201,9,3,0,0,0,100,0,2400,2400,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_MELEEâ€™'),
+(454201,9,5,0,0,0,100,0,700,700,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath â€˜SHEATH_STATE_UNARMEDâ€™'),
 (454201,9,6,0,0,0,100,0,200,200,0,0,0,0,5,5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Fairbanks - On Script - Play Emote 5'),
-(454201,9,7,0,0,0,100,0,2200,2200,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
-(454202,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set SheathÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454201,9,7,0,0,0,100,0,2200,2200,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_MELEEâ€™'),
+(454202,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheathâ€˜SHEATH_STATE_UNARMEDâ€™'),
 (454202,9,1,0,0,0,100,0,0,0,0,0,0,0,5,273,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 273'),
-(454202,9,2,0,0,0,100,0,2400,2400,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
+(454202,9,2,0,0,0,100,0,2400,2400,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_MELEEâ€™'),
 (454202,9,3,0,0,0,100,0,700,700,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 1'),
 (454202,9,4,0,0,0,100,0,2400,2400,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 1'),
-(454203,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath ÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454203,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath â€˜SHEATH_STATE_UNARMEDâ€™'),
 (454203,9,1,0,0,0,100,0,0,0,0,0,0,0,5,274,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Fairbanks - On Script - Play Emote 274'),
-(454203,9,2,0,0,0,100,0,3500,3500,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
+(454203,9,2,0,0,0,100,0,3500,3500,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_MELEEâ€™'),
 (454203,9,3,0,0,0,100,0,700,700,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 1'),
 (454203,9,4,0,0,0,100,0,2400,2400,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 1'),
-(454204,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath ÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454204,9,0,0,0,0,100,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath â€˜SHEATH_STATE_UNARMEDâ€™'),
 (454204,9,1,0,0,0,100,0,0,0,0,0,0,0,5,274,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 274'),
-(454204,9,2,0,0,0,100,0,3500,3500,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
+(454204,9,2,0,0,0,100,0,3500,3500,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'  Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_MELEEâ€™'),
 (454204,9,3,0,0,0,100,0,700,700,0,0,0,0,5,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 1'),
-(454204,9,4,0,0,0,100,0,2500,2500,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_UNARMEDÔÇÖ'),
+(454204,9,4,0,0,0,100,0,2500,2500,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_UNARMEDâ€™'),
 (454204,9,5,0,0,0,100,0,200,200,0,0,0,0,5,397,0,0,0,0,0,1,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Play Emote 397'),
-(454204,9,6,0,0,0,100,0,3000,3000,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath  ÔÇÿSHEATH_STATE_MELEEÔÇÖ'),
+(454204,9,6,0,0,0,100,0,3000,3000,0,0,0,0,40,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,' Fairbanks - On Script - Set Sheath  â€˜SHEATH_STATE_MELEEâ€™'),
 (470900,9,0,0,0,0,100,0,0,0,0,0,0,0,54,7000,0,0,0,0,0,1,0,0,0,0,0,0,0,0,'Zamek - On Script - Pause Waypoint'),
 (470900,9,1,0,0,0,100,0,0,0,0,0,0,0,66,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0.943443,'Zamek - On Script - Set Orientation'),
 (470900,9,2,0,0,0,100,0,2000,2000,0,0,0,0,50,144065,8,0,0,0,0,8,0,0,0,0,-6265.67,-3845.57,-58.75,0.943443,'Zamek - On Script - Summon Gameobject \'Explosive Charge\''),
@@ -49846,4 +49846,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-14 18:04:33
+-- Dump completed on 2024-12-17 22:34:36
+

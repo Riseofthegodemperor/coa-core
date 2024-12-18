@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.4.1, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: acore_world
 -- ------------------------------------------------------
--- Server version	8.4.1
+-- Server version	8.0.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -57543,7 +57543,7 @@ INSERT INTO `broadcast_text` VALUES
 (60337,0,'We will save him, Suna. I promise.','',0,0,0,0,0,0,30596,0,1,18019),
 (60338,0,'And the greatest losses.','',0,0,0,0,0,0,0,0,1,18019),
 (60339,0,'You throw caution to the wind.','',0,0,0,0,0,0,0,0,1,18019),
-(60340,0,'What happened to Lin+»-+-¢ it was no one+»-+-¢s fault.','',0,0,0,0,0,0,0,0,1,18019),
+(60340,0,'What happened to LinÃ¯Â¿Â½ it was no oneÃ¯Â¿Â½s fault.','',0,0,0,0,0,0,0,0,1,18019),
 (60341,0,'He is gone. We must all move on.','',0,0,0,0,0,0,0,0,1,18019),
 (60342,0,'I\'m heading to the wound. Try to keep these beasts off of me.','I\'m heading to the wound. Try to keep these beasts off of me.',0,0,0,0,0,0,0,396,1,18019),
 (60343,0,'You\'re a life-saver. I\'ll do everything I can to heal the wound.','You\'re a life-saver. I\'ll do everything I can to heal the wound.',0,0,0,0,0,0,0,396,1,18019),
@@ -62687,7 +62687,7 @@ INSERT INTO `broadcast_text` VALUES
 (65537,0,'|TInterface\\Icons\\inv_elemental_primal_air.blp:20|tMing the Cunning summons a |cFFFF0000|Hspell:119981|h[Whirling Dervish]|h|r!','',0,0,0,0,0,0,0,15,1,18019),
 (65538,0,'|TInterface\\Icons\\spell_druid_ursolsvortex.blp:20|tMing the Cunning creates a |cFFFF0000|Hspell:120099|h[Magnetic Field]|h|r!','',0,0,0,0,0,0,0,15,1,18019),
 (65539,0,'|TInterface\\Icons\\ability_warrior_savageblow.blp:20|tHaiyan the Unstoppable strikes |cFFFF0000$n|r with a |cFFFF0000|Hspell:123655|h[Traumatic Blow]|h|r!','',0,0,0,0,0,0,0,15,1,18019),
-(65540,0,'We are all here. This is a historic moment, $n. My dying wife envisioned a city of light beyond these gates+»-+-¢ What do you think we will find?','',6,0,0,0,0,0,0,0,1,18019),
+(65540,0,'We are all here. This is a historic moment, $n. My dying wife envisioned a city of light beyond these gatesÃ¯Â¿Â½ What do you think we will find?','',6,0,0,0,0,0,0,0,1,18019),
 (65541,0,'Haiyan the Unstoppable struck you with a |cFFFF0000|Hspell:123655|h[Traumatic Blow]|h|r! Healing abilities used on you will be less efficient while the effect persists!','',0,0,0,0,0,0,0,15,1,18019),
 (65542,0,'There\'s only one way to find out...','There\'s only one way to find out...',5,0,0,0,0,0,0,0,1,18019),
 (65543,0,'|TInterface\\Icons\\spell_fire_meteorstorm.blp:20|tHaiyan the Unstoppable targets |cFFFF0000$n|r with a |cFFFF0000|Hspell:120195|h[Meteor]|h|r!','',0,0,0,0,0,0,0,15,1,18019),
@@ -62949,7 +62949,7 @@ INSERT INTO `broadcast_text` VALUES
 (65800,0,'','That\'s NOT going to happen.',0,0,0,0,0,0,0,0,1,18019),
 (65801,0,'','Destroy them!',0,0,0,0,0,0,0,0,1,18019),
 (65802,0,'','They are falling! Don\'t stop now!',0,0,0,0,0,0,0,0,1,18019),
-(65803,0,'','Good work! You+»-+-¢re quite a fighter.',0,0,0,0,0,0,0,0,1,18019),
+(65803,0,'','Good work! YouÃ¯Â¿Â½re quite a fighter.',0,0,0,0,0,0,0,0,1,18019),
 (65804,0,'','I love the feeling after a good fight.',0,0,0,0,0,0,0,0,1,18019),
 (65805,0,'','Let\'s celebrate!',0,0,0,0,0,0,0,0,1,18019),
 (65806,0,'Keep them back!  They will not delve into our secrets!','',0,0,0,0,0,0,0,0,1,18019),
@@ -73106,4 +73106,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-14 18:04:10
+-- Dump completed on 2024-12-17 22:33:18
+
