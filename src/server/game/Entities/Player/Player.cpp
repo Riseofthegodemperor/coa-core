@@ -17108,7 +17108,7 @@ void Player::StoreSpellCharges(SpellInfo const* spellInfo, SpellChargeState cons
 
 void Player::ConsumeSpellCharge(SpellInfo const* spellInfo, Spell* spell)
 {
-    if (!spellInfo->MaxCharges || GetCommandStatus(CHEAT_COOLDOWN))
+    if (!spellInfo->MaxCharges || GetCommandStatus(CHEAT_COOLDOWN) || GetCommandStatus(CHEAT_SPELLCHARGES))
         return;
     int32 recovery = int32(spellInfo->ChargeRecoveryTime);
     ApplySpellMod(spellInfo->Id, SPELLMOD_COOLDOWN, recovery, spell);
@@ -17135,21 +17135,32 @@ void Player::RestoreSpellCharge(uint32 spellId, uint32 count)
     SendSpellChargeState(spellId);
 }
 
+// Spell-charge GUI protocol implemented by the Ascension client (Extensions.dll).
+// The client handlers update a charge map keyed by SpellChargesCategory id:
+//   SMSG_CLEAR_ALL_SPELL_CHARGES (0x09C2): no payload, wipes every charge entry
+//   SMSG_SEND_SPELL_CHARGES      (0x09C4): u32 count + { u32 category; u32 remainingMs; u8 missing }
+//   SMSG_SET_SPELL_CHARGES       (0x09C5): u32 category; u32 remainingMs; u32 missing (0 clears)
+// `missing` is the recovering-charge count (the client shows max - missing) and
+// `remainingMs` the time until the next recovery. A zero `remainingMs` makes the
+// client drop the record, so the fully-charged case reuses the recovery time.
+static constexpr uint16 SMSG_CLEAR_ALL_SPELL_CHARGES = 0x09C2;
+static constexpr uint16 SMSG_SEND_SPELL_CHARGES = 0x09C4;
+static constexpr uint16 SMSG_SET_SPELL_CHARGES = 0x09C5;
+
 void Player::SendSpellChargeState(uint32 spellId) const
 {
     SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(spellId);
-    if (!spellInfo || !spellInfo->MaxCharges || !GetSession())
+    if (!spellInfo || !spellInfo->MaxCharges || !spellInfo->ChargeCategoryId || !GetSession())
         return;
     SpellChargeState state = GetSpellCharges(spellInfo);
     uint64 now = std::chrono::duration_cast<Milliseconds>(GameTime::GetSystemTime().time_since_epoch()).count();
     uint32 remaining = uint32(state.NextRecovery > now ? state.NextRecovery - now : 0);
-    std::string message = "ASC_LOCAL_CHARGES\t" + std::to_string(spellId) + ":" +
-        std::to_string(state.Available) + ":" + std::to_string(spellInfo->MaxCharges) + ":" +
-        std::to_string(remaining) + ":" + std::to_string(state.RecoveryTime) + ":" +
-        std::to_string(spellInfo->ChargeRecoveryKey);
-    WorldPacket packet;
-    ChatHandler::BuildChatPacket(packet, CHAT_MSG_WHISPER, LANG_ADDON, GetGUID(), GetGUID(), message,
-        0, GetName(), GetName(), 0, false);
+    uint32 missing = spellInfo->MaxCharges - std::min<uint32>(state.Available, spellInfo->MaxCharges);
+
+    WorldPacket packet(SMSG_SET_SPELL_CHARGES, 12);
+    packet << uint32(spellInfo->ChargeCategoryId);
+    packet << uint32(missing && remaining ? remaining : std::max<uint32>(state.RecoveryTime, 1));
+    packet << uint32(std::min<uint32>(missing, 255));
     GetSession()->SendPacket(&packet);
 }
 
@@ -17167,11 +17178,62 @@ void Player::RestoreSpellChargeCategory(uint32 categoryId, uint32 count)
     }
 }
 
+void Player::RestoreAllSpellCharges()
+{
+    // Ranks share a recovery key, so each pool is restored once.
+    std::unordered_set<uint32> restored;
+    for (auto const& [spellId, playerSpell] : m_spells)
+    {
+        if (playerSpell->State == PLAYERSPELL_REMOVED || !playerSpell->Active)
+            continue;
+        SpellInfo const* info = sSpellMgr->GetSpellInfo(spellId);
+        if (!info || !info->MaxCharges || !info->ChargeRecoveryKey)
+            continue;
+        if (!restored.insert(info->ChargeRecoveryKey).second)
+            continue;
+        RestoreSpellCharge(spellId, info->MaxCharges);
+    }
+}
+
 void Player::SendAllSpellChargeStates() const
 {
+    if (!GetSession())
+        return;
+
+    uint64 now = std::chrono::duration_cast<Milliseconds>(GameTime::GetSystemTime().time_since_epoch()).count();
+    std::unordered_map<uint32, std::pair<uint32, uint8>> partialPools;
     for (auto const& [spellId, playerSpell] : m_spells)
-        if (playerSpell->State != PLAYERSPELL_REMOVED && playerSpell->Active)
-            SendSpellChargeState(spellId);
+    {
+        if (playerSpell->State == PLAYERSPELL_REMOVED || !playerSpell->Active)
+            continue;
+        SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(spellId);
+        if (!spellInfo || !spellInfo->MaxCharges || !spellInfo->ChargeCategoryId)
+            continue;
+        SpellChargeState state = GetSpellCharges(spellInfo);
+        uint32 missing = spellInfo->MaxCharges - std::min<uint32>(state.Available, spellInfo->MaxCharges);
+        if (!missing)
+            continue;
+        uint32 remaining = uint32(state.NextRecovery > now ? state.NextRecovery - now : 0);
+        partialPools.emplace(spellInfo->ChargeCategoryId,
+            std::make_pair(std::max<uint32>(remaining, 1), uint8(std::min<uint32>(missing, 255))));
+    }
+
+    // Ranks share a recovery category, so one snapshot covers every skill button.
+    WorldPacket clear(SMSG_CLEAR_ALL_SPELL_CHARGES);
+    GetSession()->SendPacket(&clear);
+
+    if (partialPools.empty())
+        return;
+
+    WorldPacket packet(SMSG_SEND_SPELL_CHARGES, 4 + partialPools.size() * 9);
+    packet << uint32(partialPools.size());
+    for (auto const& [categoryId, pool] : partialPools)
+    {
+        packet << uint32(categoryId);
+        packet << uint32(pool.first);
+        packet << uint8(pool.second);
+    }
+    GetSession()->SendPacket(&packet);
 }
 
 std::string Player::GetDebugInfo() const

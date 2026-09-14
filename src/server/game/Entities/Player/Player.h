@@ -1000,7 +1000,8 @@ enum PlayerCommandStates
     CHEAT_CASTTIME = 0x02,
     CHEAT_COOLDOWN = 0x04,
     CHEAT_POWER = 0x08,
-    CHEAT_WATERWALK = 0x10
+    CHEAT_WATERWALK = 0x10,
+    CHEAT_SPELLCHARGES = 0x20
 };
 
 // Used for OnGiveXP PlayerScript hook
@@ -1849,6 +1850,7 @@ public:
     void ConsumeSpellCharge(SpellInfo const* spellInfo, Spell* spell);
     void RestoreSpellCharge(uint32 spellId, uint32 count = 1);
     void RestoreSpellChargeCategory(uint32 categoryId, uint32 count);
+    void RestoreAllSpellCharges();
     void SendSpellChargeState(uint32 spellId) const;
     void SendAllSpellChargeStates() const;
     uint32 GetLastPotionId() { return m_lastPotionId; }

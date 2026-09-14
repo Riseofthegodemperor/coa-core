@@ -3285,6 +3285,10 @@ public:
       : CommandScript("AscensionCompatCommandScript") {}
 
   ChatCommandTable GetCommands() const override {
+    static ChatCommandTable spellChargesCommandTable = {
+        {"reset", HandleSpellChargesResetCommand, SEC_PLAYER, Console::No},
+        {"resync", HandleSpellChargesResyncCommand, SEC_PLAYER, Console::No}};
+
     static ChatCommandTable commandTable = {
         {"localfreshcheck", HandleAscensionFreshCharacterCheck, SEC_ADMINISTRATOR, Console::Yes},
         {"localappearance", HandleLocalAppearanceCommand, SEC_PLAYER,
@@ -3295,6 +3299,7 @@ public:
         {"localresource", HandleLocalResourceCommand, SEC_PLAYER,
          Console::No},
         {"localcharges", HandleLocalChargesCommand, SEC_PLAYER, Console::No},
+        {"spellcharges", spellChargesCommandTable},
         {"localclassrepair", HandleLocalClassRepairCommand, SEC_PLAYER,
          Console::No}};
     return commandTable;
@@ -3477,6 +3482,31 @@ public:
         player->SendAllSpellChargeStates();
         SendAscensionRunemasterEchoesOwnership(player);
     }
+    return true;
+  }
+
+  // Debug helpers for the native client charge UI (SMSG_SET/SEND_SPELL_CHARGES).
+  static bool HandleSpellChargesResetCommand(ChatHandler* handler)
+  {
+    Player* player = handler->GetPlayer();
+    if (!player)
+      return false;
+
+    player->RestoreAllSpellCharges();
+    player->SendAllSpellChargeStates();
+    handler->SendSysMessage("All spell-charge pools reset to full.");
+    return true;
+  }
+
+  static bool HandleSpellChargesResyncCommand(ChatHandler* handler)
+  {
+    Player* player = handler->GetPlayer();
+    if (!player)
+      return false;
+
+    player->SendAllSpellChargeStates();
+    SendAscensionRunemasterEchoesOwnership(player);
+    handler->SendSysMessage("Spell-charge state resent to the client.");
     return true;
   }
 };
