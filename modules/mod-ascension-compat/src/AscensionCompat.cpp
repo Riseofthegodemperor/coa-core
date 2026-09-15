@@ -95,6 +95,7 @@
 using namespace Acore::ChatCommands;
 
 namespace {
+constexpr uint16 CMSG_ANTICHEAT_ALERT = 0x051F;
 constexpr uint16 CMSG_VANITY_DELIVERY = 0x0523;
 constexpr uint16 CMSG_APPLY_APPEARANCES = 0x0697;
 constexpr uint16 SMSG_APPLY_APPEARANCES_RESULT = 0x0698;
@@ -3239,6 +3240,12 @@ public:
         AscensionCompatConfig::LAST_EXTENSION_OPCODE);
 
     if (opcode < firstOpcode || opcode > lastOpcode)
+      return true;
+
+    // The Ascension client's anti-tamper layer reports local detections here.
+    // Leave the packet to the core's CMSG_ANTICHEAT_ALERT handler instead of
+    // consuming it during protocol discovery.
+    if (opcode == CMSG_ANTICHEAT_ALERT)
       return true;
 
     if (QueueAscensionManastormPacket(session, packet))
