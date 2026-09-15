@@ -62,6 +62,7 @@
 #include "ObjectMgr.h"
 #include "Opcodes.h"
 #include "Player.h"
+#include "QuestDef.h"
 #include "Random.h"
 #include "ScriptMgr.h"
 #include "ScriptedGossip.h"
@@ -243,6 +244,7 @@ struct AppearanceInfo {
   uint32 SecondaryCategory = 0;
   uint32 TertiaryCategory = 0;
   uint32 EnchantId = 0;
+  uint32 CosmeticSpell = 0;
 };
 
 struct VanityInfo {
@@ -265,6 +267,8 @@ struct PlayerCollectionState {
   uint32 CompanionSpellTimer = 0;
   uint32 CompanionLootTimer = 0;
   uint32 CompanionSkinningTimer = 0;
+  uint32 CosmeticTimer = 0;
+  std::unordered_set<uint32> AppliedCosmeticSpells;
   bool CanSeeItemAppearances = true;
   bool CanSeeSpellAppearances = true;
 };
@@ -378,6 +382,50 @@ uint8 WeaponEffectCategoryForEquipmentSlot(uint8 slot) {
 bool IsAscensionCustomClass(Player const *player) {
   uint8 playerClass = player->getClass();
   return playerClass >= CLASS_BARBARIAN && playerClass <= CLASS_SPIRIT_MAGE;
+}
+
+enum LegacyQuestSpells : uint32
+{
+    QuestStoneskinTotem = 8073,
+    QuestPathOfDefense = 8121,
+    LegacyDefensiveStance = 1100071,
+    LegacyTaunt = 1100355,
+    LegacySunderArmor = 1107386,
+    LegacyStoneskinTotem = 1108071
+};
+
+struct LegacyQuestReward
+{
+    uint32 Wrapper;
+    std::array<uint32, MAX_SPELL_EFFECTS> Spells;
+};
+
+constexpr std::array<LegacyQuestReward, 2> LegacyQuestRewards = {{
+    {QuestStoneskinTotem, {LegacyStoneskinTotem, 0, 0}},
+    {QuestPathOfDefense, {LegacyDefensiveStance, LegacySunderArmor, LegacyTaunt}}
+}};
+
+LegacyQuestReward const* GetLegacyQuestReward(uint32 wrapper)
+{
+    for (LegacyQuestReward const& reward : LegacyQuestRewards)
+        if (reward.Wrapper == wrapper)
+            return &reward;
+    return nullptr;
+}
+
+void RemoveLegacyQuestSpells(Player* player)
+{
+    if (!IsAscensionCustomClass(player))
+        return;
+
+    // Only repair the known class-quest grants, with evidence of the corresponding rewarded quest.
+    // Do not infer ownership from absence in the generated custom-class spell catalogs.
+    for (uint32 questId : player->getRewardedQuests())
+        if (Quest const* quest = sObjectMgr->GetQuestTemplate(questId))
+            if (LegacyQuestReward const* reward = GetLegacyQuestReward(quest->GetRewSpellCast()))
+                for (uint32 spell : reward->Spells)
+                    if (spell)
+                        player->removeSpell(spell, SPEC_MASK_ALL, false);
 }
 
 AscensionCompatData::StarterKit const *GetStarterKit(uint8 playerClass) {
@@ -2139,6 +2187,45 @@ private:
 
 class AscensionCollectionService {
 public:
+    static bool IsCosmeticCategory(uint32 category)
+    {
+        return category >= 56 && category <= 58;
+    }
+
+    static uint32 ResolveCosmeticSpell(uint32 appearance, uint32 display, uint32 alternate)
+    {
+        // These three catalog entries have no usable spell in the supplied client data.
+        if (appearance == 2992 || appearance == 51444 || appearance == 52428)
+            return 0;
+        if (appearance == 2714)
+            display = 985235; // Noir Clockwork Steam Engine
+        if (appearance == 42965)
+            display = 935566; // Scribe's Noble Parchment Pouch
+        if (!sSpellMgr->GetSpellInfo(display))
+            display = alternate;
+
+        std::unordered_set<uint32> visited;
+        while (display && visited.insert(display).second && visited.size() <= 8)
+        {
+            SpellInfo const* spell = sSpellMgr->GetSpellInfo(display);
+            if (!spell || spell->Effects[EFFECT_1].Effect || spell->Effects[EFFECT_2].Effect)
+                return 0;
+            SpellEffectInfo const& effect = spell->Effects[EFFECT_0];
+            if (effect.Effect == SPELL_EFFECT_TRIGGER_SPELL)
+            {
+                display = effect.TriggerSpell;
+                continue;
+            }
+            // Follow cosmetic wrappers without casting their gameplay effects or implicit targets.
+            if (effect.IsAura() && (effect.ApplyAuraName == SPELL_AURA_DUMMY ||
+                effect.ApplyAuraName == SPELL_AURA_MOD_SCALE ||
+                (display == 1985213 && effect.ApplyAuraName == SPELL_AURA_PROC_TRIGGER_SPELL)))
+                return display;
+            return 0;
+        }
+        return 0;
+    }
+
   static AscensionCollectionService &Instance() {
     static AscensionCollectionService instance;
     return instance;
@@ -2153,7 +2240,7 @@ public:
     _allVanityItemIds.clear();
 
     bool appearancesLoaded =
-        ForEachWdbcRecord(dbcDirectory / "Appearances.dbc", 8,
+        ForEachWdbcRecord(dbcDirectory / "Appearances.dbc", 9,
                           [this](std::vector<uint8> const &record) {
                             uint32 appearanceId = ReadRecordField(record, 0);
                             if (!appearanceId)
@@ -2164,6 +2251,10 @@ public:
                                 displayId, ReadRecordField(record, 5),
                                 ReadRecordField(record, 6),
                                 ReadRecordField(record, 7), displayId};
+                            AppearanceInfo& appearance = _appearances[appearanceId];
+                            if (IsCosmeticCategory(appearance.PrimaryCategory))
+                                appearance.CosmeticSpell = ResolveCosmeticSpell(appearanceId,
+                                    displayId, ReadRecordField(record, 8));
                             _allAppearanceIds.push_back(appearanceId);
                           });
 
@@ -2276,6 +2367,11 @@ public:
     SendAppearanceVisibility(player, *state);
     SendVanityCollection(player, *state);
     RefreshVisibleItems(player);
+    // Reconcile any aura saved by an older session against the authoritative wardrobe selection.
+    for (auto const& [id, appearance] : _appearances)
+        if (appearance.CosmeticSpell)
+            player->RemoveAurasDueToSpell(appearance.CosmeticSpell, player->GetGUID());
+    RefreshCosmetics(player, *state);
     InitializeRiding(player);
     QueueOwnedCompanionSpells(player, *state);
 
@@ -2316,6 +2412,16 @@ public:
     ProcessPendingCompanionSpells(player, diff);
     ProcessCompanionLoot(player, diff);
     ProcessCompanionLoot(player, diff, true);
+    if (auto state = GetState(player))
+    {
+        if (state->CosmeticTimer <= diff)
+        {
+            state->CosmeticTimer = 1000;
+            RefreshCosmetics(player, *state);
+        }
+        else
+            state->CosmeticTimer -= diff;
+    }
   }
 
     void ProcessCompanionLoot(Player* player, uint32 diff, bool skin = false)
@@ -2548,11 +2654,18 @@ public:
       }
 
       AppearanceInfo const &appearance = appearanceItr->second;
-      if ((categoryId <= 14 || categoryId == APPEARANCE_CATEGORY_AMMUNITION) &&
+      if ((categoryId <= 14 || categoryId == APPEARANCE_CATEGORY_AMMUNITION ||
+          IsCosmeticCategory(categoryId)) &&
           appearance.PrimaryCategory != categoryId &&
           appearance.SecondaryCategory != categoryId &&
           appearance.TertiaryCategory != categoryId) {
         SendApplyResult(player, "APPLY_APPEARANCES_INVALID_CATEGORY");
+        return;
+      }
+
+      if (IsCosmeticCategory(categoryId) && !appearance.CosmeticSpell)
+      {
+        SendApplyResult(player, "APPLY_APPEARANCES_INVALID_SELECTION");
         return;
       }
 
@@ -2565,6 +2678,7 @@ public:
 
     state->ActiveAppearances[categoryId] = appearanceId;
     SaveActiveAppearances(player, *state);
+    RefreshCosmetics(player, *state);
     RefreshVisibleItems(player);
     SendActiveAppearances(player, *state);
     SendApplyResult(player, "APPLY_APPEARANCES_OK");
@@ -2959,11 +3073,17 @@ private:
       }
 
       AppearanceInfo const &appearance = appearanceItr->second;
-      if ((categoryId <= 14 || categoryId == APPEARANCE_CATEGORY_AMMUNITION) &&
+      if ((categoryId <= 14 || categoryId == APPEARANCE_CATEGORY_AMMUNITION ||
+          IsCosmeticCategory(categoryId)) &&
           appearance.PrimaryCategory != categoryId &&
           appearance.SecondaryCategory != categoryId &&
           appearance.TertiaryCategory != categoryId) {
         SendApplyResult(player, "APPLY_APPEARANCES_INVALID_CATEGORY");
+        return;
+      }
+      if (IsCosmeticCategory(categoryId) && !appearance.CosmeticSpell)
+      {
+        SendApplyResult(player, "APPLY_APPEARANCES_INVALID_SELECTION");
         return;
       }
     }
@@ -2976,6 +3096,7 @@ private:
 
     state->ActiveAppearances = requested;
     SaveActiveAppearances(player, *state);
+    RefreshCosmetics(player, *state);
     RefreshVisibleItems(player);
     SendApplyResult(player, "APPLY_APPEARANCES_OK");
   }
@@ -3114,6 +3235,35 @@ private:
     packet << result;
     player->GetSession()->SendPacket(&packet);
   }
+
+    void RefreshCosmetics(Player* player, PlayerCollectionState& state)
+    {
+        std::unordered_set<uint32> desired;
+        for (uint32 category = 56; category <= 58; ++category)
+        {
+            uint32 id = state.ActiveAppearances[category];
+            auto itr = _appearances.find(id);
+            if (state.CollectedAppearances.contains(id) && itr != _appearances.end() &&
+                itr->second.CosmeticSpell)
+                desired.insert(itr->second.CosmeticSpell);
+        }
+        for (uint32 spell : state.AppliedCosmeticSpells)
+            if (!desired.contains(spell))
+                player->RemoveAurasDueToSpell(spell, player->GetGUID());
+        state.AppliedCosmeticSpells = std::move(desired);
+        if (!player->IsAlive())
+            return;
+        for (uint32 spell : state.AppliedCosmeticSpells)
+        {
+            if (!player->HasAura(spell, player->GetGUID()))
+                if (Aura* aura = player->AddAura(spell, player))
+                {
+                    // A selected wardrobe cosmetic lasts until removed, including finite source effects.
+                    aura->SetMaxDuration(-1);
+                    aura->SetDuration(-1);
+                }
+        }
+    }
 
   void RefreshVisibleItems(Player *player) {
     for (uint8 slot = EQUIPMENT_SLOT_START; slot < EQUIPMENT_SLOT_END; ++slot)
@@ -3620,6 +3770,7 @@ public:
     if (ascensionCompatConfig.GetConfigValue<bool>(
             AscensionCompatConfig::ENABLED)) {
       AscensionClassService::Instance().OnPlayerLogin(player);
+      RemoveLegacyQuestSpells(player);
       SynchronizeAscensionClassMechanics(player);
       AscensionResourceService::Instance().OnPlayerLogin(player);
       AscensionCollectionService::Instance().OnPlayerLogin(player);
@@ -4003,6 +4154,18 @@ public:
         {
             ApplyAscensionChangelogSpellChanges(spellInfo);
             ApplyAscensionExperienceContracts(spellInfo);
+            switch (spellInfo->Id)
+            {
+                // Cosmetic visual spells whose legacy aura type was left empty in the client DBC.
+                case 83328: case 83329: case 83330: case 83331: case 83332:
+                case 83334: case 83335: case 83336: case 103921:
+                    if (spellInfo->Effects[EFFECT_0].Effect == SPELL_EFFECT_APPLY_AURA &&
+                        spellInfo->Effects[EFFECT_0].ApplyAuraName == SPELL_AURA_NONE)
+                        spellInfo->Effects[EFFECT_0].ApplyAuraName = SPELL_AURA_DUMMY;
+                    break;
+                default:
+                    break;
+            }
             ApplyAscensionClassMechanics(spellInfo);
             ApplyAscensionPrimalistEarthshapingContracts(spellInfo);
             ApplyAscensionPrimalistSpiritBeastContract(spellInfo);
@@ -4283,6 +4446,46 @@ public:
     }
 };
 
+class spell_ascension_legacy_quest_reward : public SpellScript
+{
+    PrepareSpellScript(spell_ascension_legacy_quest_reward);
+
+    bool Validate(SpellInfo const* info) override
+    {
+        LegacyQuestReward const* reward = GetLegacyQuestReward(info->Id);
+        if (!reward)
+            return false;
+
+        for (uint8 index = 0; index < MAX_SPELL_EFFECTS; ++index)
+            if (reward->Spells[index] && (info->Effects[index].Effect != SPELL_EFFECT_LEARN_SPELL ||
+                info->Effects[index].TriggerSpell != reward->Spells[index]))
+                return false;
+        return true;
+    }
+
+    bool Load() override
+    {
+        return ascensionCompatConfig.GetConfigValue<bool>(AscensionCompatConfig::ENABLED);
+    }
+
+    void HandleLearn(SpellEffIndex effect)
+    {
+        LegacyQuestReward const* reward = GetLegacyQuestReward(GetSpellInfo()->Id);
+        if (!reward || !reward->Spells[effect])
+            return;
+
+        if (Player* player = GetHitPlayer())
+            if (IsAscensionCustomClass(player))
+                PreventHitDefaultEffect(effect);
+    }
+
+    void Register() override
+    {
+        OnEffectHitTarget += SpellEffectFn(spell_ascension_legacy_quest_reward::HandleLearn,
+            EFFECT_ALL, SPELL_EFFECT_LEARN_SPELL);
+    }
+};
+
 // Ascension mount buttons frequently cast a wrapper, not the riding aura.
 // Resolve only validated catalog wrappers, using the same zone/riding rules
 // as AzerothCore's spell_gen_mount and the matching client spell variants.
@@ -4371,6 +4574,43 @@ class spell_ascension_local_mount : public SpellScript
     }
 };
 
+class npc_ascension_training_book : public CreatureScript
+{
+public:
+    npc_ascension_training_book() : CreatureScript("npc_ascension_training_book") { }
+
+    enum BookGossip : uint32
+    {
+        TextTraining = 900370,
+        ActionRestoreAbilities = GOSSIP_ACTION_INFO_DEF + 1
+    };
+
+    bool OnGossipHello(Player* player, Creature* creature) override
+    {
+        ClearGossipMenuFor(player);
+        if (ascensionCompatConfig.GetConfigValue<bool>(AscensionCompatConfig::ENABLED) &&
+            IsAscensionCustomClass(player))
+            AddGossipItemFor(player, GOSSIP_ICON_TRAINER, "Restore my available class abilities.",
+                GOSSIP_SENDER_MAIN, ActionRestoreAbilities);
+        SendGossipMenuFor(player, TextTraining, creature->GetGUID());
+        return true;
+    }
+
+    bool OnGossipSelect(Player* player, Creature* /*creature*/, uint32 sender, uint32 action) override
+    {
+        ClearGossipMenuFor(player);
+        CloseGossipMenuFor(player);
+        if (sender != GOSSIP_SENDER_MAIN || action != ActionRestoreAbilities ||
+            !ascensionCompatConfig.GetConfigValue<bool>(AscensionCompatConfig::ENABLED) ||
+            !IsAscensionCustomClass(player))
+            return true;
+
+        if (!AscensionClassService::Instance().SynchronizeProgression(player))
+            ChatHandler(player->GetSession()).SendSysMessage("Your available class abilities are already up to date.");
+        return true;
+    }
+};
+
 class spell_ascension_experience_potion : public SpellScript
 {
     PrepareSpellScript(spell_ascension_experience_potion);
@@ -4429,8 +4669,10 @@ bool IsAscensionPrimalistWeaponsEligible(Player const* player, bool allowUnconfi
 }
 
 void AddAscensionCompatScripts() {
+  new npc_ascension_training_book();
   RegisterSpellScript(spell_ascension_experience_potion);
   RegisterSpellScript(spell_ascension_local_mount);
+  RegisterSpellScript(spell_ascension_legacy_quest_reward);
   new AscensionTradesmanScroll();
   new AscensionCompatServerScript();
   new AscensionCompatCommandScript();

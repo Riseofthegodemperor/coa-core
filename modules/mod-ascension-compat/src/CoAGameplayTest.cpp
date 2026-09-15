@@ -13,6 +13,7 @@
 #include "DatabaseEnv.h"
 #include "DynamicObject.h"
 #include "GitRevision.h"
+#include "GossipDef.h"
 #include "Item.h"
 #include "ItemPackets.h"
 #include "Log.h"
@@ -22,6 +23,7 @@
 #include "ObjectMgr.h"
 #include "Opcodes.h"
 #include "Player.h"
+#include "QuestDef.h"
 #include "QueryCallback.h"
 #include "ScriptMgr.h"
 #include "Spell.h"
@@ -32,6 +34,7 @@
 #include "World.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"
+#include "WhoListCacheMgr.h"
 // BOOST_BIND_NO_PLACEHOLDERS (deps/boost) stops boost/bind/bind.hpp from including
 // placeholders.hpp, but the Boost.PropertyTree JSON parser uses boost::placeholders (e.g. Boost 1.83).
 #include <boost/bind/placeholders.hpp>
@@ -87,6 +90,9 @@ struct Actor
     Tree definition;
     std::string account;
     std::string name;
+    std::map<std::string, uint32> whoClasses;
+    uint32 whoResponses = 0;
+    uint32 lootReceived = 0;
     std::unique_ptr<WorldSession> session;
     ObjectGuid guid;
     ActorStage stage = ActorStage::Account;
@@ -235,6 +241,26 @@ private:
                 return;
             actor.session = std::make_unique<WorldSession>(accountId, std::string(actor.account), 0, nullptr,
                 SEC_PLAYER, EXPANSION_WRATH_OF_THE_LICH_KING, 0, LOCALE_enUS, 0, false, false, 0);
+            actor.session->SetSocketlessPacketObserver([&actor](WorldPacket const& packet)
+            {
+                if (packet.GetOpcode() != SMSG_WHO)
+                    return;
+                WorldPacket response(packet);
+                uint32 displayed, matches;
+                response >> displayed >> matches;
+                Require(displayed <= matches, "Invalid Who response counts");
+                actor.whoClasses.clear();
+                for (uint32 index = 0; index < displayed; ++index)
+                {
+                    std::string name, guild;
+                    uint32 level, playerClass, race, zone;
+                    uint8 gender;
+                    response >> name >> guild >> level >> playerClass >> race >> gender >> zone;
+                    actor.whoClasses.emplace(name, playerClass);
+                }
+                Require(response.rpos() == response.size(), "Unexpected Who response fields");
+                ++actor.whoResponses;
+            });
             actor.session->InitializeSession();
             WorldPacket create(CMSG_CHAR_CREATE, 32);
             uint32 race = actor.definition.get<uint32>("race");
@@ -297,6 +323,8 @@ private:
             Require(player->GetLevel() == level, "Fixture level change rejected");
             if (auto hitRating = actor.definition.get_optional<int32>("spell_hit_rating"))
                 player->ApplyRatingMod(CR_HIT_SPELL, *hitRating, true);
+            if (auto critRating = actor.definition.get_optional<int32>("spell_crit_rating"))
+                player->ApplyRatingMod(CR_CRIT_SPELL, *critRating, true);
             if (auto hitRating = actor.definition.get_optional<int32>("ranged_hit_rating"))
                 player->ApplyRatingMod(CR_HIT_RANGED, *hitRating, true);
             if (auto hitRating = actor.definition.get_optional<int32>("melee_hit_rating"))
@@ -392,6 +420,8 @@ private:
         uint32 spell = step.get<uint32>("spell", 0);
         if (metric == "health")
             return unit->GetHealth();
+        if (metric == "health_pct")
+            return unit->GetHealthPct();
         if (metric == "max_health")
             return unit->GetMaxHealth();
         if (metric == "power" || metric == "max_power")
@@ -440,6 +470,50 @@ private:
             Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown spell in metric");
         if (metric == "knows_spell")
             return player->HasSpell(spell);
+        if (metric == "quest_rewarded")
+        {
+            uint32 quest = step.get<uint32>("quest");
+            Require(sObjectMgr->GetQuestTemplate(quest) != nullptr, "Unknown quest template");
+            return player->IsQuestRewarded(quest);
+        }
+        if (metric == "gossip_options")
+            return player->PlayerTalkClass->GetGossipMenu().GetMenuItemCount();
+        if (metric == "loot_received")
+            return _actors.at(step.get<std::string>("actor")).lootReceived;
+        if (metric == "loot_count" || metric == "loot_entry")
+        {
+            Item* container = player->GetItemByGuid(player->GetLootGUID());
+            if (!container)
+                return 0;
+            uint32 count = 0;
+            for (LootItem const& item : container->loot.items)
+                if (!item.is_looted)
+                {
+                    if (metric == "loot_entry")
+                        return item.itemid;
+                    ++count;
+                }
+            return count;
+        }
+        if (metric == "who_count" || metric == "who_class")
+        {
+            Actor const& actor = _actors.at(step.get<std::string>("actor"));
+            Require(actor.whoResponses != 0, "No native Who response received");
+            if (metric == "who_count")
+                return actor.whoClasses.size();
+            auto found = actor.whoClasses.find(_actors.at(step.get<std::string>("target")).name);
+            return found == actor.whoClasses.end() ? 0 : found->second;
+        }
+        if (metric == "cast_speed_multiplier")
+            return player->GetFloatValue(UNIT_MOD_CAST_SPEED);
+        if (metric == "spell_crit_chance")
+            return player->GetFloatValue(PLAYER_SPELL_CRIT_PERCENTAGE1 + SPELL_SCHOOL_SHADOW);
+        if (metric == "spell_power_cost")
+        {
+            SpellInfo const* info = sSpellMgr->GetSpellInfo(spell);
+            Require(info != nullptr, "Unknown spell for power cost");
+            return info->CalcPowerCost(player, info->GetSchoolMask());
+        }
         if (metric == "has_talent")
         {
             Require(GetTalentSpellPos(spell) != nullptr, "Metric needs a talent rank's spell ID");
@@ -537,6 +611,11 @@ private:
                 Require(_snapshots.count(*relative) != 0, "Unknown snapshot: " + *relative);
                 actual -= _snapshots.at(*relative);
             }
+            if (auto ratio = step.get_optional<std::string>("ratio_to"))
+            {
+                Require(_snapshots.count(*ratio) && _snapshots.at(*ratio) != 0, "Missing or zero ratio snapshot");
+                actual /= _snapshots.at(*ratio);
+            }
             record.put("actual", actual);
             record.put("actor", step.get<std::string>("actor"));
             record.put("metric", step.get<std::string>("metric"));
@@ -601,6 +680,131 @@ private:
             bool handled = handler.ParseCommands(step.get<std::string>("command"));
             Require(handled && !handler.HasSentErrorMessage(), "Player command failed");
             record.put("result", "submitted; verify effects with assertions");
+        }
+        else if (action == "prepare_quest" || action == "reward_quest")
+        {
+            Quest const* quest = sObjectMgr->GetQuestTemplate(step.get<uint32>("quest"));
+            Require(quest != nullptr, "Unknown quest template");
+            if (action == "prepare_quest")
+            {
+                Require(!player->IsActiveQuest(quest->GetQuestId()) && player->CanAddQuest(quest, false),
+                    "Cannot prepare quest fixture");
+                player->AddQuestAndCheckCompletion(quest, nullptr);
+                for (uint8 index = 0; index < QUEST_ITEM_OBJECTIVES_COUNT; ++index)
+                    if (quest->RequiredItemId[index] && quest->RequiredItemCount[index])
+                    {
+                        uint32 held = player->GetItemCount(quest->RequiredItemId[index]);
+                        if (held < quest->RequiredItemCount[index])
+                            Require(player->AddItem(quest->RequiredItemId[index], quest->RequiredItemCount[index] - held),
+                                "Cannot grant quest objective item");
+                    }
+                // Fixture setup skips objective gameplay; reward eligibility and delivery remain native.
+                player->CompleteQuest(quest->GetQuestId());
+            }
+            else
+            {
+                uint32 choice = step.get<uint32>("choice", 0);
+                Require(choice < QUEST_REWARD_CHOICES_COUNT && player->CanRewardQuest(quest, choice, false),
+                    "Quest reward eligibility rejected");
+                player->RewardQuest(quest, choice, player);
+            }
+        }
+        else if (action == "restore_quest_spells")
+            player->learnQuestRewardedSpells();
+        else if (action == "login_hooks")
+            sScriptMgr->OnPlayerLogin(player);
+        else if (action == "open_item")
+        {
+            Item* item = player->GetItemByEntry(step.get<uint32>("item"));
+            Require(item != nullptr, "Item must be granted before opening");
+            WorldPacket request(CMSG_OPEN_ITEM, 2);
+            request << item->GetBagSlot() << item->GetSlot();
+            player->GetSession()->HandleOpenItemOpcode(request);
+        }
+        else if (action == "close_loot")
+        {
+            WorldPacket request(CMSG_LOOT_RELEASE, 8);
+            request << player->GetLootGUID();
+            player->GetSession()->HandleLootReleaseOpcode(request);
+        }
+        else if (action == "collect_loot")
+        {
+            Item* container = player->GetItemByGuid(player->GetLootGUID());
+            Require(container && !container->loot.items.empty(), "No open item loot");
+            LootItem const& loot = container->loot.items.front();
+            Require(!loot.is_looted && loot.count, "First loot slot is unavailable");
+            uint32 entry = loot.itemid;
+            uint32 expected = loot.count;
+            uint32 before = player->GetItemCount(entry);
+            WorldPacket request(CMSG_AUTOSTORE_LOOT_ITEM, 1);
+            request << uint8(0);
+            player->GetSession()->HandleAutostoreLootItemOpcode(request);
+            // Collecting the final reward can destroy the container; retain only copied scalar values.
+            uint32 after = player->GetItemCount(entry);
+            Require(after == before + expected, "Loot did not reach the player's inventory");
+            _actors.at(id).lootReceived = after - before;
+            record.put("item", entry);
+            record.put("received", after - before);
+        }
+        else if (action == "gossip_hello")
+        {
+            ObjectGuid guid = step.get_optional<std::string>("target") ?
+                GetUnit(step.get<std::string>("target"))->GetGUID() : player->GetCritterGUID();
+            Require(!guid.IsEmpty(), "Gossip needs a target or summoned companion");
+            // Clear the previous menu so a rejected hello cannot appear to succeed.
+            player->PlayerTalkClass->ClearMenus();
+            WorldPacket packet(CMSG_GOSSIP_HELLO, 8);
+            packet << guid;
+            player->GetSession()->HandleGossipHelloOpcode(packet);
+        }
+        else if (action == "gossip_select")
+        {
+            auto const& menu = player->PlayerTalkClass->GetGossipMenu();
+            WorldPacket packet(CMSG_GOSSIP_SELECT_OPTION, 16);
+            packet << menu.GetSenderGUID() << menu.GetMenuId() << step.get<uint32>("option");
+            player->GetSession()->HandleGossipSelectOptionOpcode(packet);
+        }
+        else if (action == "who")
+        {
+            // Refresh the production cache now instead of depending on its periodic world timer.
+            sWhoListCacheMgr->Update();
+            WorldPacket request(CMSG_WHO, 32);
+            std::string name;
+            if (auto target = step.get_optional<std::string>("target"))
+                name = _actors.at(*target).name;
+            request << uint32(1) << uint32(255) << name << std::string();
+            request << step.get<uint32>("race_mask", UINT32_MAX) << step.get<uint32>("class_mask", UINT32_MAX);
+            request << uint32(0) << uint32(0); // no zone or free-text filters
+            uint32 before = _actors.at(step.get<std::string>("actor")).whoResponses;
+            player->GetSession()->HandleWhoOpcode(request);
+            Require(_actors.at(step.get<std::string>("actor")).whoResponses == before + 1,
+                "Who request did not produce a native response");
+        }
+        else if (action == "attack")
+        {
+            Unit* target = GetUnit(step.get<std::string>("target"));
+            Require(player->IsValidAttackTarget(target), "Invalid melee attack target");
+            WorldPacket packet(CMSG_ATTACKSWING, 8);
+            packet << target->GetGUID();
+            player->GetSession()->HandleAttackSwingOpcode(packet);
+        }
+        else if (action == "set_aura")
+        {
+            SpellInfo const* info = sSpellMgr->GetSpellInfo(spell);
+            Require(info != nullptr, "Unknown fixture aura");
+            uint32 stacks = step.get<uint32>("stacks");
+            Require(stacks <= std::max<uint32>(1, info->CalcMaxAuraStacks(player)),
+                "Fixture aura exceeds its stack limit");
+            if (!stacks)
+                player->RemoveAurasDueToSpell(spell);
+            else
+            {
+                Aura* aura = player->GetAura(spell);
+                if (!aura)
+                    aura = player->AddAura(spell, player);
+                Require(aura != nullptr, "Could not apply fixture aura");
+                aura->SetStackAmount(uint8(stacks));
+            }
         }
         else if (action == "learn")
         {

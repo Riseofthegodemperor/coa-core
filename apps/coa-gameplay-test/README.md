@@ -71,9 +71,13 @@ The [Shadow Effigy scenario](scenarios/shadow-effigy.json) checks combat casts, 
 nearby-enemy debuffs, replacement by another effigy and timed despawn.
 The [Dusk Blade scenario](scenarios/dusk-blade.json) checks dual-wield damage, Rage spending and healing
 the wounded caster across repeated melee casts.
+The [resource talents scenario](scenarios/resource-talents.json) checks the live-tree 1% resource bonuses.
+Arm of Thorim rolls 133–144 base damage at the fixture level, so two independent rolls need ratio ranges
+of 1.10–1.31 with its 20% bonus and 0.91–1.09 without it (including integer rounding). Charged Conduit
+preserves Static and must leave the talent without a depletion bonus.
 
 Players require `id`, numeric `race` and `class`; `level` defaults to 80. Optional `spell_hit_rating`,
-`ranged_hit_rating`, `melee_hit_rating` and `expertise_rating` add the corresponding fixture rating through
+`spell_crit_rating`, `ranged_hit_rating`, `melee_hit_rating` and `expertise_rating` add fixture ratings through
 normal calculations, useful for preventing misses, dodges and parries in deterministic tests.
 Characters are created and loaded through the existing character creation, enumeration and login
 handlers with ordinary player security. Optional `location` supplies `map`, `x`, `y`, `z`, `o` for a fixture
@@ -92,10 +96,15 @@ before taking baselines; assert stable maximums and final levels when testing da
 | `console` | `command`: execute one console command on the test server; capture its output. |
 | `command` | `actor`, `command` beginning with `.`: execute with the player's normal permissions. |
 | `learn`, `unlearn` | `actor`, `spell`: configure learned spells/passives through player APIs. |
+| `set_aura` | `actor`, `spell`, `stacks`: fixture aura state, within its stack limit; zero removes it. |
 | `talent` | `actor`, `talent`, zero-based `rank`: learn with normal point/prerequisite checks. |
 | `reset_talents` | `actor`: reset active talents through normal removal, without a trainer fee. |
 | `cast` | `actor`, `spell`, optional `target` (self by default): normal session cast handler. |
+| `attack` | `actor`, `target`: native melee attack request; verify combat or damage with assertions. |
 | `cast_charm` | Same fields: native pet-cast handler, with the charmed unit as the default target. |
+| `gossip_hello` | `actor`, optional `target`: native gossip handler; defaults to the actor's summoned companion. |
+| `gossip_select` | `actor`, zero-based `option`: select from the current menu through the session handler. |
+| `who` | `actor`, optional name-filter `target`, `class_mask`, `race_mask`: submit a native Who query. |
 | `add_item` | `actor`, `item`, optional `count` (default 1): grant fixture inventory. |
 | `equip` | `actor`, `item`, `slot` (0..18): equip an owned item through the session handler. |
 | `use_item` | `actor`, `item`, `spell`, optional `target`: normal item-use handler. |
@@ -110,6 +119,7 @@ Equipment changes obey combat restrictions. Prepare gear before starting combat,
 by other nearby fixture actors. Rejected equipment actions include native inventory error codes in the result.
 For absence checks, wait through the relevant cast/proc window first, then assert. `relative_to` subtracts
 a previously named snapshot of the same metric; it is available on snapshots and assertions.
+`ratio_to` then divides by a nonzero snapshot of the same metric, for comparisons such as boosted/base damage.
 `cast` accepts an optional `destination` with `x`, `y`, `z` to send an explicit ground target.
 
 Metrics: `health`, `max_health`, `power`, `max_power`, `alive`, `combat`, `casting`, `level`, `knows_spell`,
@@ -118,6 +128,27 @@ Metrics: `health`, `max_health`, `power`, `max_power`, `alive`, `combat`, `casti
 `charm_entry`, `charm_aura_stacks`, `controls_self`, `private_instance`, `dynamic_object`,
 `dynamic_object_duration_ms`.
 Boolean metrics use 0/1. Spell/aura metrics require `spell`; `item_count` requires `item`.
+`gossip_options` counts the player's current server-side gossip options; it does not verify client rendering.
+`who_count` counts players in the actor's last native Who response; `who_class` requires a player `target`
+and returns that player's class ID, or zero if absent. These inspect packets from socketless test sessions,
+not client packet delivery. Masks use native Who bits (`1 << classID`, `1 << raceID`), with class 32 in bit zero;
+omitted masks mean all. The custom-class scenario expects ordinary player RBAC, including faction separation.
+`health_pct` observes current health as a percentage of maximum health.
+`cast_speed_multiplier` observes the native cast-time multiplier; smaller values mean faster casts.
+`spell_crit_chance` observes the player's Shadow spell critical chance, in percentage points.
+`spell_power_cost` requires `spell` and queries its current native resource cost; it does not submit a cast.
+`open_item` takes `actor` and `item` and submits the native container-open packet. `close_loot` takes `actor`
+and closes its current loot window. `collect_loot` takes `actor`, collects slot zero, verifies that its full rolled
+quantity reached inventory and records the item/count. It supports ordinary container loot, not quest-only slots.
+`loot_count` and `loot_entry` report the actor's current uncollected item slots and first entry; `loot_received`
+reports the inventory increase from its last successful `collect_loot`. Closed windows return zero slots/entry.
+`quest_rewarded` requires `quest` and reads the player's native rewarded status.
+`prepare_quest` takes `actor` and `quest`, adds the quest and required delivery items, then completes its objectives
+as fixture setup. `reward_quest` takes the same fields and optional zero-based `choice` (default 0); it checks normal
+reward eligibility and invokes native reward delivery. These actions do not test quest-giver interaction or objectives.
+`restore_quest_spells` takes `actor` and invokes the native restoration of spells from rewarded quests.
+`login_hooks` takes `actor` and replays registered player-login hooks on the current character; it does not reconnect
+or reload the character from the database. Use it to exercise a repair against deliberately seeded fixture state.
 `has_talent` requires the talent rank's spell ID; passive talents are separate from the learned spellbook.
 `talent_points` measures unspent points in the active specialization.
 `bank_bag_slots` measures the player's unlocked standard bank bag slots (0..7).
