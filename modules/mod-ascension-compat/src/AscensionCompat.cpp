@@ -3519,6 +3519,40 @@ public:
 };
 
 class AscensionCompatPlayerScript : public PlayerScript {
+    std::unordered_map<ObjectGuid, std::vector<ObjectGuid>> _pendingEquipment;
+
+    void EquipNewItems(Player* player)
+    {
+        auto itr = _pendingEquipment.find(player->GetGUID());
+        if (itr == _pendingEquipment.end())
+            return;
+
+        // Finish the acquisition before moving items; its caller still uses the original bag positions.
+        auto items = std::move(itr->second);
+        _pendingEquipment.erase(itr);
+        for (ObjectGuid guid : items)
+        {
+            Item* item = player->GetItemByGuid(guid);
+            if (!item || item->IsInTrade() || !Player::IsInventoryPos(item->GetPos()))
+                continue;
+
+            uint16 dest = 0;
+            if (player->CanEquipItem(NULL_SLOT, dest, item, false) != EQUIP_ERR_OK ||
+                !Player::IsEquipmentPos(dest) || player->GetItemByPos(dest))
+                continue;
+
+            // An empty main hand must not cause an occupied off hand to be unequipped.
+            Item* offhand = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_OFFHAND);
+            ItemTemplate const* proto = item->GetTemplate();
+            if (uint8(dest) == EQUIPMENT_SLOT_MAINHAND && proto->InventoryType == INVTYPE_2HWEAPON &&
+                offhand && !player->CanTitanGrip(proto) &&
+                !player->CanUseTwoHandWithShield(proto, offhand->GetTemplate()))
+                continue;
+
+            player->SwapItem(item->GetPos(), dest);
+        }
+    }
+
 public:
   AscensionCompatPlayerScript()
       : PlayerScript(
@@ -3682,6 +3716,7 @@ public:
     }
 
   void OnPlayerLogout(Player *player) override {
+    _pendingEquipment.erase(player->GetGUID());
     AscensionClassService::Instance().OnPlayerLogout(player);
     AscensionResourceService::Instance().OnPlayerLogout(player);
     AscensionCollectionService::Instance().OnPlayerLogout(player);
@@ -3692,6 +3727,7 @@ public:
             AscensionCompatConfig::ENABLED)) {
       AscensionResourceService::Instance().OnPlayerUpdate(player);
       AscensionCollectionService::Instance().OnPlayerUpdate(player, diff);
+      EquipNewItems(player);
     }
   }
 
@@ -3708,6 +3744,10 @@ public:
   void OnPlayerStoreNewItem(Player *player, Item *item,
                             uint32 /*count*/) override {
     AscensionCollectionService::Instance().OnItemObtained(player, item);
+    if (item && player->IsInWorld() && player->getClass() >= CLASS_BARBARIAN &&
+        player->getClass() <= CLASS_SPIRIT_MAGE &&
+        ascensionCompatConfig.GetConfigValue<bool>(AscensionCompatConfig::ENABLED))
+        _pendingEquipment[player->GetGUID()].push_back(item->GetGUID());
   }
 
   void OnPlayerCreateItem(Player *player, Item *item,
