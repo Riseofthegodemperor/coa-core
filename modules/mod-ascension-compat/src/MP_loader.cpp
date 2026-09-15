@@ -12,6 +12,9 @@
 #include "AscensionRunemasterZenith.h"
 #include "AscensionRunemasterEchoes.h"
 #include "AscensionVenomancerVenoms.h"
+#include "AscensionVenomancerVenomProcs.h"
+#include "AscensionVenomancerVenomTalents.h"
+#include "AscensionVenomancerVenomPayloads.h"
 #include "AscensionTinkerCombatSymbiosis.h"
 
 void AddAscensionCompatScripts();
@@ -310,6 +313,9 @@ void Addmod_ascension_compatScripts()
     AddAscensionRunemasterZenithScripts();
     AddAscensionRunemasterEchoesScripts();
     AddAscensionVenomancerVenomScripts();
+    AddAscensionVenomancerVenomProcScripts();
+    AddAscensionVenomancerVenomTalentScripts();
+    AddAscensionVenomancerVenomPayloadScripts();
     AddAscensionTinkerCombatSymbiosisScripts();
     AddCoABugReportScripts();
     AddCoAGameplayTestScripts();
