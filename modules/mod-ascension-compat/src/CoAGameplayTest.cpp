@@ -11,6 +11,7 @@
 #include "Creature.h"
 #include "DBCStores.h"
 #include "DatabaseEnv.h"
+#include "DynamicObject.h"
 #include "GitRevision.h"
 #include "Item.h"
 #include "ItemPackets.h"
@@ -36,6 +37,7 @@
 #include <chrono>
 #include <cmath>
 #include <filesystem>
+#include <list>
 #include <limits>
 #include <map>
 #include <memory>
@@ -292,13 +294,20 @@ private:
             Require(player->GetLevel() == level, "Fixture level change rejected");
             if (auto hitRating = actor.definition.get_optional<int32>("spell_hit_rating"))
                 player->ApplyRatingMod(CR_HIT_SPELL, *hitRating, true);
+            if (auto hitRating = actor.definition.get_optional<int32>("ranged_hit_rating"))
+                player->ApplyRatingMod(CR_HIT_RANGED, *hitRating, true);
+            if (auto hitRating = actor.definition.get_optional<int32>("melee_hit_rating"))
+                player->ApplyRatingMod(CR_HIT_MELEE, *hitRating, true);
+            if (auto expertise = actor.definition.get_optional<int32>("expertise_rating"))
+                player->ApplyRatingMod(CR_EXPERTISE, *expertise, true);
             player->SetHealth(player->GetMaxHealth());
             for (uint8 power = 0; power < MAX_POWERS; ++power)
                 player->SetPower(Powers(power), player->GetMaxPower(Powers(power)));
             actor.stage = ActorStage::Transfer;
             if (auto location = _scenario.get_child_optional("location"))
                 Require(player->TeleportTo(location->get<uint32>("map"), location->get<float>("x"),
-                    location->get<float>("y"), location->get<float>("z"), location->get<float>("o", 0)),
+                    location->get<float>("y"), location->get<float>("z"), location->get<float>("o", 0),
+                    location->get<bool>("ignore_access", false) ? TELE_TO_GM_MODE : 0),
                     "Fixture teleport failed");
         }
 
@@ -435,6 +444,60 @@ private:
         }
         if (metric == "talent_points")
             return player->GetFreeTalentPoints();
+        if (metric == "bank_bag_slots")
+            return player->GetBankBagSlotCount();
+        if (metric == "private_instance")
+            return player->GetMap()->IsScriptedPrivateInstance();
+        if (metric == "controls_self")
+            return player->m_mover == player;
+        if (metric == "dynamic_object" || metric == "dynamic_object_duration_ms")
+        {
+            Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown ground-effect spell");
+            DynamicObject* object = player->GetDynObject(spell);
+            if (metric == "dynamic_object")
+                return object && object->IsInWorld();
+            return object ? object->GetDuration() : 0;
+        }
+        if (metric == "charm_entry" || metric == "charm_aura_stacks")
+        {
+            Unit* charm = player->GetCharm();
+            if (metric == "charm_entry")
+                return charm ? charm->GetEntry() : 0;
+            Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown charm aura spell");
+            ObjectGuid caster;
+            if (auto id = step.get_optional<std::string>("caster"))
+                caster = GetUnit(*id)->GetGUID();
+            Aura* aura = charm ? charm->GetAura(spell, caster) : nullptr;
+            return aura ? aura->GetStackAmount() : 0;
+        }
+        if (metric == "owned_creature_count")
+        {
+            uint32 entry = step.get<uint32>("entry");
+            Require(sObjectMgr->GetCreatureTemplate(entry) != nullptr, "Unknown creature entry in metric");
+            Require(!spell || sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown owned creature aura spell");
+            ObjectGuid caster;
+            if (auto id = step.get_optional<std::string>("caster"))
+                caster = GetUnit(*id)->GetGUID();
+            std::list<Creature*> creatures;
+            player->GetCreatureListWithEntryInGrid(creatures, entry, 100.0f);
+            return std::count_if(creatures.begin(), creatures.end(), [player, spell, caster](Creature* creature)
+            {
+                return creature->IsAlive() && creature->GetOwnerGUID() == player->GetGUID()
+                    && player->InSamePhase(creature) && (!spell || creature->GetAura(spell, caster));
+            });
+        }
+        if (metric == "pet_entry" || metric == "pet_aura_stacks")
+        {
+            Guardian* pet = player->GetGuardianPet();
+            if (metric == "pet_entry")
+                return pet ? pet->GetEntry() : 0;
+            Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown pet aura spell");
+            ObjectGuid caster;
+            if (auto id = step.get_optional<std::string>("caster"))
+                caster = GetUnit(*id)->GetGUID();
+            Aura* aura = pet ? pet->GetAura(spell, caster) : nullptr;
+            return aura ? aura->GetStackAmount() : 0;
+        }
         if (metric == "cooldown_ms")
             return player->GetSpellCooldownDelay(spell);
         if (metric == "item_count")
@@ -527,9 +590,16 @@ private:
         std::string id = step.get<std::string>("actor");
         Player* player = GetPlayer(id);
         uint32 spell = step.get<uint32>("spell", 0);
-        if (action == "learn" || action == "unlearn" || action == "cast")
+        if (action == "learn" || action == "unlearn" || action == "cast" || action == "cast_charm")
             Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown spell: " + std::to_string(spell));
-        if (action == "learn")
+        if (action == "command")
+        {
+            ChatHandler handler(player->GetSession());
+            bool handled = handler.ParseCommands(step.get<std::string>("command"));
+            Require(handled && !handler.HasSentErrorMessage(), "Player command failed");
+            record.put("result", "submitted; verify effects with assertions");
+        }
+        else if (action == "learn")
         {
             player->learnSpell(spell);
             Require(player->HasSpell(spell), "Spell learning failed");
@@ -549,13 +619,26 @@ private:
             player->resetTalents(true); // fixture reset through normal removal, without a trainer fee
             Require(player->GetFreeTalentPoints() == player->CalculateTalentsPoints(), "Talent reset rejected");
         }
-        else if (action == "cast" || action == "use_item")
+        else if (action == "cast" || action == "cast_charm" || action == "use_item")
         {
             SpellCastTargets targets;
-            targets.SetUnitTarget(GetUnit(step.get<std::string>("target", id)));
-            WorldPacket packet(action == "cast" ? CMSG_CAST_SPELL : CMSG_USE_ITEM, 64);
-            if (action == "cast")
+            Unit* caster = action == "cast_charm" ? player->GetCharm() : player;
+            Require(caster != nullptr, "Player has no charmed unit");
+            Unit* target = step.get_optional<std::string>("target") ? GetUnit(step.get<std::string>("target")) : caster;
+            targets.SetUnitTarget(target);
+            if (auto destination = step.get_child_optional("destination"))
+                targets.SetDst(destination->get<float>("x"), destination->get<float>("y"),
+                    destination->get<float>("z"), caster->GetOrientation());
+            record.put("spell_active", caster->HasSpell(spell));
+            record.put("line_of_sight", caster->IsWithinLOSInMap(target));
+            WorldPacket packet(action == "cast" ? CMSG_CAST_SPELL :
+                action == "cast_charm" ? CMSG_PET_CAST_SPELL : CMSG_USE_ITEM, 64);
+            if (action == "cast" || action == "cast_charm")
+            {
+                if (action == "cast_charm")
+                    packet << caster->GetGUID();
                 packet << uint8(++_castCount) << spell << uint8(0);
+            }
             else
             {
                 Item* item = player->GetItemByEntry(step.get<uint32>("item"));
@@ -566,6 +649,8 @@ private:
             targets.Write(packet);
             if (action == "cast")
                 player->GetSession()->HandleCastSpellOpcode(packet);
+            else if (action == "cast_charm")
+                player->GetSession()->HandlePetCastSpellOpcode(packet);
             else
                 player->GetSession()->HandleUseItemOpcode(packet);
             record.put("result", "submitted; verify effects with assertions");
@@ -626,6 +711,8 @@ private:
         if (_finished)
             return;
         _finished = true;
+        if (!passed)
+            LOG_ERROR("module.gameplay_test", "Scenario failed at step {}: {}", _completed, message);
         // Normal logout tears down auras, summons, map membership and script state before maps unload.
         for (auto const& [id, target] : _targets)
             if (Map* map = sMapMgr->FindMap(target.map, target.instance))

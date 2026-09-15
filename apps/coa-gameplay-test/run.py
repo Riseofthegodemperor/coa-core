@@ -25,17 +25,22 @@ LOCAL_HOSTS = {'127.0.0.1', 'localhost', '::1'}
 METRICS = {
     'health', 'max_health', 'power', 'max_power', 'alive', 'combat', 'casting', 'level',
     'aura', 'aura_stacks', 'aura_charges', 'aura_duration_ms', 'aura_amount',
-    'knows_spell', 'has_talent', 'talent_points', 'cooldown_ms', 'item_count',
+    'knows_spell', 'has_talent', 'talent_points', 'cooldown_ms', 'item_count', 'bank_bag_slots',
+    'pet_entry', 'pet_aura_stacks', 'owned_creature_count',
+    'charm_entry', 'charm_aura_stacks', 'controls_self', 'private_instance',
+    'dynamic_object', 'dynamic_object_duration_ms',
 }
-METRIC_FIELDS = {'actor', 'metric', 'spell', 'power', 'caster', 'effect', 'item', 'relative_to'}
+METRIC_FIELDS = {'actor', 'metric', 'spell', 'power', 'caster', 'effect', 'item', 'entry', 'relative_to'}
 ACTIONS = {
     'console': ({'command'}, {'command'}),
+    'command': ({'actor', 'command'}, {'actor', 'command'}),
     'wait': ({'ms'}, {'ms'}),
     'snapshot': ({'actor', 'metric', 'save_as'}, METRIC_FIELDS | {'save_as'}),
     'assert': ({'actor', 'metric'}, METRIC_FIELDS | {'equals', 'min', 'max', 'within_ms'}),
     'learn': ({'actor', 'spell'}, {'actor', 'spell'}),
     'unlearn': ({'actor', 'spell'}, {'actor', 'spell'}),
-    'cast': ({'actor', 'spell'}, {'actor', 'spell', 'target'}),
+    'cast': ({'actor', 'spell'}, {'actor', 'spell', 'target', 'destination'}),
+    'cast_charm': ({'actor', 'spell'}, {'actor', 'spell', 'target'}),
     'talent': ({'actor', 'talent', 'rank'}, {'actor', 'talent', 'rank'}),
     'reset_talents': ({'actor'}, {'actor'}),
     'add_item': ({'actor', 'item'}, {'actor', 'item', 'count'}),
@@ -89,7 +94,9 @@ def validate(scenario):
     player_ids = set()
     actor_ids = set()
     for player in players:
-        keys(player, {'id', 'race', 'class'}, {'id', 'race', 'class', 'level', 'spell_hit_rating'}, 'player')
+        keys(player, {'id', 'race', 'class'},
+             {'id', 'race', 'class', 'level', 'spell_hit_rating', 'ranged_hit_rating',
+              'melee_hit_rating', 'expertise_rating'}, 'player')
         identity = player['id']
         require(isinstance(identity, str) and ACTOR_ID.fullmatch(identity), 'Invalid player id')
         require(identity not in actor_ids, 'Duplicate actor id')
@@ -99,6 +106,9 @@ def validate(scenario):
             number(player[key], key, 1, 255, True)
         number(player.get('level', 80), 'level', 1, 255, True)
         number(player.get('spell_hit_rating', 0), 'spell_hit_rating', 0, 100000, True)
+        number(player.get('ranged_hit_rating', 0), 'ranged_hit_rating', 0, 100000, True)
+        number(player.get('melee_hit_rating', 0), 'melee_hit_rating', 0, 100000, True)
+        number(player.get('expertise_rating', 0), 'expertise_rating', 0, 100000, True)
     for creature in creatures:
         keys(creature, {'id', 'owner', 'entry'},
              {'id', 'owner', 'entry', 'distance', 'faction', 'level', 'health'}, 'creature')
@@ -113,7 +123,8 @@ def validate(scenario):
         number(creature.get('distance', 3), 'distance', 0, 100)
     if 'location' in scenario:
         location = scenario['location']
-        keys(location, {'map', 'x', 'y', 'z'}, {'map', 'x', 'y', 'z', 'o'}, 'location')
+        keys(location, {'map', 'x', 'y', 'z'}, {'map', 'x', 'y', 'z', 'o', 'ignore_access'}, 'location')
+        require(type(location.get('ignore_access', False)) is bool, 'ignore_access must be boolean')
         number(location['map'], 'map', 0, 2**32 - 1, True)
         for key in ('x', 'y', 'z'):
             number(location[key], key, -17000, 17000)
@@ -128,10 +139,13 @@ def validate(scenario):
         action = step['action']
         required, allowed = ACTIONS[action]
         keys(step, required | {'action'}, allowed | {'action', 'label'}, where)
-        if action == 'console':
+        if action in {'console', 'command'}:
             require(isinstance(step['command'], str) and step['command'].strip()
                     and '\n' not in step['command'] and '\r' not in step['command'],
-                    f'{where}: expected one console command')
+                    f'{where}: expected one command')
+            if action == 'command':
+                require(step['command'].startswith('.') and len(step['command']) > 1,
+                        f'{where}: player command must start with a dot')
         if 'actor' in step:
             require(step['actor'] in actor_ids, f'{where}: unknown actor')
             require(action in {'snapshot', 'assert'} or step['actor'] in player_ids,
@@ -139,7 +153,12 @@ def validate(scenario):
         for key in ('target', 'caster'):
             if key in step:
                 require(step[key] in actor_ids, f'{where}: unknown {key}')
-        for key in ('spell', 'item', 'talent', 'count'):
+        if 'destination' in step:
+            destination = step['destination']
+            keys(destination, {'x', 'y', 'z'}, {'x', 'y', 'z'}, f'{where}.destination')
+            for key in ('x', 'y', 'z'):
+                number(destination[key], f'{where}.destination.{key}', -17000, 17000)
+        for key in ('spell', 'item', 'talent', 'count', 'entry'):
             if key in step:
                 number(step[key], f'{where}.{key}', 1, 2**31 - 1, True)
         for key, maximum in (('rank', 4), ('effect', 2), ('slot', 18), ('power', 6)):
@@ -153,11 +172,19 @@ def validate(scenario):
         if action in {'snapshot', 'assert'}:
             metric = step['metric']
             require(metric in METRICS, f'{where}: unknown metric')
-            if metric.startswith('aura') or metric in {'knows_spell', 'cooldown_ms', 'has_talent'}:
+            if metric.startswith('aura') or metric in {
+                    'knows_spell', 'cooldown_ms', 'has_talent', 'pet_aura_stacks', 'charm_aura_stacks',
+                    'dynamic_object', 'dynamic_object_duration_ms'}:
                 require('spell' in step, f'{where}: metric needs spell')
             if metric == 'item_count':
                 require('item' in step, f'{where}: metric needs item')
-            if metric in {'knows_spell', 'has_talent', 'talent_points', 'cooldown_ms', 'item_count'}:
+            if metric == 'owned_creature_count':
+                require('entry' in step, f'{where}: metric needs creature entry')
+                require('caster' not in step or 'spell' in step, f'{where}: aura caster filter needs spell')
+            if metric in {'knows_spell', 'has_talent', 'talent_points', 'cooldown_ms', 'item_count', 'bank_bag_slots',
+                          'pet_entry', 'pet_aura_stacks', 'owned_creature_count', 'charm_entry',
+                          'charm_aura_stacks', 'controls_self', 'private_instance',
+                          'dynamic_object', 'dynamic_object_duration_ms'}:
                 require(step['actor'] in player_ids, f'{where}: metric needs a player')
             if 'relative_to' in step:
                 require(snapshots.get(step['relative_to']) == metric, f'{where}: missing or incompatible snapshot')
