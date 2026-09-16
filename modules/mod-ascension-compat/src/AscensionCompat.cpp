@@ -4349,7 +4349,7 @@ public:
                         spellInfo->Effects[EFFECT_2].ApplyAuraName == SPELL_AURA_MOD_INCREASE_MOUNTED_FLIGHT_SPEED &&
                         !spellInfo->HasAttribute(SPELL_ATTR4_ONLY_FLYING_AREAS))
                     {
-                        spellInfo->Effects[EFFECT_2].Effect = SPELL_EFFECT_NONE;
+                        spellInfo->Effects[EFFECT_2].Effect = 0;
                         spellInfo->Effects[EFFECT_2].ApplyAuraName = SPELL_AURA_NONE;
                         spellInfo->Effects[EFFECT_2].BasePoints = 0;
                     }
