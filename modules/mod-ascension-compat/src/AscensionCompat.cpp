@@ -145,12 +145,18 @@ enum CompanionLoot : uint32
 constexpr uint8 PYROMANCER_HEAT_PER_EMBER = 100;
 constexpr uint8 REAPER_SOUL_FRAGMENT_COST = 3;
 
-constexpr std::array<uint32, 4> REAPER_ALL_SOUL_CONSUMERS =
+constexpr std::array<uint32, 12> REAPER_ALL_SOUL_CONSUMERS =
 {{
     500483, // Tormented Souls
     500484, // Spectral Scythe
     500576, // Spectral Scythe (Soul Infusion variant)
-    500631  // Reliquary of the Lost
+    500631, // Reliquary of the Lost
+    // Soulrend ranks. Every rank requires Soul Infusion (casterAuraSpell 803031)
+    // and retained live logs removed the caster's Reaped Souls and Soul
+    // Infusion within 0.5 s of the cast in 278 of 285 casts; the exceptions
+    // include logged misses, which live refunded (2026-07-31 changelog).
+    // Consumption here happens on cast like the other consumers.
+    572341, 572342, 573316, 573317, 573318, 573319, 573321, 573322
 }};
 
 constexpr std::array<std::pair<uint32, uint32>, 1> REAPER_ONE_SOUL_CONSUMERS =
