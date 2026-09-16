@@ -13,6 +13,7 @@
 #include "AllCreatureScript.h"
 #include "AllSpellScript.h"
 #include "AscensionChangelogCompat.h"
+#include "AscensionCharacterSelection.h"
 #include "AscensionManastorm.h"
 #include "AscensionClassMechanics.h"
 #include "AscensionClassMechanics19To25.h"
@@ -3446,6 +3447,22 @@ public:
       return true;
 
     uint32 opcode = packet.GetOpcode();
+
+    // Ascension character-selection protocol: activate/deactivate and the
+    // account sort order arrive on the character screen (STATUS_AUTHED, no
+    // Player object) and are account-scoped.
+    if (IsAscensionCharacterSelectionOpcode(static_cast<uint16>(opcode)))
+    {
+      if (HandleAscensionCharacterSelectionPacket(session, packet))
+        return false;
+    }
+    else if (opcode == CMSG_CHAR_ENUM)
+    {
+      // The core still answers SMSG_CHAR_ENUM (and records the account's
+      // legit characters); the Ascension list details follow in own packets.
+      SendAscensionCharacterListInfo(session);
+    }
+
     uint32 firstOpcode = ascensionCompatConfig.GetConfigValue<uint32>(
         AscensionCompatConfig::FIRST_EXTENSION_OPCODE);
     uint32 lastOpcode = ascensionCompatConfig.GetConfigValue<uint32>(

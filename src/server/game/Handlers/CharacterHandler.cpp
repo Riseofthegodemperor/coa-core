@@ -429,7 +429,7 @@ void WorldSession::HandleCharCreateOpcode(WorldPacket& recvData)
             return;
         }
 
-        CharacterDatabasePreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_SUM_CHARS);
+        CharacterDatabasePreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_CHAR_CREATE_COUNTS);
         stmt->SetData(0, GetAccountId());
         queryCallback.SetNextQuery(CharacterDatabase.AsyncQuery(stmt));
     })
@@ -438,10 +438,22 @@ void WorldSession::HandleCharCreateOpcode(WorldPacket& recvData)
         if (result)
         {
             Field* fields = result->Fetch();
-            createInfo->CharCount = uint8(fields[0].Get<uint64>()); // SQL's COUNT() returns uint64 but it will always be less than uint8.Max
+            // Active count, which is what the realm list shows and what the
+            // realm limit is checked against; the stored total is only logged.
+            // Both columns must be integer typed: Field::Get<T>() reinterprets a
+            // prepared statement's raw buffer, and a SUM(CASE ...) is typed
+            // DECIMAL, which the binary protocol sends as text (so it would be
+            // read as the ASCII code of its first digit). COUNT(CASE ...) is a
+            // BIGINT and reads correctly.
+            createInfo->CharCount = uint8(fields[1].Get<uint64>());
+            uint8 const activeCharCount = createInfo->CharCount;
+            uint8 const storedCharCount = uint8(fields[0].Get<uint64>());
 
-            if (createInfo->CharCount >= sWorld->getIntConfig(CONFIG_CHARACTERS_PER_REALM))
+            if (activeCharCount >= sWorld->getIntConfig(CONFIG_CHARACTERS_PER_REALM))
             {
+                LOG_INFO("entities.player.character",
+                    "Account {} hit the realm character limit: {} active of {} allowed, {} stored",
+                    GetAccountId(), activeCharCount, sWorld->getIntConfig(CONFIG_CHARACTERS_PER_REALM), storedCharCount);
                 SendCharCreate(CHAR_CREATE_SERVER_LIMIT);
                 return;
             }
