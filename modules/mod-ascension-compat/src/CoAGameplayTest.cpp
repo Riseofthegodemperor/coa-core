@@ -3,6 +3,7 @@
  * https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3
  */
 
+#include "AscensionReaperTalents.h"
 #include "AccountMgr.h"
 #include "AscensionWisdomball.h"
 #include "AsyncCallbackProcessor.h"
@@ -1128,6 +1129,12 @@ private:
             Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown spell in metric");
         if (metric == "knows_spell")
             return player->HasSpell(spell);
+        if (metric == "action_button")
+        {
+            uint8 button = uint8(step.get<uint32>("button"));
+            ActionButton const* action = player->GetActionButton(button);
+            return action && action->GetType() == ACTION_BUTTON_SPELL ? action->GetAction() : 0;
+        }
         if (metric == "temporary_spell_replacement")
             return player->GetTemporarySpellReplacement(spell);
         if (metric == "spellbook_rows")
@@ -2142,6 +2149,18 @@ private:
             Require(copper > 0, "Money fixture needs a positive copper amount");
             player->ModifyMoney(copper);
             Require(player->GetMoney() >= uint32(copper), "Money fixture failed");
+        }
+        else if (action == "grant_resource")
+        {
+            int32 amount = int32(step.get<int32>("amount", 1));
+            Require(HandleAscensionReaperResource(player, spell, amount),
+                "Resource spell does not belong to this class");
+        }
+        else if (action == "set_action_button")
+        {
+            uint8 button = uint8(step.get<uint32>("button"));
+            Require(player->addActionButton(button, spell, ACTION_BUTTON_SPELL) != nullptr,
+                "Action button could not be set");
         }
         else if (action == "learn")
         {
