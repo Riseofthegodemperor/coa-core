@@ -118,6 +118,7 @@ public:
     static void Begin()
     {
         _counts.clear();
+        _casts.clear();
         _enabled = true;
     }
 
@@ -133,13 +134,28 @@ public:
         return itr == _counts.end() ? 0 : itr->second;
     }
 
+    // Every cast a unit completes, triggered or not, keyed by the cast spell itself.
+    static void RecordCast(ObjectGuid unit, uint32 spell)
+    {
+        if (_enabled)
+            ++_casts[{ unit, spell }];
+    }
+
+    static uint32 CastCount(ObjectGuid unit, uint32 spell)
+    {
+        auto itr = _casts.find({ unit, spell });
+        return itr == _casts.end() ? 0 : itr->second;
+    }
+
 private:
     static bool _enabled;
     static std::map<std::pair<ObjectGuid, uint32>, uint32> _counts;
+    static std::map<std::pair<ObjectGuid, uint32>, uint32> _casts;
 };
 
 bool ProcCounter::_enabled = false;
 std::map<std::pair<ObjectGuid, uint32>, uint32> ProcCounter::_counts;
+std::map<std::pair<ObjectGuid, uint32>, uint32> ProcCounter::_casts;
 
 enum class ActorStage
 {
@@ -552,6 +568,8 @@ private:
                 player->ApplyRatingMod(CR_HIT_SPELL, *hitRating, true);
             if (auto critRating = actor.definition.get_optional<int32>("spell_crit_rating"))
                 player->ApplyRatingMod(CR_CRIT_SPELL, *critRating, true);
+            if (auto critRating = actor.definition.get_optional<int32>("melee_crit_rating"))
+                player->ApplyRatingMod(CR_CRIT_MELEE, *critRating, true);
             if (auto hitRating = actor.definition.get_optional<int32>("ranged_hit_rating"))
                 player->ApplyRatingMod(CR_HIT_RANGED, *hitRating, true);
             if (auto hitRating = actor.definition.get_optional<int32>("melee_hit_rating"))
@@ -748,6 +766,11 @@ private:
             return unit->GetSpeedRate(MOVE_RUN);
         if (metric == "distance")
             return unit->GetExactDist2d(GetUnit(step.get<std::string>("target")));
+        if (metric == "spell_cast_count")
+        {
+            Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown spell in metric");
+            return ProcCounter::CastCount(unit->GetGUID(), spell);
+        }
         if (metric == "spell_proc_count")
         {
             Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown spell in metric");
@@ -961,6 +984,13 @@ private:
                 int32 damage = 1000;
                 sScriptMgr->ModifySpellDamageTaken(player, attacker, damage, info);
                 return damage;
+            }
+            if (metric == "script_heal_received")
+            {
+                // Same (target, healer) order as the periodic heal path in AuraEffect::HandlePeriodicHealAurasTick.
+                uint32 heal = 1000;
+                sScriptMgr->ModifyHealReceived(player, attacker, heal, info);
+                return heal;
             }
             Require(metric == "script_periodic_damage_taken", "Unknown scripted damage metric");
             uint32 damage = 1000;
@@ -1317,6 +1347,8 @@ private:
                 }
                 sGroupMgr->AddGroup(group);
             }
+            if (group->IsFull() && !group->isRaidGroup())
+                group->ConvertToRaid();
             Require(group->AddMember(member), "Could not join fixture group");
         }
         else if (action == "command")
@@ -1779,10 +1811,12 @@ class CoAGameplayTestProcCounter final : public AllSpellScript
 public:
     CoAGameplayTestProcCounter() : AllSpellScript("CoAGameplayTestProcCounter", { ALLSPELLHOOK_ON_CAST }) { }
 
-    void OnSpellCast(Spell* spell, Unit* caster, SpellInfo const* /*info*/, bool /*skipCheck*/) override
+    void OnSpellCast(Spell* spell, Unit* caster, SpellInfo const* info, bool /*skipCheck*/) override
     {
         if (!caster || !spell)
             return;
+        if (info)
+            ProcCounter::RecordCast(caster->GetGUID(), info->Id);
         if (SpellInfo const* triggeredBy = spell->GetTriggeredByAuraSpellInfo())
             ProcCounter::Record(caster->GetGUID(), triggeredBy->Id);
     }
