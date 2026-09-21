@@ -20,6 +20,7 @@
 void AddAscensionCompatScripts();
 void AddAscensionTravelPermitScripts();
 void AddSC_AscensionRulesets();
+void AddSC_AscensionRestingBuff();
 void AddSC_AscensionClosestResurrection();
 void AddSC_AscensionThreatRedirect();
 void AddAscensionStockCoefficientScripts();
@@ -473,6 +474,7 @@ void Addmod_ascension_compatScripts()
     AddCoAGameplayTestScripts();
     AddSC_AscensionResourceTalents();
     AddSC_AscensionRulesets();
+    AddSC_AscensionRestingBuff();
     AddSC_AscensionClosestResurrection();
     AddSC_AscensionThreatRedirect();
 }
