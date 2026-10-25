@@ -268,7 +268,7 @@ pEffect SpellEffects[TOTAL_SPELL_EFFECTS] =
     &Spell::EffectNULL,                                     //194 unknown Ascension effect
     &Spell::EffectAscensionResetCooldown,                   //195 SPELL_EFFECT_ASCENSION_RESET_COOLDOWN
     &Spell::EffectNULL,                                     //196 unknown Ascension effect
-    &Spell::EffectNULL,                                     //197 unknown Ascension effect
+    &Spell::EffectAscensionModifyFamilyCooldown,            //197 SPELL_EFFECT_ASCENSION_MODIFY_FAMILY_COOLDOWN
     &Spell::EffectNULL,                                     //198 unknown Ascension effect
 };
 
@@ -743,6 +743,29 @@ void Spell::EffectAscensionResetCooldown(SpellEffIndex effIndex)
     ResetAscensionCooldown(player, effect.MiscValue, effect.MiscValueB != 0);
 }
 
+// Effect 197: the 165 cooldown change applied to every cooling spell of the caster's family that the effect's class
+// mask names ("Mongoose Bite CDR 1 Second": -1001 on Mongoose Bite's flag). MiscValueB resets them instead.
+void Spell::EffectAscensionModifyFamilyCooldown(SpellEffIndex effIndex)
+{
+    if (effectHandleMode != SPELL_EFFECT_HANDLE_HIT_TARGET)
+        return;
+
+    Unit* target = unitTarget ? unitTarget : m_caster;
+    Player* player = target ? target->ToPlayer() : nullptr;
+    SpellEffectInfo const& effect = m_spellInfo->Effects[effIndex];
+    if (!player || !effect.SpellClassMask)
+        return;
+
+    std::vector<uint32> affected;
+    for (auto const& [spellId, cooldown] : player->GetSpellCooldownMap())
+        if (SpellInfo const* info = sSpellMgr->GetSpellInfo(spellId))
+            if (info->SpellFamilyName == m_spellInfo->SpellFamilyName && (info->SpellFamilyFlags & effect.SpellClassMask))
+                affected.push_back(spellId);
+
+    for (uint32 spellId : affected)
+        ModifyAscensionCooldown(player, spellId, effect.MiscValueB ? 0 : damage, false);
+}
+
 void Spell::EffectAscensionRestoreSpellCharges(SpellEffIndex effIndex)
 {
     if (effectHandleMode != SPELL_EFFECT_HANDLE_HIT_TARGET || damage <= 0)
@@ -931,7 +954,7 @@ void Spell::EffectSchoolDMG(SpellEffIndex effIndex)
 
                             apply_direct_bonus = false;
                             // Glyph of Conflagrate
-                            if (!m_caster->HasAura(56235))
+                            if (!m_caster->HasAuraOrTwin(56235))
                                 unitTarget->RemoveAurasDueToSpell(aura->GetId(), m_caster->GetGUID());
 
                             break;
@@ -1038,7 +1061,10 @@ void Spell::EffectSchoolDMG(SpellEffIndex effIndex)
                                             unitTarget->RemoveAuraFromStack(spellId, m_caster->GetGUID());
 
                                     damage *= doses;
-                                    damage += int32(player->GetTotalAttackPowerValue(BASE_ATTACK) * 0.09f * combo);
+                                    if (m_spellInfo->HasComboPointPowerBonus(effIndex))
+                                        damage += m_spellInfo->GetComboPointPowerBonus(m_caster, effIndex, combo);
+                                    else
+                                        damage += int32(player->GetTotalAttackPowerValue(BASE_ATTACK) * 0.09f * combo);
                                 }
 
                                 // Eviscerate and Envenom Bonus Damage (item set effect)
@@ -1054,14 +1080,22 @@ void Spell::EffectSchoolDMG(SpellEffIndex effIndex)
                         {
                             if (uint32 combo = m_caster->ToPlayer()->GetComboPoints())
                             {
-                                float ap = m_caster->GetTotalAttackPowerValue(BASE_ATTACK);
-                                damage += int32(ap * combo * 0.07f);
+                                if (m_spellInfo->HasComboPointPowerBonus(effIndex))
+                                    damage += m_spellInfo->GetComboPointPowerBonus(m_caster, effIndex, combo);
+                                else
+                                    damage += int32(m_caster->GetTotalAttackPowerValue(BASE_ATTACK) * combo * 0.07f);
 
                                 // Eviscerate and Envenom Bonus Damage (item set effect)
                                 if (m_caster->HasAura(37169))
                                     damage += combo * 40;
                             }
                         }
+                    }
+                    // Ascension finishers with no stock damage code (Crimson Tempest)
+                    else if (m_spellInfo->HasComboPointPowerBonus(effIndex))
+                    {
+                        if (Player* player = m_caster->ToPlayer())
+                            damage += m_spellInfo->GetComboPointPowerBonus(m_caster, effIndex, player->GetComboPoints());
                     }
                     break;
                 }
@@ -3233,7 +3267,7 @@ void Spell::EffectDispel(SpellEffIndex effIndex)
         m_caster->CastCustomSpell(m_caster, 19658, &heal_amount, nullptr, nullptr, true);
         // Glyph of Felhunter
         if (Unit* owner = m_caster->GetOwner())
-            if (owner->GetAura(56249))
+            if (owner->GetAuraOfRankedSpellOrTwin(56249))
                 owner->CastCustomSpell(owner, 19658, &heal_amount, nullptr, nullptr, true);
     }
 }
@@ -3970,7 +4004,7 @@ void Spell::EffectWeaponDmg(SpellEffIndex effIndex)
                     if (Aura* aur = unitTarget->GetAura(sunderArmor))
                     {
                         // 58388 - Glyph of Devastate dummy aura.
-                        if (m_caster->HasAura(58388))
+                        if (m_caster->HasAuraOrTwin(58388))
                             aur->ModStackAmount(1);
 
                         spell_bonus += (aur->GetStackAmount() - 1) * CalculateSpellDamage(2, unitTarget);
@@ -4078,7 +4112,7 @@ void Spell::EffectWeaponDmg(SpellEffIndex effIndex)
                 if (m_spellInfo->SpellFamilyFlags[0] & 0x1)
                 {
                     // Glyph of Plague Strike
-                    if (AuraEffect const* aurEff = m_caster->GetAuraEffect(58657, EFFECT_0))
+                    if (AuraEffect const* aurEff = m_caster->GetAuraEffectOfRankedSpellOrTwin(58657, EFFECT_0))
                         AddPct(totalDamagePercentMod, aurEff->GetAmount());
                     break;
                 }
@@ -4093,7 +4127,7 @@ void Spell::EffectWeaponDmg(SpellEffIndex effIndex)
                     AddPct(totalDamagePercentMod, disease_amt * unitTarget->GetDiseasesByCaster(m_caster->GetGUID()) / 2.0f);
 
                     // Glyph of Blood Strike
-                    if (m_caster->GetAuraEffect(59332, EFFECT_0))
+                    if (m_caster->GetAuraEffectOfRankedSpellOrTwin(59332, EFFECT_0))
                         if (unitTarget->HasDecreaseSpeedAura())
                             AddPct(totalDamagePercentMod, 20.0f);
                     break;
@@ -4102,7 +4136,7 @@ void Spell::EffectWeaponDmg(SpellEffIndex effIndex)
                 if (m_spellInfo->SpellFamilyFlags[0] & 0x10)
                 {
                     // Glyph of Death Strike
-                    if (AuraEffect const* aurEff = m_caster->GetAuraEffect(59336, EFFECT_0))
+                    if (AuraEffect const* aurEff = m_caster->GetAuraEffectOfRankedSpellOrTwin(59336, EFFECT_0))
                         if (uint32 runic = std::min<uint32>(m_caster->GetPower(POWER_RUNIC_POWER), aurEff->GetSpellInfo()->Effects[EFFECT_1].CalcValue()))
                             AddPct(totalDamagePercentMod, runic);
                     break;
