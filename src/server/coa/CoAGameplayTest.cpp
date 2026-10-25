@@ -13,6 +13,7 @@
 #include "AscensionQuestLog.h"
 #include "AscensionSpecialization.h"
 #include "AscensionVanityOwnership.h"
+#include "AscensionVoidPortal.h"
 #include "AscensionWisdomball.h"
 #include "AscensionWildcard.h"
 #include "AscensionWildcardStarterData.h"
@@ -2802,6 +2803,8 @@ private:
         }
         if (metric == "loot_received")
             return _actors.at(step.get<std::string>("actor")).lootReceived;
+        if (metric == "voidportal_group")
+            return double(Ascension::VoidPortal::ActiveGroupForTest());
         if (metric == "nearby_gameobject_count" || metric == "nearby_gameobject_quest_active")
         {
             bool const questActiveOnly = metric == "nearby_gameobject_quest_active";
@@ -4904,6 +4907,16 @@ private:
             packet << objects.front()->GetGUID();
             if (sScriptMgr->CanPacketReceive(player->GetSession(), packet))
                 player->GetSession()->HandleGameObjectUseOpcode(packet);
+        }
+        else if (action == "voidportal")
+        {
+            std::string op = step.get<std::string>("op");
+            if (op == "force")
+                Ascension::VoidPortal::ForceSpawnForTest(step.get<uint32>("group"), step.get<uint32>("spawn"));
+            else if (op == "roll")
+                Ascension::VoidPortal::ForceProximityRollForTest(step.get<bool>("success"));
+            else
+                Require(false, "Unknown voidportal op");
         }
         else if (action == "spell_click_nearby")
         {
