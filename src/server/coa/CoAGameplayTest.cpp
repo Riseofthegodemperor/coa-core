@@ -40,6 +40,7 @@
 #include "GossipDef.h"
 #include "Group.h"
 #include "GroupMgr.h"
+#include "InstanceScript.h"
 #include "Item.h"
 #include "LFGMgr.h"
 #include "LFGPackets.h"
@@ -78,6 +79,8 @@
 
 #include "CoAGameplayClock.h"
 #include "CoAGameplayIsolation.h"
+#include "CoAGameplayRaidBots.h"
+#include "CoAGameplayTimeline.h"
 #include "CoASpellbook.h"
 #include <boost/bind/placeholders.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -123,7 +126,18 @@ public:
         return !NoRegenerationActors.contains(player->GetGUID());
     }
 };
-constexpr uint32 MaximumActors = 8;
+constexpr uint32 MaximumCreatures = 8;
+
+uint32 MaximumPlayers(uint32 schema)
+{
+    return schema == 2 ? 25 : 8;
+}
+
+uint32 MaximumTimeoutMs(uint32 schema)
+{
+    return schema == 2 ? 1200000 : 600000;
+}
+
 constexpr uint16 LevelScalingOpcode = 0x0667;
 constexpr uint16 ApplyAppearancesOpcode = 0x0697;
 constexpr uint16 KnownEntriesUploadOpcode = 0x0727;
@@ -390,6 +404,138 @@ bool ProcCounter::_enabled = false;
 std::map<std::pair<ObjectGuid, uint32>, uint32> ProcCounter::_counts;
 std::map<std::pair<ObjectGuid, uint32>, uint32> ProcCounter::_casts;
 
+constexpr float DefaultEncounterRadius = 100.0f;
+constexpr float MaximumEncounterRadius = 200.0f;
+
+uint64 GameNowMs()
+{
+    return uint64(std::chrono::duration_cast<Milliseconds>(GameTime::Now().time_since_epoch()).count());
+}
+
+class TimelineRecorder
+{
+public:
+    static void Begin(Creature const* boss, uint64 nowMs)
+    {
+        _mapId = boss->GetMapId();
+        _instanceId = boss->GetInstanceId();
+        _phaseMask = boss->GetPhaseMask();
+        _boss = boss->GetGUID();
+        _timeline.Start(nowMs);
+        _active = true;
+    }
+
+    static void End()
+    {
+        _active = false;
+        _boss.Clear();
+    }
+
+    static bool Active()
+    {
+        return _active;
+    }
+
+    static ObjectGuid Boss()
+    {
+        return _boss;
+    }
+
+    static void Record(WorldObject const* subject, CoAGameplay::TimelineEvent event)
+    {
+        if (!_active || !subject || !subject->InSamePhase(_phaseMask)
+            || !CoAGameplay::RecordsUnit(_mapId, _instanceId, subject->GetMapId(), subject->GetInstanceId()))
+            return;
+        event.atMs = GameNowMs();
+        _timeline.Record(event);
+    }
+
+    static void Record(Map const* map, CoAGameplay::TimelineEvent event)
+    {
+        if (!_active || !map || !CoAGameplay::RecordsUnit(_mapId, _instanceId, map->GetId(), map->GetInstanceId()))
+            return;
+        event.atMs = GameNowMs();
+        _timeline.Record(event);
+    }
+
+    static void Engage(Unit const* unit)
+    {
+        if (_active && unit->GetGUID() == _boss)
+            _timeline.MarkEngaged(GameNowMs());
+    }
+
+    static CoAGameplay::Timeline const& Get()
+    {
+        return _timeline;
+    }
+
+private:
+    static bool _active;
+    static uint32 _mapId;
+    static uint32 _instanceId;
+    static uint32 _phaseMask;
+    static ObjectGuid _boss;
+    static CoAGameplay::Timeline _timeline;
+};
+
+bool TimelineRecorder::_active = false;
+uint32 TimelineRecorder::_mapId = 0;
+uint32 TimelineRecorder::_instanceId = 0;
+uint32 TimelineRecorder::_phaseMask = 0;
+ObjectGuid TimelineRecorder::_boss;
+CoAGameplay::Timeline TimelineRecorder::_timeline;
+
+using TimelineEventNames = std::array<std::pair<char const*, CoAGameplay::TimelineEventKind>, 8>;
+
+TimelineEventNames const& TimelineEvents()
+{
+    using Kind = CoAGameplay::TimelineEventKind;
+    static TimelineEventNames const names{{
+        { "cast", Kind::Cast }, { "aura_applied", Kind::AuraApplied }, { "aura_removed", Kind::AuraRemoved },
+        { "death", Kind::Death }, { "enter_combat", Kind::EnterCombat }, { "evade", Kind::Evade },
+        { "spawn", Kind::Spawn }, { "boss_state", Kind::BossState } }};
+    return names;
+}
+
+CoAGameplay::TimelineEventKind TimelineEventKindNamed(std::string const& name)
+{
+    for (auto const& [candidate, kind] : TimelineEvents())
+        if (name == candidate)
+            return kind;
+    throw std::runtime_error("Unknown timeline event: " + name);
+}
+
+char const* TimelineEventName(CoAGameplay::TimelineEventKind kind)
+{
+    for (auto const& [name, candidate] : TimelineEvents())
+        if (kind == candidate)
+            return name;
+    return "unknown";
+}
+
+EncounterState EncounterStateNamed(std::string const& name)
+{
+    static std::array<std::pair<char const*, EncounterState>, 5> const states{{
+        { "NOT_STARTED", NOT_STARTED }, { "IN_PROGRESS", IN_PROGRESS }, { "FAIL", FAIL }, { "DONE", DONE },
+        { "SPECIAL", SPECIAL } }};
+    for (auto const& [candidate, state] : states)
+        if (name == candidate)
+            return state;
+    throw std::runtime_error("Unknown encounter state: " + name);
+}
+
+uint32 CreatureEntry(Unit const* unit)
+{
+    return unit && unit->IsCreature() ? unit->GetEntry() : 0;
+}
+
+double Median(std::vector<uint64> values)
+{
+    std::sort(values.begin(), values.end());
+    std::size_t const middle = values.size() / 2;
+    return values.size() % 2 ? double(values[middle]) : (double(values[middle - 1]) + double(values[middle])) / 2.0;
+}
+
 enum class ActorStage
 {
     Account,
@@ -491,6 +637,7 @@ struct Actor
     uint32 whoResponses = 0;
     uint32 lootReceived = 0;
     std::array<uint32, 2> meleeAttacksByHand{};
+    std::map<ObjectGuid, uint32> meleeAttacksTakenFrom;
     std::array<uint32, 2> meleeDamageByHand{};
     std::array<uint64, 2> meleeDamageTotalByHand{};
     uint64 castPushbackMs = 0;
@@ -530,6 +677,10 @@ struct Actor
     ActorStage stage = ActorStage::Account;
     std::vector<std::pair<ActorStage, Clock::time_point>> reached;
     bool generatedName = false;
+    CoAGameplay::RaidRole raidRole = CoAGameplay::RaidRole::None;
+    std::vector<uint32> rotation;
+    uint32 healSpell = 0;
+    uint32 tauntSpell = 0;
 };
 
 char const* StageName(ActorStage stage)
@@ -899,6 +1050,8 @@ void ObservePacket(Actor& actor, WorldPacket const& packet)
                 actor.meleeDamageTotalByHand[hand] += damage;
             }
         }
+        if (victim == actor.guid)
+            ++actor.meleeAttacksTakenFrom[attacker];
     }
 
     ++actor.packetOrdinal;
@@ -1277,9 +1430,10 @@ public:
     void Load(std::string const& scenarioFile)
     {
         boost::property_tree::read_json(scenarioFile, _scenario);
-        Require(_scenario.get<uint32>("schema") == 1, "Unsupported scenario schema");
+        _schema = _scenario.get<uint32>("schema");
+        Require(_schema == 1 || _schema == 2, "Unsupported scenario schema");
         _timeout = _scenario.get<uint32>("timeout_ms", 90000);
-        Require(_timeout > 0 && _timeout <= 600000, "Invalid scenario timeout");
+        Require(_timeout > 0 && _timeout <= MaximumTimeoutMs(_schema), "Invalid scenario timeout");
         if (_scenario.get<bool>("creature_scaling", false))
             _creatureScaling.emplace();
         if (auto ownership = _scenario.get_child_optional("vanity_ownership"))
@@ -1303,7 +1457,8 @@ public:
         _nextStep = _steps.begin();
 
         auto const& players = _scenario.get_child("players");
-        Require(!players.empty() && players.size() <= MaximumActors, "Scenario needs 1..8 players");
+        Require(!players.empty() && players.size() <= MaximumPlayers(_schema),
+            "Scenario needs 1.." + std::to_string(MaximumPlayers(_schema)) + " players");
         uint32 index = 0;
         for (auto const& entry : players)
         {
@@ -1311,6 +1466,7 @@ public:
             Require(!id.empty() && !_actors.count(id), "Duplicate or empty player id");
             auto& actor = _actors[id];
             actor.definition = entry.second;
+            ReadRaidRole(actor);
             for (auto const& step : _steps)
                 if (step.second.get<std::string>("actor", "") == id)
                     if (auto row = step.second.get_optional<uint32>("row"))
@@ -1438,12 +1594,193 @@ public:
         _report.put("assertions", _assertions);
         _report.put("completed_steps", _completed);
         _report.put_child("steps", _records);
+        if (EncounterActive())
+            _report.put_child("timeline", DescribeTimeline());
         if (_measured)
             RecordTiming();
     }
 
+    bool EncounterActive() const
+    {
+        return _encounterBoss.has_value();
+    }
+
+    Creature* EncounterBoss() const
+    {
+        if (!_encounterBoss)
+            return nullptr;
+        Map* map = sMapMgr->FindMap(_encounterBoss->map, _encounterBoss->instance);
+        return map ? map->GetCreature(_encounterBoss->guid) : nullptr;
+    }
+
+    static void SubmitAttackSwing(Player* player, Unit* target)
+    {
+        WorldPacket packet(CMSG_ATTACKSWING, 8);
+        packet << target->GetGUID();
+        player->GetSession()->HandleAttackSwingOpcode(packet);
+    }
+
+    static bool CanBotCast(Player* player, uint32 spellId, Unit* target)
+    {
+        SpellInfo const* info = sSpellMgr->GetSpellInfo(spellId);
+        if (!info || !player->HasActiveSpell(spellId) || player->IsNonMeleeSpellCast(false) ||
+            !player->SpellQueue.empty())
+            return false;
+        Spell probe(player, info, TRIGGERED_NONE);
+        SpellCastTargets targets;
+        targets.SetUnitTarget(target);
+        probe.InitExplicitTargets(targets);
+        probe.m_cast_count = 1;
+        probe.LoadScripts();
+        SpellCastResult const result = probe.CheckPetCast(target);
+        player->RestoreSpellMods(&probe);
+        return result == SPELL_CAST_OK;
+    }
+
+    void SubmitBotCast(Player* player, uint32 spellId, Unit* target)
+    {
+        SpellCastTargets targets;
+        targets.SetUnitTarget(target);
+        WorldPacket packet(CMSG_CAST_SPELL, 64);
+        packet << uint8(++_castCount) << spellId << uint8(0);
+        targets.Write(packet);
+        player->GetSession()->HandleCastSpellOpcode(packet);
+    }
+
+    void CastRotation(Actor const& actor, Player* player, Unit* target)
+    {
+        std::optional<uint32> const spell = CoAGameplay::NextRotationSpell(actor.rotation,
+            [player, target](uint32 candidate) { return CanBotCast(player, candidate, target); });
+        if (spell)
+            SubmitBotCast(player, *spell, target);
+    }
+
+    static bool FaceBoss(Player* player, Creature* boss)
+    {
+        if (player->HasInArc(float(M_PI), boss))
+            return false;
+        player->NearTeleportTo(player->GetPositionX(), player->GetPositionY(), player->GetPositionZ(),
+            player->GetAngle(boss));
+        return true;
+    }
+
+    static bool KeepInMelee(Player* player, Creature* boss, bool inFront)
+    {
+        if (player->IsWithinMeleeRange(boss))
+            return FaceBoss(player, boss);
+        float const angle = boss->GetOrientation() + (inFront ? 0.0f : float(M_PI));
+        float x, y, z;
+        boss->GetNearPoint(player, x, y, z, player->GetCombatReach(), 0.0f, angle);
+        Position stand(x, y, z);
+        player->NearTeleportTo(x, y, z, stand.GetAngle(boss));
+        return true;
+    }
+
+    void HealLowest(Actor const& healer, Player* player)
+    {
+        std::vector<CoAGameplay::HealCandidate> members;
+        for (auto const& [id, actor] : _actors)
+            if (Player* member = actor.session ? actor.session->GetPlayer() : nullptr)
+                if (member->IsInWorld() && member->GetMap() == player->GetMap())
+                    members.push_back({ member->GetGUID(), member->IsAlive(), member->GetHealthPct(),
+                        player->GetDistance(member) });
+        std::optional<ObjectGuid> const target = CoAGameplay::SelectHealTarget(members,
+            CoAGameplay::RaidHealThresholdPct, CoAGameplay::RaidHealRange);
+        if (!target)
+            return;
+        Player* patient = ObjectAccessor::GetPlayer(*player, *target);
+        if (patient && CanBotCast(player, healer.healSpell, patient))
+            SubmitBotCast(player, healer.healSpell, patient);
+    }
+
+    bool IsTankActor(ObjectGuid guid) const
+    {
+        for (auto const& [id, actor] : _actors)
+            if (actor.raidRole == CoAGameplay::RaidRole::Tank && actor.guid == guid)
+                return true;
+        return false;
+    }
+
+    void HoldThreatFloor(Player* tank, Creature* boss) const
+    {
+        ThreatManager& threat = boss->GetThreatMgr();
+        float highestOther = 0.0f;
+        for (ThreatReference const* ref : threat.GetUnsortedThreatList())
+            if (!IsTankActor(ref->GetVictim()->GetGUID()))
+                highestOther = std::max(highestOther, ref->GetThreat());
+        float const raise = CoAGameplay::TankThreatRaise(threat.GetThreat(tank), highestOther);
+        if (raise > 0.0f)
+            threat.AddThreat(tank, raise, nullptr, true, true);
+    }
+
+    bool BossTargetsTank(Creature* boss) const
+    {
+        Unit const* victim = boss->GetVictim();
+        return victim && IsTankActor(victim->GetGUID());
+    }
+
+    void DriveRaidBot(Actor const& actor, Player* player, Creature* boss)
+    {
+        if (!CoAGameplay::RoleMayAct(actor.raidRole, BossTargetsTank(boss)))
+            return;
+        if (actor.raidRole == CoAGameplay::RaidRole::Healer)
+        {
+            HealLowest(actor, player);
+            return;
+        }
+        if (!player->IsValidAttackTarget(boss))
+            return;
+        switch (actor.raidRole)
+        {
+            case CoAGameplay::RaidRole::Tank:
+            case CoAGameplay::RaidRole::Melee:
+                if (actor.raidRole == CoAGameplay::RaidRole::Tank)
+                    HoldThreatFloor(player, boss);
+                if (KeepInMelee(player, boss, actor.raidRole == CoAGameplay::RaidRole::Tank))
+                    return;
+                if (player->GetVictim() != boss)
+                    SubmitAttackSwing(player, boss);
+                if (actor.raidRole == CoAGameplay::RaidRole::Tank && CoAGameplay::ShouldTaunt(
+                    boss->GetVictim() == player, actor.tauntSpell && CanBotCast(player, actor.tauntSpell, boss)))
+                {
+                    SubmitBotCast(player, actor.tauntSpell, boss);
+                    return;
+                }
+                CastRotation(actor, player, boss);
+                return;
+            case CoAGameplay::RaidRole::Ranged:
+                if (player->IsWithinDistInMap(boss, CoAGameplay::RaidRangedDistance) && !FaceBoss(player, boss))
+                    CastRotation(actor, player, boss);
+                return;
+            default:
+                return;
+        }
+    }
+
+    void DriveRaidBots()
+    {
+        if (!EncounterActive())
+            return;
+        Creature* boss = EncounterBoss();
+        if (!boss || !boss->IsAlive())
+            return;
+        for (bool const tankPass : { true, false })
+            for (auto const& [id, actor] : _actors)
+                if (actor.raidRole != CoAGameplay::RaidRole::None &&
+                    CoAGameplay::ActsInTankPass(actor.raidRole) == tankPass)
+                    if (Player* player = actor.session ? actor.session->GetPlayer() : nullptr)
+                        if (player->IsInWorld() && player->IsAlive() && !player->IsBeingTeleported() &&
+                            player->GetMap() == boss->GetMap())
+                            DriveRaidBot(actor, player, boss);
+    }
+
     bool Dismiss(bool leaveGroups)
     {
+        if (EncounterActive())
+        {
+            TimelineRecorder::End();
+            _encounterBoss.reset();
+        }
         std::set<ObjectGuid> units;
         RemoveFixtureDescendants(units);
         for (auto const& [id, target] : _targets)
@@ -1677,6 +2014,7 @@ private:
             CreateTargets();
         if (!TargetsSettled())
             return false;
+        DriveRaidBots();
         if (_nextStep == _steps.end())
         {
             Require(_assertions > 0, "Scenario completed without assertions");
@@ -1787,6 +2125,33 @@ private:
             create << uint8(0);
         actor.session->HandleCharCreateOpcode(create);
         Reach(actor, ActorStage::Creating);
+    }
+
+    static uint32 RaidSpell(Tree const& value)
+    {
+        uint32 const spell = value.get_value<uint32>();
+        Require(sSpellMgr->GetSpellInfo(spell) != nullptr, "Unknown raid bot spell " + std::to_string(spell));
+        return spell;
+    }
+
+    static void ReadRaidRole(Actor& actor)
+    {
+        Tree const& definition = actor.definition;
+        auto const role = definition.get_optional<std::string>("role");
+        if (!role)
+            return;
+        actor.raidRole = CoAGameplay::RaidRoleFromName(*role);
+        Require(actor.raidRole != CoAGameplay::RaidRole::None, "Unknown raid role: " + *role);
+        if (auto rotation = definition.get_child_optional("rotation"))
+            for (auto const& spell : *rotation)
+                actor.rotation.push_back(RaidSpell(spell.second));
+        if (auto heal = definition.get_child_optional("heal_spell"))
+            actor.healSpell = RaidSpell(*heal);
+        if (auto taunt = definition.get_child_optional("taunt_spell"))
+            actor.tauntSpell = RaidSpell(*taunt);
+        Require((actor.healSpell != 0) == (actor.raidRole == CoAGameplay::RaidRole::Healer),
+            "heal_spell is required for a healer and only for one");
+        Require(!actor.tauntSpell || actor.raidRole == CoAGameplay::RaidRole::Tank, "taunt_spell is only for a tank");
     }
 
     static void LogIn(Actor& actor)
@@ -1978,6 +2343,96 @@ private:
         return SentAddonField<uint32>(player, step, firstField + slot);
     }
 
+    ObjectGuid ActorGuid(std::string const& id) const
+    {
+        if (auto actor = _actors.find(id); actor != _actors.end())
+            return actor->second.guid;
+        auto target = _targets.find(id);
+        Require(target != _targets.end(), "Unknown actor: " + id);
+        return target->second.guid;
+    }
+
+    std::vector<ObjectGuid> ActorGuids(Tree const& step, std::string const& field) const
+    {
+        std::vector<ObjectGuid> guids;
+        if (auto actors = step.get_child_optional(field))
+            for (auto const& [key, id] : *actors)
+                guids.push_back(ActorGuid(id.get_value<std::string>()));
+        return guids;
+    }
+
+    CoAGameplay::TimelineFilter TimelineFilterFor(Tree const& step) const
+    {
+        CoAGameplay::TimelineFilter filter;
+        filter.kind = TimelineEventKindNamed(step.get<std::string>("event"));
+        if (auto spell = step.get_optional<uint32>("spell"))
+            filter.spell = *spell;
+        if (auto entry = step.get_optional<uint32>("source_entry"))
+            filter.sourceEntry = *entry;
+        if (auto state = step.get_optional<std::string>("state"))
+        {
+            Require(filter.kind == CoAGameplay::TimelineEventKind::BossState, "Timeline state needs boss_state");
+            filter.value = uint32(EncounterStateNamed(*state));
+        }
+        filter.targets = ActorGuids(step, "target_actors");
+        filter.excludedTargets = ActorGuids(step, "exclude_target_actors");
+        return filter;
+    }
+
+    double MeasureTimeline(std::string const& metric, Tree const& step) const
+    {
+        Require(EncounterActive(), "Timeline metrics need encounter_start");
+        CoAGameplay::TimelineFilter const filter = TimelineFilterFor(step);
+        CoAGameplay::Timeline const& timeline = TimelineRecorder::Get();
+        double const missing = std::numeric_limits<double>::quiet_NaN();
+        if (metric == "timeline_count")
+            return timeline.Count(filter);
+        if (metric == "timeline_first_ms")
+        {
+            std::optional<int64> const first = timeline.FirstMs(filter);
+            return first ? double(*first) : missing;
+        }
+        std::vector<uint64> const intervals = timeline.Intervals(filter);
+        if (intervals.empty())
+            return missing;
+        if (metric == "timeline_interval_min_ms")
+            return double(*std::min_element(intervals.begin(), intervals.end()));
+        if (metric == "timeline_interval_max_ms")
+            return double(*std::max_element(intervals.begin(), intervals.end()));
+        Require(metric == "timeline_interval_median_ms", "Unknown metric: " + metric);
+        return Median(intervals);
+    }
+
+    std::string TimelineTargetName(ObjectGuid guid) const
+    {
+        if (guid.IsEmpty())
+            return "";
+        for (auto const& [id, actor] : _actors)
+            if (actor.guid == guid)
+                return id;
+        for (auto const& [id, target] : _targets)
+            if (target.guid == guid)
+                return id;
+        return guid.ToString();
+    }
+
+    Tree DescribeTimeline() const
+    {
+        Tree events;
+        for (CoAGameplay::TimelineEvent const& event : TimelineRecorder::Get().Events())
+        {
+            Tree entry;
+            entry.put("at_ms", event.atMs);
+            entry.put("event", TimelineEventName(event.kind));
+            entry.put("source_entry", event.sourceEntry);
+            entry.put("spell", event.spell);
+            entry.put("target", TimelineTargetName(event.target));
+            entry.put("value", event.value);
+            events.push_back({ "", entry });
+        }
+        return events;
+    }
+
     double ListedInstanceBinds(Tree const& step) const
     {
         auto const& payloads = _actors.at(step.get<std::string>("actor")).extensionPayloads;
@@ -2078,7 +2533,7 @@ private:
     {
         if (auto creatures = _scenario.get_child_optional("creatures"))
         {
-            Require(creatures->size() <= MaximumActors, "Too many creatures");
+            Require(creatures->size() <= MaximumCreatures, "Too many creatures");
             for (auto const& entry : *creatures)
             {
                 Tree const& definition = entry.second;
@@ -2122,6 +2577,8 @@ private:
 
     double Measure(Tree const& step)
     {
+        if (std::string const requested = step.get<std::string>("metric"); requested.starts_with("timeline_"))
+            return MeasureTimeline(requested, step);
         Unit* unit = GetUnit(step.get<std::string>("actor"));
         std::string metric = step.get<std::string>("metric");
         if (metric == "spell_hit_chance")
@@ -2929,6 +3386,12 @@ private:
             Require(creature != nullptr, "Creature health metric needs a living nearby creature");
             return creature->GetMaxHealth();
         }
+        if (metric == "nearby_creature_health_pct")
+        {
+            Creature* creature = player->FindNearestCreature(step.get<uint32>("entry"), 60.0f, true);
+            Require(creature != nullptr, "Creature health metric needs a living nearby creature");
+            return 100.0 * creature->GetHealth() / creature->GetMaxHealth();
+        }
         if (metric == "nearby_creature_sent_spellclick")
         {
             Creature* creature = player->FindNearestCreature(step.get<uint32>("entry"), 60.0f, true);
@@ -3081,6 +3544,19 @@ private:
             return player->GetShieldBlockValue();
         if (metric == "critical_block_chance")
             return player->GetTotalAuraModifier(SPELL_AURA_MOD_BLOCK_CRIT_CHANCE);
+        if (metric == "melee_attacks_taken")
+        {
+            Actor const& actor = _actors.at(step.get<std::string>("actor"));
+            if (auto attacker = step.get_optional<std::string>("target"))
+            {
+                auto const found = actor.meleeAttacksTakenFrom.find(GetUnit(*attacker)->GetGUID());
+                return found == actor.meleeAttacksTakenFrom.end() ? 0 : found->second;
+            }
+            uint32 total = 0;
+            for (auto const& [attacker, count] : actor.meleeAttacksTakenFrom)
+                total += count;
+            return total;
+        }
         if (metric == "melee_attack_count" || metric == "melee_damage_count" ||
             metric == "melee_damage_total")
         {
@@ -4809,6 +5285,19 @@ private:
             record.put("dungeon", dungeon);
             record.put("entry", (*finalEncounter)->creditEntry);
         }
+        else if (action == "encounter_start")
+        {
+            uint32 const entry = step.get<uint32>("boss_entry");
+            float const radius = step.get<float>("radius", DefaultEncounterRadius);
+            Require(radius > 0.0f && radius <= MaximumEncounterRadius, "Encounter radius must be 0-200 yards");
+            Require(!TimelineRecorder::Active(), "Another encounter timeline is already recording");
+            Creature* boss = player->FindNearestCreature(entry, radius, true);
+            Require(boss != nullptr,
+                Acore::StringFormat("encounter_start found no creature {} within {} yards", entry, radius));
+            _encounterBoss = Target{ boss->GetMapId(), boss->GetInstanceId(), boss->GetGUID() };
+            TimelineRecorder::Begin(boss, GameNowMs());
+            record.put("boss", boss->GetGUID().ToString());
+        }
         else if (action == "encounter_credit")
         {
             Map* map = player->GetMap();
@@ -5263,11 +5752,7 @@ private:
                 player->GetSession()->HandlePetAction(packet);
             }
             else
-            {
-                WorldPacket packet(CMSG_ATTACKSWING, 8);
-                packet << target->GetGUID();
-                player->GetSession()->HandleAttackSwingOpcode(packet);
-            }
+                SubmitAttackSwing(player, target);
         }
         else if (action == "cancel_aura")
         {
@@ -5586,6 +6071,38 @@ private:
             Require(health > 0 && health <= target->GetMaxHealth(), "Health fixture outside valid range");
             target->SetHealth(health);
         }
+        else if (action == "set_health_pct")
+        {
+            Creature* creature = nullptr;
+            if (step.get_optional<std::string>("target"))
+            {
+                creature = GetUnit(step.get<std::string>("target"))->ToCreature();
+                Require(creature != nullptr, "Health threshold target must be a creature");
+            }
+            else
+            {
+                std::list<Creature*> creatures;
+                player->GetCreatureListWithEntryInGrid(creatures, step.get<uint32>("entry"), 100.0f);
+                creatures.remove_if([](Creature* candidate)
+                {
+                    return !candidate->IsInWorld() || !candidate->IsAlive();
+                });
+                Require(!creatures.empty(), "No living creature of that entry within 100 yards");
+                creatures.sort([player](Creature* first, Creature* second)
+                {
+                    return player->GetExactDist(first) < player->GetExactDist(second);
+                });
+                creature = creatures.front();
+            }
+            Require(creature->IsAlive(), "Health threshold target is not alive");
+            uint32 wanted = creature->CountPctFromMaxHealth(step.get<uint32>("pct"));
+            Require(wanted > 0, "Health threshold rounds to zero health");
+            Require(wanted <= creature->GetHealth(), "set_health_pct cannot raise health");
+            Unit::DealDamage(player, creature, creature->GetHealth() - wanted, nullptr, DIRECT_DAMAGE,
+                SPELL_SCHOOL_MASK_NORMAL);
+            Require(creature->IsAlive() && creature->GetHealth() == wanted,
+                "Health threshold left health " + std::to_string(creature->GetHealth()));
+        }
         else if (action == "set_power")
         {
             Unit* target = player;
@@ -5820,6 +6337,7 @@ private:
     bool _characterQueueReached = false;
     bool _measured = false;
     uint8 _castCount = 0;
+    uint32 _schema = 1;
     uint32 _timeout = 90000;
     uint32 _assertions = 0;
     uint32 _completed = 0;
@@ -5843,6 +6361,7 @@ private:
     std::map<std::string, Actor> _actors;
     std::map<std::string, Target> _targets;
     std::map<std::string, double> _snapshots;
+    std::optional<Target> _encounterBoss;
     QueryCallbackProcessor _queries;
     std::optional<CreatureScaling::TestOverride> _creatureScaling;
     std::optional<AscensionVanityOwnership::TestOverride> _vanityOwnership;
@@ -6581,9 +7100,88 @@ public:
         if (!caster || !spell)
             return;
         if (info)
+        {
             ProcCounter::RecordCast(caster->GetGUID(), info->Id);
+            TimelineRecorder::Record(caster, { 0, CoAGameplay::TimelineEventKind::Cast, caster->GetGUID(),
+                spell->m_targets.GetUnitTargetGUID(), CreatureEntry(caster), info->Id, 0 });
+        }
         if (SpellInfo const* triggeredBy = spell->GetTriggeredByAuraSpellInfo())
             ProcCounter::Record(caster->GetGUID(), triggeredBy->Id);
+    }
+};
+
+class CoAGameplayTestTimelineUnits final : public UnitScript
+{
+public:
+    CoAGameplayTestTimelineUnits() : UnitScript("CoAGameplayTestTimelineUnits", true, { UNITHOOK_ON_AURA_APPLY,
+        UNITHOOK_ON_AURA_REMOVE, UNITHOOK_ON_UNIT_DEATH, UNITHOOK_ON_UNIT_ENTER_COMBAT,
+        UNITHOOK_ON_UNIT_ENTER_EVADE_MODE }) { }
+
+    void OnAuraApply(Unit* unit, Aura* aura) override
+    {
+        if (!TimelineRecorder::Active() || !unit || !aura)
+            return;
+        TimelineRecorder::Record(unit, { 0, CoAGameplay::TimelineEventKind::AuraApplied, aura->GetCasterGUID(),
+            unit->GetGUID(), CreatureEntry(aura->GetCaster()), aura->GetId(), aura->GetStackAmount() });
+    }
+
+    void OnAuraRemove(Unit* unit, AuraApplication* application, AuraRemoveMode mode) override
+    {
+        if (!TimelineRecorder::Active() || !unit || !application)
+            return;
+        Aura const* aura = application->GetBase();
+        TimelineRecorder::Record(unit, { 0, CoAGameplay::TimelineEventKind::AuraRemoved, aura->GetCasterGUID(),
+            unit->GetGUID(), CreatureEntry(aura->GetCaster()), aura->GetId(), uint32(mode) });
+    }
+
+    void OnUnitDeath(Unit* unit, Unit*) override
+    {
+        if (unit)
+            TimelineRecorder::Record(unit, { 0, CoAGameplay::TimelineEventKind::Death, unit->GetGUID(),
+                unit->GetGUID(), CreatureEntry(unit), 0, 0 });
+    }
+
+    void OnUnitEnterCombat(Unit* unit, Unit* victim) override
+    {
+        if (!unit)
+            return;
+        TimelineRecorder::Record(unit, { 0, CoAGameplay::TimelineEventKind::EnterCombat, unit->GetGUID(),
+            victim ? victim->GetGUID() : ObjectGuid::Empty, CreatureEntry(unit), 0, 0 });
+        TimelineRecorder::Engage(unit);
+    }
+
+    void OnUnitEnterEvadeMode(Unit* unit, uint8 reason) override
+    {
+        if (unit)
+            TimelineRecorder::Record(unit, { 0, CoAGameplay::TimelineEventKind::Evade, unit->GetGUID(),
+                ObjectGuid::Empty, CreatureEntry(unit), 0, reason });
+    }
+};
+
+class CoAGameplayTestTimelineSpawns final : public AllCreatureScript
+{
+public:
+    CoAGameplayTestTimelineSpawns() : AllCreatureScript("CoAGameplayTestTimelineSpawns") { }
+
+    void OnCreatureAddWorld(Creature* creature) override
+    {
+        if (creature)
+            TimelineRecorder::Record(creature, { 0, CoAGameplay::TimelineEventKind::Spawn, creature->GetGUID(),
+                ObjectGuid::Empty, creature->GetEntry(), 0, 0 });
+    }
+};
+
+class CoAGameplayTestTimelineBossStates final : public GlobalScript
+{
+public:
+    CoAGameplayTestTimelineBossStates() : GlobalScript("CoAGameplayTestTimelineBossStates",
+        { GLOBALHOOK_ON_BEFORE_SET_BOSS_STATE }) { }
+
+    void OnBeforeSetBossState(uint32, EncounterState newState, EncounterState oldState, Map* instance) override
+    {
+        if (newState != oldState)
+            TimelineRecorder::Record(instance, { 0, CoAGameplay::TimelineEventKind::BossState, ObjectGuid::Empty,
+                ObjectGuid::Empty, 0, 0, uint32(newState) });
     }
 };
 }
@@ -6593,4 +7191,7 @@ void AddCoAGameplayTestScripts()
     new CoAGameplayTest();
     new CoAGameplayTestRegeneration();
     new CoAGameplayTestProcCounter();
+    new CoAGameplayTestTimelineUnits();
+    new CoAGameplayTestTimelineSpawns();
+    new CoAGameplayTestTimelineBossStates();
 }
