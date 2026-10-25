@@ -206,6 +206,22 @@ namespace
         return itr != scope->DungeonBands.end() ? &itr->second : nullptr;
     }
 
+    /// A five-player dungeon whose creatures scale, on its regular difficulty: Heroic and Mythic carry
+    /// authored level-60 health (coa_dungeon_health) and Mythic+ scales it, so a per-character view would
+    /// scale it a second time.
+    bool ScaledDungeon(Map const* map)
+    {
+        return map && map->IsDungeon() && !map->IsRaid() && !map->IsBattlegroundOrArena() &&
+               !map->IsScriptedPrivateInstance() && map->IsRegularDifficulty() && DungeonBandFor(map);
+    }
+
+    /// Installed as the core's resolver, so the loot a scaled dungeon drops follows the same rule as its
+    /// creatures.
+    bool InScaledDungeonForCore(Player const* player)
+    {
+        return player && ScaledDungeon(player->FindMap());
+    }
+
     /// One row of `creature_classlevelstats`: everything the core builds a creature of a given level
     /// out of. Rank and template multipliers are deliberately absent - they do not depend on level,
     /// so they cancel out of every ratio here, and the real creature already carries them.
@@ -273,12 +289,11 @@ namespace
     ///
     /// The maps are the open world the realm lists and the classic dungeons with a band. Raids,
     /// battlegrounds and arenas never scale, and neither does CoA's scripted private content. A dungeon
-    /// scales on its regular difficulty only: Heroic and Mythic carry authored level-60 health
-    /// (coa_dungeon_health) and Mythic+ scales it; a per-character view would scale it a second time.
+    /// scales on its regular difficulty only (`ScaledDungeon`).
     ///
-    /// There is no realm switch in front of the list: whether a character scales at all is their own
-    /// choice (`ScalingChoiceEnabled`), and the module's switch only decides whether that choice is
-    /// consulted.
+    /// There is no realm switch in front of the list: whether a character scales in the open world is
+    /// their own choice (`ScalingChoiceEnabled`), and the module's switch only decides whether that
+    /// choice is consulted. A scaled dungeon does not ask the choice at all (`ViewFor`).
     bool ViewableCreature(Creature const* creature)
     {
         if (!creature)
@@ -291,7 +306,7 @@ namespace
 
         if (map->IsDungeon())
         {
-            if (!map->IsRegularDifficulty() || !scope->DungeonBands.contains(map->GetId()))
+            if (!ScaledDungeon(map))
                 return false;
         }
         else if (!scope->WorldMaps.contains(map->GetId()))
@@ -356,10 +371,6 @@ namespace
         if (!creature || !viewer || !ScalingAvailable())
             return false;
 
-        // The character's own answer, never a neighbour's: this is what makes scaling a choice.
-        if (!LocalLevelScaling::ScalingChoiceEnabled(viewer))
-            return false;
-
         // A challenge rule or an open-world PvP ruleset holds the character to the authored world.
         if (LocalLevelScaling::ScalingBlocksFor(viewer) & LocalLevelScaling::ChallengeBlocksCreatureScaling)
             return false;
@@ -367,9 +378,16 @@ namespace
         if (!ViewableCreature(creature) || !ViewableBy(viewer, creature))
             return false;
 
+        // The Weaver's switch is open world scaling, as its menu and its messages say. A scaled dungeon
+        // scales for everyone inside it: the finder admits a group well below its authored level, and
+        // a level-60 leader whose open world switch is off must not hold the rest of the party to
+        // creatures twenty levels above them.
+        Map const* map = creature->GetMap();
+        if (!map->IsDungeon() && !LocalLevelScaling::ScalingChoiceEnabled(viewer))
+            return false;
+
         uint8 const own = creature->GetLevel();
         uint8 level = own;
-        Map const* map = creature->GetMap();
         if (map->IsDungeon())
         {
             LocalLevelScaling::LevelBand const* band = DungeonBandFor(map);
@@ -1130,6 +1148,8 @@ public:
                                                             std::memory_order_relaxed);
         LocalLevelScaling::ScalingChangedOwner.store(available ? &RefreshChangedScaling : nullptr,
                                                      std::memory_order_relaxed);
+        LocalLevelScaling::ScaledDungeonOwner.store(available ? &InScaledDungeonForCore : nullptr,
+                                                    std::memory_order_relaxed);
 
         LOG_INFO("module.destiny_weaver",
                  "open world scaling: creatures per character, level - {} in the open world and the "
@@ -1162,6 +1182,7 @@ public:
         LocalLevelScaling::CreatureViewLevelOwner.store(nullptr);
         LocalLevelScaling::CreatureViewMaxHealthOwner.store(nullptr);
         LocalLevelScaling::ScalingChangedOwner.store(nullptr);
+        LocalLevelScaling::ScaledDungeonOwner.store(nullptr);
     }
 };
 
