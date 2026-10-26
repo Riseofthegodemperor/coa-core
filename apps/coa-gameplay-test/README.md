@@ -959,6 +959,8 @@ group or its dungeon every item returns 1.
 season games and wins (-1 without a team).
 `creature_query_rank` takes a player `actor` and creature `entry` and returns the rank of the
 last creature query response delivered to that session, or -1 before one arrives.
+`creature_query_quest_item` takes the same arguments plus `item` and returns 1 when that response lists the item
+among the creature's quest drops (`creature_questitem`), 0 when it does not, or -1 before one arrives.
 `quest_level` and `quest_xp` take a player `actor` and `quest`
 and query the native quest level and XP calculations without awarding a reward.
 `quest_log_sent_level` and `quest_log_sent_xp` take the same arguments and return the last level or reward XP
@@ -973,6 +975,9 @@ or -1 before the session receives a reward offer.
 carried the client's scaled-quest flag `0x01000000`, 0 when it did not, or -1 before one arrives.
 `quest_query_reward_choice` takes the same arguments and returns the first choice reward item id in the last quest
 query response for that quest, or -1 before one arrives.
+`quest_query_text_contains` takes the same arguments plus `text` and returns 1 when the last quest query response
+for that quest contains that text anywhere (title, log, tracker or completion strings), 0 when it does not, or -1
+before one arrives.
 
 `dungeon_difficulty_packet` takes a player `actor` and `value` (0, 1 or 2), sends the native dungeon
 selection packet through the packet hook and typed session handler, and does not bypass its group or
