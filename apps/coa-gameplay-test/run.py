@@ -20,7 +20,7 @@ import sys
 import tempfile
 import time
 
-from world_cache import WorldCache, input_fingerprint
+from world_cache import WorldCache, input_fingerprint, run_parallel
 
 ROOT = Path(__file__).resolve().parents[2]
 CREATE_FLAGS = subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
@@ -1236,16 +1236,46 @@ def database_credentials(connections, path):
     return result
 
 
+DEFAULT_COPY_WORKERS = min(8, os.cpu_count() or 1)
+MAX_COPY_WORKERS = 32
+COPY_TIMEOUT = 1800
+DROP_TIMEOUT = 600
+ERROR_LIMIT = 500
+COPY_SESSION = ("SET SESSION sql_mode = 'NO_AUTO_VALUE_ON_ZERO', foreign_key_checks = 0, "
+                "transaction_isolation = 'READ-COMMITTED';")
+COPY_OBSTACLES = ('views', 'triggers', 'routines', 'events', 'statement-based binary logging')
+BATCH_ESCAPES = {'n': '\n', 't': '\t', '0': '\0', '\\': '\\'}
+
+
+def copy_worker_count(value):
+    number = int(value)
+    if not 1 <= number <= MAX_COPY_WORKERS:
+        raise argparse.ArgumentTypeError(f'must be an integer from 1 to {MAX_COPY_WORKERS}')
+    return number
+
+
+def batch_unescape(text):
+    return re.sub(r'\\(.)', lambda match: BATCH_ESCAPES.get(match[1], match[0]), text)
+
+
+def quote_name(name):
+    return '`' + name.replace('`', '``') + '`'
+
+
 class Databases:
-    def __init__(self, mysql, dump, directory, connections, run_id):
+    def __init__(self, mysql, dump, directory, connections, run_id, copy_workers=1):
         require(re.fullmatch(r'[0-9a-f]{12}', run_id), 'Invalid run id')
+        require(type(copy_workers) is int and 1 <= copy_workers <= MAX_COPY_WORKERS,
+                f'Database copy workers must be from 1 to {MAX_COPY_WORKERS}')
         self.mysql = str(mysql)
         self.dump = str(dump)
         self.directory = directory
         self.connections = connections
+        self.copy_workers = copy_workers
         self.names = {role: f'coa_test_{run_id}_{role}' for role in connections}
         self.created = []
         self.option_files = {}
+        self.inventories = {}
         try:
             for role, connection in connections.items():
                 require(self.names[role] != connection.database, 'Source and test database must differ')
@@ -1270,13 +1300,89 @@ class Databases:
     def sql(self, role, statement, timeout=60):
         result = subprocess.run([self.mysql, f'--defaults-extra-file={self.option_files[role]}',
                                  '--batch', '--skip-column-names'], input=statement, text=True,
-                                capture_output=True, timeout=timeout, creationflags=CREATE_FLAGS)
+                                encoding='utf-8', capture_output=True, timeout=timeout, creationflags=CREATE_FLAGS)
         if result.returncode:
             detail = self.redact(result.stderr)
             raise ValueError(f'MySQL operation failed for {role}: {detail or result.returncode}')
         return result.stdout.strip()
 
+    def drop(self, role, name):
+        self.sql(role, f'DROP DATABASE `{name}`;', timeout=DROP_TIMEOUT)
+
+    def inventory(self, role):
+        if role in self.inventories:
+            return self.inventories[role]
+        source = self.connections[role].database
+        counts = self.sql(role, 'SELECT ' + ', '.join(
+            f"(SELECT COUNT(*) FROM information_schema.{view} WHERE {column}='{source}')"
+            for view, column in (('VIEWS', 'TABLE_SCHEMA'), ('TRIGGERS', 'TRIGGER_SCHEMA'),
+                                 ('ROUTINES', 'ROUTINE_SCHEMA'), ('EVENTS', 'EVENT_SCHEMA')))
+            + ", @@log_bin AND @@binlog_format = 'STATEMENT';").split('\t')
+        require(len(counts) == len(COPY_OBSTACLES) and all(count.isdecimal() for count in counts),
+                f'Unreadable copy prerequisites for {role}')
+        inventory = {'obstacles': [name for name, count in zip(COPY_OBSTACLES, counts) if int(count)], 'tables': {}}
+        if not inventory['obstacles']:
+            rows = self.sql(role, 'SELECT TABLE_NAME, TABLE_TYPE, COALESCE(DATA_LENGTH, 0) + COALESCE(INDEX_LENGTH, 0) '
+                            f"FROM information_schema.TABLES WHERE TABLE_SCHEMA='{source}';").splitlines()
+            for row in rows:
+                table, kind, size = row.split('\t')
+                if kind == 'BASE TABLE':
+                    inventory['tables'][table] = int(size)
+        self.inventories[role] = inventory
+        return inventory
+
+    def columns(self, role):
+        source = self.connections[role].database
+        result = {}
+        for row in self.sql(role, 'SELECT TABLE_NAME, COLUMN_NAME FROM information_schema.COLUMNS '
+                            f"WHERE TABLE_SCHEMA='{source}' AND GENERATION_EXPRESSION = '' "
+                            'ORDER BY TABLE_NAME, ORDINAL_POSITION;').splitlines():
+            table, column = row.split('\t')
+            result.setdefault(table, []).append(quote_name(column))
+        return result
+
+    def definitions(self, role, tables):
+        source = quote_name(self.connections[role].database)
+        statement = '\n'.join(f'SHOW CREATE TABLE {source}.{quote_name(table)};' for table in tables)
+        for _ in range(3):
+            rows = dict(row.split('\t', 1) for row in self.sql(role, statement, timeout=300).splitlines())
+            if rows.keys() == set(tables):
+                return {table: batch_unescape(definition) for table, definition in rows.items()}
+        raise ValueError(f'Incomplete table definitions for {role}')
+
     def copy(self, role, schema_only=False, tables=(), where=None):
+        inventory = self.inventory(role)
+        source = self.connections[role].database
+        if inventory['obstacles']:
+            print(f"Copying {role} with mysqldump: {source} has {', '.join(inventory['obstacles'])}.", flush=True)
+            self.dump_copy(role, schema_only, tables, where)
+            return
+        missing = [table for table in tables if table not in inventory['tables']]
+        require(not missing, f"Missing source table for {role}: {', '.join(missing)}")
+        selected = sorted(tables or inventory['tables'], key=lambda table: (-inventory['tables'][table], table))
+        definitions = self.definitions(role, selected) if schema_only or not tables else {}
+        columns = {} if schema_only else self.columns(role)
+        target = quote_name(self.names[role])
+        scripts = []
+        for table in selected:
+            parts = [COPY_SESSION]
+            if definitions:
+                parts += [f'USE {target};', definitions[table] + ';']
+            if not schema_only:
+                names = ', '.join(columns[table])
+                condition = f' WHERE {where}' if where else ''
+                parts += [f'USE {quote_name(source)};', f'INSERT INTO {target}.{quote_name(table)} ({names}) '
+                                                        f'SELECT {names} FROM {quote_name(table)}{condition};']
+            scripts.append('\n'.join(parts))
+        self.run_copies(role, scripts)
+
+    def run_copies(self, role, scripts):
+        try:
+            run_parallel(lambda script: self.sql(role, script, timeout=COPY_TIMEOUT), scripts, self.copy_workers)
+        except Exception as error:
+            raise ValueError(f'Database copy failed for {role}: {error}') from error
+
+    def dump_copy(self, role, schema_only, tables, where):
         connection = self.connections[role]
         arguments = [self.dump, f'--defaults-extra-file={self.option_files[role]}',
                      '--single-transaction', '--skip-lock-tables', '--no-tablespaces', '--skip-add-locks',
@@ -1329,9 +1435,9 @@ class Databases:
         failures = []
         for role in reversed(self.created):
             try:
-                self.sql(role, f'DROP DATABASE `{self.names[role]}`;')
-            except (ValueError, subprocess.SubprocessError):
-                failures.append(self.names[role])
+                self.drop(role, self.names[role])
+            except (ValueError, subprocess.SubprocessError) as error:
+                failures.append(cleanup_failure(self.names[role], error))
         return failures
 
     def remove_credentials(self):
@@ -1409,14 +1515,25 @@ def prepare_databases(database, cache, refresh=False):
     database.prepare(roles=('auth', 'characters') if cache else ('auth', 'characters', 'world'))
 
 
+def failure_text(error):
+    if isinstance(error, subprocess.TimeoutExpired):
+        return f'timed out after {error.timeout:g} s'
+    return str(error).strip()[-ERROR_LIMIT:]
+
+
+def cleanup_failure(schema, error):
+    return {'schema': schema, 'error': error if isinstance(error, str) else failure_text(error)}
+
+
 def release_databases(database, cache, server_still_running, summary):
-    failures = list(database.names.values()) if server_still_running else database.cleanup()
+    failures = ([cleanup_failure(name, 'worldserver still running') for name in database.names.values()]
+                if server_still_running else database.cleanup())
     if cache:
         try:
             cache.finish(server_still_running=server_still_running)
         except (ValueError, OSError, subprocess.SubprocessError, KeyError) as error:
-            summary['cache_cleanup_error'] = str(error)
-            failures.append(database.names['world'])
+            summary['cache_cleanup_error'] = failure_text(error)
+            failures.append(cleanup_failure(database.names['world'], error))
     if failures:
         summary.update(status='failed', cleanup_failed=failures)
     return failures
@@ -1595,7 +1712,7 @@ def execute(args, scenario):
     summary = {'schema': 1, 'run_id': run_id, 'scenario': scenario['name'], 'status': 'failed',
                'binary_sha256': sha256(binary), 'scenario_sha256': sha256(scenario_path),
                'binary': str(binary)}
-    database = Databases(mysql, dump, credentials_dir, connections, run_id)
+    database = Databases(mysql, dump, credentials_dir, connections, run_id, args.copy_workers)
     summary['databases'] = database.names
     try:
         module_source = args.modules_config_dir or source_config.parent / 'modules'
@@ -1676,6 +1793,9 @@ def add_run_arguments(run):
     mode.add_argument('--refresh-world', action='store_true', help='Replace the owned world cache before this run')
     run.add_argument('--world-cache-dir', type=Path, default=ROOT / '.cache/coa-gameplay-tests/world-cache',
                      help='Local cache metadata/lease directory; database ownership is verified separately')
+    run.add_argument('--copy-workers', type=copy_worker_count, default=DEFAULT_COPY_WORKERS,
+                     help='MySQL connections that copy test schemas in parallel and, capped at 8, checksum the world '
+                          f'(1-{MAX_COPY_WORKERS}, default {DEFAULT_COPY_WORKERS}: min(8, CPU count))')
 
 
 def main(argv=None):

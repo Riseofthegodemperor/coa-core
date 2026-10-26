@@ -5,7 +5,13 @@ The runtime component is `src/server/coa/CoAGameplayTest.cpp`; it is disabled by
 through the gameplay stage of [`tools/verify_all.py`](../../docs/coa/verification.md), which runs them with
 `batch.py` in queue mode, by default up to 15 at once in one worldserver on a
 [simulated clock](../../docs/coa/verification.md#accelerated-single-server-mode); this directory's runners are its
-implementation.
+implementation. `--gameplay-jobs N` (`batch.py --jobs N`, default 1) runs N simulated-clock worldservers, each with
+its own world-cache slot, port and auth/characters schemas, and runs each exclusive case alone on one of them. Each
+server needed about 7,700 MySQL prepared statements and up to 5.1 GB RSS on one workstation (measured 2026-10-25
+with the default 16 character database workers; not a guarantee), and a world copy on first use. A stock MySQL
+(`max_prepared_stmt_count` 16382) with no other client therefore fits two, fewer when a running worldserver or
+authserver uses it too; raise `max_prepared_stmt_count` or lower `--gameplay-db-workers` for more
+([several simulated servers](../../docs/coa/verification.md#several-simulated-servers)).
 
 ## Find and verify a mechanic
 
@@ -168,6 +174,19 @@ Existing accounts and characters are not copied. The MySQL user needs read acces
 to create/import/drop the test schemas. Sources must be local. No authserver or game client is needed.
 The copies omit MySQL triggers, routines and scheduled events.
 
+The copy runs inside MySQL: each source table is recreated from its `SHOW CREATE TABLE` definition, so keys,
+foreign keys, checks, table options and the `AUTO_INCREMENT` counter match the source, and its rows are copied with
+`INSERT ... SELECT` at READ-COMMITTED, which reads the source without locking its rows. Tables are copied largest
+first over `--copy-workers` MySQL connections (1-32, default `min(8, CPU count)`; `gameplay_copy_workers` in
+`conf/verify-all.json`); 1 copies one table at a time. The same setting, capped at 8, sets how many
+connections checksum the world schema. The limit is per server: a batch whose servers prepare at once
+(`--jobs` above 1) opens up to `--copy-workers` times the number of those servers. Each table is read in its own
+statement, so unlike a single-transaction dump the copy is not one snapshot of the source; the world cache checks
+the source again after copying, and other source changes during a copy are not detected. When a source schema has
+views, triggers, routines or events, or the server uses statement-based binary logging, that schema is copied with
+`mysqldump | mysql` instead and the run log says why. A failed copy stops the remaining tables and drops the
+partial schema; a partial world cache is never marked ready.
+
 If the normal server account cannot create schemas, set `database_client_config` in `conf/verify-all.json`
 (the runners' `--database-client-config`). The existing MySQL `[client]` file must provide `host`, `port`,
 `user` and `password`, with the same host/port as all source connections. Its credentials are used for
@@ -271,7 +290,8 @@ files.
 - `result.json`: server version, actual values and step outcomes.
   Failed cases include `failure_actors` with native positions, combat targets and controlled-unit movement.
   Fixture teardown removes descendants of cloned creatures before their private phase is reused.
-- `summary.json`: native-stage result, binary/scenario SHA-256 and any cleanup failure.
+- `summary.json`: native-stage result, binary/scenario SHA-256 and any cleanup failure
+  (`cleanup_failed`: a list of `{"schema", "error"}` entries; dropping a schema may take up to 600 s).
 - `verification.json`: combined native and registered numerical verification for catalog scenarios (one file
   for the whole selection in a batch).
 
