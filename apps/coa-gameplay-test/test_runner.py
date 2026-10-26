@@ -141,6 +141,84 @@ class RunnerTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             run.validate(scenario)
 
+    def assert_step_validates(self, step):
+        scenario = copy.deepcopy(self.scenario)
+        scenario['steps'].append(step)
+        self.assertIs(run.validate(scenario), scenario)
+
+    def assert_step_rejected(self, step):
+        scenario = copy.deepcopy(self.scenario)
+        scenario['steps'].append(step)
+        with self.subTest(step=step), self.assertRaises(ValueError):
+            run.validate(scenario)
+
+    def test_spawn_placement_metrics_need_a_player_guid_and_spawn_type(self):
+        for metric in ('spawn_placement', 'spawn_ground_gap', 'spawn_submerged', 'spawn_display_state'):
+            step = {'action': 'assert', 'actor': 'caster', 'metric': metric, 'guid': 6942106,
+                    'spawn_type': 'gameobject', 'equals': 0}
+            if metric == 'spawn_placement':
+                step['tolerance'] = 1
+            self.assert_step_validates(step)
+            for change in ({'actor': 'target'}, {'guid': 0}, {'guid': '1'}, {'guid': True}, {'spawn_type': 'unit'}):
+                self.assert_step_rejected({**step, **change})
+            for missing in ('guid', 'spawn_type'):
+                self.assert_step_rejected({key: value for key, value in step.items() if key != missing})
+
+    def test_point_placement_metrics_need_map_and_coordinates(self):
+        step = {'action': 'assert', 'actor': 'caster', 'metric': 'point_placement', 'map': 1, 'x': 10269.8,
+                'y': 1472.1, 'z': 1340.21, 'tolerance': 1, 'equals': 2}
+        self.assert_step_validates(step)
+        gap = {key: value for key, value in step.items() if key not in {'tolerance', 'equals'}}
+        self.assert_step_validates({**gap, 'metric': 'point_ground_gap', 'max': -1})
+        self.assert_step_rejected({key: value for key, value in step.items() if key != 'z'})
+        for change in ({'map': -1}, {'x': 17001}, {'actor': 'target'}):
+            self.assert_step_rejected({**step, **change})
+
+    def test_placement_tolerance_only_applies_to_placement_verdicts(self):
+        spawn = {'action': 'assert', 'actor': 'caster', 'metric': 'spawn_placement', 'guid': 42919,
+                 'spawn_type': 'creature', 'tolerance': 0.5, 'equals': 0}
+        point = {'action': 'assert', 'actor': 'caster', 'metric': 'point_placement', 'map': 0, 'x': 1, 'y': 2,
+                 'z': 3, 'tolerance': 0.5, 'equals': 0}
+        self.assert_step_validates(spawn)
+        self.assert_step_validates(point)
+        for step in (spawn, point):
+            self.assert_step_rejected({key: value for key, value in step.items() if key != 'tolerance'})
+            for tolerance in (0, -1, 11, '1'):
+                self.assert_step_rejected({**step, 'tolerance': tolerance})
+        self.assert_step_rejected({**spawn, 'metric': 'spawn_ground_gap'})
+        self.assert_step_rejected({'action': 'assert', 'actor': 'target', 'metric': 'health', 'tolerance': 0.5,
+                                   'min': 1})
+
+    def test_spawn_fields_only_apply_to_placement_metrics(self):
+        for field, value in (('guid', 42919), ('spawn_type', 'creature'), ('map', 0), ('z', 1)):
+            self.assert_step_rejected({'action': 'assert', 'actor': 'target', 'metric': 'health', field: value,
+                                       'min': 1})
+
+    def test_placement_audit_action_fields(self):
+        step = {'action': 'placement_audit', 'map': 1, 'zone': 493}
+        self.assert_step_validates(step)
+        self.assert_step_validates({**step, 'tolerance': 0.5})
+        self.assert_step_validates({**step, 'gameobject_types': [3, 10]})
+        self.assert_step_validates({'action': 'placement_audit', 'map': 409})
+        self.assert_step_rejected({'action': 'placement_audit', 'zone': 493})
+        for change in ({'map': -1}, {'zone': 0}, {'tolerance': 0}, {'gameobject_types': []},
+                       {'gameobject_types': [3, 3]}, {'gameobject_types': [36]}, {'gameobject_types': ['3']},
+                       {'actor': 'caster'}):
+            self.assert_step_rejected({**step, **change})
+
+    def test_placement_audit_metrics_need_an_earlier_audit(self):
+        audit = {'action': 'placement_audit', 'map': 1, 'zone': 493}
+        for metric in ('placement_audit_spawns', 'placement_audit_anomalies', 'placement_audit_event_spawns'):
+            measured = {'action': 'assert', 'actor': 'caster', 'metric': metric, 'min': 0}
+            scenario = copy.deepcopy(self.scenario)
+            scenario['steps'] += [audit, measured]
+            self.assertIs(run.validate(scenario), scenario)
+            for steps in ([measured, audit], [measured]):
+                scenario = copy.deepcopy(self.scenario)
+                scenario['steps'] += steps
+                with self.subTest(metric=metric, steps=steps), self.assertRaises(ValueError):
+                    run.validate(scenario)
+
     def test_player_packet_fields_require_a_player(self):
         step = {'action': 'client_packet', 'actor': 'caster', 'opcode': 364, 'consumed': False}
         self.scenario['steps'].append(step)

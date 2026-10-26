@@ -1062,6 +1062,87 @@ bot casting its rotation and a healer against a defensive fixture, whose swings 
 `rotation_assist` next to a tank and a healer that use their scenario spells, and checks that it casts Ignite once
 and then Flare Bolt, never its scenario fallback Fire Blast, while it stands within Fire Blast's 20 yd range.
 
+### World placement
+
+Placement metrics compare a spawn's stored position (`creature` and `gameobject` rows, as loaded) with the ground
+the server computes from its static data: the `.map` terrain and the vmap models of the spawn's base map, the
+same for every lane whatever grids other cases loaded. Gameobject models, including platforms built from
+gameobjects, are not ground. The ground under a point is the native `Map::GetHeight` result searched 50 yards down
+from 2 yards above it; without one, the `.map` terrain height. Liquid comes from `Map::GetLiquidData`. The
+metrics need `vmap.enableHeight = 1` and fail with "VMap height calculation is disabled" otherwise. Their `actor`
+must be a player but is not used.
+
+| Metric | Fields | Value |
+| --- | --- | --- |
+| `spawn_ground_gap` | `guid`, `spawn_type` | The spawn's height above its ground in yards, negative under it. Fails "No ground found for the spawn" without ground. |
+| `spawn_placement` | `guid`, `spawn_type`, `tolerance` | The verdict code below. |
+| `spawn_submerged` | `guid`, `spawn_type` | 1 when the spawn is below a liquid surface, else 0. |
+| `spawn_display_state` | `guid`, `spawn_type` | The worst state of the spawn's displays: 0 `missing`, 1 `server_only`, 2 `client`. Fails "Spawn has no display to check" without a display. |
+| `point_ground_gap` | `map`, `x`, `y`, `z` | The point's height above its ground, as for a spawn. Fails "No ground found for the point". |
+| `point_placement` | `map`, `x`, `y`, `z`, `tolerance` | The verdict code of the point, phase 1, without exemptions. |
+
+`guid` is the spawn id and `spawn_type` `creature` or `gameobject`. `tolerance` (yards, more than 0 and at most 10)
+is required on the two verdict metrics and allowed only there: each scenario states its own bound, as it does
+with `min` and `max` on a gap. Verdict codes:
+
+| Code | Verdict | Rule |
+| --- | --- | --- |
+| 0 | `grounded` | The gap is within the tolerance. |
+| 1 | `floating` | The gap exceeds the tolerance and no exemption applies. |
+| 2 | `under_ground` | The gap is below minus the tolerance, or there is neither ground nor liquid. No exemption applies. |
+| 3 | `exempt` | Above the tolerance, but the spawn may float, is on a liquid surface (within the tolerance), or is a swimmer below the surface. |
+| 4 | `unchecked` | The spawn's grid has neither a `.map` nor a vmap file, or only liquid was found. |
+
+A creature may float when its movement (the spawn's `creature_movement_override`, else the template's) allows
+flight or hovering, when it has the trigger flag (`flags_extra` 0x80), or when its addon (the spawn's, else the
+template's) sets the hover anim tier; it is a swimmer when its movement allows swimming. A gameobject may float when
+its template has no display or is a transport (types 11 and 15). A creature's displays are the spawn's model and
+every template model; a gameobject's is its template display. A display is `client` when its id is a record of
+`CreatureDisplayInfo.dbc` or `GameObjectDisplayInfo.dbc` under `DataDir/dbc` (the client set the server
+enforces), `server_only` when only the server store has it (a row of the `*_dbc` world tables, streamed to clients
+by the display patch service), and `missing` otherwise.
+
+Known limits: a spawn on the wrong floor layer (a cave spawn placed on the terrain above the cave) stands on
+ground and reads as grounded; a wrong but existing model needs an external reference; positions changed at
+runtime by scripts or waypoints are not read; on a map without `.map` terrain (WMO only, such as Molten Core), a
+spawn more than 48 yards above the floor below it (the search runs 50 yards down from 2 yards above) finds neither
+floor nor terrain and reads `under_ground`, flying and hovering creatures included. The
+[placement metrics scenario](scenarios/placement-metrics-reported-spawns.json) checks spawns whose positions
+players reported in game and records calibration gaps for earlier, reported positions.
+
+The `placement_audit` action (no `actor`) checks every spawn of a map or zone with the same rules in one world
+tick. It takes `map`, optional `zone` (an AreaTable zone id), `tolerance` (more than 0 and at most 10, default 0.8
+yards, chosen from the Moonglade calibration recorded in ADR 0005) and `gameobject_types` (distinct gameobject
+types 0..35; only those gameobjects are audited). With `zone`, spawns are first kept inside the zone's
+`WorldMapArea` rectangle, then where the base map's `GetZoneId` is the zone. It fails with "Zone has no world map
+bounds" for a zone without a `WorldMapArea` row and "Placement audit selected no spawns" when nothing is left, for
+example a zone of another map. The step record holds:
+
+| Field | Content |
+| --- | --- |
+| `tolerance` | The tolerance used. |
+| `audited` | `creatures`, `gameobjects`, how many of them were `unchecked` or `exempt`, and how many are `event_linked`. |
+| `anomaly_counts` | `floating`, `under_ground` and `invalid_display` (a `missing` display) row counts, event-linked spawns excluded. |
+| `anomalies` | One row per spawn with at least one kind, creatures first, each by guid: `spawn_type`, `guid`, `entry`, `go_type` (gameobjects), `x`, `y`, `z`, `floor_z`, `gap`, `liquid_level` (empty when absent), `submerged`, `verdict`, `displays` (`id`, `state`) and `kinds`. |
+| `event_spawn_anomaly_count`, `event_spawn_anomalies` | Rows of event-linked spawns, in the `anomalies` layout plus `game_event`; listed apart, not counted as anomalies. |
+| `server_only_display_count`, `server_only_displays` | Spawns with a `server_only` display, listed apart (`spawn_type`, `guid`, `entry`, `go_type`, `x`, `y`, `z`, `displays`); they are not anomalies. |
+| `real_ms` | The audit's real duration. |
+
+A spawn is event-linked when the server's `game_event_creature` or `game_event_gameobject` data
+(`GameEventMgr::GameEventCreatureGuids`, `GameEventGameobjectGuids`) adds it during a game event (a positive event
+id; the lowest one is reported as `game_event`). Such spawns exist only while their event runs and are often hung on
+buildings or doodads, so they are reported apart from the standing world rather than dropped. A spawn that an event
+removes (a negative id) stays a standing spawn. The result writer renders an empty list as an empty string.
+`placement_audit_spawns` (spawns selected), `placement_audit_anomalies` (anomaly rows) and
+`placement_audit_event_spawns` (event-linked spawns selected) read the latest audit of the case and need an earlier
+`placement_audit`.
+The [Moonglade audit](scenarios/placement-audit-moonglade.json) only guards the mechanism: it asserts that the audit
+selected spawns and linked the Lunar Festival spawns to their event; its rows are findings to triage. Only a zone
+audit has been timed (Moonglade, 849 spawns, under 0.1 s); the duration and memory of a whole-continent audit, which
+creates every touched grid with its terrain, vmap and mmap tiles in one tick, are not measured. To audit another zone, copy it to a scratch file outside
+`scenarios/`, change `map` and `zone`, run `python -B tools/verify_all.py --stages gameplay --scenario <file>`, and
+read the record in `gameplay/exploratory/<key>/result.json` (see the verification guide, Placement audits).
+
 ## Evidence boundaries
 
 ### Optional character names
