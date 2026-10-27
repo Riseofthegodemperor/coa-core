@@ -412,6 +412,7 @@ void AddSC_AscensionHeirloomWeaponStore();
 void AddSC_AscensionLfgObjective();
 void AddSC_AscensionBushcraft();
 void AddSC_AscensionVoidPortal();
+void AddSC_AscensionWoollyPride();
 
 void AddSC_XPHotspots();
 
@@ -826,4 +827,5 @@ void AddCoAScripts()
     AddSC_AscensionLfgObjective();
     AddSC_AscensionBushcraft();
     AddSC_AscensionVoidPortal();
+    AddSC_AscensionWoollyPride();
 }
