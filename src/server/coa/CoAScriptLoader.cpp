@@ -21,6 +21,7 @@
 void AddAscensionCompatScripts();
 void AddAscensionTravelPermitScripts();
 void AddSC_AscensionRulesets();
+void AddSC_AscensionTrainerProficiency();
 void AddSC_AscensionMercenary();
 void AddSC_AscensionHighRisk();
 void AddSC_AscensionFelCommutation();
@@ -749,6 +750,7 @@ void AddCoAScripts()
     AddCoAGameplayTestScripts();
     AddSC_AscensionResourceTalents();
     AddSC_AscensionRulesets();
+    AddSC_AscensionTrainerProficiency();
     AddSC_AscensionMercenary();
     AddSC_AscensionHighRisk();
     AddSC_AscensionFelCommutation();
