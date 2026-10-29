@@ -5863,11 +5863,15 @@ public:
     if (!state)
       state = LoadCollectionState(player);
 
-    // Socketless bots do not have an active client UI -- skip heavy appearance/wardrobe packet sync
+    // Socketless bots do not have an active client UI -- skip heavy appearance/wardrobe packet sync.
+    // Store state first (under lock, then released) so that GetState succeeds inside RefreshVisibleItems.
     if (player->GetSession() && player->GetSession()->IsSocketClosed())
     {
-      std::lock_guard lock(_stateMutex);
-      _playerStates[player->GetGUID().GetCounter()] = state;
+      {
+        std::lock_guard lock(_stateMutex);
+        _playerStates[player->GetGUID().GetCounter()] = state;
+      }
+      RefreshVisibleItems(player);
       return;
     }
 
