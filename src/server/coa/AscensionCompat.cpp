@@ -6219,6 +6219,8 @@ public:
     {
         if (!_clientDataLoaded || player->IsInWorld() || !player->GetSession()->PlayerLoading())
             return;
+        if (player->GetSession()->IsBot() && !LoadsCollectionsForBot(player))
+            return;
 
         LearnOwnedBankSpells(player, *LoginState(player), true);
     }
