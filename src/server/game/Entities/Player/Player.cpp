@@ -4322,6 +4322,14 @@ bool Player::HasSpell(uint32 spell) const
     return copy && HasSpell(copy);
 }
 
+bool Player::HasSpellOrTwin(uint32 spell) const
+{
+    for (uint32 relative : sSpellMgr->GetSpellAndRelatives(spell))
+        if (HasSpell(relative))
+            return true;
+    return false;
+}
+
 bool Player::HasTalent(uint32 spell, uint8 spec) const
 {
     PlayerTalentMap::const_iterator itr = m_talents.find(spell);
