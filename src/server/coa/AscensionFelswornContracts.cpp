@@ -63,12 +63,10 @@ void ApplyContracts(SpellInfo* info)
     {
         info->DurationEntry = sSpellDurationStore.LookupEntry(1);
         info->Effects[2].Effect = 0;
-        info->StartRecoveryCategory = 133;
-        info->StartRecoveryTime = 1000;
     }
     if (id == 803465 || id == 807421 || id == 807428 || id == 807426)
         for (uint8 i = 0; i < MAX_SPELL_EFFECTS; ++i)
-            if (info->Effects[i].Effect)
+            if (info->Effects[i].Effect && !(id == 807428 && i == EFFECT_2))
                 dummy(i);
     if (id == 807426)
     {
