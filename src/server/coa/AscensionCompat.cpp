@@ -596,6 +596,14 @@ struct AppearanceInfo {
 constexpr uint32 INCARNATION_KIND_FORM = 1;
 constexpr uint32 INCARNATION_KIND_CREATURE = 2;
 
+struct HiddenAppearanceEntry { uint32 ItemEntry; uint8 Category; };
+static constexpr HiddenAppearanceEntry kHiddenAppearances[] = {
+    {9910001, 1},  {9910002, 2},  {9910003, 3},  {9910004, 4},
+    {9910005, 5},  {9910006, 6},  {9910007, 7},  {9910008, 8},
+    {9910009, 9},  {9910010, 10}, {9910011, 11}, {9910012, 12},
+    {9910013, 13}, {9910014, 14},
+};
+
 struct IncarnationCategory {
   uint32 Kind = 0;
   uint32 FirstId = 0;
@@ -5710,6 +5718,7 @@ public:
     }
     if (appearancesLoaded && itemAppearancesLoaded)
         LoadWoodworkingAppearances(lastItemAppearanceRecordId);
+    LoadHiddenAppearances(lastItemAppearanceRecordId);
 
     std::unordered_map<uint32, uint32> equipmentAppearances;
     for (auto const& [id, appearance] : _appearances)
@@ -6831,6 +6840,22 @@ private:
         }
     }
 
+    void LoadHiddenAppearances(uint32 lastMappingId)
+    {
+        uint32 mappingId = lastMappingId + 10000;
+        for (auto const& entry : kHiddenAppearances)
+        {
+            if (_appearances.contains(entry.ItemEntry))
+                continue;
+            _appearances.emplace(entry.ItemEntry, AppearanceInfo{entry.ItemEntry, entry.Category, 0});
+            _allAppearanceIds.push_back(entry.ItemEntry);
+            _itemAppearances.emplace(entry.ItemEntry, entry.ItemEntry);
+            _woodworkingAppearancePatches.push_back({entry.ItemEntry, entry.ItemEntry, 0,
+                entry.ItemEntry, 0, entry.Category, 0, 0, entry.ItemEntry, 0, 0, 100, 1, 1, 1, 1, 1});
+            _woodworkingItemAppearancePatches.push_back({++mappingId, entry.ItemEntry, entry.ItemEntry});
+        }
+    }
+
     void SendWoodworkingAppearanceCatalog(Player* player)
     {
         for (auto const& row : _woodworkingAppearancePatches)
@@ -7041,6 +7066,9 @@ private:
         state.CollectedAppearances.insert(result->Fetch()[0].Get<uint32>());
       } while (result->NextRow());
     }
+
+    for (auto const& entry : kHiddenAppearances)
+        state.CollectedAppearances.insert(entry.ItemEntry);
 
     if (QueryResult result = CharacterDatabase.Query(
             "SELECT `category_id`, `appearance_id` FROM `character_appearance` "
