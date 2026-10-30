@@ -43,6 +43,7 @@ void AddSC_AscensionGlory();
 void AddSC_AscensionDifficultyRelease();
 void AddSC_AscensionRunSpeed();
 void AddSC_AscensionLfgRandomDungeonRequirements();
+void AddSC_AscensionLfgClassicDungeonList();
 void AddSC_AscensionQuestLog();
 void AddSC_AscensionRestingBuff();
 void AddSC_AscensionPvpTrinketHealth();
@@ -791,6 +792,7 @@ void AddCoAScripts()
     AddSC_AscensionDifficultyRelease();
     AddSC_AscensionRunSpeed();
     AddSC_AscensionLfgRandomDungeonRequirements();
+    AddSC_AscensionLfgClassicDungeonList();
     AddSC_AscensionQuestLog();
     AddSC_AscensionRestingBuff();
     AddSC_AscensionPvpTrinketHealth();
