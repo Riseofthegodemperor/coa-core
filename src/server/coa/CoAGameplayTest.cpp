@@ -4996,6 +4996,7 @@ private:
             auto dominantStat = step.get_optional<uint32>("dominant_stat");
             auto offStat = step.get_optional<uint32>("off_stat");
             auto quality = step.get_optional<uint32>("quality");
+            auto belowArmorClass = step.get_optional<uint32>("below_armor_class");
             auto strongestAttributes = [](ItemTemplate const* proto)
             {
                 std::array<int32, ITEM_MOD_SPIRIT + 1> attributes{};
@@ -5014,7 +5015,7 @@ private:
             };
             uint32 count = 0;
             auto countItem = [pool, &count, &excluded, minRequiredLevel, maxRequiredLevel, &dominantStat, &offStat,
-                &quality, &strongestAttributes](Item* item)
+                &quality, &belowArmorClass, &strongestAttributes](Item* item)
             {
                 if (excluded && item->GetEntry() == *excluded)
                     return;
@@ -5023,6 +5024,10 @@ private:
                     return;
                 ItemTemplate const* base = sObjectMgr->GetItemTemplate(ItemScaling::BaseEntry(item->GetEntry()));
                 if (quality && (base ? base : item->GetTemplate())->Quality != *quality)
+                    return;
+                ItemTemplate const* proto = base ? base : item->GetTemplate();
+                if (belowArmorClass && (proto->Class != ITEM_CLASS_ARMOR || proto->InventoryType == INVTYPE_CLOAK ||
+                    proto->SubClass < ITEM_SUBCLASS_ARMOR_CLOTH || proto->SubClass >= *belowArmorClass))
                     return;
                 std::unordered_set<uint32> const strongest = strongestAttributes(base ? base : item->GetTemplate());
                 if (dominantStat && !strongest.count(*dominantStat))
