@@ -3497,7 +3497,7 @@ bool Player::_addSpell(uint32 spellId, uint8 addSpecMask, bool temporary, bool l
     // pussywizard: update free primary prof points
     if (uint32 freeProfs = GetFreePrimaryProfessionPoints())
     {
-        if (spellInfo->IsPrimaryProfessionFirstRank() && !(getClass() == CLASS_RANGER && spellInfo->IsAbilityOfSkillType(SKILL_SKINNING)))
+        if (SpendsPrimaryProfessionSlot(spellInfo))
             SetFreePrimaryProfessions(freeProfs - 1);
     }
 
@@ -3786,7 +3786,7 @@ void Player::removeSpell(uint32 spell_id, uint8 removeSpecMask, bool onlyTempora
     }
 
     // pussywizard: update free primary prof points
-    if (spellInfo->IsPrimaryProfessionFirstRank() && !(getClass() == CLASS_RANGER && spellInfo->IsAbilityOfSkillType(SKILL_SKINNING)))
+    if (SpendsPrimaryProfessionSlot(spellInfo))
     {
         uint32 freeProfs = GetFreePrimaryProfessionPoints() + 1;
         if (freeProfs <= sWorld->getIntConfig(CONFIG_MAX_PRIMARY_TRADE_SKILL))
@@ -12290,6 +12290,12 @@ bool Player::IsVisibleGloballyFor(Player const* u) const
 void Player::InitPrimaryProfessions()
 {
     SetFreePrimaryProfessions(sWorld->getIntConfig(CONFIG_MAX_PRIMARY_TRADE_SKILL));
+}
+
+bool Player::SpendsPrimaryProfessionSlot(SpellInfo const* spellInfo) const
+{
+    return spellInfo->IsPrimaryProfessionFirstRank()
+        && !(getClass() == CLASS_RANGER && spellInfo->IsAbilityOfSkillType(SKILL_SKINNING));
 }
 
 bool Player::ModifyMoney(int32 amount, bool sendError /*= true*/)
