@@ -503,12 +503,12 @@ public:
                          "CoA.AutoCollectAppearances", true);
     SetConfigValue<bool>(
         AscensionCompatConfig::UNLOCK_LOCAL_APPEARANCE_CATALOG,
-        "CoA.UnlockLocalAppearanceCatalog", true);
+        "CoA.UnlockLocalAppearanceCatalog", false);
     SetConfigValue<uint32>(
         AscensionCompatConfig::APPEARANCE_CATALOG_PER_CATEGORY,
         "CoA.AppearanceCatalogPerCategory", 500);
     SetConfigValue<bool>(AscensionCompatConfig::UNLOCK_ALL_VANITY,
-                         "CoA.UnlockAllVanity", true);
+                         "CoA.UnlockAllVanity", false);
     SetConfigValue<std::string>(AscensionCompatConfig::STARTER_VANITY_ITEMS,
                                 "CoA.StarterVanityItems", "");
     SetConfigValue<std::string>(AscensionCompatConfig::REALM_TYPE,
@@ -523,7 +523,7 @@ public:
     SetConfigValue<bool>(AscensionCompatConfig::LEARN_OWNED_COMPANIONS,
                          "CoA.LearnOwnedCompanions", true);
     SetConfigValue<bool>(AscensionCompatConfig::MAX_RIDING_FROM_START,
-                         "CoA.MaxRidingFromStart", true);
+                         "CoA.MaxRidingFromStart", false);
     SetConfigValue<bool>(AscensionCompatConfig::QUEST_LEVEL_SCALING,
                          "CoA.QuestLevelScaling", true);
     SetConfigValue<uint32>(AscensionCompatConfig::COLLECTIONS_FOR_BOTS,

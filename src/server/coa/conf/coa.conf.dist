@@ -108,12 +108,12 @@ CoA.RandomBotAccountPrefix = "rndbot"
 # Solo-server convenience: unlock the complete local appearance catalog. The
 # per-category value balances the initial snapshot; remaining appearances are
 # streamed afterward to stay below the legacy client's 64 KiB packet limit.
-CoA.UnlockLocalAppearanceCatalog = 1
+CoA.UnlockLocalAppearanceCatalog = 0
 CoA.AppearanceCatalogPerCategory = 500
 
 # Solo-server convenience: expose every static VanityCollection entry as account-owned.
 # Custom Ascension-only entries still require matching server item/spell templates to deliver.
-CoA.UnlockAllVanity = 1
+CoA.UnlockAllVanity = 0
 
 # Vanity items every account owns from its first login, as space-separated item ids. They are
 # recorded in the account's collection, so they stay owned with CoA.UnlockAllVanity = 0, and
@@ -133,7 +133,7 @@ CoA.LearnOwnedCompanions = 1
 
 # Solo-server convenience: all riding ranks (300/300) and Cold Weather Flying
 # from the first login, including level-one characters. No profession grants.
-CoA.MaxRidingFromStart = 1
+CoA.MaxRidingFromStart = 0
 
 # Mount flight rules.
 # 0 - Players fly with Expert Riding or better in Outland, and in Northrend once they know Cold
