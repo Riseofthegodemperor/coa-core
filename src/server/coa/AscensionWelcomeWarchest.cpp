@@ -1,7 +1,6 @@
 /* Copyright (C) 2016+ AzerothCore, GNU AGPL v3. */
 #include "AscensionWildcard.h"
 #include "DatabaseEnv.h"
-#include "DBCStores.h"
 #include "GameTime.h"
 #include "Item.h"
 #include "ItemScript.h"
@@ -186,21 +185,6 @@ void FlushMailQueue(Player* player, std::vector<Item*> const& mailQueue,
     CharacterDatabase.CommitTransaction(trans);
 }
 
-void UnlockAllFlightPoints(Player* player)
-{
-    TeamId const team = player->GetTeamId();
-    for (TaxiNodesEntry const* node : sTaxiNodesStore)
-    {
-        if (!node)
-            continue;
-
-        if (sObjectMgr->GetTaxiMountDisplayId(node->ID, team, true))
-            player->m_taxi.SetTaximaskNode(node->ID);
-    }
-
-    player->SendTaxiNodeStatusMultiple();
-}
-
 class item_coa_elite_warchest : public ItemScript
 {
 public:
@@ -216,7 +200,6 @@ public:
         DeliverOrQueueMail(player, mailQueue, scrollOfRetreat, 1);
 
         FlushMailQueue(player, mailQueue);
-        UnlockAllFlightPoints(player);
 
         uint32 count = 1;
         player->DestroyItemCount(item, count, true);
