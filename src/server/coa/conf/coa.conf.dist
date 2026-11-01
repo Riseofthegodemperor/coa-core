@@ -105,6 +105,13 @@ CoA.MonsterResistance.MaxReductionPct = 75.0
 CoA.CollectionsForBots = 0
 CoA.RandomBotAccountPrefix = "rndbot"
 
+# Apply the player's saved transmog to their alt-bots at login without loading
+# the full collection system. Random bots are never affected. Requires
+# CoA.CollectionsForBots = 0 (the default); if CollectionsForBots >= 1 the full
+# login path already handles this.
+# Default: 1 (enabled)
+CoA.AltBotTransmogOnLogin = 1
+
 # Solo-server convenience: unlock the complete local appearance catalog. The
 # per-category value balances the initial snapshot; remaining appearances are
 # streamed afterward to stay below the legacy client's 64 KiB packet limit.

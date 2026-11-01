@@ -479,6 +479,7 @@ enum class AscensionCompatConfig {
   CLIENT_DBC_DIRECTORY,
   COLLECTIONS_FOR_BOTS,
   RANDOM_BOT_ACCOUNT_PREFIX,
+  ALTBOT_TRANSMOG_ON_LOGIN,
   STARTER_VANITY_ITEMS,
 
   NUM_CONFIGS,
@@ -530,6 +531,8 @@ public:
                            "CoA.CollectionsForBots", 0);
     SetConfigValue<std::string>(AscensionCompatConfig::RANDOM_BOT_ACCOUNT_PREFIX,
                                 "CoA.RandomBotAccountPrefix", "rndbot");
+    SetConfigValue<bool>(AscensionCompatConfig::ALTBOT_TRANSMOG_ON_LOGIN,
+                         "CoA.AltBotTransmogOnLogin", true);
     SetConfigValue<bool>(AscensionCompatConfig::AUTO_PROGRESSION,
                          "CoA.AutoProgression", false);
     SetConfigValue<bool>(AscensionCompatConfig::SEND_DISPLAY_PATCHES,
@@ -5819,11 +5822,7 @@ public:
           packet.GetOpcode(), packet.size(), accountId, reason, rejected);
   }
 
-  static bool LoadsCollectionsForBot(Player *player) {
-    uint32 const mode = ascensionCompatConfig.GetConfigValue<uint32>(
-        AscensionCompatConfig::COLLECTIONS_FOR_BOTS);
-    if (mode != 1)
-      return mode >= 2;
+  static bool IsPlayerAccountBot(Player *player) {
     uint32 const accountId = player->GetSession()->GetAccountId();
     std::string const prefix = ascensionCompatConfig.GetConfigValue<std::string>(
         AscensionCompatConfig::RANDOM_BOT_ACCOUNT_PREFIX);
@@ -5850,6 +5849,14 @@ public:
     return playerAccount;
   }
 
+  static bool LoadsCollectionsForBot(Player *player) {
+    uint32 const mode = ascensionCompatConfig.GetConfigValue<uint32>(
+        AscensionCompatConfig::COLLECTIONS_FOR_BOTS);
+    if (mode != 1)
+      return mode >= 2;
+    return IsPlayerAccountBot(player);
+  }
+
   void OnPlayerLogin(Player *player) {
     if (!_clientDataLoaded)
     {
@@ -5863,6 +5870,21 @@ public:
     {
       TakeLoginState(player);
       InitializeRiding(player);
+      if (ascensionCompatConfig.GetConfigValue<bool>(
+              AscensionCompatConfig::ALTBOT_TRANSMOG_ON_LOGIN) &&
+          IsPlayerAccountBot(player))
+      {
+        auto state = LoadCollectionState(player);
+        {
+          std::lock_guard lock(_stateMutex);
+          _playerStates[player->GetGUID().GetCounter()] = state;
+        }
+        RefreshVisibleItems(player);
+        {
+          std::lock_guard lock(_stateMutex);
+          _playerStates.erase(player->GetGUID().GetCounter());
+        }
+      }
       return;
     }
 
