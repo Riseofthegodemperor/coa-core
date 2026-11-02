@@ -1307,7 +1307,11 @@ public:
     for (uint32 spellId : GetAscensionRacialSpells(player))
     {
       if (!sSpellMgr->GetSpellInfo(spellId))
-        return false;
+      {
+        LOG_ERROR("coa", "InitializeLiveBaseline: racial spell {} for race {} not found in SpellStore, skipping",
+            spellId, uint32(player->getRace()));
+        continue;
+      }
       if (!player->HasSpell(spellId))
         player->addSpell(spellId, SPEC_MASK_ALL, true);
     }
