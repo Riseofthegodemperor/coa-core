@@ -6288,7 +6288,34 @@ TeamId Player::TeamIdForRace(uint8 race)
         LOG_ERROR("entities.player", "Race ({}) has wrong teamid ({}) in DBC: wrong DBC files?", uint32(race), rEntry->TeamID);
     }
     else
+    {
+        // CoA custom races without ChrRaces.dbc entries: faction derived from start zone assignment
+        static std::unordered_map<uint8, TeamId> const s_coaRaceTeams = {
+            {14, TEAM_ALLIANCE}, {15, TEAM_ALLIANCE}, {18, TEAM_ALLIANCE},
+            {27, TEAM_ALLIANCE}, {29, TEAM_ALLIANCE}, {32, TEAM_ALLIANCE},
+            {47, TEAM_ALLIANCE}, {48, TEAM_ALLIANCE}, {50, TEAM_ALLIANCE},
+            {59, TEAM_ALLIANCE}, {65, TEAM_ALLIANCE}, {67, TEAM_ALLIANCE},
+            {68, TEAM_ALLIANCE}, {71, TEAM_ALLIANCE}, {75, TEAM_ALLIANCE},
+            {77, TEAM_ALLIANCE}, {79, TEAM_ALLIANCE}, {80, TEAM_ALLIANCE},
+            {81, TEAM_ALLIANCE}, {85, TEAM_ALLIANCE}, {97, TEAM_ALLIANCE},
+            {99, TEAM_ALLIANCE}, {100, TEAM_ALLIANCE}, {103, TEAM_ALLIANCE},
+            {107, TEAM_ALLIANCE}, {110, TEAM_ALLIANCE},
+            {17, TEAM_HORDE},  {21, TEAM_HORDE},  {22, TEAM_HORDE},
+            {23, TEAM_HORDE},  {24, TEAM_HORDE},  {25, TEAM_HORDE},
+            {26, TEAM_HORDE},  {28, TEAM_HORDE},  {30, TEAM_HORDE},
+            {31, TEAM_HORDE},  {49, TEAM_HORDE},  {66, TEAM_HORDE},
+            {69, TEAM_HORDE},  {70, TEAM_HORDE},  {72, TEAM_HORDE},
+            {74, TEAM_HORDE},  {78, TEAM_HORDE},  {82, TEAM_HORDE},
+            {83, TEAM_HORDE},  {86, TEAM_HORDE},  {87, TEAM_HORDE},
+            {89, TEAM_HORDE},  {90, TEAM_HORDE},  {98, TEAM_HORDE},
+            {101, TEAM_HORDE}, {102, TEAM_HORDE}, {104, TEAM_HORDE},
+            {106, TEAM_HORDE}, {109, TEAM_HORDE}, {112, TEAM_HORDE},
+        };
+        auto it = s_coaRaceTeams.find(race);
+        if (it != s_coaRaceTeams.end())
+            return it->second;
         LOG_ERROR("entities.player", "Race ({}) not found in DBC: wrong DBC files?", uint32(race));
+    }
 
     return TEAM_ALLIANCE;
 }
@@ -6303,7 +6330,7 @@ void Player::SetFactionForRace(uint8 race)
         return;
 
     ChrRacesEntry const* rEntry = sChrRacesStore.LookupEntry(race);
-    SetFaction(rEntry ? rEntry->FactionID : 0);
+    SetFaction(rEntry ? rEntry->FactionID : (m_team == TEAM_HORDE ? 2u : 1u));
 }
 
 ReputationRank Player::GetReputationRank(uint32 faction) const
