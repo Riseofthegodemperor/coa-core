@@ -136,6 +136,7 @@ void AddAscensionWarcraftRebornWarlockScripts();
 void AddAscensionWarcraftRebornDruidScripts();
 void AddAscensionTamingScripts();
 void AddAscensionBarnabusWhistleScripts();
+void AddAscensionThunderkegScripts();
 void AddAscensionPepeVanityScripts();
 void AddAscensionRaidMarkerScripts();
 void AddCoAContainerTriggerScripts();
@@ -765,6 +766,7 @@ void AddCoAScripts()
     AddAscensionWarcraftRebornDruidScripts();
     AddAscensionTamingScripts();
     AddAscensionBarnabusWhistleScripts();
+    AddAscensionThunderkegScripts();
     AddAscensionPepeVanityScripts();
     AddAscensionRaidMarkerScripts();
     AddCoAContainerTriggerScripts();
