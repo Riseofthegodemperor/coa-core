@@ -65,6 +65,7 @@ void AddSC_CoaEsteriaRacials();
 void AddSC_CoAGameObjectScale();
 void AddSC_CoACreatureScaling();
 void AddSC_CoADungeonBossKit();
+void AddSC_CoAFierceBlow();
 void AddSC_CoADungeonNormal();
 void AddSC_CoAOtherSideMuzah();
 void AddSC_CoAOtherSideDrakmath();
@@ -819,6 +820,7 @@ void AddCoAScripts()
     AddSC_CoAGameObjectScale();
     AddSC_CoACreatureScaling();
     AddSC_CoADungeonBossKit();
+    AddSC_CoAFierceBlow();
     AddSC_CoADungeonNormal();
     AddSC_CoAOtherSideMuzah();
     AddSC_CoAOtherSideDrakmath();
