@@ -40,6 +40,7 @@ void AddSC_AscensionPowerTooltips();
 void AddSC_AscensionPvePower();
 void AddSC_AscensionItemPower();
 void AddSC_AscensionMountSpeed();
+void AddSC_AscensionBossControlRoles();
 void AddSC_AscensionGlory();
 void AddSC_AscensionDifficultyRelease();
 void AddSC_AscensionRunSpeed();
@@ -796,6 +797,7 @@ void AddCoAScripts()
     AddSC_AscensionPvePower();
     AddSC_AscensionItemPower();
     AddSC_AscensionMountSpeed();
+    AddSC_AscensionBossControlRoles();
     AddSC_AscensionGlory();
     AddSC_AscensionDifficultyRelease();
     AddSC_AscensionRunSpeed();
