@@ -7068,6 +7068,9 @@ void AuraEffect::HandleObsModPowerAuraTick(Unit* target, Unit* caster) const
         return;
     }
 
+    if (Player* player = target->ToPlayer(); player && !sScriptMgr->OnPlayerCanRegenerate(player, int32(PowerType)))
+        return;
+
     // don't regen when permanent aura target has full power
     if (GetBase()->IsPermanent() && target->GetPower(PowerType) == target->GetMaxPower(PowerType))
         return;
