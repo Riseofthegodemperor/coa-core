@@ -110,25 +110,6 @@ bool RefuseOutsideRest(Player* player, bool wholeGroup, std::string_view action)
     return true;
 }
 
-bool RefuseFinder(Player* player, bool wholeGroup, std::string_view action)
-{
-    auto const highRisk = [](Player const* member)
-    {
-        return (InHighRisk(member) || AscensionRulesets::HighRiskSuspended(member)) && !member->GetSession()->IsBot();
-    };
-    Player* blocked = highRisk(player) ? player : nullptr;
-    if (Group* group = wholeGroup ? player->GetGroup() : nullptr)
-        for (GroupReference* member = group->GetFirstMember(); member && !blocked; member = member->next())
-            if (Player* source = member->GetSource(); source && highRisk(source))
-                blocked = source;
-    if (!blocked)
-        return false;
-
-    ChatHandler(player->GetSession()).SendSysMessage(Acore::StringFormat(
-        "{} cannot {} while in High-Risk.", blocked == player ? "You" : blocked->GetName(), action));
-    return true;
-}
-
 void Commit(CharacterDatabaseTransaction transaction)
 {
     auto result = CharacterDatabase.AsyncCommitTransaction(transaction);
@@ -597,7 +578,7 @@ public:
 
     bool OnPlayerCanJoinLfg(Player* player, uint8, lfg::LfgDungeonSet&, std::string const&) override
     {
-        if (!RefuseFinder(player, true, "use the Dungeon Finder"))
+        if (!RefuseOutsideRest(player, true, "queue"))
             return true;
         player->GetSession()->SendLfgJoinResult(lfg::LfgJoinResultData(
             player->GetGroup() ? lfg::LFG_JOIN_PARTY_NOT_MEET_REQS : lfg::LFG_JOIN_NOT_MEET_REQS));
@@ -618,7 +599,7 @@ public:
 
     bool OnPlayerCanLfgTeleport(Player* player) override
     {
-        return !RefuseFinder(player, false, "teleport into a Dungeon Finder dungeon");
+        return !RefuseOutsideRest(player, false, "teleport into a dungeon");
     }
 
     bool OnPlayerCanBattleFieldPort(Player* player, uint8, BattlegroundTypeId, uint8 action) override
